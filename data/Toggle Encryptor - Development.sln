@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toggle Encryptor - Development", "Toggle Encryptor - Development\Toggle Encryptor - Development.csproj", "{A27FCD44-3557-4003-913D-88700801836E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A27FCD44-3557-4003-913D-88700801836E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A27FCD44-3557-4003-913D-88700801836E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A27FCD44-3557-4003-913D-88700801836E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A27FCD44-3557-4003-913D-88700801836E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {84EEA6A2-FDD2-466B-9431-F5DC7BCE8F3C}
+	EndGlobalSection
+EndGlobal
