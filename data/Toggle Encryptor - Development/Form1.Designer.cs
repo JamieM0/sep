@@ -37,6 +37,7 @@ namespace Toggle_Encryptor___Development
             this.btnContinueFromAbout = new System.Windows.Forms.Button();
             this.lbAbout1 = new System.Windows.Forms.Label();
             this.gbMain = new System.Windows.Forms.GroupBox();
+            this.lbPassLengthWarn = new System.Windows.Forms.Label();
             this.lbEncryptOutput = new System.Windows.Forms.Label();
             this.lbIns3 = new System.Windows.Forms.Label();
             this.btnConfirmInputEncrypt = new System.Windows.Forms.Button();
@@ -116,6 +117,7 @@ namespace Toggle_Encryptor___Development
             // 
             // gbMain
             // 
+            this.gbMain.Controls.Add(this.lbPassLengthWarn);
             this.gbMain.Controls.Add(this.lbEncryptOutput);
             this.gbMain.Controls.Add(this.lbIns3);
             this.gbMain.Controls.Add(this.btnConfirmInputEncrypt);
@@ -130,6 +132,15 @@ namespace Toggle_Encryptor___Development
             this.gbMain.Size = new System.Drawing.Size(734, 319);
             this.gbMain.TabIndex = 3;
             this.gbMain.TabStop = false;
+            // 
+            // lbPassLengthWarn
+            // 
+            this.lbPassLengthWarn.AutoSize = true;
+            this.lbPassLengthWarn.Location = new System.Drawing.Point(615, 55);
+            this.lbPassLengthWarn.Name = "lbPassLengthWarn";
+            this.lbPassLengthWarn.Size = new System.Drawing.Size(119, 30);
+            this.lbPassLengthWarn.TabIndex = 9;
+            this.lbPassLengthWarn.Text = "Password must be \r\nexactly 16 characters.";
             // 
             // lbEncryptOutput
             // 
@@ -200,6 +211,7 @@ namespace Toggle_Encryptor___Development
             this.btnGenPass.TabIndex = 2;
             this.btnGenPass.Text = "Generate a Password";
             this.btnGenPass.UseVisualStyleBackColor = true;
+            this.btnGenPass.Click += new System.EventHandler(this.btnGenPass_Click);
             // 
             // txtPass
             // 
@@ -228,7 +240,7 @@ namespace Toggle_Encryptor___Development
             this.Controls.Add(this.gbMain);
             this.Controls.Add(this.gbAbout);
             this.Name = "Form1";
-            this.Text = "Toggle Encryptor - Prototype";
+            this.Text = "TEPP- Prototype";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.gbAbout.ResumeLayout(false);
             this.gbAbout.PerformLayout();
@@ -258,6 +270,7 @@ namespace Toggle_Encryptor___Development
         private System.Windows.Forms.Button btnConfirmInputEncrypt;
         private System.Windows.Forms.Label lbEncryptOutput;
         private System.Windows.Forms.Label lbIns3;
+        private System.Windows.Forms.Label lbPassLengthWarn;
     }
 }
 

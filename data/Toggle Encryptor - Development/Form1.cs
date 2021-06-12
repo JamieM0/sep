@@ -7,6 +7,7 @@ using System.Linq;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -25,6 +26,8 @@ namespace Toggle_Encryptor___Development
             gbMain__disable();
             lbIns3.Visible = false;
             lbEncryptOutput.Visible = false;
+            btnConfirmInputEncrypt.Enabled = false;
+            lbPassLengthWarn.Visible = false;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -66,9 +69,26 @@ namespace Toggle_Encryptor___Development
 
         private void btnConfirmPass_Click(object sender, EventArgs e)
         {
-            key = txtPass.Text;
-            txtPass.Enabled = false;
-            btnConfirmPass.Enabled = false;
+            if (txtPass.TextLength == 16)
+            {
+                key = txtPass.Text;
+                txtPass.Enabled = false;
+                btnConfirmPass.Enabled = false;
+                btnConfirmInputEncrypt.Enabled = true;
+                lbPassLengthWarn.Visible = false;
+                btnGenPass.Enabled = false;
+            }
+
+            else
+            {
+                lbPassLengthWarn.Visible = true;
+                //lbIns1.Text = ("Please choose a password that is 16 characters in length.");
+                //txtPass.Enabled = false;
+                //Thread.Sleep(1000000);
+                //txtPass.Enabled = false;
+                //lbIns1.Text = ("1. Enter a password to encrypt the string with.");
+                //lbPassLengthWarn.Visible = false;
+            }
         }
 
         private void btnConfirmInputEncrypt_Click(object sender, EventArgs e)
@@ -82,6 +102,23 @@ namespace Toggle_Encryptor___Development
             lbEncryptOutput.Text = encryptedString;
             lbIns3.Visible = true;
             lbEncryptOutput.Visible = true;
+        }
+
+        private void btnGenPass_Click(object sender, EventArgs e)
+        {
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var stringChars = new char[16];
+            var random = new Random();
+
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+
+            var finalString = new String(stringChars);
+
+            txtPass.PasswordChar = '\0';
+            txtPass.Text = finalString;
         }
     }
 }
