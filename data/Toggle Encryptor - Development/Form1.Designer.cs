@@ -37,8 +37,8 @@ namespace Toggle_Encryptor___Development
             this.btnContinueFromAbout = new System.Windows.Forms.Button();
             this.lbAbout1 = new System.Windows.Forms.Label();
             this.gbMain = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbEncryptOutput = new System.Windows.Forms.Label();
+            this.lbIns3 = new System.Windows.Forms.Label();
             this.btnConfirmInputEncrypt = new System.Windows.Forms.Button();
             this.txtEncryptInput = new System.Windows.Forms.TextBox();
             this.lbIns2 = new System.Windows.Forms.Label();
@@ -116,8 +116,8 @@ namespace Toggle_Encryptor___Development
             // 
             // gbMain
             // 
-            this.gbMain.Controls.Add(this.label2);
-            this.gbMain.Controls.Add(this.label1);
+            this.gbMain.Controls.Add(this.lbEncryptOutput);
+            this.gbMain.Controls.Add(this.lbIns3);
             this.gbMain.Controls.Add(this.btnConfirmInputEncrypt);
             this.gbMain.Controls.Add(this.txtEncryptInput);
             this.gbMain.Controls.Add(this.lbIns2);
@@ -131,25 +131,25 @@ namespace Toggle_Encryptor___Development
             this.gbMain.TabIndex = 3;
             this.gbMain.TabStop = false;
             // 
-            // label2
+            // lbEncryptOutput
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(52, 265);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(143, 25);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "abcimherehehe";
+            this.lbEncryptOutput.AutoSize = true;
+            this.lbEncryptOutput.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbEncryptOutput.Location = new System.Drawing.Point(52, 265);
+            this.lbEncryptOutput.Name = "lbEncryptOutput";
+            this.lbEncryptOutput.Size = new System.Drawing.Size(143, 25);
+            this.lbEncryptOutput.TabIndex = 8;
+            this.lbEncryptOutput.Text = "abcimherehehe";
             // 
-            // label1
+            // lbIns3
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(38, 225);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(270, 25);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "3. Here\'s the encrypted phrase.";
+            this.lbIns3.AutoSize = true;
+            this.lbIns3.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbIns3.Location = new System.Drawing.Point(38, 225);
+            this.lbIns3.Name = "lbIns3";
+            this.lbIns3.Size = new System.Drawing.Size(270, 25);
+            this.lbIns3.TabIndex = 7;
+            this.lbIns3.Text = "3. Here\'s the encrypted phrase.";
             // 
             // btnConfirmInputEncrypt
             // 
@@ -161,6 +161,7 @@ namespace Toggle_Encryptor___Development
             this.btnConfirmInputEncrypt.TabIndex = 6;
             this.btnConfirmInputEncrypt.Text = "Confirm";
             this.btnConfirmInputEncrypt.UseVisualStyleBackColor = true;
+            this.btnConfirmInputEncrypt.Click += new System.EventHandler(this.btnConfirmInputEncrypt_Click);
             // 
             // txtEncryptInput
             // 
@@ -189,6 +190,7 @@ namespace Toggle_Encryptor___Development
             this.btnConfirmPass.TabIndex = 3;
             this.btnConfirmPass.Text = "Confirm";
             this.btnConfirmPass.UseVisualStyleBackColor = true;
+            this.btnConfirmPass.Click += new System.EventHandler(this.btnConfirmPass_Click);
             // 
             // btnGenPass
             // 
@@ -254,8 +256,8 @@ namespace Toggle_Encryptor___Development
         private System.Windows.Forms.TextBox txtPass;
         private System.Windows.Forms.Label lbIns1;
         private System.Windows.Forms.Button btnConfirmInputEncrypt;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbEncryptOutput;
+        private System.Windows.Forms.Label lbIns3;
     }
 }
 
