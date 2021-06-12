@@ -1,0 +1,16 @@
+G:\My Drive\OnlineSpace\Personal\repos\tepp\tepp\data\Toggle Encryptor - Development\bin\Debug\netcoreapp3.1\Toggle Encryptor - Development.exe
+G:\My Drive\OnlineSpace\Personal\repos\tepp\tepp\data\Toggle Encryptor - Development\bin\Debug\netcoreapp3.1\Toggle Encryptor - Development.deps.json
+G:\My Drive\OnlineSpace\Personal\repos\tepp\tepp\data\Toggle Encryptor - Development\bin\Debug\netcoreapp3.1\Toggle Encryptor - Development.runtimeconfig.json
+G:\My Drive\OnlineSpace\Personal\repos\tepp\tepp\data\Toggle Encryptor - Development\bin\Debug\netcoreapp3.1\Toggle Encryptor - Development.runtimeconfig.dev.json
+G:\My Drive\OnlineSpace\Personal\repos\tepp\tepp\data\Toggle Encryptor - Development\bin\Debug\netcoreapp3.1\Toggle Encryptor - Development.dll
+G:\My Drive\OnlineSpace\Personal\repos\tepp\tepp\data\Toggle Encryptor - Development\bin\Debug\netcoreapp3.1\Toggle Encryptor - Development.pdb
+G:\My Drive\OnlineSpace\Personal\repos\tepp\tepp\data\Toggle Encryptor - Development\obj\Debug\netcoreapp3.1\Toggle Encryptor - Development.csprojAssemblyReference.cache
+G:\My Drive\OnlineSpace\Personal\repos\tepp\tepp\data\Toggle Encryptor - Development\obj\Debug\netcoreapp3.1\Toggle_Encryptor___Development.Form1.resources
+G:\My Drive\OnlineSpace\Personal\repos\tepp\tepp\data\Toggle Encryptor - Development\obj\Debug\netcoreapp3.1\Toggle Encryptor - Development.csproj.GenerateResource.cache
+G:\My Drive\OnlineSpace\Personal\repos\tepp\tepp\data\Toggle Encryptor - Development\obj\Debug\netcoreapp3.1\Toggle Encryptor - Development.AssemblyInfoInputs.cache
+G:\My Drive\OnlineSpace\Personal\repos\tepp\tepp\data\Toggle Encryptor - Development\obj\Debug\netcoreapp3.1\Toggle Encryptor - Development.AssemblyInfo.cs
+G:\My Drive\OnlineSpace\Personal\repos\tepp\tepp\data\Toggle Encryptor - Development\obj\Debug\netcoreapp3.1\Toggle Encryptor - Development.csproj.CoreCompileInputs.cache
+G:\My Drive\OnlineSpace\Personal\repos\tepp\tepp\data\Toggle Encryptor - Development\obj\Debug\netcoreapp3.1\Toggle Encryptor - Development.dll
+G:\My Drive\OnlineSpace\Personal\repos\tepp\tepp\data\Toggle Encryptor - Development\obj\Debug\netcoreapp3.1\Toggle Encryptor - Development.pdb
+G:\My Drive\OnlineSpace\Personal\repos\tepp\tepp\data\Toggle Encryptor - Development\obj\Debug\netcoreapp3.1\Toggle Encryptor - Development.genruntimeconfig.cache
+G:\My Drive\OnlineSpace\Personal\repos\tepp\tepp\data\Toggle Encryptor - Development\obj\Debug\netcoreapp3.1\Toggle_Encryptor___Development.Properties.Resources.resources
