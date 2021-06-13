@@ -18,16 +18,24 @@ namespace Toggle_Encryptor___Development
         string pass;
         string inputtoencrypt;
         string key;
+        string savepassworda;
+        string saveetexta;
 
         public Form1()
         {
             InitializeComponent();
-            gbAbout__enable();
-            gbMain__disable();
+            gbAbout__disable();
+            gbMain__enable();
             lbIns3.Visible = false;
+            btnSaveEncryptedText.Visible = false;
             lbEncryptOutput.Visible = false;
             btnConfirmInputEncrypt.Enabled = false;
+            btnConfirmInputEncrypt.Visible = false;
+            lbIns2.Visible = false;
+            txtEncryptInput.Visible = false;
             lbPassLengthWarn.Visible = false;
+            gbConfirmPasswordSave.Visible = false;
+            gbSaveETextConfirm.Visible = false;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -77,6 +85,9 @@ namespace Toggle_Encryptor___Development
                 btnConfirmInputEncrypt.Enabled = true;
                 lbPassLengthWarn.Visible = false;
                 btnGenPass.Enabled = false;
+                lbIns2.Visible = true;
+                txtEncryptInput.Visible = true;
+                btnConfirmInputEncrypt.Visible = true;
             }
 
             else
@@ -101,7 +112,10 @@ namespace Toggle_Encryptor___Development
 
             lbEncryptOutput.Text = encryptedString;
             lbIns3.Visible = true;
+            btnSaveEncryptedText.Visible = true;
             lbEncryptOutput.Visible = true;
+
+            saveetexta = encryptedString;
         }
 
         private void btnGenPass_Click(object sender, EventArgs e)
@@ -119,6 +133,111 @@ namespace Toggle_Encryptor___Development
 
             txtPass.PasswordChar = '\0';
             txtPass.Text = finalString;
+            savepassworda = finalString;
+        }
+
+        //public static async Task ExampleAsync()
+        //{
+        //    string textacode = ("a");
+
+        //    await File.WriteAllTextAsync("PasswordForEncryption.txt", savepassworda);
+        //}
+
+        private void btnSavePass_Click(object sender, EventArgs e)
+        {
+            gbConfirmPasswordSave.Visible = true;
+
+            //string savepasswordconfirmmessage = ("You are about to save a text (.txt) file in your documents folder which is called your password and contains your password.");
+            //string savepasswordconfirmtitle = ("Save password?");
+
+            //MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            //DialogResult result = MessageBox.Show(savepasswordconfirmmessage, savepasswordconfirmtitle);
+
+            //if (result == DialogResult.Yes)
+            //{
+            //    this.Close();
+            //    string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            //    using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, $"{savepassworda}.txt")))
+            //    {
+            //        outputFile.WriteLine(savepassworda);
+            //    }
+
+            //    btnSavePass.Enabled = false;
+            //}
+            
+            //else
+            //{
+            //    this.Close();
+            //}
+            
+        }
+
+        private void btnSaveEncryptedText_Click(object sender, EventArgs e)
+        {
+            gbSaveETextConfirm.Visible = true;
+            //string savepasswordconfirmmessage = ("You are about to save a text (.txt) file in your documents folder which is called TEPPetext and contains your encrypted text.");
+            //string savepasswordconfirmtitle = ("Save password?");
+
+            //MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            //DialogResult result = MessageBox.Show(savepasswordconfirmmessage, savepasswordconfirmtitle);
+
+            //if (result == DialogResult.Yes)
+            //{
+            //    string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            //    using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "TEPPetext.txt")))
+            //    {
+            //        outputFile.WriteLine(saveetexta);
+            //    }
+
+            //    btnSaveEncryptedText.Enabled = false;
+            //}
+
+            //else
+            //{
+            //    this.Close();
+            //}
+
+
+        }
+
+        private void btnSavePasswordConfirmYes_Click(object sender, EventArgs e)
+        {
+            gbConfirmPasswordSave.Visible = false;
+            
+            string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, $"{savepassworda}.txt")))
+            {
+                outputFile.WriteLine(savepassworda);
+            }
+
+            btnSavePass.Enabled = false;
+        }
+
+        private void btnSavePasswordConfirmNo_Click(object sender, EventArgs e)
+        {
+            gbConfirmPasswordSave.Visible = false;
+        }
+
+        private void btnSaveETextConfirmNo_Click(object sender, EventArgs e)
+        {
+            gbSaveETextConfirm.Visible = false;
+        }
+
+        private void btnSaveETextConfirmYes_Click(object sender, EventArgs e)
+        {
+            gbSaveETextConfirm.Visible = false;
+
+            string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "TEPPEText.txt")))
+            {
+                outputFile.WriteLine(saveetexta);
+            }
+
+            btnSaveEncryptedText.Enabled = false;
         }
     }
 }

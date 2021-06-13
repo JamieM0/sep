@@ -37,6 +37,18 @@ namespace Toggle_Encryptor___Development
             this.btnContinueFromAbout = new System.Windows.Forms.Button();
             this.lbAbout1 = new System.Windows.Forms.Label();
             this.gbMain = new System.Windows.Forms.GroupBox();
+            this.gbSaveETextConfirm = new System.Windows.Forms.GroupBox();
+            this.btnSaveETextConfirmNo = new System.Windows.Forms.Button();
+            this.btnSaveETextConfirmYes = new System.Windows.Forms.Button();
+            this.lbSaveETextConfirmTitle = new System.Windows.Forms.Label();
+            this.lbSaveETextConfirmMessage = new System.Windows.Forms.Label();
+            this.gbConfirmPasswordSave = new System.Windows.Forms.GroupBox();
+            this.btnSavePasswordConfirmNo = new System.Windows.Forms.Button();
+            this.btnSavePasswordConfirmYes = new System.Windows.Forms.Button();
+            this.lbSavePasswordConfirmTitle = new System.Windows.Forms.Label();
+            this.lbSavePasswordConfirmMessage = new System.Windows.Forms.Label();
+            this.btnSaveEncryptedText = new System.Windows.Forms.Button();
+            this.btnSavePass = new System.Windows.Forms.Button();
             this.lbPassLengthWarn = new System.Windows.Forms.Label();
             this.lbEncryptOutput = new System.Windows.Forms.Label();
             this.lbIns3 = new System.Windows.Forms.Label();
@@ -50,6 +62,8 @@ namespace Toggle_Encryptor___Development
             this.gbAbout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gbMain.SuspendLayout();
+            this.gbSaveETextConfirm.SuspendLayout();
+            this.gbConfirmPasswordSave.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbHeading
@@ -117,6 +131,10 @@ namespace Toggle_Encryptor___Development
             // 
             // gbMain
             // 
+            this.gbMain.Controls.Add(this.gbSaveETextConfirm);
+            this.gbMain.Controls.Add(this.gbConfirmPasswordSave);
+            this.gbMain.Controls.Add(this.btnSaveEncryptedText);
+            this.gbMain.Controls.Add(this.btnSavePass);
             this.gbMain.Controls.Add(this.lbPassLengthWarn);
             this.gbMain.Controls.Add(this.lbEncryptOutput);
             this.gbMain.Controls.Add(this.lbIns3);
@@ -132,6 +150,128 @@ namespace Toggle_Encryptor___Development
             this.gbMain.Size = new System.Drawing.Size(734, 319);
             this.gbMain.TabIndex = 3;
             this.gbMain.TabStop = false;
+            // 
+            // gbSaveETextConfirm
+            // 
+            this.gbSaveETextConfirm.Controls.Add(this.btnSaveETextConfirmNo);
+            this.gbSaveETextConfirm.Controls.Add(this.btnSaveETextConfirmYes);
+            this.gbSaveETextConfirm.Controls.Add(this.lbSaveETextConfirmTitle);
+            this.gbSaveETextConfirm.Controls.Add(this.lbSaveETextConfirmMessage);
+            this.gbSaveETextConfirm.Location = new System.Drawing.Point(215, 116);
+            this.gbSaveETextConfirm.Name = "gbSaveETextConfirm";
+            this.gbSaveETextConfirm.Size = new System.Drawing.Size(306, 197);
+            this.gbSaveETextConfirm.TabIndex = 5;
+            this.gbSaveETextConfirm.TabStop = false;
+            // 
+            // btnSaveETextConfirmNo
+            // 
+            this.btnSaveETextConfirmNo.Location = new System.Drawing.Point(18, 144);
+            this.btnSaveETextConfirmNo.Name = "btnSaveETextConfirmNo";
+            this.btnSaveETextConfirmNo.Size = new System.Drawing.Size(93, 35);
+            this.btnSaveETextConfirmNo.TabIndex = 3;
+            this.btnSaveETextConfirmNo.Text = "Cancel";
+            this.btnSaveETextConfirmNo.UseVisualStyleBackColor = true;
+            this.btnSaveETextConfirmNo.Click += new System.EventHandler(this.btnSaveETextConfirmNo_Click);
+            // 
+            // btnSaveETextConfirmYes
+            // 
+            this.btnSaveETextConfirmYes.Location = new System.Drawing.Point(202, 144);
+            this.btnSaveETextConfirmYes.Name = "btnSaveETextConfirmYes";
+            this.btnSaveETextConfirmYes.Size = new System.Drawing.Size(86, 35);
+            this.btnSaveETextConfirmYes.TabIndex = 2;
+            this.btnSaveETextConfirmYes.Text = "Ok";
+            this.btnSaveETextConfirmYes.UseVisualStyleBackColor = true;
+            this.btnSaveETextConfirmYes.Click += new System.EventHandler(this.btnSaveETextConfirmYes_Click);
+            // 
+            // lbSaveETextConfirmTitle
+            // 
+            this.lbSaveETextConfirmTitle.AutoSize = true;
+            this.lbSaveETextConfirmTitle.Location = new System.Drawing.Point(1, 24);
+            this.lbSaveETextConfirmTitle.Name = "lbSaveETextConfirmTitle";
+            this.lbSaveETextConfirmTitle.Size = new System.Drawing.Size(116, 15);
+            this.lbSaveETextConfirmTitle.TabIndex = 1;
+            this.lbSaveETextConfirmTitle.Text = "Save Encrypted Text?";
+            // 
+            // lbSaveETextConfirmMessage
+            // 
+            this.lbSaveETextConfirmMessage.AutoSize = true;
+            this.lbSaveETextConfirmMessage.Location = new System.Drawing.Point(1, 58);
+            this.lbSaveETextConfirmMessage.Name = "lbSaveETextConfirmMessage";
+            this.lbSaveETextConfirmMessage.Size = new System.Drawing.Size(305, 45);
+            this.lbSaveETextConfirmMessage.TabIndex = 0;
+            this.lbSaveETextConfirmMessage.Text = "You are about to save a text (.txt) file in your documents \r\nfolder which is call" +
+    "ed TEPPEText and contains your \r\nencrypted text.";
+            // 
+            // gbConfirmPasswordSave
+            // 
+            this.gbConfirmPasswordSave.Controls.Add(this.btnSavePasswordConfirmNo);
+            this.gbConfirmPasswordSave.Controls.Add(this.btnSavePasswordConfirmYes);
+            this.gbConfirmPasswordSave.Controls.Add(this.lbSavePasswordConfirmTitle);
+            this.gbConfirmPasswordSave.Controls.Add(this.lbSavePasswordConfirmMessage);
+            this.gbConfirmPasswordSave.Location = new System.Drawing.Point(233, 25);
+            this.gbConfirmPasswordSave.Name = "gbConfirmPasswordSave";
+            this.gbConfirmPasswordSave.Size = new System.Drawing.Size(306, 197);
+            this.gbConfirmPasswordSave.TabIndex = 4;
+            this.gbConfirmPasswordSave.TabStop = false;
+            // 
+            // btnSavePasswordConfirmNo
+            // 
+            this.btnSavePasswordConfirmNo.Location = new System.Drawing.Point(18, 144);
+            this.btnSavePasswordConfirmNo.Name = "btnSavePasswordConfirmNo";
+            this.btnSavePasswordConfirmNo.Size = new System.Drawing.Size(93, 35);
+            this.btnSavePasswordConfirmNo.TabIndex = 3;
+            this.btnSavePasswordConfirmNo.Text = "Cancel";
+            this.btnSavePasswordConfirmNo.UseVisualStyleBackColor = true;
+            this.btnSavePasswordConfirmNo.Click += new System.EventHandler(this.btnSavePasswordConfirmNo_Click);
+            // 
+            // btnSavePasswordConfirmYes
+            // 
+            this.btnSavePasswordConfirmYes.Location = new System.Drawing.Point(202, 144);
+            this.btnSavePasswordConfirmYes.Name = "btnSavePasswordConfirmYes";
+            this.btnSavePasswordConfirmYes.Size = new System.Drawing.Size(86, 35);
+            this.btnSavePasswordConfirmYes.TabIndex = 2;
+            this.btnSavePasswordConfirmYes.Text = "Ok";
+            this.btnSavePasswordConfirmYes.UseVisualStyleBackColor = true;
+            this.btnSavePasswordConfirmYes.Click += new System.EventHandler(this.btnSavePasswordConfirmYes_Click);
+            // 
+            // lbSavePasswordConfirmTitle
+            // 
+            this.lbSavePasswordConfirmTitle.AutoSize = true;
+            this.lbSavePasswordConfirmTitle.Location = new System.Drawing.Point(1, 24);
+            this.lbSavePasswordConfirmTitle.Name = "lbSavePasswordConfirmTitle";
+            this.lbSavePasswordConfirmTitle.Size = new System.Drawing.Size(89, 15);
+            this.lbSavePasswordConfirmTitle.TabIndex = 1;
+            this.lbSavePasswordConfirmTitle.Text = "Save Password?";
+            // 
+            // lbSavePasswordConfirmMessage
+            // 
+            this.lbSavePasswordConfirmMessage.AutoSize = true;
+            this.lbSavePasswordConfirmMessage.Location = new System.Drawing.Point(1, 58);
+            this.lbSavePasswordConfirmMessage.Name = "lbSavePasswordConfirmMessage";
+            this.lbSavePasswordConfirmMessage.Size = new System.Drawing.Size(305, 45);
+            this.lbSavePasswordConfirmMessage.TabIndex = 0;
+            this.lbSavePasswordConfirmMessage.Text = "You are about to save a text (.txt) file in your documents \r\nfolder which is call" +
+    "ed your password and contains your \r\npassword.";
+            // 
+            // btnSaveEncryptedText
+            // 
+            this.btnSaveEncryptedText.Location = new System.Drawing.Point(322, 229);
+            this.btnSaveEncryptedText.Name = "btnSaveEncryptedText";
+            this.btnSaveEncryptedText.Size = new System.Drawing.Size(45, 23);
+            this.btnSaveEncryptedText.TabIndex = 11;
+            this.btnSaveEncryptedText.Text = "Save";
+            this.btnSaveEncryptedText.UseVisualStyleBackColor = true;
+            this.btnSaveEncryptedText.Click += new System.EventHandler(this.btnSaveEncryptedText_Click);
+            // 
+            // btnSavePass
+            // 
+            this.btnSavePass.Location = new System.Drawing.Point(373, 64);
+            this.btnSavePass.Name = "btnSavePass";
+            this.btnSavePass.Size = new System.Drawing.Size(45, 23);
+            this.btnSavePass.TabIndex = 10;
+            this.btnSavePass.Text = "Save";
+            this.btnSavePass.UseVisualStyleBackColor = true;
+            this.btnSavePass.Click += new System.EventHandler(this.btnSavePass_Click);
             // 
             // lbPassLengthWarn
             // 
@@ -205,7 +345,7 @@ namespace Toggle_Encryptor___Development
             // 
             // btnGenPass
             // 
-            this.btnGenPass.Location = new System.Drawing.Point(291, 63);
+            this.btnGenPass.Location = new System.Drawing.Point(240, 64);
             this.btnGenPass.Name = "btnGenPass";
             this.btnGenPass.Size = new System.Drawing.Size(127, 23);
             this.btnGenPass.TabIndex = 2;
@@ -218,7 +358,7 @@ namespace Toggle_Encryptor___Development
             this.txtPass.Location = new System.Drawing.Point(52, 64);
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '*';
-            this.txtPass.Size = new System.Drawing.Size(233, 23);
+            this.txtPass.Size = new System.Drawing.Size(182, 23);
             this.txtPass.TabIndex = 1;
             // 
             // lbIns1
@@ -247,6 +387,10 @@ namespace Toggle_Encryptor___Development
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.gbMain.ResumeLayout(false);
             this.gbMain.PerformLayout();
+            this.gbSaveETextConfirm.ResumeLayout(false);
+            this.gbSaveETextConfirm.PerformLayout();
+            this.gbConfirmPasswordSave.ResumeLayout(false);
+            this.gbConfirmPasswordSave.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,6 +415,18 @@ namespace Toggle_Encryptor___Development
         private System.Windows.Forms.Label lbEncryptOutput;
         private System.Windows.Forms.Label lbIns3;
         private System.Windows.Forms.Label lbPassLengthWarn;
+        private System.Windows.Forms.Button btnSavePass;
+        private System.Windows.Forms.Button btnSaveEncryptedText;
+        private System.Windows.Forms.GroupBox gbConfirmPasswordSave;
+        private System.Windows.Forms.Label lbSavePasswordConfirmMessage;
+        private System.Windows.Forms.Button btnSavePasswordConfirmNo;
+        private System.Windows.Forms.Button btnSavePasswordConfirmYes;
+        private System.Windows.Forms.Label lbSavePasswordConfirmTitle;
+        private System.Windows.Forms.GroupBox gbSaveETextConfirm;
+        private System.Windows.Forms.Button btnSaveETextConfirmNo;
+        private System.Windows.Forms.Button btnSaveETextConfirmYes;
+        private System.Windows.Forms.Label lbSaveETextConfirmTitle;
+        private System.Windows.Forms.Label lbSaveETextConfirmMessage;
     }
 }
 

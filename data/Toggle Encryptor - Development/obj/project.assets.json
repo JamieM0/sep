@@ -15,9 +15,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\My Drive\\OnlineSpace\\Personal\\repos\\tepp\\tepp\\data\\Toggle Encryptor - Development\\Toggle Encryptor - Development.csproj",
-      "projectName": "Toggle Encryptor - Development",
-      "projectPath": "G:\\My Drive\\OnlineSpace\\Personal\\repos\\tepp\\tepp\\data\\Toggle Encryptor - Development\\Toggle Encryptor - Development.csproj",
+      "projectUniqueName": "G:\\My Drive\\OnlineSpace\\Personal\\repos\\tepp\\tepp\\data\\Toggle Encryptor - Development\\TEPP - Development.csproj",
+      "projectName": "TEPP - Development",
+      "projectPath": "G:\\My Drive\\OnlineSpace\\Personal\\repos\\tepp\\tepp\\data\\Toggle Encryptor - Development\\TEPP - Development.csproj",
       "packagesPath": "C:\\Users\\jamie\\.nuget\\packages\\",
       "outputPath": "G:\\My Drive\\OnlineSpace\\Personal\\repos\\tepp\\tepp\\data\\Toggle Encryptor - Development\\obj\\",
       "projectStyle": "PackageReference",
