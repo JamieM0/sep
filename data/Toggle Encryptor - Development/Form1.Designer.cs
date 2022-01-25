@@ -49,15 +49,15 @@ namespace Toggle_Encryptor___Development
             this.lbSavePasswordConfirmMessage = new System.Windows.Forms.Label();
             this.btnSaveEncryptedText = new System.Windows.Forms.Button();
             this.btnSavePass = new System.Windows.Forms.Button();
-            this.lbPassLengthWarn = new System.Windows.Forms.Label();
+            this.lbPasswordLengthWarn = new System.Windows.Forms.Label();
             this.lbEncryptOutput = new System.Windows.Forms.Label();
             this.lbIns3 = new System.Windows.Forms.Label();
             this.btnConfirmInputEncrypt = new System.Windows.Forms.Button();
             this.txtEncryptInput = new System.Windows.Forms.TextBox();
             this.lbIns2 = new System.Windows.Forms.Label();
-            this.btnConfirmPass = new System.Windows.Forms.Button();
+            this.btnConfirmPassword = new System.Windows.Forms.Button();
             this.btnGenPass = new System.Windows.Forms.Button();
-            this.txtPass = new System.Windows.Forms.TextBox();
+            this.txtPasswordInput = new System.Windows.Forms.TextBox();
             this.lbIns1 = new System.Windows.Forms.Label();
             this.gbAbout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -135,15 +135,15 @@ namespace Toggle_Encryptor___Development
             this.gbMain.Controls.Add(this.gbConfirmPasswordSave);
             this.gbMain.Controls.Add(this.btnSaveEncryptedText);
             this.gbMain.Controls.Add(this.btnSavePass);
-            this.gbMain.Controls.Add(this.lbPassLengthWarn);
+            this.gbMain.Controls.Add(this.lbPasswordLengthWarn);
             this.gbMain.Controls.Add(this.lbEncryptOutput);
             this.gbMain.Controls.Add(this.lbIns3);
             this.gbMain.Controls.Add(this.btnConfirmInputEncrypt);
             this.gbMain.Controls.Add(this.txtEncryptInput);
             this.gbMain.Controls.Add(this.lbIns2);
-            this.gbMain.Controls.Add(this.btnConfirmPass);
+            this.gbMain.Controls.Add(this.btnConfirmPassword);
             this.gbMain.Controls.Add(this.btnGenPass);
-            this.gbMain.Controls.Add(this.txtPass);
+            this.gbMain.Controls.Add(this.txtPasswordInput);
             this.gbMain.Controls.Add(this.lbIns1);
             this.gbMain.Location = new System.Drawing.Point(12, 66);
             this.gbMain.Name = "gbMain";
@@ -273,14 +273,14 @@ namespace Toggle_Encryptor___Development
             this.btnSavePass.UseVisualStyleBackColor = true;
             this.btnSavePass.Click += new System.EventHandler(this.btnSavePass_Click);
             // 
-            // lbPassLengthWarn
+            // lbPasswordLengthWarn
             // 
-            this.lbPassLengthWarn.AutoSize = true;
-            this.lbPassLengthWarn.Location = new System.Drawing.Point(615, 55);
-            this.lbPassLengthWarn.Name = "lbPassLengthWarn";
-            this.lbPassLengthWarn.Size = new System.Drawing.Size(119, 30);
-            this.lbPassLengthWarn.TabIndex = 9;
-            this.lbPassLengthWarn.Text = "Password must be \r\nexactly 16 characters.";
+            this.lbPasswordLengthWarn.AutoSize = true;
+            this.lbPasswordLengthWarn.Location = new System.Drawing.Point(615, 55);
+            this.lbPasswordLengthWarn.Name = "lbPasswordLengthWarn";
+            this.lbPasswordLengthWarn.Size = new System.Drawing.Size(119, 30);
+            this.lbPasswordLengthWarn.TabIndex = 9;
+            this.lbPasswordLengthWarn.Text = "Password must be \r\nexactly 16 characters.";
             // 
             // lbEncryptOutput
             // 
@@ -331,17 +331,17 @@ namespace Toggle_Encryptor___Development
             this.lbIns2.TabIndex = 4;
             this.lbIns2.Text = "2. Enter a string to encrypt with your password.";
             // 
-            // btnConfirmPass
+            // btnConfirmPassword
             // 
-            this.btnConfirmPass.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnConfirmPass.ForeColor = System.Drawing.Color.Black;
-            this.btnConfirmPass.Location = new System.Drawing.Point(517, 55);
-            this.btnConfirmPass.Name = "btnConfirmPass";
-            this.btnConfirmPass.Size = new System.Drawing.Size(101, 32);
-            this.btnConfirmPass.TabIndex = 3;
-            this.btnConfirmPass.Text = "Confirm";
-            this.btnConfirmPass.UseVisualStyleBackColor = true;
-            this.btnConfirmPass.Click += new System.EventHandler(this.btnConfirmPass_Click);
+            this.btnConfirmPassword.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnConfirmPassword.ForeColor = System.Drawing.Color.Black;
+            this.btnConfirmPassword.Location = new System.Drawing.Point(517, 55);
+            this.btnConfirmPassword.Name = "btnConfirmPassword";
+            this.btnConfirmPassword.Size = new System.Drawing.Size(101, 32);
+            this.btnConfirmPassword.TabIndex = 3;
+            this.btnConfirmPassword.Text = "Confirm";
+            this.btnConfirmPassword.UseVisualStyleBackColor = true;
+            this.btnConfirmPassword.Click += new System.EventHandler(this.btnConfirmPass_Click);
             // 
             // btnGenPass
             // 
@@ -353,13 +353,13 @@ namespace Toggle_Encryptor___Development
             this.btnGenPass.UseVisualStyleBackColor = true;
             this.btnGenPass.Click += new System.EventHandler(this.btnGenPass_Click);
             // 
-            // txtPass
+            // txtPasswordInput
             // 
-            this.txtPass.Location = new System.Drawing.Point(52, 64);
-            this.txtPass.Name = "txtPass";
-            this.txtPass.PasswordChar = '*';
-            this.txtPass.Size = new System.Drawing.Size(182, 23);
-            this.txtPass.TabIndex = 1;
+            this.txtPasswordInput.Location = new System.Drawing.Point(52, 64);
+            this.txtPasswordInput.Name = "txtPasswordInput";
+            this.txtPasswordInput.PasswordChar = '*';
+            this.txtPasswordInput.Size = new System.Drawing.Size(182, 23);
+            this.txtPasswordInput.TabIndex = 1;
             // 
             // lbIns1
             // 
@@ -407,14 +407,14 @@ namespace Toggle_Encryptor___Development
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox txtEncryptInput;
         private System.Windows.Forms.Label lbIns2;
-        private System.Windows.Forms.Button btnConfirmPass;
+        private System.Windows.Forms.Button btnConfirmPassword;
         private System.Windows.Forms.Button btnGenPass;
-        private System.Windows.Forms.TextBox txtPass;
+        private System.Windows.Forms.TextBox txtPasswordInput;
         private System.Windows.Forms.Label lbIns1;
         private System.Windows.Forms.Button btnConfirmInputEncrypt;
         private System.Windows.Forms.Label lbEncryptOutput;
         private System.Windows.Forms.Label lbIns3;
-        private System.Windows.Forms.Label lbPassLengthWarn;
+        private System.Windows.Forms.Label lbPasswordLengthWarn;
         private System.Windows.Forms.Button btnSavePass;
         private System.Windows.Forms.Button btnSaveEncryptedText;
         private System.Windows.Forms.GroupBox gbConfirmPasswordSave;

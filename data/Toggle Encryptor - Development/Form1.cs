@@ -33,7 +33,7 @@ namespace Toggle_Encryptor___Development
             btnConfirmInputEncrypt.Visible = false;
             lbIns2.Visible = false;
             txtEncryptInput.Visible = false;
-            lbPassLengthWarn.Visible = false;
+            lbPasswordLengthWarn.Visible = false;
             gbConfirmPasswordSave.Visible = false;
             gbSaveETextConfirm.Visible = false;
         }
@@ -77,13 +77,13 @@ namespace Toggle_Encryptor___Development
 
         private void btnConfirmPass_Click(object sender, EventArgs e)
         {
-            if (txtPass.TextLength == 16)
+            if (txtPasswordInput.TextLength == 16)
             {
-                key = txtPass.Text;
-                txtPass.Enabled = false;
-                btnConfirmPass.Enabled = false;
+                key = txtPasswordInput.Text;
+                txtPasswordInput.Enabled = false;
+                btnConfirmPassword.Enabled = false;
                 btnConfirmInputEncrypt.Enabled = true;
-                lbPassLengthWarn.Visible = false;
+                lbPasswordLengthWarn.Visible = false;
                 btnGenPass.Enabled = false;
                 lbIns2.Visible = true;
                 txtEncryptInput.Visible = true;
@@ -92,7 +92,7 @@ namespace Toggle_Encryptor___Development
 
             else
             {
-                lbPassLengthWarn.Visible = true;
+                lbPasswordLengthWarn.Visible = true;
                 //lbIns1.Text = ("Please choose a password that is 16 characters in length.");
                 //txtPass.Enabled = false;
                 //Thread.Sleep(1000000);
@@ -131,8 +131,8 @@ namespace Toggle_Encryptor___Development
 
             var finalString = new String(stringChars);
 
-            txtPass.PasswordChar = '\0';
-            txtPass.Text = finalString;
+            txtPasswordInput.PasswordChar = '\0';
+            txtPasswordInput.Text = finalString;
             savepassworda = finalString;
         }
 
