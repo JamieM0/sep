@@ -1,0 +1,5 @@
+C:\!MyPublishedPrograms\TEPP\TEPP - Development.exe
+C:\!MyPublishedPrograms\TEPP\TEPP - Development.dll
+C:\!MyPublishedPrograms\TEPP\TEPP - Development.deps.json
+C:\!MyPublishedPrograms\TEPP\TEPP - Development.runtimeconfig.json
+C:\!MyPublishedPrograms\TEPP\TEPP - Development.pdb
