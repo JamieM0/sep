@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Toggle_Encryptor___Development
 {
@@ -15,6 +16,10 @@ namespace Toggle_Encryptor___Development
         string key;
         string savepassworda;
         string saveetexta;
+        string fileContentOpen = string.Empty;
+        string filePathOpen = string.Empty;
+        string Documents/* = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)*/;
+        string TEPPSavesDirectory/* = ($@"{Documents}\TEPPSaves")*/;
 
         public Form3()
         {
@@ -31,6 +36,11 @@ namespace Toggle_Encryptor___Development
             lbPasswordLengthWarn.Visible = false;
             gbConfirmPasswordSave.Visible = false;
             gbSaveETextConfirm.Visible = false;
+            /*string*/ Documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            /*string*/ TEPPSavesDirectory = ($@"{Documents}\TEPPSaves");
+            btnOpenEncrypt.Visible = false;
+            btnCopy.Enabled = false;
+            CenterToScreen();
         }
 
         private void Form3_Load(object sender, EventArgs e)
@@ -40,6 +50,8 @@ namespace Toggle_Encryptor___Development
 
         private void btnConfirmPass_Click(object sender, EventArgs e)
         {
+            btnOpenEncrypt.Visible = true;
+            btnSavePasswordOpen.Enabled = false;
             if (txtPasswordInput.TextLength == 16)
             {
                 key = txtPasswordInput.Text;
@@ -79,6 +91,97 @@ namespace Toggle_Encryptor___Development
             lbCleartext.Visible = true;
 
             saveetexta = encryptedString;
+            btnOpenEncrypt.Enabled = false;
+            btnGoToMainMenu.Enabled = true;
+            btnCopy.Enabled = true;
+        }
+
+        private void btnSavePasswordOpen_Click(object sender, EventArgs e)
+        {
+            //var fileContentOpen = string.Empty;
+            //var filePathOpen = string.Empty;
+            //string Documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            //string TEPPSavesDirectory = ($@"{Documents}\TEPPSaves");
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                //From https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.openfiledialog?view=windowsdesktop-6.0
+                //openFileDialog.InitialDirectory = @"c:\\";
+                //openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                openFileDialog.InitialDirectory = ($@"{TEPPSavesDirectory}");
+                openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    //Get the path of specified file
+                    filePathOpen = openFileDialog.FileName;
+
+                    //Read the contents of the file into a stream
+                    var fileStream = openFileDialog.OpenFile();
+
+                    using (StreamReader reader = new StreamReader(fileStream))
+                    {
+                        fileContentOpen = reader.ReadToEnd();
+                    }
+                }
+            }
+
+            string fileContentOpenSubstring = fileContentOpen.Substring(0, 16);
+
+            //MessageBox.Show(fileContentOpen, "File Content at path: " + filePathOpen, MessageBoxButtons.OK);
+            txtPasswordInput.Text = fileContentOpenSubstring;
+        }
+
+        private void btnOpenEncrypt_Click(object sender, EventArgs e)
+        {
+            //var fileContentOpen = string.Empty;
+            //var filePathOpen = string.Empty;
+            //string Documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            //string TEPPSavesDirectory = ($@"{Documents}\TEPPSaves");
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                //From https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.openfiledialog?view=windowsdesktop-6.0
+                //openFileDialog.InitialDirectory = @"c:\\";
+                //openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                openFileDialog.InitialDirectory = ($@"{TEPPSavesDirectory}");
+                openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    //Get the path of specified file
+                    filePathOpen = openFileDialog.FileName;
+
+                    //Read the contents of the file into a stream
+                    var fileStream = openFileDialog.OpenFile();
+
+                    using (StreamReader reader = new StreamReader(fileStream))
+                    {
+                        fileContentOpen = reader.ReadToEnd();
+                    }
+                }
+            }
+
+            //MessageBox.Show(fileContentOpen, "File Content at path: " + filePathOpen, MessageBoxButtons.OK);
+            txtEncryptInput.Text = fileContentOpen;
+        }
+
+        private void btnGoToMainMenu_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new Form2().Show();
+        }
+
+        private void btnCopy_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Clipboard.SetText($"{lbCleartext.Text}");
+            MessageBox.Show($"Copied {lbCleartext.Text} to clipboard!");
+
+       
         }
     }
 }

@@ -14,6 +14,7 @@ namespace Toggle_Encryptor___Development
         public Form2()
         {
             InitializeComponent();
+            CenterToScreen();
         }
 
         private void button1_Click(object sender, EventArgs e)

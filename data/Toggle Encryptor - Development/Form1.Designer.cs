@@ -59,6 +59,7 @@ namespace Toggle_Encryptor___Development
             this.btnGenPass = new System.Windows.Forms.Button();
             this.txtPasswordInput = new System.Windows.Forms.TextBox();
             this.lbIns1 = new System.Windows.Forms.Label();
+            this.btnGoToMainMenu = new System.Windows.Forms.Button();
             this.gbAbout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gbMain.SuspendLayout();
@@ -371,11 +372,23 @@ namespace Toggle_Encryptor___Development
             this.lbIns1.TabIndex = 0;
             this.lbIns1.Text = "1. Enter a password to encrypt the string with.";
             // 
+            // btnGoToMainMenu
+            // 
+            this.btnGoToMainMenu.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnGoToMainMenu.Location = new System.Drawing.Point(543, 402);
+            this.btnGoToMainMenu.Name = "btnGoToMainMenu";
+            this.btnGoToMainMenu.Size = new System.Drawing.Size(168, 36);
+            this.btnGoToMainMenu.TabIndex = 4;
+            this.btnGoToMainMenu.Text = "Back to main menu";
+            this.btnGoToMainMenu.UseVisualStyleBackColor = true;
+            this.btnGoToMainMenu.Click += new System.EventHandler(this.btnGoToMainMenu_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnGoToMainMenu);
             this.Controls.Add(this.lbHeading);
             this.Controls.Add(this.gbMain);
             this.Controls.Add(this.gbAbout);
@@ -427,6 +440,7 @@ namespace Toggle_Encryptor___Development
         private System.Windows.Forms.Button btnSaveETextConfirmYes;
         private System.Windows.Forms.Label lbSaveETextConfirmTitle;
         private System.Windows.Forms.Label lbSaveETextConfirmMessage;
+        private System.Windows.Forms.Button btnGoToMainMenu;
     }
 }
 

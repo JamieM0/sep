@@ -20,6 +20,7 @@ namespace Toggle_Encryptor___Development
         string key;
         string savepassworda;
         string saveetexta;
+        DateTime current;
 
         public Form1()
         {
@@ -36,6 +37,7 @@ namespace Toggle_Encryptor___Development
             lbPasswordLengthWarn.Visible = false;
             gbConfirmPasswordSave.Visible = false;
             gbSaveETextConfirm.Visible = false;
+            CenterToScreen();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -178,8 +180,17 @@ namespace Toggle_Encryptor___Development
                 //this.Close();
 
                 string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                /*DateTime */current /* */= DateTime.Now;
+                string currentWritable = current/*.*/.ToString("yyyy.MM.dd.HH.mm.ss");
+                string locationPath = ($@"{docPath}\TEPPSaves\{currentWritable}");
+                string locationPathIncFile = (/* +  + */$@"{locationPath}\{savepassworda}.txt");
 
-                using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, $"{savepassworda}.txt")))
+                if (!Directory.Exists(locationPath))
+                {
+                    Directory.CreateDirectory(locationPath);
+                }
+
+                using (StreamWriter outputFile = new StreamWriter(/*Path.Combine(docPath*//*locationPath*//*, $@"{locationPath}\{savepassworda}.txt")*/locationPathIncFile))
                 {
                     outputFile.WriteLine(savepassworda);
                 }
@@ -196,7 +207,7 @@ namespace Toggle_Encryptor___Development
 
         private void btnSaveEncryptedText_Click(object sender, EventArgs e)
         {
-            gbSaveETextConfirm.Visible = true;
+            //gbSaveETextConfirm.Visible = true;
             //string savepasswordconfirmmessage = ("You are about to save a text (.txt) file in your documents folder which is called TEPPetext and contains your encrypted text.");
             //string savepasswordconfirmtitle = ("Save password?");
 
@@ -220,7 +231,40 @@ namespace Toggle_Encryptor___Development
             //    this.Close();
             //}
 
+            if (MessageBox.Show("You are about to save a text (.txt) file in your documents folder which is called TEPPEText and contains your encrypted text.", "Save Encrypted Text?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                //some interesting behaviour here
+                //gbConfirmPasswordSave.Visible = false;
+                //this.Close();
 
+                string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                //DateTime current /* */= DateTime.Now;
+                string currentWritable = current/*.*/.ToString("yyyy.MM.dd.HH.mm.ss");
+                string locationPath = ($@"{docPath}\TEPPSaves\{currentWritable}");
+                //string FileName = ""
+                string FileName = "TEPPEText.txt";
+                string locationPathIncFile = (/* +  + */$@"{locationPath}\{/*savepassworda*/FileName}.txt");
+
+                if (!Directory.Exists(locationPath))
+                {
+                    Directory.CreateDirectory(locationPath);
+                }
+
+                string docPath2 = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+                using (StreamWriter outputFile = new StreamWriter(/*Path.Combine(docPath, "TEPPEText.txt")*/locationPathIncFile))
+                {
+                    outputFile.WriteLine(saveetexta);
+                }
+
+                btnSaveEncryptedText.Enabled = false;
+                btnGoToMainMenu.Enabled = true;
+            }
+            else
+            {
+                //this.Close();
+                //Close();
+            }
         }
 
         private void btnSavePasswordConfirmYes_Click(object sender, EventArgs e)
@@ -259,6 +303,12 @@ namespace Toggle_Encryptor___Development
             }
 
             btnSaveEncryptedText.Enabled = false;
+        }
+
+        private void btnGoToMainMenu_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new Form2().Show();
         }
     }
 }
