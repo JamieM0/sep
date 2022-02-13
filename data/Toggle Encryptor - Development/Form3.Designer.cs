@@ -30,7 +30,6 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.gbMain = new System.Windows.Forms.GroupBox();
-            this.btnSaveEncryptedText = new System.Windows.Forms.Button();
             this.lbPasswordLengthWarn = new System.Windows.Forms.Label();
             this.lbCleartext = new System.Windows.Forms.Label();
             this.lbIns3 = new System.Windows.Forms.Label();
@@ -47,6 +46,7 @@
             this.lbSavePasswordConfirmTitle = new System.Windows.Forms.Label();
             this.lbSavePasswordConfirmMessage = new System.Windows.Forms.Label();
             this.gbSaveETextConfirm = new System.Windows.Forms.GroupBox();
+            this.btnSaveEncryptedText = new System.Windows.Forms.Button();
             this.btnSaveETextConfirmNo = new System.Windows.Forms.Button();
             this.btnSaveETextConfirmYes = new System.Windows.Forms.Button();
             this.lbSaveETextConfirmTitle = new System.Windows.Forms.Label();
@@ -86,15 +86,6 @@
             this.gbMain.Size = new System.Drawing.Size(734, 319);
             this.gbMain.TabIndex = 4;
             this.gbMain.TabStop = false;
-            // 
-            // btnSaveEncryptedText
-            // 
-            this.btnSaveEncryptedText.Location = new System.Drawing.Point(322, 229);
-            this.btnSaveEncryptedText.Name = "btnSaveEncryptedText";
-            this.btnSaveEncryptedText.Size = new System.Drawing.Size(45, 23);
-            this.btnSaveEncryptedText.TabIndex = 11;
-            this.btnSaveEncryptedText.Text = "Save";
-            this.btnSaveEncryptedText.UseVisualStyleBackColor = true;
             // 
             // lbPasswordLengthWarn
             // 
@@ -261,6 +252,15 @@
             this.gbSaveETextConfirm.TabIndex = 5;
             this.gbSaveETextConfirm.TabStop = false;
             this.gbSaveETextConfirm.Visible = false;
+            // 
+            // btnSaveEncryptedText
+            // 
+            this.btnSaveEncryptedText.Location = new System.Drawing.Point(322, 229);
+            this.btnSaveEncryptedText.Name = "btnSaveEncryptedText";
+            this.btnSaveEncryptedText.Size = new System.Drawing.Size(45, 23);
+            this.btnSaveEncryptedText.TabIndex = 11;
+            this.btnSaveEncryptedText.Text = "Save";
+            this.btnSaveEncryptedText.UseVisualStyleBackColor = true;
             // 
             // btnSaveETextConfirmNo
             // 

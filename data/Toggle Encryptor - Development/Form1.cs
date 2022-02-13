@@ -145,7 +145,7 @@ namespace Toggle_Encryptor___Development
 
         private void btnSavePass_Click(object sender, EventArgs e)
         {
-            gbConfirmPasswordSave.Visible = true;
+            //gbConfirmPasswordSave.Visible = true;
 
             //string savepasswordconfirmmessage = ("You are about to save a text (.txt) file in your documents folder which is called your password and contains your password.");
             //string savepasswordconfirmtitle = ("Save password?");
@@ -165,12 +165,33 @@ namespace Toggle_Encryptor___Development
 
             //    btnSavePass.Enabled = false;
             //}
-            
+
             //else
             //{
             //    this.Close();
             //}
-            
+
+            if (MessageBox.Show("You are about to save a text (.txt) file in your documents folder which is called your password and contains your password.", "Save Password", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                //some interesting behaviour here
+                //gbConfirmPasswordSave.Visible = false;
+                //this.Close();
+
+                string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+                using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, $"{savepassworda}.txt")))
+                {
+                    outputFile.WriteLine(savepassworda);
+                }
+
+                btnSavePass.Enabled = false;
+            }
+            else
+            {
+                //this.Close();
+                //Close();
+            }
+
         }
 
         private void btnSaveEncryptedText_Click(object sender, EventArgs e)
@@ -204,21 +225,21 @@ namespace Toggle_Encryptor___Development
 
         private void btnSavePasswordConfirmYes_Click(object sender, EventArgs e)
         {
-            gbConfirmPasswordSave.Visible = false;
+            //gbConfirmPasswordSave.Visible = false;
             
-            string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            //string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
-            using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, $"{savepassworda}.txt")))
-            {
-                outputFile.WriteLine(savepassworda);
-            }
+            //using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, $"{savepassworda}.txt")))
+            //{
+            //    outputFile.WriteLine(savepassworda);
+            //}
 
-            btnSavePass.Enabled = false;
+            //btnSavePass.Enabled = false;
         }
 
         private void btnSavePasswordConfirmNo_Click(object sender, EventArgs e)
         {
-            gbConfirmPasswordSave.Visible = false;
+            //gbConfirmPasswordSave.Visible = false;
         }
 
         private void btnSaveETextConfirmNo_Click(object sender, EventArgs e)
