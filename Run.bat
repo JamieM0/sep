@@ -1,0 +1,1 @@
+@start "" ".\data\Toggle Encryptor - Development\bin\Debug\netcoreapp3.1\TEPP - Development.exe"
