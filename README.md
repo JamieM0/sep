@@ -12,5 +12,4 @@ Read the [White Paper](https://go.jamielinks.ml/tepp/whitepaper) for more inform
 
 It should also go without saying, though I will, anyway, that this is purely for my entertainment and enjoyment, it does help me to understand these mechanics better, but it's nothing that I'm taking seriously.
 
-Thanks!\
-Jamie Matthews
+Thanks!
