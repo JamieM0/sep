@@ -9,7 +9,7 @@ using System.IO;
 
 namespace Toggle_Encryptor___Development
 {
-    public partial class Form3 : Form
+    public partial class frmDecryptString : Form
     {
         string password;
         string inputtoencrypt;
@@ -21,7 +21,7 @@ namespace Toggle_Encryptor___Development
         string Documents/* = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)*/;
         string TEPPSavesDirectory/* = ($@"{Documents}\TEPPSaves")*/;
 
-        public Form3()
+        public frmDecryptString()
         {
             InitializeComponent();
             //gbAbout__disable();
@@ -173,7 +173,7 @@ namespace Toggle_Encryptor___Development
         private void btnGoToMainMenu_Click(object sender, EventArgs e)
         {
             Hide();
-            new Form2().Show();
+            new frmHome().Show();
         }
 
         private void btnCopy_Click(object sender, EventArgs e)

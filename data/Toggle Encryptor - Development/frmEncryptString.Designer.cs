@@ -1,7 +1,7 @@
 ﻿
 namespace Toggle_Encryptor___Development
 {
-    partial class Form1
+    partial class frmEncryptString
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,7 +29,7 @@ namespace Toggle_Encryptor___Development
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEncryptString));
             this.lbHeading = new System.Windows.Forms.Label();
             this.gbAbout = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();

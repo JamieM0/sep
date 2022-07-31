@@ -9,15 +9,40 @@ using System.Diagnostics;
 
 namespace Toggle_Encryptor___Development
 {
-    public partial class Form2 : Form
+    public partial class frmHome : Form
     {
-        public Form2()
+
+        public static AES a = new AES();
+        
+        public frmHome()
         {
             InitializeComponent();
             CenterToScreen();
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new frmEncryptString().Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new frmDecryptString().Show();
+        }
+
+        private void frmHome_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pbGithub_Click(object sender, EventArgs e)
         {
             //ProcessStartInfo sInfo = new ProcessStartInfo("https://github.com/ToggleCorp/tepp");
             //Process.Start(sInfo);
@@ -29,16 +54,16 @@ namespace Toggle_Encryptor___Development
             Process.Start(psInfo);
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnEncryptFile_Click(object sender, EventArgs e)
         {
             Hide();
-            new Form1().Show();
+            new frmEncryptFile().Show();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnDecryptFile_Click(object sender, EventArgs e)
         {
             Hide();
-            new Form3().Show();
+            new frmDecryptFile().Show();
         }
     }
 }

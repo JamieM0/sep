@@ -21,7 +21,6 @@ C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\bin\Deb
 C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\bin\Debug\netcoreapp3.1\TEPP - Development.dll
 C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\bin\Debug\netcoreapp3.1\TEPP - Development.pdb
 C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\obj\Debug\netcoreapp3.1\TEPP - Development.csproj.AssemblyReference.cache
-C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\obj\Debug\netcoreapp3.1\Toggle_Encryptor___Development.Form1.resources
 C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\obj\Debug\netcoreapp3.1\Toggle_Encryptor___Development.Properties.Resources.resources
 C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\obj\Debug\netcoreapp3.1\TEPP - Development.csproj.GenerateResource.cache
 C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\obj\Debug\netcoreapp3.1\TEPP - Development.GeneratedMSBuildEditorConfig.editorconfig
@@ -31,5 +30,7 @@ C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\obj\Deb
 C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\obj\Debug\netcoreapp3.1\TEPP - Development.dll
 C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\obj\Debug\netcoreapp3.1\TEPP - Development.pdb
 C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\obj\Debug\netcoreapp3.1\TEPP - Development.genruntimeconfig.cache
-C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\obj\Debug\netcoreapp3.1\Toggle_Encryptor___Development.Form2.resources
-C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\obj\Debug\netcoreapp3.1\Toggle_Encryptor___Development.Form3.resources
+C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\obj\Debug\netcoreapp3.1\Toggle_Encryptor___Development.frmEncryptString.resources
+C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\obj\Debug\netcoreapp3.1\Toggle_Encryptor___Development.frmDecryptString.resources
+C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\obj\Debug\netcoreapp3.1\Toggle_Encryptor___Development.frmHome.resources
+C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\obj\Debug\netcoreapp3.1\Toggle_Encryptor___Development.frmEncryptFile.resources

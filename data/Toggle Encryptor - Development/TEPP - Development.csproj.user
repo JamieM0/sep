@@ -4,13 +4,19 @@
     <_LastSelectedProfileId>C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\Properties\PublishProfiles\ClickOnceProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Update="Form1.cs">
+    <Compile Update="frmDecryptFile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Form2.cs">
+    <Compile Update="frmEncryptFile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Form3.cs">
+    <Compile Update="frmEncryptString.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmDecryptString.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

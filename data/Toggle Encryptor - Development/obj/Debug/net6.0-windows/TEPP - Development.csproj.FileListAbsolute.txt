@@ -1,0 +1,22 @@
+C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\bin\Debug\net6.0-windows\TEPP - Development.exe
+C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\bin\Debug\net6.0-windows\TEPP - Development.deps.json
+C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\bin\Debug\net6.0-windows\TEPP - Development.runtimeconfig.json
+C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\bin\Debug\net6.0-windows\TEPP - Development.dll
+C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\bin\Debug\net6.0-windows\TEPP - Development.pdb
+C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\obj\Debug\net6.0-windows\TEPP - Development.csproj.AssemblyReference.cache
+C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\obj\Debug\net6.0-windows\Toggle_Encryptor___Development.frmDecryptString.resources
+C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\obj\Debug\net6.0-windows\Toggle_Encryptor___Development.frmEncryptFile.resources
+C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\obj\Debug\net6.0-windows\Toggle_Encryptor___Development.frmEncryptString.resources
+C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\obj\Debug\net6.0-windows\Toggle_Encryptor___Development.frmHome.resources
+C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\obj\Debug\net6.0-windows\Toggle_Encryptor___Development.Properties.Resources.resources
+C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\obj\Debug\net6.0-windows\TEPP - Development.csproj.GenerateResource.cache
+C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\obj\Debug\net6.0-windows\TEPP - Development.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\obj\Debug\net6.0-windows\TEPP - Development.AssemblyInfoInputs.cache
+C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\obj\Debug\net6.0-windows\TEPP - Development.AssemblyInfo.cs
+C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\obj\Debug\net6.0-windows\TEPP - Development.csproj.CoreCompileInputs.cache
+C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\obj\Debug\net6.0-windows\TEPP - Development.dll
+C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\obj\Debug\net6.0-windows\refint\TEPP - Development.dll
+C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\obj\Debug\net6.0-windows\TEPP - Development.pdb
+C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\obj\Debug\net6.0-windows\TEPP - Development.genruntimeconfig.cache
+C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\obj\Debug\net6.0-windows\ref\TEPP - Development.dll
+C:\Users\Jamie\Documents\GitHub\tepp\data\Toggle Encryptor - Development\obj\Debug\net6.0-windows\Toggle_Encryptor___Development.frmDecryptFile.resources

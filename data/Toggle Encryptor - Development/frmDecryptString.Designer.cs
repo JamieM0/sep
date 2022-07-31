@@ -1,6 +1,6 @@
 ﻿namespace Toggle_Encryptor___Development
 {
-    partial class Form3
+    partial class frmDecryptString
     {
         /// <summary>
         /// Required designer variable.

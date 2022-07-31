@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace Toggle_Encryptor___Development
 {
-    public partial class Form1 : Form
+    public partial class frmEncryptString : Form
     {
         string pass;
         string inputtoencrypt;
@@ -22,7 +22,7 @@ namespace Toggle_Encryptor___Development
         string saveetexta;
         DateTime current;
 
-        public Form1()
+        public frmEncryptString()
         {
             InitializeComponent();
             gbAbout__disable();
@@ -308,7 +308,7 @@ namespace Toggle_Encryptor___Development
         private void btnGoToMainMenu_Click(object sender, EventArgs e)
         {
             Hide();
-            new Form2().Show();
+            new frmHome().Show();
         }
     }
 }
