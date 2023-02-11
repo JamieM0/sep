@@ -79,6 +79,23 @@ namespace Toggle_Encryptor___Development
                     new frmHome().Show();
                 }
             }
+            else
+            {
+                txtPasswordInput.Enabled = false;
+
+                password = txtPasswordInput.Text;
+
+                string filePathUnencrypted;
+
+                filePathUnencrypted = filePath.Substring(0, filePath.Length - 4);
+
+                frmHome.a.FileDecrypt(filePath, filePathUnencrypted, password);
+
+                MessageBox.Show("The file has been decrypted!", "Decrypted!");
+
+                Hide();
+                new frmHome().Show();
+            }
         }
     }
 }
