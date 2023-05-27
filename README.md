@@ -12,3 +12,4 @@ Just a simple solution for encrypting files (AES) with a basic password, and sto
 
 * Support for 2FA apps.
 * Password Library (Password storage, encrypted using authenticator app).
+* Incorrect Password Detection (Using verification) - (Maybe a bad idea due to brute force?)
