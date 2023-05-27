@@ -73,9 +73,9 @@ namespace sep
             this.lbHeading.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lbHeading.Location = new System.Drawing.Point(12, 9);
             this.lbHeading.Name = "lbHeading";
-            this.lbHeading.Size = new System.Drawing.Size(699, 45);
+            this.lbHeading.Size = new System.Drawing.Size(487, 45);
             this.lbHeading.TabIndex = 0;
-            this.lbHeading.Text = "Encryption Program Protocol (TEPP) - Prototype";
+            this.lbHeading.Text = "Simple Encryption Program (SEP)";
             // 
             // gbAbout
             // 
@@ -383,7 +383,7 @@ namespace sep
             this.btnGoToMainMenu.UseVisualStyleBackColor = true;
             this.btnGoToMainMenu.Click += new System.EventHandler(this.btnGoToMainMenu_Click);
             // 
-            // Form1
+            // frmEncryptString
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -392,7 +392,7 @@ namespace sep
             this.Controls.Add(this.lbHeading);
             this.Controls.Add(this.gbMain);
             this.Controls.Add(this.gbAbout);
-            this.Name = "Form1";
+            this.Name = "frmEncryptString";
             this.Text = "TEPP- Prototype";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.gbAbout.ResumeLayout(false);
