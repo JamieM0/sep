@@ -1,15 +1,14 @@
-## Welcome Toggle Encryption Program Protocol (TEPP)
+# Simple Encryption Program (SEP)
 
-Yes, I know that name doesn't make sense.
+Just a simple solution for encrypting files (AES) with a basic password, and storing them locally.
 
-### Basic Encryption and Decryption works here.
+### Features
 
-Download the code, run the "Run.bat" file, and follow the instructions.
-The program will make a folder in your Documents folder called "TEPPSaves", within this, a new folder will be created when you encrypt something, this new folder will be called the current Date and Time in the format "YYYY.MM.DD.HH.mm.ss", here two text (.txt) files will be created, one with the password that you chose, or was generated, and one with the encrypted text, encrypted by the password.
+* Encrypt entire files using a password that a key is then derived from.
+* Decrypt these files by using the same password.
+* Encrypt & Decrypt strings (super basic secret messages).
 
-##### More Information
-Read the [White Paper](https://go.jamielinks.ml/tepp/whitepaper) for more information. I'm learning extremely basic encryption and decryption, so don't expect this to be anything else. Feedback about everything, really, is appreciated.
+### Potential Future Features
 
-It should also go without saying, though I will, anyway, that this is purely for my entertainment and enjoyment, it does help me to understand these mechanics better, but it's nothing that I'm taking seriously.
-
-Thanks!
+* Support for 2FA apps.
+* Password Library (Password storage, encrypted using authenticator app).
