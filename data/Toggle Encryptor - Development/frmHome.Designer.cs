@@ -1,4 +1,4 @@
-﻿namespace Toggle_Encryptor___Development
+﻿namespace sep
 {
     partial class frmHome
     {
@@ -45,9 +45,9 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(411, 65);
+            this.label1.Size = new System.Drawing.Size(385, 65);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Welcome to TEPP!";
+            this.label1.Text = "Welcome to SEP!";
             // 
             // label2
             // 

@@ -11,7 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Toggle_Encryptor___Development
+namespace sep
 {
     public partial class frmEncryptString : Form
     {

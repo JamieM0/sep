@@ -9,7 +9,7 @@ using System.Security.Cryptography;
 using System.Runtime.InteropServices;
 using System.IO;
 
-namespace Toggle_Encryptor___Development
+namespace sep
 {
     public partial class frmEncryptFile : Form
     {

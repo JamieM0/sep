@@ -1,4 +1,4 @@
-﻿namespace Toggle_Encryptor___Development
+﻿namespace sep
 {
     partial class frmDecryptString
     {

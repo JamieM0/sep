@@ -1,4 +1,4 @@
-﻿namespace Toggle_Encryptor___Development
+﻿namespace sep
 {
     partial class frmEncryptFile
     {
@@ -30,6 +30,7 @@
         {
             this.lbHeading = new System.Windows.Forms.Label();
             this.gbMain = new System.Windows.Forms.GroupBox();
+            this.cbKeepOriginal = new System.Windows.Forms.CheckBox();
             this.lbFilePath = new System.Windows.Forms.Label();
             this.btnOpen = new System.Windows.Forms.Button();
             this.btnSavePass = new System.Windows.Forms.Button();
@@ -39,7 +40,6 @@
             this.btnGenPass = new System.Windows.Forms.Button();
             this.txtPasswordInput = new System.Windows.Forms.TextBox();
             this.lbIns1 = new System.Windows.Forms.Label();
-            this.cbKeepOriginal = new System.Windows.Forms.CheckBox();
             this.gbMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,9 +49,9 @@
             this.lbHeading.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lbHeading.Location = new System.Drawing.Point(12, 9);
             this.lbHeading.Name = "lbHeading";
-            this.lbHeading.Size = new System.Drawing.Size(699, 45);
+            this.lbHeading.Size = new System.Drawing.Size(487, 45);
             this.lbHeading.TabIndex = 1;
-            this.lbHeading.Text = "Encryption Program Protocol (TEPP) - Prototype";
+            this.lbHeading.Text = "Simple Encryption Program (SEP)";
             // 
             // gbMain
             // 
@@ -70,6 +70,17 @@
             this.gbMain.Size = new System.Drawing.Size(734, 319);
             this.gbMain.TabIndex = 4;
             this.gbMain.TabStop = false;
+            // 
+            // cbKeepOriginal
+            // 
+            this.cbKeepOriginal.AutoSize = true;
+            this.cbKeepOriginal.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbKeepOriginal.Location = new System.Drawing.Point(38, 247);
+            this.cbKeepOriginal.Name = "cbKeepOriginal";
+            this.cbKeepOriginal.Size = new System.Drawing.Size(427, 29);
+            this.cbKeepOriginal.TabIndex = 14;
+            this.cbKeepOriginal.Text = "Would you like to keep the original file as well?";
+            this.cbKeepOriginal.UseVisualStyleBackColor = true;
             // 
             // lbFilePath
             // 
@@ -162,17 +173,6 @@
             this.lbIns1.Size = new System.Drawing.Size(373, 25);
             this.lbIns1.TabIndex = 0;
             this.lbIns1.Text = "1. Enter a password to encrypt the file with.";
-            // 
-            // cbKeepOriginal
-            // 
-            this.cbKeepOriginal.AutoSize = true;
-            this.cbKeepOriginal.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cbKeepOriginal.Location = new System.Drawing.Point(38, 247);
-            this.cbKeepOriginal.Name = "cbKeepOriginal";
-            this.cbKeepOriginal.Size = new System.Drawing.Size(427, 29);
-            this.cbKeepOriginal.TabIndex = 14;
-            this.cbKeepOriginal.Text = "Would you like to keep the original file as well?";
-            this.cbKeepOriginal.UseVisualStyleBackColor = true;
             // 
             // frmEncryptFile
             // 

@@ -3,8 +3,9 @@
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>net6.0-windows</TargetFramework>
-		<RootNamespace>Toggle_Encryptor___Development</RootNamespace>
+		<RootNamespace>sep</RootNamespace>
 		<UseWindowsForms>true</UseWindowsForms>
+		<AssemblyName>sep</AssemblyName>
 	</PropertyGroup>
 
 	<ItemGroup>

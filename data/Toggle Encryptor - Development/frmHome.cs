@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
 
-namespace Toggle_Encryptor___Development
+namespace sep
 {
     public partial class frmHome : Form
     {
@@ -44,11 +44,11 @@ namespace Toggle_Encryptor___Development
 
         private void pbGithub_Click(object sender, EventArgs e)
         {
-            //ProcessStartInfo sInfo = new ProcessStartInfo("https://github.com/ToggleCorp/tepp");
+            //ProcessStartInfo sInfo = new ProcessStartInfo("https://github.com/jamiem0/sep");
             //Process.Start(sInfo);
             ProcessStartInfo psInfo = new ProcessStartInfo
             {
-                FileName = "https://github.com/ToggleCorp/tepp",
+                FileName = "https://github.com/jamiem0/sep",
                 UseShellExecute = true
             };
             Process.Start(psInfo);

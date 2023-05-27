@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
-namespace Toggle_Encryptor___Development
+namespace sep
 {
     public partial class frmDecryptFile : Form
     {

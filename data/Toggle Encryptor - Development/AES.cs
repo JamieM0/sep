@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System.IO;
 using System.Windows.Forms;
 
-namespace Toggle_Encryptor___Development
+namespace sep
 {
     public class AES
     {

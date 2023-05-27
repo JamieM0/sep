@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jamie\\Documents\\GitHub\\tepp\\data\\Toggle Encryptor - Development\\TEPP - Development.csproj",
-      "projectName": "TEPP - Development",
-      "projectPath": "C:\\Users\\Jamie\\Documents\\GitHub\\tepp\\data\\Toggle Encryptor - Development\\TEPP - Development.csproj",
+      "projectUniqueName": "C:\\Users\\Jamie\\Documents\\GitHub\\sep2\\data\\Toggle Encryptor - Development\\sep.csproj",
+      "projectName": "sep",
+      "projectPath": "C:\\Users\\Jamie\\Documents\\GitHub\\sep2\\data\\Toggle Encryptor - Development\\sep.csproj",
       "packagesPath": "C:\\Users\\Jamie\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jamie\\Documents\\GitHub\\tepp\\data\\Toggle Encryptor - Development\\obj\\",
+      "outputPath": "C:\\Users\\Jamie\\Documents\\GitHub\\sep2\\data\\Toggle Encryptor - Development\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
