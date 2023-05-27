@@ -36,9 +36,9 @@ namespace sep
             {
                 string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 current = DateTime.Now;
-                string currentWritable = current/*.*/.ToString("yyyy.MM.dd.HH.mm.ss");
-                string locationPath = ($@"{docPath}\TEPPSaves\{currentWritable}");
-                string locationPathIncFile = (/* +  + */$@"{locationPath}\{savepassworda}.txt");
+                string currentWritable = current.ToString("yyyy.MM.dd.HH.mm.ss");
+                string locationPath = ($@"{docPath}\SEPSaves\{currentWritable}");
+                string locationPathIncFile = ($@"{locationPath}\{savepassworda}.txt");
 
                 if (!Directory.Exists(locationPath))
                 {
@@ -60,7 +60,7 @@ namespace sep
 
         private void btnGenPass_Click(object sender, EventArgs e)
         {
-            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+=-<?>:~{}[]";
             var stringChars = new char[16];
             var random = new Random();
 
@@ -113,13 +113,18 @@ namespace sep
 
         private void btnConfirmPassword_Click(object sender, EventArgs e)
         {
-            if(txtPasswordInput.Text.Length>0)
+            
+        }
+
+        private void txtPasswordInput_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPasswordInput.Text.Length > 0)
             {
                 btnOpen.Enabled = true;
-                txtPasswordInput.Enabled = false;
-                btnGenPass.Enabled = false;
-                btnSavePass.Enabled = false;
-                btnConfirmPassword.Enabled = false;
+                //txtPasswordInput.Enabled = false;
+                //btnGenPass.Enabled = false;
+                //btnSavePass.Enabled = false;
+                //btnConfirmPassword.Enabled = false;
                 password = txtPasswordInput.Text;
             }
         }

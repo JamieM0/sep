@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.IO;
 
 namespace sep
 {
@@ -18,6 +19,11 @@ namespace sep
         {
             InitializeComponent();
             CenterToScreen();
+            if(!File.Exists("first.load"))
+            {
+                MessageBox.Show("Warning: This project is still in development. Please use at your own risk.\r\n\r\nThis message will not show again (until the first.load file is removed).", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                File.Create("first.load");
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

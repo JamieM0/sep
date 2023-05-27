@@ -38,6 +38,7 @@
             this.btnConfirmPassword = new System.Windows.Forms.Button();
             this.txtPasswordInput = new System.Windows.Forms.TextBox();
             this.lbIns1 = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.gbMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,6 +71,8 @@
             // cbKeepOriginal
             // 
             this.cbKeepOriginal.AutoSize = true;
+            this.cbKeepOriginal.Checked = true;
+            this.cbKeepOriginal.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbKeepOriginal.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbKeepOriginal.Location = new System.Drawing.Point(38, 247);
             this.cbKeepOriginal.Name = "cbKeepOriginal";
@@ -90,11 +93,11 @@
             // btnOpen
             // 
             this.btnOpen.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnOpen.Location = new System.Drawing.Point(38, 62);
+            this.btnOpen.Location = new System.Drawing.Point(38, 57);
             this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(133, 29);
+            this.btnOpen.Size = new System.Drawing.Size(133, 30);
             this.btnOpen.TabIndex = 12;
-            this.btnOpen.Text = "Open Saved";
+            this.btnOpen.Text = "Open File";
             this.btnOpen.UseVisualStyleBackColor = true;
             this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
@@ -122,14 +125,15 @@
             // 
             // btnConfirmPassword
             // 
-            this.btnConfirmPassword.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnConfirmPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnConfirmPassword.ForeColor = System.Drawing.Color.Black;
-            this.btnConfirmPassword.Location = new System.Drawing.Point(617, 55);
+            this.btnConfirmPassword.Location = new System.Drawing.Point(585, 61);
             this.btnConfirmPassword.Name = "btnConfirmPassword";
-            this.btnConfirmPassword.Size = new System.Drawing.Size(101, 32);
+            this.btnConfirmPassword.Size = new System.Drawing.Size(133, 30);
             this.btnConfirmPassword.TabIndex = 3;
-            this.btnConfirmPassword.Text = "Confirm";
+            this.btnConfirmPassword.Text = "Confirm File";
             this.btnConfirmPassword.UseVisualStyleBackColor = true;
+            this.btnConfirmPassword.Visible = false;
             this.btnConfirmPassword.Click += new System.EventHandler(this.btnConfirmPassword_Click);
             // 
             // txtPasswordInput
@@ -150,11 +154,24 @@
             this.lbIns1.TabIndex = 0;
             this.lbIns1.Text = "1. Locate encrypted file.";
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCancel.ForeColor = System.Drawing.Color.Black;
+            this.btnCancel.Location = new System.Drawing.Point(602, 15);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(186, 43);
+            this.btnCancel.TabIndex = 7;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // frmDecryptFile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.gbMain);
             this.Controls.Add(this.lbHeading);
             this.Name = "frmDecryptFile";
@@ -178,5 +195,6 @@
         private System.Windows.Forms.TextBox txtPasswordInput;
         private System.Windows.Forms.Label lbIns1;
         private System.Windows.Forms.CheckBox cbKeepOriginal;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

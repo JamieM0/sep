@@ -19,7 +19,7 @@ namespace sep
         string fileContentOpen = string.Empty;
         string filePathOpen = string.Empty;
         string Documents/* = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)*/;
-        string TEPPSavesDirectory/* = ($@"{Documents}\TEPPSaves")*/;
+        string TEPPSavesDirectory;
 
         public frmDecryptString()
         {
@@ -37,7 +37,7 @@ namespace sep
             gbConfirmPasswordSave.Visible = false;
             gbSaveETextConfirm.Visible = false;
             /*string*/ Documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            /*string*/ TEPPSavesDirectory = ($@"{Documents}\TEPPSaves");
+            /*string*/ TEPPSavesDirectory = ($@"{Documents}\SEPSaves");
             btnOpenEncrypt.Visible = false;
             btnCopy.Enabled = false;
             CenterToScreen();
@@ -98,11 +98,6 @@ namespace sep
 
         private void btnSavePasswordOpen_Click(object sender, EventArgs e)
         {
-            //var fileContentOpen = string.Empty;
-            //var filePathOpen = string.Empty;
-            //string Documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            //string TEPPSavesDirectory = ($@"{Documents}\TEPPSaves");
-
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 //From https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.openfiledialog?view=windowsdesktop-6.0
@@ -136,11 +131,6 @@ namespace sep
 
         private void btnOpenEncrypt_Click(object sender, EventArgs e)
         {
-            //var fileContentOpen = string.Empty;
-            //var filePathOpen = string.Empty;
-            //string Documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            //string TEPPSavesDirectory = ($@"{Documents}\TEPPSaves");
-
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 //From https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.openfiledialog?view=windowsdesktop-6.0

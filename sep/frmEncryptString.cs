@@ -122,7 +122,7 @@ namespace sep
 
         private void btnGenPass_Click(object sender, EventArgs e)
         {
-            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+=-<?>:~{}[]";
             var stringChars = new char[16];
             var random = new Random();
 
@@ -138,41 +138,8 @@ namespace sep
             savepassworda = finalString;
         }
 
-        //public static async Task ExampleAsync()
-        //{
-        //    string textacode = ("a");
-
-        //    await File.WriteAllTextAsync("PasswordForEncryption.txt", savepassworda);
-        //}
-
         private void btnSavePass_Click(object sender, EventArgs e)
         {
-            //gbConfirmPasswordSave.Visible = true;
-
-            //string savepasswordconfirmmessage = ("You are about to save a text (.txt) file in your documents folder which is called your password and contains your password.");
-            //string savepasswordconfirmtitle = ("Save password?");
-
-            //MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            //DialogResult result = MessageBox.Show(savepasswordconfirmmessage, savepasswordconfirmtitle);
-
-            //if (result == DialogResult.Yes)
-            //{
-            //    this.Close();
-            //    string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-
-            //    using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, $"{savepassworda}.txt")))
-            //    {
-            //        outputFile.WriteLine(savepassworda);
-            //    }
-
-            //    btnSavePass.Enabled = false;
-            //}
-
-            //else
-            //{
-            //    this.Close();
-            //}
-
             if (MessageBox.Show("You are about to save a text (.txt) file in your documents folder which is called your password and contains your password.", "Save Password", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 //some interesting behaviour here
@@ -180,10 +147,10 @@ namespace sep
                 //this.Close();
 
                 string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                /*DateTime */current /* */= DateTime.Now;
-                string currentWritable = current/*.*/.ToString("yyyy.MM.dd.HH.mm.ss");
-                string locationPath = ($@"{docPath}\TEPPSaves\{currentWritable}");
-                string locationPathIncFile = (/* +  + */$@"{locationPath}\{savepassworda}.txt");
+                current= DateTime.Now;
+                string currentWritable = current.ToString("yyyy.MM.dd.HH.mm.ss");
+                string locationPath = ($@"{docPath}\SEPSaves\{currentWritable}");
+                string locationPathIncFile = ($@"{locationPath}\{savepassworda}.txt");
 
                 if (!Directory.Exists(locationPath))
                 {
@@ -207,31 +174,7 @@ namespace sep
 
         private void btnSaveEncryptedText_Click(object sender, EventArgs e)
         {
-            //gbSaveETextConfirm.Visible = true;
-            //string savepasswordconfirmmessage = ("You are about to save a text (.txt) file in your documents folder which is called TEPPetext and contains your encrypted text.");
-            //string savepasswordconfirmtitle = ("Save password?");
-
-            //MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            //DialogResult result = MessageBox.Show(savepasswordconfirmmessage, savepasswordconfirmtitle);
-
-            //if (result == DialogResult.Yes)
-            //{
-            //    string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-
-            //    using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "TEPPetext.txt")))
-            //    {
-            //        outputFile.WriteLine(saveetexta);
-            //    }
-
-            //    btnSaveEncryptedText.Enabled = false;
-            //}
-
-            //else
-            //{
-            //    this.Close();
-            //}
-
-            if (MessageBox.Show("You are about to save a text (.txt) file in your documents folder which is called TEPPEText and contains your encrypted text.", "Save Encrypted Text?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("You are about to save a text (.txt) file in your documents folder which is called SEPEText and contains your encrypted text.", "Save Encrypted Text?", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 //some interesting behaviour here
                 //gbConfirmPasswordSave.Visible = false;
@@ -240,9 +183,9 @@ namespace sep
                 string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 //DateTime current /* */= DateTime.Now;
                 string currentWritable = current/*.*/.ToString("yyyy.MM.dd.HH.mm.ss");
-                string locationPath = ($@"{docPath}\TEPPSaves\{currentWritable}");
+                string locationPath = ($@"{docPath}\SEPSaves\{currentWritable}");
                 //string FileName = ""
-                string FileName = "TEPPEText.txt";
+                string FileName = "SEPEText.txt";
                 string locationPathIncFile = (/* +  + */$@"{locationPath}\{/*savepassworda*/FileName}.txt");
 
                 if (!Directory.Exists(locationPath))
@@ -297,7 +240,7 @@ namespace sep
 
             string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
-            using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "TEPPEText.txt")))
+            using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "SEPPEText.txt")))
             {
                 outputFile.WriteLine(saveetexta);
             }

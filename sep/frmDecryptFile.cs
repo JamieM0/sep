@@ -26,6 +26,7 @@ namespace sep
 
         private void btnOpen_Click(object sender, EventArgs e)
         {
+            string fileName = "";
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.InitialDirectory = ($@"{Environment.SpecialFolder.MyDocuments}");
@@ -35,16 +36,14 @@ namespace sep
                 {
                     //Get the path of specified file
                     filePath = openFileDialog.FileName;
+                    fileName = openFileDialog.SafeFileName;
                     btnGo.Enabled = true;
                 }
             }
 
-            lbFilePath.Text = filePath;
-        }
+            lbFilePath.Text = fileName;
 
-        private void btnConfirmPassword_Click(object sender, EventArgs e)
-        {
-            if (filePath.Length>0)
+            if (filePath.Length > 0)
             {
                 btnConfirmPassword.Enabled = false;
                 txtPasswordInput.Enabled = true;
@@ -52,11 +51,16 @@ namespace sep
             }
         }
 
+        private void btnConfirmPassword_Click(object sender, EventArgs e)
+        {
+            
+        }
+
         private void btnGo_Click(object sender, EventArgs e)
         {
             if (!cbKeepOriginal.Checked)
             {
-                if (MessageBox.Show("Entering the incorrect password WILL result in a corrupted file!\r\nIt is strongly recommended to keep the encrypted file in case you make a mistake!\r\nClicking 'Yes' will proceed WITHOUT keeping the encrypted copy.\r\nIf you are unsure of what to do, click 'No', then check the box and click 'Decrypt' again!", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                if (MessageBox.Show("Entering the incorrect password WILL result in a corrupted file!\r\n\r\nYou should keep the encrypted copy as well, just in case.\r\n\r\nClicking 'Yes' may be risky. If you're unsure, click 'No', and choose to keep the encrypted file!\r\n\r\nDo you wish to proceed?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     txtPasswordInput.Enabled = false;
 
@@ -96,6 +100,12 @@ namespace sep
                 Hide();
                 new frmHome().Show();
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new frmHome().Show();
         }
     }
 }

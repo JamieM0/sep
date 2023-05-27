@@ -75,7 +75,7 @@
             // 
             this.cbKeepOriginal.AutoSize = true;
             this.cbKeepOriginal.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cbKeepOriginal.Location = new System.Drawing.Point(38, 247);
+            this.cbKeepOriginal.Location = new System.Drawing.Point(39, 233);
             this.cbKeepOriginal.Name = "cbKeepOriginal";
             this.cbKeepOriginal.Size = new System.Drawing.Size(427, 29);
             this.cbKeepOriginal.TabIndex = 14;
@@ -96,17 +96,18 @@
             this.btnOpen.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnOpen.Location = new System.Drawing.Point(38, 163);
             this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(133, 29);
+            this.btnOpen.Size = new System.Drawing.Size(133, 30);
             this.btnOpen.TabIndex = 12;
-            this.btnOpen.Text = "Open Saved";
+            this.btnOpen.Text = "Open File";
             this.btnOpen.UseVisualStyleBackColor = true;
             this.btnOpen.Click += new System.EventHandler(this.btnSavePasswordOpen_Click);
             // 
             // btnSavePass
             // 
-            this.btnSavePass.Location = new System.Drawing.Point(373, 64);
+            this.btnSavePass.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnSavePass.Location = new System.Drawing.Point(280, 86);
             this.btnSavePass.Name = "btnSavePass";
-            this.btnSavePass.Size = new System.Drawing.Size(45, 23);
+            this.btnSavePass.Size = new System.Drawing.Size(95, 30);
             this.btnSavePass.TabIndex = 10;
             this.btnSavePass.Text = "Save";
             this.btnSavePass.UseVisualStyleBackColor = true;
@@ -116,7 +117,7 @@
             // 
             this.btnGo.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnGo.ForeColor = System.Drawing.Color.Black;
-            this.btnGo.Location = new System.Drawing.Point(532, 233);
+            this.btnGo.Location = new System.Drawing.Point(542, 224);
             this.btnGo.Name = "btnGo";
             this.btnGo.Size = new System.Drawing.Size(186, 43);
             this.btnGo.TabIndex = 6;
@@ -138,19 +139,21 @@
             // 
             this.btnConfirmPassword.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnConfirmPassword.ForeColor = System.Drawing.Color.Black;
-            this.btnConfirmPassword.Location = new System.Drawing.Point(517, 55);
+            this.btnConfirmPassword.Location = new System.Drawing.Point(627, 49);
             this.btnConfirmPassword.Name = "btnConfirmPassword";
             this.btnConfirmPassword.Size = new System.Drawing.Size(101, 32);
             this.btnConfirmPassword.TabIndex = 3;
             this.btnConfirmPassword.Text = "Confirm";
             this.btnConfirmPassword.UseVisualStyleBackColor = true;
+            this.btnConfirmPassword.Visible = false;
             this.btnConfirmPassword.Click += new System.EventHandler(this.btnConfirmPassword_Click);
             // 
             // btnGenPass
             // 
-            this.btnGenPass.Location = new System.Drawing.Point(240, 64);
+            this.btnGenPass.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnGenPass.Location = new System.Drawing.Point(56, 86);
             this.btnGenPass.Name = "btnGenPass";
-            this.btnGenPass.Size = new System.Drawing.Size(127, 23);
+            this.btnGenPass.Size = new System.Drawing.Size(218, 30);
             this.btnGenPass.TabIndex = 2;
             this.btnGenPass.Text = "Generate a Password";
             this.btnGenPass.UseVisualStyleBackColor = true;
@@ -158,11 +161,13 @@
             // 
             // txtPasswordInput
             // 
-            this.txtPasswordInput.Location = new System.Drawing.Point(52, 64);
+            this.txtPasswordInput.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtPasswordInput.Location = new System.Drawing.Point(56, 55);
             this.txtPasswordInput.Name = "txtPasswordInput";
             this.txtPasswordInput.PasswordChar = '*';
-            this.txtPasswordInput.Size = new System.Drawing.Size(182, 23);
+            this.txtPasswordInput.Size = new System.Drawing.Size(319, 25);
             this.txtPasswordInput.TabIndex = 1;
+            this.txtPasswordInput.TextChanged += new System.EventHandler(this.txtPasswordInput_TextChanged);
             // 
             // lbIns1
             // 
