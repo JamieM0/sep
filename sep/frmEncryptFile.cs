@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Security.Cryptography;
 using System.Runtime.InteropServices;
 using System.IO;
+using System.Linq;
 
 namespace sep
 {
@@ -32,35 +33,35 @@ namespace sep
 
         private void btnSavePass_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("You are about to save a text (.txt) file in your documents folder which is called your password and contains your password.\r\nNever share this with the encrypted file as this will allow any recipients to decrypt the file.", "Save Password", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            string libEN = "pwLib.conf.aes";
+            string libDE = "pwLib.conf";
+
+            if(File.Exists(libEN))
             {
-                string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                string pw = Microsoft.VisualBasic.Interaction.InputBox("Input password library master password: ", "Password Library Decryption");
+                frmHome.a.FileDecrypt(libEN, libDE, pw);
                 current = DateTime.Now;
-                string currentWritable = current.ToString("yyyy.MM.dd.HH.mm.ss");
-                string locationPath = ($@"{docPath}\SEPSaves\{currentWritable}");
-                string locationPathIncFile = ($@"{locationPath}\{savepassworda}.txt");
-
-                if (!Directory.Exists(locationPath))
-                {
-                    Directory.CreateDirectory(locationPath);
-                }
-
-                using (StreamWriter outputFile = new StreamWriter(locationPathIncFile))
-                {
-                    outputFile.WriteLine(savepassworda);
-                }
-
+                string currentWritable = current.ToString("d");
+                File.AppendAllText(libDE, $"\r\n{currentWritable}~{filePath}~{password}");
+                frmHome.a.FileEncrypt(libDE, pw);
+                File.Delete(libDE);
                 btnSavePass.Enabled = false;
             }
             else
             {
-                
+                string pw = Microsoft.VisualBasic.Interaction.InputBox("Create a password for your password library: ", "Password Library Decryption");
+                current = DateTime.Now;
+                string currentWritable = current.ToString("d");
+                File.WriteAllText(libDE, $"{currentWritable}~{filePath}~{password}");
+                frmHome.a.FileEncrypt(libDE, pw);
+                File.Delete(libDE);
+                btnSavePass.Enabled = false;
             }
         }
 
         private void btnGenPass_Click(object sender, EventArgs e)
         {
-            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+=-<?>:~{}[]";
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+=-<?>:{}[]";
             var stringChars = new char[16];
             var random = new Random();
 
@@ -103,7 +104,7 @@ namespace sep
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     //Get the path of specified file
-                    filePath = openFileDialog.FileName;
+                    filePath = openFileDialog.SafeFileName;
                     btnGo.Enabled = true;
                 }
             }

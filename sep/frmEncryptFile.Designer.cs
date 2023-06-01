@@ -40,7 +40,11 @@
             this.btnGenPass = new System.Windows.Forms.Button();
             this.txtPasswordInput = new System.Windows.Forms.TextBox();
             this.lbIns1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.gbMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // lbHeading
@@ -65,6 +69,8 @@
             this.gbMain.Controls.Add(this.btnGenPass);
             this.gbMain.Controls.Add(this.txtPasswordInput);
             this.gbMain.Controls.Add(this.lbIns1);
+            this.gbMain.Controls.Add(this.pictureBox1);
+            this.gbMain.Controls.Add(this.pictureBox2);
             this.gbMain.Location = new System.Drawing.Point(33, 66);
             this.gbMain.Name = "gbMain";
             this.gbMain.Size = new System.Drawing.Size(734, 319);
@@ -74,8 +80,10 @@
             // cbKeepOriginal
             // 
             this.cbKeepOriginal.AutoSize = true;
+            this.cbKeepOriginal.Checked = true;
+            this.cbKeepOriginal.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbKeepOriginal.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cbKeepOriginal.Location = new System.Drawing.Point(39, 233);
+            this.cbKeepOriginal.Location = new System.Drawing.Point(84, 233);
             this.cbKeepOriginal.Name = "cbKeepOriginal";
             this.cbKeepOriginal.Size = new System.Drawing.Size(427, 29);
             this.cbKeepOriginal.TabIndex = 14;
@@ -86,7 +94,7 @@
             // 
             this.lbFilePath.AutoSize = true;
             this.lbFilePath.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbFilePath.Location = new System.Drawing.Point(177, 167);
+            this.lbFilePath.Location = new System.Drawing.Point(220, 176);
             this.lbFilePath.Name = "lbFilePath";
             this.lbFilePath.Size = new System.Drawing.Size(0, 21);
             this.lbFilePath.TabIndex = 13;
@@ -94,7 +102,7 @@
             // btnOpen
             // 
             this.btnOpen.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnOpen.Location = new System.Drawing.Point(38, 163);
+            this.btnOpen.Location = new System.Drawing.Point(99, 171);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(133, 30);
             this.btnOpen.TabIndex = 12;
@@ -105,7 +113,7 @@
             // btnSavePass
             // 
             this.btnSavePass.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnSavePass.Location = new System.Drawing.Point(280, 86);
+            this.btnSavePass.Location = new System.Drawing.Point(323, 78);
             this.btnSavePass.Name = "btnSavePass";
             this.btnSavePass.Size = new System.Drawing.Size(95, 30);
             this.btnSavePass.TabIndex = 10;
@@ -129,17 +137,17 @@
             // 
             this.lbIns2.AutoSize = true;
             this.lbIns2.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbIns2.Location = new System.Drawing.Point(38, 128);
+            this.lbIns2.Location = new System.Drawing.Point(99, 144);
             this.lbIns2.Name = "lbIns2";
-            this.lbIns2.Size = new System.Drawing.Size(350, 25);
+            this.lbIns2.Size = new System.Drawing.Size(331, 25);
             this.lbIns2.TabIndex = 4;
-            this.lbIns2.Text = "2. Find file to encrypt with the password.";
+            this.lbIns2.Text = "Find file to encrypt with the password.";
             // 
             // btnConfirmPassword
             // 
             this.btnConfirmPassword.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnConfirmPassword.ForeColor = System.Drawing.Color.Black;
-            this.btnConfirmPassword.Location = new System.Drawing.Point(627, 49);
+            this.btnConfirmPassword.Location = new System.Drawing.Point(627, 22);
             this.btnConfirmPassword.Name = "btnConfirmPassword";
             this.btnConfirmPassword.Size = new System.Drawing.Size(101, 32);
             this.btnConfirmPassword.TabIndex = 3;
@@ -151,7 +159,7 @@
             // btnGenPass
             // 
             this.btnGenPass.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnGenPass.Location = new System.Drawing.Point(56, 86);
+            this.btnGenPass.Location = new System.Drawing.Point(99, 78);
             this.btnGenPass.Name = "btnGenPass";
             this.btnGenPass.Size = new System.Drawing.Size(218, 30);
             this.btnGenPass.TabIndex = 2;
@@ -162,7 +170,7 @@
             // txtPasswordInput
             // 
             this.txtPasswordInput.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPasswordInput.Location = new System.Drawing.Point(56, 55);
+            this.txtPasswordInput.Location = new System.Drawing.Point(99, 47);
             this.txtPasswordInput.Name = "txtPasswordInput";
             this.txtPasswordInput.PasswordChar = '*';
             this.txtPasswordInput.Size = new System.Drawing.Size(319, 25);
@@ -173,11 +181,31 @@
             // 
             this.lbIns1.AutoSize = true;
             this.lbIns1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbIns1.Location = new System.Drawing.Point(38, 24);
+            this.lbIns1.Location = new System.Drawing.Point(99, 19);
             this.lbIns1.Name = "lbIns1";
-            this.lbIns1.Size = new System.Drawing.Size(373, 25);
+            this.lbIns1.Size = new System.Drawing.Size(354, 25);
             this.lbIns1.TabIndex = 0;
-            this.lbIns1.Text = "1. Enter a password to encrypt the file with.";
+            this.lbIns1.Text = "Enter a password to encrypt the file with.";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::sep.Properties.Resources._1_fixed;
+            this.pictureBox1.Location = new System.Drawing.Point(-20, 10);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(140, 89);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::sep.Properties.Resources._2_fixed;
+            this.pictureBox2.Location = new System.Drawing.Point(-21, 128);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(140, 89);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 16;
+            this.pictureBox2.TabStop = false;
             // 
             // frmEncryptFile
             // 
@@ -191,6 +219,8 @@
             this.Load += new System.EventHandler(this.frmEncryptFile_Load);
             this.gbMain.ResumeLayout(false);
             this.gbMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,5 +240,7 @@
         private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.Label lbFilePath;
         private System.Windows.Forms.CheckBox cbKeepOriginal;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
