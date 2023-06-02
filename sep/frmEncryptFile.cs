@@ -21,7 +21,7 @@ namespace sep
         public frmEncryptFile()
         {
             InitializeComponent();
-            btnOpen.Enabled = false;
+            //btnOpen.Enabled = false;
             btnGo.Enabled = false;
             CenterToScreen();
         }
@@ -96,6 +96,9 @@ namespace sep
 
         private void btnSavePasswordOpen_Click(object sender, EventArgs e)
         {
+            btnGenPass.Enabled = true;
+            txtPasswordInput.Enabled = true;
+            btnSavePass.Enabled = true;
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.InitialDirectory = ($@"{Environment.SpecialFolder.MyDocuments}");
@@ -105,7 +108,7 @@ namespace sep
                 {
                     //Get the path of specified file
                     filePath = openFileDialog.SafeFileName;
-                    btnGo.Enabled = true;
+                    
                 }
             }
 
@@ -127,7 +130,19 @@ namespace sep
                 //btnSavePass.Enabled = false;
                 //btnConfirmPassword.Enabled = false;
                 password = txtPasswordInput.Text;
+                btnGo.Enabled = true;
             }
+        }
+
+        private void gbMain_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new frmHome().Show();
         }
     }
 }

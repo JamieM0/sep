@@ -42,6 +42,7 @@
             this.lbIns1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnBack = new System.Windows.Forms.Button();
             this.gbMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -76,6 +77,7 @@
             this.gbMain.Size = new System.Drawing.Size(734, 319);
             this.gbMain.TabIndex = 4;
             this.gbMain.TabStop = false;
+            this.gbMain.Enter += new System.EventHandler(this.gbMain_Enter);
             // 
             // cbKeepOriginal
             // 
@@ -94,7 +96,7 @@
             // 
             this.lbFilePath.AutoSize = true;
             this.lbFilePath.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbFilePath.Location = new System.Drawing.Point(220, 176);
+            this.lbFilePath.Location = new System.Drawing.Point(274, 61);
             this.lbFilePath.Name = "lbFilePath";
             this.lbFilePath.Size = new System.Drawing.Size(0, 21);
             this.lbFilePath.TabIndex = 13;
@@ -102,7 +104,7 @@
             // btnOpen
             // 
             this.btnOpen.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnOpen.Location = new System.Drawing.Point(99, 171);
+            this.btnOpen.Location = new System.Drawing.Point(126, 56);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(133, 30);
             this.btnOpen.TabIndex = 12;
@@ -112,8 +114,9 @@
             // 
             // btnSavePass
             // 
+            this.btnSavePass.Enabled = false;
             this.btnSavePass.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnSavePass.Location = new System.Drawing.Point(323, 78);
+            this.btnSavePass.Location = new System.Drawing.Point(349, 187);
             this.btnSavePass.Name = "btnSavePass";
             this.btnSavePass.Size = new System.Drawing.Size(95, 30);
             this.btnSavePass.TabIndex = 10;
@@ -137,7 +140,7 @@
             // 
             this.lbIns2.AutoSize = true;
             this.lbIns2.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbIns2.Location = new System.Drawing.Point(99, 144);
+            this.lbIns2.Location = new System.Drawing.Point(126, 29);
             this.lbIns2.Name = "lbIns2";
             this.lbIns2.Size = new System.Drawing.Size(331, 25);
             this.lbIns2.TabIndex = 4;
@@ -158,8 +161,9 @@
             // 
             // btnGenPass
             // 
+            this.btnGenPass.Enabled = false;
             this.btnGenPass.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnGenPass.Location = new System.Drawing.Point(99, 78);
+            this.btnGenPass.Location = new System.Drawing.Point(125, 187);
             this.btnGenPass.Name = "btnGenPass";
             this.btnGenPass.Size = new System.Drawing.Size(218, 30);
             this.btnGenPass.TabIndex = 2;
@@ -169,8 +173,9 @@
             // 
             // txtPasswordInput
             // 
+            this.txtPasswordInput.Enabled = false;
             this.txtPasswordInput.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPasswordInput.Location = new System.Drawing.Point(99, 47);
+            this.txtPasswordInput.Location = new System.Drawing.Point(125, 156);
             this.txtPasswordInput.Name = "txtPasswordInput";
             this.txtPasswordInput.PasswordChar = '*';
             this.txtPasswordInput.Size = new System.Drawing.Size(319, 25);
@@ -181,7 +186,7 @@
             // 
             this.lbIns1.AutoSize = true;
             this.lbIns1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbIns1.Location = new System.Drawing.Point(99, 19);
+            this.lbIns1.Location = new System.Drawing.Point(125, 128);
             this.lbIns1.Name = "lbIns1";
             this.lbIns1.Size = new System.Drawing.Size(354, 25);
             this.lbIns1.TabIndex = 0;
@@ -207,11 +212,23 @@
             this.pictureBox2.TabIndex = 16;
             this.pictureBox2.TabStop = false;
             // 
+            // btnBack
+            // 
+            this.btnBack.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnBack.Location = new System.Drawing.Point(635, 15);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(126, 45);
+            this.btnBack.TabIndex = 5;
+            this.btnBack.Text = "<- Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // frmEncryptFile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.gbMain);
             this.Controls.Add(this.lbHeading);
             this.Name = "frmEncryptFile";
@@ -242,5 +259,6 @@
         private System.Windows.Forms.CheckBox cbKeepOriginal;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button btnBack;
     }
 }

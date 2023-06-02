@@ -18,9 +18,9 @@ namespace sep
             InitializeComponent();
             string libEN = "pwLib.conf.aes";
             string libDE = "pwLib.conf";
-            string pw = Microsoft.VisualBasic.Interaction.InputBox("Input password library master password: ", "Password Library Decryption");
             try
             {
+                string pw = Microsoft.VisualBasic.Interaction.InputBox("Input password library master password: ", "Password Library Decryption");
                 frmHome.a.FileDecrypt(libEN, libDE, pw);
                 string[] lines = File.ReadAllLines(libDE);
                 Array.Reverse(lines);
@@ -31,6 +31,10 @@ namespace sep
                     PopulateFields(i, a[1], a[2], a[0]);
                 }
             }
+            //catch(FileNotFoundException ex)
+            //{
+            //    string pw = Microsoft.VisualBasic.Interaction.InputBox("Create a password library. Enter a master password: ", "Password Library Creation");
+            //}
             catch (Exception ex)
             {
                 MessageBox.Show("Incorrect Password.\r\nMore Details: " + ex.Message, "Password Library Decryption Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -81,6 +85,27 @@ namespace sep
         public void remove_Click()
         {
             
+        }
+
+        private void btnRemoveAll_Click(object sender, EventArgs e)
+        {
+            //Prompt with confirm action
+            if (MessageBox.Show("Are you sure you want to remove all entries in the password library?\r\nThere is no way to undo this action.", "Confirm Action", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                //Remove all passwords
+                File.Delete("pwLib.conf");
+                File.Delete("pwLib.conf.aes");
+                Hide();
+                new frmHome().Show();
+                ////Prompt with success
+                //MessageBox.Show("All passwords have been removed.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new frmHome().Show();
         }
     }
 }

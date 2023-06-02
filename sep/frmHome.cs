@@ -24,6 +24,10 @@ namespace sep
                 MessageBox.Show("Warning: This project is still in development. Please use at your own risk.\r\n\r\nThis message will not show again (until the first.load file is removed).", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 File.Create("first.load");
             }
+            if(!File.Exists("pwLib.conf.aes"))
+            {
+                btnPWLib.Enabled = false;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
