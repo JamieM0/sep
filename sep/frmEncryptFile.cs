@@ -93,6 +93,7 @@ namespace sep
         }
 
         string filePath;
+        string safeFilePath;
 
         private void btnSavePasswordOpen_Click(object sender, EventArgs e)
         {
@@ -107,12 +108,12 @@ namespace sep
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     //Get the path of specified file
-                    filePath = openFileDialog.SafeFileName;
-                    
+                    filePath = openFileDialog.FileName;
+                    safeFilePath = openFileDialog.SafeFileName;
                 }
             }
 
-            lbFilePath.Text = filePath;
+            lbFilePath.Text = safeFilePath;
         }
 
         private void btnConfirmPassword_Click(object sender, EventArgs e)

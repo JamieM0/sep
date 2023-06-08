@@ -16,6 +16,7 @@ namespace sep
 
         string filePath;
         string password;
+        string fileName = "";
 
         public frmDecryptFile()
         {
@@ -26,7 +27,6 @@ namespace sep
 
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            string fileName = "";
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.InitialDirectory = ($@"{Environment.SpecialFolder.MyDocuments}");
@@ -38,6 +38,7 @@ namespace sep
                     filePath = openFileDialog.FileName;
                     fileName = openFileDialog.SafeFileName;
                     btnGo.Enabled = true;
+                    btnGuesser.Enabled = true;
                 }
             }
 
@@ -106,6 +107,67 @@ namespace sep
         {
             Hide();
             new frmHome().Show();
+        }
+
+        private void btnGuesser_Click(object sender, EventArgs e)
+        {
+            gbMain.Visible = false;
+            pnlGuesser.Visible = true;
+            btnBackToMain.Visible = true;
+        }
+
+        private void btnBackToMain_Click(object sender, EventArgs e)
+        {
+            pnlGuesser.Visible = false;
+            gbMain.Visible = true;
+            btnBackToMain.Visible = false;
+        }
+
+        //Choose a directory
+        string dirPath;
+        private void btnChooseFolder_Click(object sender, EventArgs e)
+        {
+            using (var fbd = new FolderBrowserDialog())
+            {
+                DialogResult result = fbd.ShowDialog();
+
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                    dirPath = fbd.SelectedPath;
+                    lbSelectedFolder.Text = dirPath;
+                }
+            }
+        }
+
+        private void btnSkipFolder_Click(object sender, EventArgs e)
+        {
+            //Set dirPath as Documents/SEP/Guesser/fileName
+            dirPath = $@"{Environment.SpecialFolder.MyDocuments}\SEP\Guesser\{fileName}";
+            Directory.CreateDirectory($@"{Environment.SpecialFolder.MyDocuments}\SEP\Guesser\{fileName}\");
+            lbSelectedFolder.Text = dirPath;
+        }
+
+        private void btnGuessGo_Click(object sender, EventArgs e)
+        {
+            string[] guesses = txtGuesses.Lines;
+            try
+            {
+                foreach (string guess in guesses)
+                {
+                    string output = $@"{dirPath}\{guess}_{fileName.Substring(0, fileName.Length - 4)}";
+                    frmHome.a.FileDecrypt(filePath, output, guess);
+                }
+                MessageBox.Show($"The file has been decrypted, and {guesses.Length} copies were made!", "Decrypted!");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                Hide();
+                new frmHome().Show();
+            }
         }
     }
 }
