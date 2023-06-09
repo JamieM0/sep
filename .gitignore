@@ -17,7 +17,8 @@
 mono_crash.*
 
 # Build results
-[Dd]ebug/
+[Dd]ebug/*
+!Debug/net6.0-windows/sep.exe
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
@@ -27,7 +28,8 @@ x86/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
-[Bb]in/
+[Bb]in/*
+![Bb]in/Debug/net6.0-windows/sep.exe
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/

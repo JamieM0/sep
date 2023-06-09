@@ -142,31 +142,38 @@ namespace sep
         private void btnSkipFolder_Click(object sender, EventArgs e)
         {
             //Set dirPath as Documents/SEP/Guesser/fileName
-            dirPath = $@"{Environment.SpecialFolder.MyDocuments}\SEP\Guesser\{fileName}";
-            Directory.CreateDirectory($@"{Environment.SpecialFolder.MyDocuments}\SEP\Guesser\{fileName}\");
+            dirPath = $@"Guesser\{fileName}";
+            Directory.CreateDirectory($@"Guesser\{fileName}\");
             lbSelectedFolder.Text = dirPath;
         }
 
         private void btnGuessGo_Click(object sender, EventArgs e)
         {
-            string[] guesses = txtGuesses.Lines;
-            try
+            if(dirPath!=null)
             {
-                foreach (string guess in guesses)
+                string[] guesses = txtGuesses.Lines;
+                try
                 {
-                    string output = $@"{dirPath}\{guess}_{fileName.Substring(0, fileName.Length - 4)}";
-                    frmHome.a.FileDecrypt(filePath, output, guess);
+                    foreach (string guess in guesses)
+                    {
+                        string output = $@"{dirPath}\{guess}_{fileName.Substring(0, fileName.Length - 4)}";
+                        frmHome.a.FileDecrypt(filePath, output, guess);
+                    }
+                    MessageBox.Show($"The file has been decrypted, and {guesses.Length} copies were made!", "Decrypted!");
                 }
-                MessageBox.Show($"The file has been decrypted, and {guesses.Length} copies were made!", "Decrypted!");
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    Hide();
+                    new frmHome().Show();
+                }
             }
-            catch(Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                Hide();
-                new frmHome().Show();
+                MessageBox.Show("Please select a folder to save the decrypted files to!", "Error!");
             }
         }
     }
