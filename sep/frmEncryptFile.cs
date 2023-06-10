@@ -42,7 +42,8 @@ namespace sep
                 frmHome.a.FileDecrypt(libEN, libDE, pw);
                 current = DateTime.Now;
                 string currentWritable = current.ToString("d");
-                File.AppendAllText(libDE, $"\r\n{currentWritable}~{filePath}~{password}");
+                File.AppendAllText(libDE, $"\r\n{currentWritable}~{safeFilePath}~{password}");
+                File.WriteAllLines(libDE, File.ReadAllLines(libDE).Where(l => !string.IsNullOrWhiteSpace(l)));
                 frmHome.a.FileEncrypt(libDE, pw);
                 File.Delete(libDE);
                 btnSavePass.Enabled = false;
@@ -52,7 +53,8 @@ namespace sep
                 string pw = Microsoft.VisualBasic.Interaction.InputBox("Create a password for your password library: ", "Password Library Decryption");
                 current = DateTime.Now;
                 string currentWritable = current.ToString("d");
-                File.WriteAllText(libDE, $"{currentWritable}~{filePath}~{password}");
+                File.WriteAllText(libDE, $"{currentWritable}~{safeFilePath}~{password}");
+                File.WriteAllLines(libDE, File.ReadAllLines(libDE).Where(l => !string.IsNullOrWhiteSpace(l)));
                 frmHome.a.FileEncrypt(libDE, pw);
                 File.Delete(libDE);
                 btnSavePass.Enabled = false;

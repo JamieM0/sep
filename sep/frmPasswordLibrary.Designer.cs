@@ -115,7 +115,7 @@
             this.btnBack.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnBack.Location = new System.Drawing.Point(527, 12);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(126, 45);
+            this.btnBack.Size = new System.Drawing.Size(126, 34);
             this.btnBack.TabIndex = 2;
             this.btnBack.Text = "<- Back";
             this.btnBack.UseVisualStyleBackColor = true;
@@ -126,7 +126,7 @@
             this.btnRemoveAll.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnRemoveAll.Location = new System.Drawing.Point(659, 12);
             this.btnRemoveAll.Name = "btnRemoveAll";
-            this.btnRemoveAll.Size = new System.Drawing.Size(126, 45);
+            this.btnRemoveAll.Size = new System.Drawing.Size(126, 34);
             this.btnRemoveAll.TabIndex = 3;
             this.btnRemoveAll.Text = "Remove All";
             this.btnRemoveAll.UseVisualStyleBackColor = true;

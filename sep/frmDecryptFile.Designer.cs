@@ -30,6 +30,7 @@
         {
             this.lbHeading = new System.Windows.Forms.Label();
             this.gbMain = new System.Windows.Forms.GroupBox();
+            this.btnBackToMain = new System.Windows.Forms.Button();
             this.btnGuesser = new System.Windows.Forms.Button();
             this.cbKeepOriginal = new System.Windows.Forms.CheckBox();
             this.lbFilePath = new System.Windows.Forms.Label();
@@ -47,7 +48,6 @@
             this.btnSkipFolder = new System.Windows.Forms.Button();
             this.btnChooseFolder = new System.Windows.Forms.Button();
             this.lbInsG1 = new System.Windows.Forms.Label();
-            this.btnBackToMain = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.gbMain.SuspendLayout();
             this.pnlGuesser.SuspendLayout();
@@ -79,6 +79,18 @@
             this.gbMain.Size = new System.Drawing.Size(734, 351);
             this.gbMain.TabIndex = 5;
             this.gbMain.TabStop = false;
+            // 
+            // btnBackToMain
+            // 
+            this.btnBackToMain.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnBackToMain.Location = new System.Drawing.Point(602, 15);
+            this.btnBackToMain.Name = "btnBackToMain";
+            this.btnBackToMain.Size = new System.Drawing.Size(186, 42);
+            this.btnBackToMain.TabIndex = 0;
+            this.btnBackToMain.Text = "Cancel Guesser";
+            this.btnBackToMain.UseVisualStyleBackColor = true;
+            this.btnBackToMain.Visible = false;
+            this.btnBackToMain.Click += new System.EventHandler(this.btnBackToMain_Click);
             // 
             // btnGuesser
             // 
@@ -271,27 +283,15 @@
     "ords.\r\nEach time, creating a new copy of the supposedly decrypted file. \r\nPlease" +
     " choose an output directory.";
             // 
-            // btnBackToMain
-            // 
-            this.btnBackToMain.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnBackToMain.Location = new System.Drawing.Point(602, 16);
-            this.btnBackToMain.Name = "btnBackToMain";
-            this.btnBackToMain.Size = new System.Drawing.Size(186, 42);
-            this.btnBackToMain.TabIndex = 0;
-            this.btnBackToMain.Text = "Cancel Guesser";
-            this.btnBackToMain.UseVisualStyleBackColor = true;
-            this.btnBackToMain.Visible = false;
-            this.btnBackToMain.Click += new System.EventHandler(this.btnBackToMain_Click);
-            // 
             // btnCancel
             // 
-            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnCancel.ForeColor = System.Drawing.Color.Black;
-            this.btnCancel.Location = new System.Drawing.Point(602, 15);
+            this.btnCancel.Location = new System.Drawing.Point(662, 14);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(186, 43);
+            this.btnCancel.Size = new System.Drawing.Size(126, 45);
             this.btnCancel.TabIndex = 7;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "<-- Back";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 

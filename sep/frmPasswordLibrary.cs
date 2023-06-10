@@ -13,6 +13,7 @@ namespace sep
 {
     public partial class frmPasswordLibrary : Form
     {
+        string password = "";
         public frmPasswordLibrary()
         {
             InitializeComponent();
@@ -20,12 +21,12 @@ namespace sep
             string libDE = "pwLib.conf";
             try
             {
-                string pw = Microsoft.VisualBasic.Interaction.InputBox("Input password library master password: ", "Password Library Decryption");
-                frmHome.a.FileDecrypt(libEN, libDE, pw);
+                password = Microsoft.VisualBasic.Interaction.InputBox("Input password library master password: ", "Password Library Decryption");
+                frmHome.a.FileDecrypt(libEN, libDE, password);
                 string[] lines = File.ReadAllLines(libDE);
-                Array.Reverse(lines);
+                //Array.Reverse(lines);
                 File.Delete(libDE);
-                for(int i=0; i<lines.Length; i++)
+                for (int i=0; i<lines.Length; i++)
                 {
                     string[] a = lines[i].Split('~');
                     PopulateFields(i, a[1], a[2], a[0]);
@@ -35,9 +36,19 @@ namespace sep
             //{
             //    string pw = Microsoft.VisualBasic.Interaction.InputBox("Create a password library. Enter a master password: ", "Password Library Creation");
             //}
-            catch (Exception ex)
+            catch (IndexOutOfRangeException ex)
             {
-                MessageBox.Show("Incorrect Password.\r\nMore Details: " + ex.Message, "Password Library Decryption Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Incorrect Password.", "Password Library Decryption Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                File.Delete("pwLib.conf");
+                Hide();
+                new frmHome().Show();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("An error occured.\r\nMore Details: " + ex.Message, "Password Library Decryption Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                File.Delete("pwLib.conf");
+                Hide();
+                new frmHome().Show();
             }
         }
 
@@ -46,18 +57,22 @@ namespace sep
             Panel pnl = new Panel();
             pnl.Location = new Point(12, 50+index*52);
             pnl.Size = new Size(776, 46);
+            pnl.Name = $"pnl_{index}";
             Controls.Add(pnl);
 
             Label saveDate = new Label();
             saveDate.Location = new Point(3, 10);
             saveDate.Font = new Font("Segoe UI", 14);
             saveDate.Text = date;
+            saveDate.Size = new Size(110, 25);
             pnl.Controls.Add(saveDate);
 
             Label FileName = new Label();
+            FileName.BringToFront();
             FileName.Location = new Point(120, 10);
             FileName.Font = new Font("Segoe UI", 14);
             FileName.Text = fileName;
+            FileName.Size = new Size(300, 25);
             pnl.Controls.Add(FileName);
 
             PictureBox remove = new PictureBox();
@@ -65,26 +80,91 @@ namespace sep
             remove.Size = new Size(40, 40);
             remove.Image = Properties.Resources.remove;
             remove.SizeMode = PictureBoxSizeMode.Zoom;
+            remove.Click += Remove_Click;
+            remove.Name = $"btnRemove_{index}";
             pnl.Controls.Add(remove);
 
             Button copy = new Button();
             copy.Location = new Point(632, 8);
             copy.Size = new Size(95, 31);
             copy.Text = "Copy";
+            copy.Name = $"btnCopy_{index}";
+            copy.Click += Copy_Click;
             pnl.Controls.Add(copy);
 
             TextBox textBox = new TextBox();
-            textBox.Location = new Point(380, 6);
-            textBox.Size = new Size(184, 33);
+            textBox.Location = new Point(490, 6);
+            textBox.TextAlign = HorizontalAlignment.Right;
             textBox.Font = new Font("Segoe UI", 14);
+            Size size = TextRenderer.MeasureText(password, textBox.Font);
+            textBox.Size = new Size(size.Width+10, size.Height);
+            //textBox.AutoSize = true;
             textBox.Text = password;
             textBox.ReadOnly = true;
+            textBox.Name = $"txtPassword_{index}";
             pnl.Controls.Add(textBox);
         }
-        
-        public void remove_Click()
+
+        private void Remove_Click(object sender, EventArgs e)
         {
+            //Get index from remove button
+            frmHome.a.FileDecrypt("pwLib.conf.aes", "pwLib.conf", password);
+            PictureBox pb = sender as PictureBox;
+            int index = Convert.ToInt32(pb.Name.Split('_')[1]);
+            LineRemover("pwLib.conf", index);
+            frmHome.a.FileEncrypt("pwLib.conf", password);
+        }
+
+        private void Copy_Click(object sender, EventArgs e)
+        {
+            //Get index from remove button
+            Button btn = sender as Button;
+            int index = Convert.ToInt32(btn.Name.Split('_')[1]);
+
+            //Search all controls for one called txtPassword_i
+            foreach (Control c in Controls)
+            {
+                if (c.Name == $"pnl_{index}")
+                {
+                    foreach(Control b in c.Controls)
+                    {
+                        if(b.Name == $"txtPassword_{index}")
+                        {
+                            Clipboard.SetText(b.Text);
+                            MessageBox.Show("Password copied to clipboard.", "Password Copied", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void LineRemover(string file, int indexRemove)
+        {
+            string[] lines = File.ReadAllLines(file);
+            string[] newLines = new string[lines.Length - 1];
+            int j = 0;
+            for (int i = 0; i < lines.Length; i++)
+            {
+                if (i != indexRemove)
+                {
+                    newLines[j] = lines[i];
+                    j++;
+                }
+            }
+            File.WriteAllLines(file, newLines);
+            File.WriteAllLines(file, File.ReadAllLines(file).Where(l => !string.IsNullOrWhiteSpace(l)));
+
+            //foreach(Control c in Controls)
+            //{
+            //    if (c is Panel)
+            //    {
+            //        Controls.Remove(c);
+            //    }
+            //}
             
+            Hide();
+            new frmHome().Show();
+            File.Delete("pwLib.conf");
         }
 
         private void btnRemoveAll_Click(object sender, EventArgs e)
