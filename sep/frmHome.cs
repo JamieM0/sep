@@ -81,5 +81,11 @@ namespace sep
             Hide();
             new frmPasswordLibrary().Show();
         }
+
+        private void btnLockers_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new frmLockers().Show();
+        }
     }
 }
