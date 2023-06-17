@@ -111,8 +111,11 @@ namespace sep
             frmHome.a.FileDecrypt("pwLib.conf.aes", "pwLib.conf", password);
             PictureBox pb = sender as PictureBox;
             int index = Convert.ToInt32(pb.Name.Split('_')[1]);
-            LineRemover("pwLib.conf", index);
+            OtherOperations.LineRemover("pwLib.conf", index);
+            Hide();
+            new frmHome().Show();
             frmHome.a.FileEncrypt("pwLib.conf", password);
+            File.Delete("pwLib.conf");
         }
 
         private void Copy_Click(object sender, EventArgs e)
@@ -137,36 +140,7 @@ namespace sep
                 }
             }
         }
-
-        private void LineRemover(string file, int indexRemove)
-        {
-            string[] lines = File.ReadAllLines(file);
-            string[] newLines = new string[lines.Length - 1];
-            int j = 0;
-            for (int i = 0; i < lines.Length; i++)
-            {
-                if (i != indexRemove)
-                {
-                    newLines[j] = lines[i];
-                    j++;
-                }
-            }
-            File.WriteAllLines(file, newLines);
-            File.WriteAllLines(file, File.ReadAllLines(file).Where(l => !string.IsNullOrWhiteSpace(l)));
-
-            //foreach(Control c in Controls)
-            //{
-            //    if (c is Panel)
-            //    {
-            //        Controls.Remove(c);
-            //    }
-            //}
-            
-            Hide();
-            new frmHome().Show();
-            File.Delete("pwLib.conf");
-        }
-
+        
         private void btnRemoveAll_Click(object sender, EventArgs e)
         {
             //Prompt with confirm action
