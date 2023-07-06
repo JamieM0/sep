@@ -9,6 +9,9 @@ namespace sep
 {
     internal class OtherOperations
     {
+        public static string filePath { get; set; }
+        public static string storeLoc { get; set; }
+        
         public static void LineRemover(string file, int indexRemove)
         {
             string[] lines = File.ReadAllLines(file);
@@ -36,6 +39,33 @@ namespace sep
                 }
             }
             File.WriteAllLines(file, lines);
+        }
+        public static void SaveToLibrary(string fileName, string password)
+        {
+            string libEN = "pwLib.conf.aes";
+            string libDE = "pwLib.conf";
+            DateTime current = new DateTime();
+            if (File.Exists(libEN))
+            {
+                string pw = Microsoft.VisualBasic.Interaction.InputBox("Input password library master password: ", "Password Library Decryption");
+                frmHome.a.FileDecrypt(libEN, libDE, pw);
+                current = DateTime.Now;
+                string currentWritable = current.ToString("d");
+                File.AppendAllText(libDE, $"\r\n{currentWritable}~{fileName}~{password}");
+                File.WriteAllLines(libDE, File.ReadAllLines(libDE).Where(l => !string.IsNullOrWhiteSpace(l)));
+                frmHome.a.FileEncrypt(libDE, pw);
+                File.Delete(libDE);
+            }
+            else
+            {
+                string pw = Microsoft.VisualBasic.Interaction.InputBox("Create a password for your password library: ", "Password Library Decryption");
+                current = DateTime.Now;
+                string currentWritable = current.ToString("d");
+                File.WriteAllText(libDE, $"{currentWritable}~{fileName}~{password}");
+                File.WriteAllLines(libDE, File.ReadAllLines(libDE).Where(l => !string.IsNullOrWhiteSpace(l)));
+                frmHome.a.FileEncrypt(libDE, pw);
+                File.Delete(libDE);
+            }
         }
     }
 }

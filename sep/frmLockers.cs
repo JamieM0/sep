@@ -16,11 +16,12 @@ namespace sep
         public frmLockers()
         {
             InitializeComponent();
-            if(!File.Exists("lockersInfo.conf"))
+            if(!File.Exists(Path.Combine(OtherOperations.storeLoc, "lockersInfo.conf")))
             {
-                File.Create("lockersInfo.conf").Close();
+                File.Create(Path.Combine(OtherOperations.storeLoc, "lockersInfo.conf")).Close();
             }
             Populator();
+            CenterToScreen();
         }
 
         bool deleting = false;
@@ -33,8 +34,8 @@ namespace sep
                 if (c.Name.Split('_')[0] == "pnlI")
                     Controls.Remove(c);
             }
-            lockerLocations = new string[File.ReadLines("lockersInfo.conf").Count()];
-            string[] lines = File.ReadAllLines("lockersInfo.conf");
+            lockerLocations = new string[File.ReadLines(Path.Combine(OtherOperations.storeLoc, "lockersInfo.conf")).Count()];
+            string[] lines = File.ReadAllLines(Path.Combine(OtherOperations.storeLoc, "lockersInfo.conf"));
             for (int i = 0; i < lines.Length; i++)
             {
                 string[] a = lines[i].Split('~');
@@ -89,7 +90,7 @@ namespace sep
             Button openLocker = new Button();
             openLocker.Location = new Point(296, 6);
             openLocker.Size = new Size(110, 32);
-            openLocker.Text = "Open";
+            openLocker.Text = "Fix";
             openLocker.Font = new Font("Segoe UI", 14);
             openLocker.Name = $"btnOpenLocker_{index}";
             openLocker.Click += OpenLockerAction_Click;
@@ -117,7 +118,7 @@ namespace sep
                     string output = lockerLocations[index] + ".encloc\\" + Path.GetFileName(f) + ".aes";
                     frmHome.a.FileEncrypt(input, output, pw);
                 }
-                OtherOperations.LineChanger("lockersInfo.conf", lockerLocations[index].Split('/')[0] + "~" + lockerLocations[index].Split('/')[1], lockerLocations[index].Split('/')[0] + "~" + lockerLocations[index].Split('/')[1] + "~1");
+                OtherOperations.LineChanger(Path.Combine(OtherOperations.storeLoc, "lockersInfo.conf"), lockerLocations[index].Split('/')[0] + "~" + lockerLocations[index].Split('/')[1], lockerLocations[index].Split('/')[0] + "~" + lockerLocations[index].Split('/')[1] + "~1");
                 MessageBox.Show("Locker locked successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Directory.Delete(lockerLocations[index], true);
                 btn.Text = "Unlock";
@@ -132,8 +133,8 @@ namespace sep
                     string output = lockerLocations[index] + "\\" + $"{Path.GetFileName(f).Split('.')[0]}.{Path.GetFileName(f).Split('.')[1]}";
                     frmHome.a.FileDecrypt(input, output, pw);
                 }
-                OtherOperations.LineChanger("lockersInfo.conf", lockerLocations[index].Split('/')[0] + "~" + lockerLocations[index].Split('/')[1], lockerLocations[index].Split('/')[0] + "~" + lockerLocations[index].Split('/')[1] + "~0");
-                MessageBox.Show("Locker locked successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                OtherOperations.LineChanger(Path.Combine(OtherOperations.storeLoc, "lockersInfo.conf"), lockerLocations[index].Split('/')[0] + "~" + lockerLocations[index].Split('/')[1], lockerLocations[index].Split('/')[0] + "~" + lockerLocations[index].Split('/')[1] + "~0");
+                MessageBox.Show("Locker unlocked successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btn.Text = "Lock";
             }
             btn.Enabled = true;
@@ -144,13 +145,14 @@ namespace sep
             Button btn = (Button)sender;
             int index = int.Parse(btn.Name.Split('_')[1]);
             string dirToOpen = lockerLocations[index];
-            if (btn.Text=="Open")
+            if (btn.Text=="Fix")
             {
-                System.Diagnostics.Process.Start("explorer.exe", @dirToOpen);
+                //System.Diagnostics.Process.Start("explorer.exe", @dirToOpen);
+                //OtherOperations.LineChanger()
             }
             else
             {
-                OtherOperations.LineRemover("lockersInfo.conf", index);
+                OtherOperations.LineRemover(Path.Combine(OtherOperations.storeLoc, "lockersInfo.conf"), index);
                 MessageBox.Show("Locker deleted, but the files are still on your PC, you can now delete them manually.");
                 System.Diagnostics.Process.Start("explorer.exe", @dirToOpen);
             }
@@ -187,7 +189,7 @@ namespace sep
                             {
                                 if (c2.Text == "Open")
                                 {
-                                    c2.Text = "Delete";
+                                    c2.Text = "Fix";
                                 }
                             }
                         }
@@ -207,7 +209,7 @@ namespace sep
                         {
                             if (c2 is Button)
                             {
-                                if (c2.Text == "Delete")
+                                if (c2.Text == "Fix")
                                 {
                                     c2.Text = "Open";
                                 }
@@ -245,7 +247,7 @@ namespace sep
         {
             if(!String.IsNullOrEmpty(lbDirectoryListing.Text) && !String.IsNullOrEmpty(txtLockerName.Text))
             {
-                File.AppendAllText("lockersInfo.conf", $"{lbDirectoryListing.Text}~{txtLockerName.Text}~0\r\n");
+                File.AppendAllText(Path.Combine(OtherOperations.storeLoc, "lockersInfo.conf"), $"{lbDirectoryListing.Text}~{txtLockerName.Text}~0\r\n");
 
                 pnlCreateMenu.Visible = false;
                 btnDeleteLocker.Visible = true;
@@ -259,6 +261,11 @@ namespace sep
             }
             
             Populator();
+        }
+
+        private void frmLockers_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

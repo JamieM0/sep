@@ -231,6 +231,7 @@
             this.Controls.Add(this.lbTitles);
             this.Name = "frmLockers";
             this.Text = "SEP: Lockers";
+            this.Load += new System.EventHandler(this.frmLockers_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.pnlCreateMenu.ResumeLayout(false);

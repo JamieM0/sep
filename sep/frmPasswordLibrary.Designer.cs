@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -37,6 +38,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnRemoveAll = new System.Windows.Forms.Button();
+            this.tmrTick = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -132,6 +134,11 @@
             this.btnRemoveAll.UseVisualStyleBackColor = true;
             this.btnRemoveAll.Click += new System.EventHandler(this.btnRemoveAll_Click);
             // 
+            // tmrTick
+            // 
+            this.tmrTick.Interval = 2500;
+            this.tmrTick.Tick += new System.EventHandler(this.tmrTick_Tick);
+            // 
             // frmPasswordLibrary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -143,6 +150,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "frmPasswordLibrary";
             this.Text = "Password Library";
+            this.Load += new System.EventHandler(this.frmPasswordLibrary_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -161,5 +169,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnRemoveAll;
+        private System.Windows.Forms.Timer tmrTick;
     }
 }

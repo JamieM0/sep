@@ -24,6 +24,7 @@ namespace sep
             //btnOpen.Enabled = false;
             btnGo.Enabled = false;
             CenterToScreen();
+            BringToFront();
         }
 
         private void frmEncryptFile_Load(object sender, EventArgs e)
@@ -33,32 +34,7 @@ namespace sep
 
         private void btnSavePass_Click(object sender, EventArgs e)
         {
-            string libEN = "pwLib.conf.aes";
-            string libDE = "pwLib.conf";
-
-            if(File.Exists(libEN))
-            {
-                string pw = Microsoft.VisualBasic.Interaction.InputBox("Input password library master password: ", "Password Library Decryption");
-                frmHome.a.FileDecrypt(libEN, libDE, pw);
-                current = DateTime.Now;
-                string currentWritable = current.ToString("d");
-                File.AppendAllText(libDE, $"\r\n{currentWritable}~{safeFilePath}~{password}");
-                File.WriteAllLines(libDE, File.ReadAllLines(libDE).Where(l => !string.IsNullOrWhiteSpace(l)));
-                frmHome.a.FileEncrypt(libDE, pw);
-                File.Delete(libDE);
-                btnSavePass.Enabled = false;
-            }
-            else
-            {
-                string pw = Microsoft.VisualBasic.Interaction.InputBox("Create a password for your password library: ", "Password Library Decryption");
-                current = DateTime.Now;
-                string currentWritable = current.ToString("d");
-                File.WriteAllText(libDE, $"{currentWritable}~{safeFilePath}~{password}");
-                File.WriteAllLines(libDE, File.ReadAllLines(libDE).Where(l => !string.IsNullOrWhiteSpace(l)));
-                frmHome.a.FileEncrypt(libDE, pw);
-                File.Delete(libDE);
-                btnSavePass.Enabled = false;
-            }
+            OtherOperations.SaveToLibrary(safeFilePath, password);
         }
 
         private void btnGenPass_Click(object sender, EventArgs e)

@@ -14,11 +14,14 @@ namespace sep
     public partial class frmPasswordLibrary : Form
     {
         string password = "";
+        bool validCred = true;
         public frmPasswordLibrary()
         {
             InitializeComponent();
             string libEN = "pwLib.conf.aes";
             string libDE = "pwLib.conf";
+            tmrTick.Start();
+            CenterToScreen();
             try
             {
                 password = Microsoft.VisualBasic.Interaction.InputBox("Input password library master password: ", "Password Library Decryption");
@@ -40,15 +43,13 @@ namespace sep
             {
                 MessageBox.Show("Incorrect Password.", "Password Library Decryption Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 File.Delete("pwLib.conf");
-                Hide();
-                new frmHome().Show();
+                validCred = false;
             }
             catch(Exception ex)
             {
                 MessageBox.Show("An error occured.\r\nMore Details: " + ex.Message, "Password Library Decryption Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 File.Delete("pwLib.conf");
-                Hide();
-                new frmHome().Show();
+                validCred = false;
             }
         }
 
@@ -160,6 +161,21 @@ namespace sep
         {
             Hide();
             new frmHome().Show();
+        }
+
+        private void frmPasswordLibrary_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tmrTick_Tick(object sender, EventArgs e)
+        {
+            if(!validCred)
+            {
+                Hide();
+                new frmHome().Show();
+                tmrTick.Stop();
+            }
         }
     }
 }

@@ -7,6 +7,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
+using Microsoft.Win32;
 
 namespace sep
 {
@@ -14,17 +16,22 @@ namespace sep
     {
 
         public static AES a = new AES();
+        bool sent = false;
         
         public frmHome()
         {
             InitializeComponent();
             CenterToScreen();
-            if(!File.Exists("first.load"))
+
+            OtherOperations.storeLoc = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SEP");
+            if (!File.Exists(Path.Combine(OtherOperations.storeLoc, "first.load")))
             {
                 MessageBox.Show("Warning: This project is still in development. Please use at your own risk.\r\n\r\nThis message will not show again (until the first.load file is removed).", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                File.Create("first.load");
+                Directory.CreateDirectory(OtherOperations.storeLoc);
+                File.Create(Path.Combine(OtherOperations.storeLoc, "first.load"));
             }
-            if(!File.Exists("pwLib.conf.aes"))
+
+            if (!File.Exists("pwLib.conf.aes"))
             {
                 btnPWLib.Enabled = false;
             }
@@ -49,7 +56,22 @@ namespace sep
 
         private void frmHome_Load(object sender, EventArgs e)
         {
-
+            tmrTick.Start();
+            string[] passArgs = Environment.GetCommandLineArgs();
+            if (passArgs.Contains("-e"))
+            {
+                sent = true;
+                OtherOperations.filePath = passArgs[2];
+                Hide();
+                new frmStreamedFunction().Show();
+            }
+            else if (passArgs.Contains("-d"))
+            {
+                sent = true;
+                OtherOperations.filePath = passArgs[2];
+                Hide();
+                new frmStreamedFunction().Show();
+            }
         }
 
         private void pbGithub_Click(object sender, EventArgs e)
@@ -86,6 +108,87 @@ namespace sep
         {
             Hide();
             new frmLockers().Show();
+        }
+
+        private void encryptToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void encryptFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new frmEncryptFile().Show();
+        }
+
+        private void encryptStringToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new frmEncryptString().Show();
+        }
+
+        private void decryptFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new frmDecryptFile().Show();
+        }
+
+        private void decryptStringToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new frmDecryptString().Show();
+        }
+
+        private void lockersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new frmLockers().Show();
+        }
+
+        private void passwordLibraryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new frmPasswordLibrary().Show();
+        }
+
+        private void githubPageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProcessStartInfo psInfo = new ProcessStartInfo
+            {
+                FileName = "https://github.com/jamiem0/sep",
+                UseShellExecute = true
+            };
+            Process.Start(psInfo);
+        }
+
+        private void tmrTick_Tick(object sender, EventArgs e)
+        {
+            if (sent)
+            {
+                Hide();
+            }
+        }
+
+        private void installToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void automaticTakeoverToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Display messagebox warning user about changing registry values and ask if agreed
+            DialogResult result = MessageBox.Show("Automatic Takeover allows you to right click a file and select Encrypt or Decrypt right from the Windows context menu." +
+                "\r\nIf you continue without running SEP as an admistrator, the program may encounter errors leading to a corrupted registry entry." +
+                "\r\nThis will change registry values and may cause problems with your computer. \r\nAre you sure you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if(result==DialogResult.Yes)
+            {
+                RegistryKey key = Registry.ClassesRoot.OpenSubKey(@"*\shell", true);
+                key.CreateSubKey("SEP Encrypt");
+                key = key.OpenSubKey("SEP Encrypt", true);
+                key.SetValue("icon", Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "enclogo.ico"));
+                key.CreateSubKey("command");
+                key = key.OpenSubKey("command", true);
+                key.SetValue("", "\"" + Application.ExecutablePath + "\" -e \"%1\"");
+                MessageBox.Show("Automatic Takeover has been installed. \r\nYou can now right click a file and select SEP Encrypt, which allows you to\r\neither Ecrypt or Decrypt the file.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

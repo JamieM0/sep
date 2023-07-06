@@ -163,7 +163,6 @@ namespace sep
         private void btnGoToMainMenu_Click(object sender, EventArgs e)
         {
             Hide();
-            new frmHome().Show();
         }
 
         private void btnCopy_Click(object sender, EventArgs e)
