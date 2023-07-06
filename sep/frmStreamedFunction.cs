@@ -98,5 +98,10 @@ namespace sep
                 }
             }
         }
+
+        private void frmStreamedFunction_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

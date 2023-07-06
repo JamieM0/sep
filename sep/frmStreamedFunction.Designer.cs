@@ -112,6 +112,7 @@
             this.Controls.Add(this.txtPassword);
             this.Name = "frmStreamedFunction";
             this.Text = "SEP";
+            this.Load += new System.EventHandler(this.frmStreamedFunction_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

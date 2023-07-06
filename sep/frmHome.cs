@@ -72,6 +72,12 @@ namespace sep
                 Hide();
                 new frmStreamedFunction().Show();
             }
+            else if (passArgs.Contains("-l"))
+            {
+                File.AppendAllText(Path.Combine(OtherOperations.storeLoc, "lockersInfo.conf"), $"{Path.GetDirectoryName(passArgs[2])}~{Path.GetFileName(passArgs[2])}~0\r\n");
+                MessageBox.Show("Locker added to list.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                sent = true; //(movetoend)
+            }
         }
 
         private void pbGithub_Click(object sender, EventArgs e)
@@ -176,6 +182,7 @@ namespace sep
         {
             //Display messagebox warning user about changing registry values and ask if agreed
             DialogResult result = MessageBox.Show("Automatic Takeover allows you to right click a file and select Encrypt or Decrypt right from the Windows context menu." +
+                "\nYou can also right click an entire folder and convert it to a locker, allowing you to encrypt its contents easily!" +
                 "\r\nIf you continue without running SEP as an admistrator, the program may encounter errors leading to a corrupted registry entry." +
                 "\r\nThis will change registry values and may cause problems with your computer. \r\nAre you sure you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if(result==DialogResult.Yes)
@@ -187,7 +194,16 @@ namespace sep
                 key.CreateSubKey("command");
                 key = key.OpenSubKey("command", true);
                 key.SetValue("", "\"" + Application.ExecutablePath + "\" -e \"%1\"");
-                MessageBox.Show("Automatic Takeover has been installed. \r\nYou can now right click a file and select SEP Encrypt, which allows you to\r\neither Ecrypt or Decrypt the file.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                key = Registry.ClassesRoot.OpenSubKey(@"Directory\shell", true);
+                key.CreateSubKey("SEP Convert to Locker");
+                key = key.OpenSubKey("SEP Convert to Locker", true);
+                key.SetValue("icon", Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "enclogo.ico"));
+                key.CreateSubKey("command");
+                key = key.OpenSubKey("command", true);
+                key.SetValue("", "\"" + Application.ExecutablePath + "\" -l \"%V\"");
+                
+                MessageBox.Show("Automatic Takeover has been installed. \r\nYou can now right click a file and select SEP Encrypt, which allows you to\r\neither Ecrypt or Decrypt the file.\r\nYou can also convert an entire folder to a locker.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }
