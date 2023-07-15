@@ -59,6 +59,7 @@ namespace sep
                 }
 
                 MessageBox.Show("The file has been encrypted!", "Encrypted!");
+                Application.Exit();
             }
             else
             {
@@ -79,8 +80,7 @@ namespace sep
 
                         MessageBox.Show("The file has been decrypted!", "Decrypted!");
 
-                        Hide();
-                        new frmHome().Show();
+                        Application.Exit();
                     }
                 }
                 else
@@ -93,8 +93,8 @@ namespace sep
 
                     MessageBox.Show("The file has been decrypted!", "Decrypted!");
 
-                    Hide();
-                    new frmHome().Show();
+                    Application.Exit();
+
                 }
             }
         }
