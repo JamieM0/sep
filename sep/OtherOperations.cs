@@ -53,7 +53,7 @@ namespace sep
                 string currentWritable = current.ToString("d");
                 File.AppendAllText(libDE, $"\r\n{currentWritable}~{fileName}~{password}");
                 File.WriteAllLines(libDE, File.ReadAllLines(libDE).Where(l => !string.IsNullOrWhiteSpace(l)));
-                frmHome.a.FileEncrypt(libDE, pw);
+                frmHome.a.FileEncrypt(libDE, pw, false);
                 File.Delete(libDE);
             }
             else
@@ -63,7 +63,7 @@ namespace sep
                 string currentWritable = current.ToString("d");
                 File.WriteAllText(libDE, $"{currentWritable}~{fileName}~{password}");
                 File.WriteAllLines(libDE, File.ReadAllLines(libDE).Where(l => !string.IsNullOrWhiteSpace(l)));
-                frmHome.a.FileEncrypt(libDE, pw);
+                frmHome.a.FileEncrypt(libDE, pw,false);
                 File.Delete(libDE);
             }
         }

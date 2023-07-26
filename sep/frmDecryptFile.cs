@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Google.Authenticator;
 
 namespace sep
 {
@@ -21,6 +22,7 @@ namespace sep
         public frmDecryptFile()
         {
             InitializeComponent();
+            CenterToScreen();
             txtPasswordInput.Enabled = false;
             btnOpen.Enabled = true;
         }
@@ -59,47 +61,31 @@ namespace sep
 
         private void btnGo_Click(object sender, EventArgs e)
         {
-            if (!cbKeepOriginal.Checked)
+            txtPasswordInput.Enabled = false;
+            password = txtPasswordInput.Text;
+
+            if (filePath[filePath.Length-1]=='a')
             {
-                if (MessageBox.Show("Entering the incorrect password WILL result in a corrupted file!\r\n\r\nYou should keep the encrypted copy as well, just in case.\r\n\r\nClicking 'Yes' may be risky. If you're unsure, click 'No', and choose to keep the encrypted file!\r\n\r\nDo you wish to proceed?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                {
-                    txtPasswordInput.Enabled = false;
-
-                    password = txtPasswordInput.Text;
-
-                    string filePathUnencrypted;
-
-                    filePathUnencrypted = filePath.Substring(0, filePath.Length - 4);
-
-                    frmHome.a.FileDecrypt(filePath, filePathUnencrypted, password);
-
-                    if (!cbKeepOriginal.Checked)
-                    {
-                        File.Delete(filePath);
-                    }
-
-                    MessageBox.Show("The file has been decrypted!", "Decrypted!");
-
-                    Hide();
-                    new frmHome().Show();
-                }
+                gbMain.Visible = false;
+                pnlMFA.Visible = true;
             }
             else
             {
-                txtPasswordInput.Enabled = false;
-
-                password = txtPasswordInput.Text;
-
                 string filePathUnencrypted;
-
                 filePathUnencrypted = filePath.Substring(0, filePath.Length - 4);
-
                 frmHome.a.FileDecrypt(filePath, filePathUnencrypted, password);
-
                 MessageBox.Show("The file has been decrypted!", "Decrypted!");
 
                 Hide();
                 new frmHome().Show();
+
+                if (!cbKeepOriginal.Checked)
+                {
+                    if (MessageBox.Show("Entering the incorrect password WILL result in a corrupted file!\r\n\r\nYou should keep the encrypted copy as well, just in case.\r\n\r\nClicking 'Yes' may be risky. If you're unsure, click 'No', and choose to keep the encrypted file!\r\n\r\nDo you wish to proceed?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        File.Delete(filePath);
+                    }
+                }
             }
         }
 
@@ -175,6 +161,49 @@ namespace sep
             {
                 MessageBox.Show("Please select a folder to save the decrypted files to!", "Error!");
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string privateKey = File.ReadAllText(OtherOperations.storeLoc + $"\\privateKeys\\{fileName.Substring(0,fileName.Length-4)}.key");
+                string code = txtAuthCode.Text;
+                if (VerifyOTP(privateKey, code))
+                {
+                    string filePathUnencrypted;
+                    filePathUnencrypted = filePath.Substring(0, filePath.Length - 4);
+                    frmHome.a.FileDecrypt(filePath, filePathUnencrypted, password + "⌀" + privateKey);
+                    MessageBox.Show("The file has been decrypted!", "Decrypted!");
+
+                    Hide();
+                    new frmHome().Show();
+
+                    if (!cbKeepOriginal.Checked)
+                    {
+                        if (MessageBox.Show("Entering the incorrect password WILL result in a corrupted file!\r\n\r\nYou should keep the encrypted copy as well, just in case.\r\n\r\nClicking 'Yes' may be risky. If you're unsure, click 'No', and choose to keep the encrypted file!\r\n\r\nDo you wish to proceed?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            File.Delete(filePath);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Invalid Code! Please try again later!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error! Details: " + ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        bool VerifyOTP(string secretKey, string userOTP)
+        {
+            //var authenticator = new TwoFactorAuthenticator();
+            //return authenticator.ValidateTwoFactorPIN(secretKey, userOTP);
+            TwoFactorAuthenticator tfa = new TwoFactorAuthenticator();
+            return tfa.ValidateTwoFactorPIN(secretKey, userOTP, true);
         }
     }
 }

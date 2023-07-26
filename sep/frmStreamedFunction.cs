@@ -52,7 +52,7 @@ namespace sep
         {
             if (btnFunction.Text == "Encrypt")
             {
-                frmHome.a.FileEncrypt(filePath, txtPassword.Text);
+                frmHome.a.FileEncrypt(filePath, txtPassword.Text,false);
                 if (!cbSaveOriginal.Checked)
                 {
                     File.Delete(filePath);

@@ -30,7 +30,6 @@
         {
             this.lbHeading = new System.Windows.Forms.Label();
             this.gbMain = new System.Windows.Forms.GroupBox();
-            this.btnBackToMain = new System.Windows.Forms.Button();
             this.btnGuesser = new System.Windows.Forms.Button();
             this.cbKeepOriginal = new System.Windows.Forms.CheckBox();
             this.lbFilePath = new System.Windows.Forms.Label();
@@ -40,6 +39,7 @@
             this.btnConfirmPassword = new System.Windows.Forms.Button();
             this.txtPasswordInput = new System.Windows.Forms.TextBox();
             this.lbIns1 = new System.Windows.Forms.Label();
+            this.btnBackToMain = new System.Windows.Forms.Button();
             this.pnlGuesser = new System.Windows.Forms.Panel();
             this.btnGuessGo = new System.Windows.Forms.Button();
             this.txtGuesses = new System.Windows.Forms.TextBox();
@@ -49,8 +49,14 @@
             this.btnChooseFolder = new System.Windows.Forms.Button();
             this.lbInsG1 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.pnlMFA = new System.Windows.Forms.Panel();
+            this.btnAuthConfirm = new System.Windows.Forms.Button();
+            this.txtAuthCode = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lbMFAIntro = new System.Windows.Forms.Label();
             this.gbMain.SuspendLayout();
             this.pnlGuesser.SuspendLayout();
+            this.pnlMFA.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbHeading
@@ -79,18 +85,6 @@
             this.gbMain.Size = new System.Drawing.Size(734, 351);
             this.gbMain.TabIndex = 5;
             this.gbMain.TabStop = false;
-            // 
-            // btnBackToMain
-            // 
-            this.btnBackToMain.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnBackToMain.Location = new System.Drawing.Point(602, 15);
-            this.btnBackToMain.Name = "btnBackToMain";
-            this.btnBackToMain.Size = new System.Drawing.Size(186, 42);
-            this.btnBackToMain.TabIndex = 0;
-            this.btnBackToMain.Text = "Cancel Guesser";
-            this.btnBackToMain.UseVisualStyleBackColor = true;
-            this.btnBackToMain.Visible = false;
-            this.btnBackToMain.Click += new System.EventHandler(this.btnBackToMain_Click);
             // 
             // btnGuesser
             // 
@@ -192,6 +186,18 @@
             this.lbIns1.Size = new System.Drawing.Size(210, 25);
             this.lbIns1.TabIndex = 0;
             this.lbIns1.Text = "1. Locate encrypted file.";
+            // 
+            // btnBackToMain
+            // 
+            this.btnBackToMain.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnBackToMain.Location = new System.Drawing.Point(602, 16);
+            this.btnBackToMain.Name = "btnBackToMain";
+            this.btnBackToMain.Size = new System.Drawing.Size(186, 42);
+            this.btnBackToMain.TabIndex = 0;
+            this.btnBackToMain.Text = "Cancel Guesser";
+            this.btnBackToMain.UseVisualStyleBackColor = true;
+            this.btnBackToMain.Visible = false;
+            this.btnBackToMain.Click += new System.EventHandler(this.btnBackToMain_Click);
             // 
             // pnlGuesser
             // 
@@ -295,11 +301,63 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // pnlMFA
+            // 
+            this.pnlMFA.Controls.Add(this.btnAuthConfirm);
+            this.pnlMFA.Controls.Add(this.txtAuthCode);
+            this.pnlMFA.Controls.Add(this.label2);
+            this.pnlMFA.Controls.Add(this.lbMFAIntro);
+            this.pnlMFA.Location = new System.Drawing.Point(130, 100);
+            this.pnlMFA.Name = "pnlMFA";
+            this.pnlMFA.Size = new System.Drawing.Size(556, 222);
+            this.pnlMFA.TabIndex = 9;
+            this.pnlMFA.Visible = false;
+            // 
+            // btnAuthConfirm
+            // 
+            this.btnAuthConfirm.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAuthConfirm.Location = new System.Drawing.Point(16, 166);
+            this.btnAuthConfirm.Name = "btnAuthConfirm";
+            this.btnAuthConfirm.Size = new System.Drawing.Size(500, 33);
+            this.btnAuthConfirm.TabIndex = 3;
+            this.btnAuthConfirm.Text = "Confirm";
+            this.btnAuthConfirm.UseVisualStyleBackColor = true;
+            this.btnAuthConfirm.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // txtAuthCode
+            // 
+            this.txtAuthCode.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtAuthCode.Location = new System.Drawing.Point(318, 98);
+            this.txtAuthCode.Name = "txtAuthCode";
+            this.txtAuthCode.Size = new System.Drawing.Size(100, 35);
+            this.txtAuthCode.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(16, 101);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(291, 30);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Enter the code from your app:";
+            // 
+            // lbMFAIntro
+            // 
+            this.lbMFAIntro.AutoSize = true;
+            this.lbMFAIntro.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbMFAIntro.Location = new System.Drawing.Point(16, 22);
+            this.lbMFAIntro.Name = "lbMFAIntro";
+            this.lbMFAIntro.Size = new System.Drawing.Size(500, 37);
+            this.lbMFAIntro.TabIndex = 0;
+            this.lbMFAIntro.Text = "This file uses MFA (an authenticator app).";
+            // 
             // frmDecryptFile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pnlMFA);
             this.Controls.Add(this.btnBackToMain);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.gbMain);
@@ -311,6 +369,8 @@
             this.gbMain.PerformLayout();
             this.pnlGuesser.ResumeLayout(false);
             this.pnlGuesser.PerformLayout();
+            this.pnlMFA.ResumeLayout(false);
+            this.pnlMFA.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -339,5 +399,10 @@
         private System.Windows.Forms.Button btnGuessGo;
         private System.Windows.Forms.TextBox txtGuesses;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel pnlMFA;
+        private System.Windows.Forms.TextBox txtAuthCode;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbMFAIntro;
+        private System.Windows.Forms.Button btnAuthConfirm;
     }
 }

@@ -32,7 +32,7 @@ namespace sep
             return data;
         }
 
-        public void FileEncrypt(string inputFile, string password)
+        public void FileEncrypt(string inputFile, string password, bool usingMFA)
         {
             //http://stackoverflow.com/questions/27645527/aes-encryption-on-large-files
 
@@ -40,7 +40,11 @@ namespace sep
             byte[] salt = GenerateRandomSalt();
 
             //create output file name
-            FileStream fsCrypt = new FileStream(inputFile + ".aes", FileMode.Create);
+            FileStream fsCrypt;
+            if (usingMFA)
+                fsCrypt = new FileStream(inputFile + ".mfa", FileMode.Create);
+            else
+                fsCrypt = new FileStream(inputFile + ".aes", FileMode.Create);
 
             //convert password string to byte arrray
             byte[] passwordBytes = System.Text.Encoding.UTF8.GetBytes(password);

@@ -30,6 +30,8 @@
         {
             this.lbHeading = new System.Windows.Forms.Label();
             this.gbMain = new System.Windows.Forms.GroupBox();
+            this.btnAuthenticator = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.cbKeepOriginal = new System.Windows.Forms.CheckBox();
             this.lbFilePath = new System.Windows.Forms.Label();
             this.btnOpen = new System.Windows.Forms.Button();
@@ -43,9 +45,18 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnBack = new System.Windows.Forms.Button();
+            this.pnlAuthApp = new System.Windows.Forms.Panel();
+            this.btnConfirmAuthSetup = new System.Windows.Forms.Button();
+            this.txtAuthSetupVerify = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lbS1 = new System.Windows.Forms.Label();
+            this.pbQRAuthSetup = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.gbMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.pnlAuthApp.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbQRAuthSetup)).BeginInit();
             this.SuspendLayout();
             // 
             // lbHeading
@@ -60,6 +71,8 @@
             // 
             // gbMain
             // 
+            this.gbMain.Controls.Add(this.btnAuthenticator);
+            this.gbMain.Controls.Add(this.label1);
             this.gbMain.Controls.Add(this.cbKeepOriginal);
             this.gbMain.Controls.Add(this.lbFilePath);
             this.gbMain.Controls.Add(this.btnOpen);
@@ -74,10 +87,33 @@
             this.gbMain.Controls.Add(this.pictureBox2);
             this.gbMain.Location = new System.Drawing.Point(33, 66);
             this.gbMain.Name = "gbMain";
-            this.gbMain.Size = new System.Drawing.Size(734, 319);
+            this.gbMain.Size = new System.Drawing.Size(734, 372);
             this.gbMain.TabIndex = 4;
             this.gbMain.TabStop = false;
             this.gbMain.Enter += new System.EventHandler(this.gbMain_Enter);
+            // 
+            // btnAuthenticator
+            // 
+            this.btnAuthenticator.Enabled = false;
+            this.btnAuthenticator.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAuthenticator.Location = new System.Drawing.Point(6, 278);
+            this.btnAuthenticator.Name = "btnAuthenticator";
+            this.btnAuthenticator.Size = new System.Drawing.Size(217, 30);
+            this.btnAuthenticator.TabIndex = 18;
+            this.btnAuthenticator.Text = "Use Authenticator";
+            this.btnAuthenticator.UseVisualStyleBackColor = true;
+            this.btnAuthenticator.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(6, 250);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(295, 25);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Also use authenticator (MFA) app.";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // cbKeepOriginal
             // 
@@ -85,7 +121,7 @@
             this.cbKeepOriginal.Checked = true;
             this.cbKeepOriginal.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbKeepOriginal.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cbKeepOriginal.Location = new System.Drawing.Point(84, 233);
+            this.cbKeepOriginal.Location = new System.Drawing.Point(84, 332);
             this.cbKeepOriginal.Name = "cbKeepOriginal";
             this.cbKeepOriginal.Size = new System.Drawing.Size(427, 29);
             this.cbKeepOriginal.TabIndex = 14;
@@ -128,7 +164,7 @@
             // 
             this.btnGo.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnGo.ForeColor = System.Drawing.Color.Black;
-            this.btnGo.Location = new System.Drawing.Point(542, 224);
+            this.btnGo.Location = new System.Drawing.Point(542, 323);
             this.btnGo.Name = "btnGo";
             this.btnGo.Size = new System.Drawing.Size(186, 43);
             this.btnGo.TabIndex = 6;
@@ -223,6 +259,77 @@
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // pnlAuthApp
+            // 
+            this.pnlAuthApp.Controls.Add(this.btnConfirmAuthSetup);
+            this.pnlAuthApp.Controls.Add(this.txtAuthSetupVerify);
+            this.pnlAuthApp.Controls.Add(this.label3);
+            this.pnlAuthApp.Controls.Add(this.lbS1);
+            this.pnlAuthApp.Controls.Add(this.pbQRAuthSetup);
+            this.pnlAuthApp.Controls.Add(this.label2);
+            this.pnlAuthApp.Location = new System.Drawing.Point(17, 66);
+            this.pnlAuthApp.Name = "pnlAuthApp";
+            this.pnlAuthApp.Size = new System.Drawing.Size(763, 382);
+            this.pnlAuthApp.TabIndex = 6;
+            // 
+            // btnConfirmAuthSetup
+            // 
+            this.btnConfirmAuthSetup.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnConfirmAuthSetup.Location = new System.Drawing.Point(365, 269);
+            this.btnConfirmAuthSetup.Name = "btnConfirmAuthSetup";
+            this.btnConfirmAuthSetup.Size = new System.Drawing.Size(379, 39);
+            this.btnConfirmAuthSetup.TabIndex = 5;
+            this.btnConfirmAuthSetup.Text = "Confirm";
+            this.btnConfirmAuthSetup.UseVisualStyleBackColor = true;
+            this.btnConfirmAuthSetup.Click += new System.EventHandler(this.btnConfirmAuthSetup_Click);
+            // 
+            // txtAuthSetupVerify
+            // 
+            this.txtAuthSetupVerify.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtAuthSetupVerify.Location = new System.Drawing.Point(618, 201);
+            this.txtAuthSetupVerify.Name = "txtAuthSetupVerify";
+            this.txtAuthSetupVerify.Size = new System.Drawing.Size(108, 33);
+            this.txtAuthSetupVerify.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(365, 200);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(247, 30);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "2. Enter the current code:";
+            // 
+            // lbS1
+            // 
+            this.lbS1.AutoSize = true;
+            this.lbS1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbS1.Location = new System.Drawing.Point(365, 121);
+            this.lbS1.Name = "lbS1";
+            this.lbS1.Size = new System.Drawing.Size(310, 60);
+            this.lbS1.TabIndex = 2;
+            this.lbS1.Text = "1. Scan the QR code using your \r\nauthenticator app.";
+            // 
+            // pbQRAuthSetup
+            // 
+            this.pbQRAuthSetup.Location = new System.Drawing.Point(22, 61);
+            this.pbQRAuthSetup.Name = "pbQRAuthSetup";
+            this.pbQRAuthSetup.Size = new System.Drawing.Size(331, 294);
+            this.pbQRAuthSetup.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbQRAuthSetup.TabIndex = 1;
+            this.pbQRAuthSetup.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(16, 10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(401, 37);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Add an authenticator (MFA) app.";
+            // 
             // frmEncryptFile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -231,6 +338,7 @@
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.gbMain);
             this.Controls.Add(this.lbHeading);
+            this.Controls.Add(this.pnlAuthApp);
             this.Name = "frmEncryptFile";
             this.Text = "Encrypt File";
             this.Load += new System.EventHandler(this.frmEncryptFile_Load);
@@ -238,6 +346,9 @@
             this.gbMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.pnlAuthApp.ResumeLayout(false);
+            this.pnlAuthApp.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbQRAuthSetup)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -260,5 +371,14 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Button btnAuthenticator;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel pnlAuthApp;
+        private System.Windows.Forms.Button btnConfirmAuthSetup;
+        private System.Windows.Forms.TextBox txtAuthSetupVerify;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbS1;
+        private System.Windows.Forms.PictureBox pbQRAuthSetup;
+        private System.Windows.Forms.Label label2;
     }
 }
