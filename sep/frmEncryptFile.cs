@@ -113,10 +113,6 @@ namespace sep
             if (txtPasswordInput.Text.Length > 0)
             {
                 btnOpen.Enabled = true;
-                //txtPasswordInput.Enabled = false;
-                //btnGenPass.Enabled = false;
-                //btnSavePass.Enabled = false;
-                //btnConfirmPassword.Enabled = false;
                 password = txtPasswordInput.Text;
                 btnAuthenticator.Enabled = true;
                 btnGo.Enabled = true;

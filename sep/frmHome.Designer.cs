@@ -44,12 +44,13 @@
             this.decryptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.decryptFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.decryptStringToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.automaticTakeoverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.moreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lockersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.passwordLibraryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.githubPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tmrTick = new System.Windows.Forms.Timer(this.components);
-            this.automaticTakeoverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbGithub)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -192,6 +193,13 @@
             this.decryptStringToolStripMenuItem.Text = "Decrypt String";
             this.decryptStringToolStripMenuItem.Click += new System.EventHandler(this.decryptStringToolStripMenuItem_Click);
             // 
+            // automaticTakeoverToolStripMenuItem
+            // 
+            this.automaticTakeoverToolStripMenuItem.Name = "automaticTakeoverToolStripMenuItem";
+            this.automaticTakeoverToolStripMenuItem.Size = new System.Drawing.Size(208, 34);
+            this.automaticTakeoverToolStripMenuItem.Text = "Automatic Takeover";
+            this.automaticTakeoverToolStripMenuItem.Click += new System.EventHandler(this.automaticTakeoverToolStripMenuItem_Click);
+            // 
             // moreToolStripMenuItem
             // 
             this.moreToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -205,21 +213,21 @@
             // lockersToolStripMenuItem
             // 
             this.lockersToolStripMenuItem.Name = "lockersToolStripMenuItem";
-            this.lockersToolStripMenuItem.Size = new System.Drawing.Size(269, 34);
+            this.lockersToolStripMenuItem.Size = new System.Drawing.Size(240, 34);
             this.lockersToolStripMenuItem.Text = "Lockers";
             this.lockersToolStripMenuItem.Click += new System.EventHandler(this.lockersToolStripMenuItem_Click);
             // 
             // passwordLibraryToolStripMenuItem
             // 
             this.passwordLibraryToolStripMenuItem.Name = "passwordLibraryToolStripMenuItem";
-            this.passwordLibraryToolStripMenuItem.Size = new System.Drawing.Size(269, 34);
+            this.passwordLibraryToolStripMenuItem.Size = new System.Drawing.Size(240, 34);
             this.passwordLibraryToolStripMenuItem.Text = "Password Library";
             this.passwordLibraryToolStripMenuItem.Click += new System.EventHandler(this.passwordLibraryToolStripMenuItem_Click);
             // 
             // githubPageToolStripMenuItem
             // 
             this.githubPageToolStripMenuItem.Name = "githubPageToolStripMenuItem";
-            this.githubPageToolStripMenuItem.Size = new System.Drawing.Size(269, 34);
+            this.githubPageToolStripMenuItem.Size = new System.Drawing.Size(240, 34);
             this.githubPageToolStripMenuItem.Text = "Github Page";
             this.githubPageToolStripMenuItem.Click += new System.EventHandler(this.githubPageToolStripMenuItem_Click);
             // 
@@ -227,18 +235,22 @@
             // 
             this.tmrTick.Tick += new System.EventHandler(this.tmrTick_Tick);
             // 
-            // automaticTakeoverToolStripMenuItem
+            // button1
             // 
-            this.automaticTakeoverToolStripMenuItem.Name = "automaticTakeoverToolStripMenuItem";
-            this.automaticTakeoverToolStripMenuItem.Size = new System.Drawing.Size(208, 34);
-            this.automaticTakeoverToolStripMenuItem.Text = "Automatic Takeover";
-            this.automaticTakeoverToolStripMenuItem.Click += new System.EventHandler(this.automaticTakeoverToolStripMenuItem_Click);
+            this.button1.Location = new System.Drawing.Point(367, 263);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // frmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnLockers);
             this.Controls.Add(this.btnPWLib);
             this.Controls.Add(this.btnDecryptFile);
@@ -281,5 +293,6 @@
         private System.Windows.Forms.ToolStripMenuItem githubPageToolStripMenuItem;
         private System.Windows.Forms.Timer tmrTick;
         private System.Windows.Forms.ToolStripMenuItem automaticTakeoverToolStripMenuItem;
+        private System.Windows.Forms.Button button1;
     }
 }

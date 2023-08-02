@@ -215,5 +215,11 @@ namespace sep
                 }
             }
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Hide();
+            new frmFunctionScreen().Show();
+        }
     }
 }
