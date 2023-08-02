@@ -9,10 +9,10 @@ Just a simple solution for encrypting files (AES) with a basic password, and sto
 * Encrypt & Decrypt strings (super basic secret messages).
 * Password Library (Saved from Generated Passwords).
 * Automatic Takeover (Adds "SEP" button to Windows right-click context menu to encrypt/decrypt files).
+* Secure with MFA (Authenticator) apps using a private key (secret).
 
 ### Potential Future Features
 
-* Encrypt with 2FA (Auth) apps.
 * Cryptotype/("Journals") (Name is WIP) - Allows dynamic typing and encryption on the fly, includes separate notebooks each containing as many pages as required - all encrypted with notebook password. (Similar to OneNote).
 
 ## Download
