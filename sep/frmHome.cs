@@ -96,14 +96,16 @@ namespace sep
 
         private void btnEncryptFile_Click(object sender, EventArgs e)
         {
+            OtherOperations.funcEncrypt = true;
             Hide();
-            new frmEncryptFile().Show();
+            new frmFunctionScreen().Show();
         }
 
         private void btnDecryptFile_Click(object sender, EventArgs e)
         {
+            OtherOperations.funcEncrypt = false;
             Hide();
-            new frmDecryptFile().Show();
+            new frmFunctionScreen().Show();
         }
 
         private void btnPWLib_Click(object sender, EventArgs e)
@@ -125,8 +127,9 @@ namespace sep
 
         private void encryptFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            OtherOperations.funcEncrypt = true;
             Hide();
-            new frmEncryptFile().Show();
+            new frmFunctionScreen().Show();
         }
 
         private void encryptStringToolStripMenuItem_Click(object sender, EventArgs e)
@@ -136,8 +139,9 @@ namespace sep
 
         private void decryptFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            OtherOperations.funcEncrypt = false;
             Hide();
-            new frmDecryptFile().Show();
+            new frmFunctionScreen().Show();
         }
 
         private void decryptStringToolStripMenuItem_Click(object sender, EventArgs e)
@@ -218,8 +222,24 @@ namespace sep
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void oldEncryptFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             Hide();
-            new frmFunctionScreen().Show();
+            new frmEncryptFile().Show();
+        }
+
+        private void oldDecryptFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new frmDecryptFile().Show();
         }
     }
 }

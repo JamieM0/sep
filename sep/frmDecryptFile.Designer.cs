@@ -357,11 +357,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.pnlMFA);
             this.Controls.Add(this.btnBackToMain);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.gbMain);
             this.Controls.Add(this.lbHeading);
+            this.Controls.Add(this.pnlMFA);
             this.Controls.Add(this.pnlGuesser);
             this.Name = "frmDecryptFile";
             this.Text = "Decrypt File";

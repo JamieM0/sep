@@ -41,16 +41,17 @@
             this.encryptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.encryptFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.encryptStringToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.oldEncryptFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.decryptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.decryptFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.decryptStringToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.oldDecryptFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.automaticTakeoverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.moreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lockersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.passwordLibraryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.githubPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tmrTick = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbGithub)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -150,7 +151,8 @@
             // 
             this.encryptToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.encryptFileToolStripMenuItem,
-            this.encryptStringToolStripMenuItem});
+            this.encryptStringToolStripMenuItem,
+            this.oldEncryptFileToolStripMenuItem});
             this.encryptToolStripMenuItem.Name = "encryptToolStripMenuItem";
             this.encryptToolStripMenuItem.Size = new System.Drawing.Size(94, 34);
             this.encryptToolStripMenuItem.Text = "Encrypt";
@@ -159,22 +161,30 @@
             // encryptFileToolStripMenuItem
             // 
             this.encryptFileToolStripMenuItem.Name = "encryptFileToolStripMenuItem";
-            this.encryptFileToolStripMenuItem.Size = new System.Drawing.Size(214, 34);
+            this.encryptFileToolStripMenuItem.Size = new System.Drawing.Size(231, 34);
             this.encryptFileToolStripMenuItem.Text = "Encrypt File";
             this.encryptFileToolStripMenuItem.Click += new System.EventHandler(this.encryptFileToolStripMenuItem_Click);
             // 
             // encryptStringToolStripMenuItem
             // 
             this.encryptStringToolStripMenuItem.Name = "encryptStringToolStripMenuItem";
-            this.encryptStringToolStripMenuItem.Size = new System.Drawing.Size(214, 34);
+            this.encryptStringToolStripMenuItem.Size = new System.Drawing.Size(231, 34);
             this.encryptStringToolStripMenuItem.Text = "Encrypt String";
             this.encryptStringToolStripMenuItem.Click += new System.EventHandler(this.encryptStringToolStripMenuItem_Click);
+            // 
+            // oldEncryptFileToolStripMenuItem
+            // 
+            this.oldEncryptFileToolStripMenuItem.Name = "oldEncryptFileToolStripMenuItem";
+            this.oldEncryptFileToolStripMenuItem.Size = new System.Drawing.Size(231, 34);
+            this.oldEncryptFileToolStripMenuItem.Text = "Old Encrypt File";
+            this.oldEncryptFileToolStripMenuItem.Click += new System.EventHandler(this.oldEncryptFileToolStripMenuItem_Click);
             // 
             // decryptToolStripMenuItem
             // 
             this.decryptToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.decryptFileToolStripMenuItem,
-            this.decryptStringToolStripMenuItem});
+            this.decryptStringToolStripMenuItem,
+            this.oldDecryptFileToolStripMenuItem});
             this.decryptToolStripMenuItem.Name = "decryptToolStripMenuItem";
             this.decryptToolStripMenuItem.Size = new System.Drawing.Size(97, 34);
             this.decryptToolStripMenuItem.Text = "Decrypt";
@@ -182,16 +192,23 @@
             // decryptFileToolStripMenuItem
             // 
             this.decryptFileToolStripMenuItem.Name = "decryptFileToolStripMenuItem";
-            this.decryptFileToolStripMenuItem.Size = new System.Drawing.Size(217, 34);
+            this.decryptFileToolStripMenuItem.Size = new System.Drawing.Size(234, 34);
             this.decryptFileToolStripMenuItem.Text = "Decrypt File";
             this.decryptFileToolStripMenuItem.Click += new System.EventHandler(this.decryptFileToolStripMenuItem_Click);
             // 
             // decryptStringToolStripMenuItem
             // 
             this.decryptStringToolStripMenuItem.Name = "decryptStringToolStripMenuItem";
-            this.decryptStringToolStripMenuItem.Size = new System.Drawing.Size(217, 34);
+            this.decryptStringToolStripMenuItem.Size = new System.Drawing.Size(234, 34);
             this.decryptStringToolStripMenuItem.Text = "Decrypt String";
             this.decryptStringToolStripMenuItem.Click += new System.EventHandler(this.decryptStringToolStripMenuItem_Click);
+            // 
+            // oldDecryptFileToolStripMenuItem
+            // 
+            this.oldDecryptFileToolStripMenuItem.Name = "oldDecryptFileToolStripMenuItem";
+            this.oldDecryptFileToolStripMenuItem.Size = new System.Drawing.Size(234, 34);
+            this.oldDecryptFileToolStripMenuItem.Text = "Old Decrypt File";
+            this.oldDecryptFileToolStripMenuItem.Click += new System.EventHandler(this.oldDecryptFileToolStripMenuItem_Click);
             // 
             // automaticTakeoverToolStripMenuItem
             // 
@@ -235,22 +252,11 @@
             // 
             this.tmrTick.Tick += new System.EventHandler(this.tmrTick_Tick);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(367, 263);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
             // frmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnLockers);
             this.Controls.Add(this.btnPWLib);
             this.Controls.Add(this.btnDecryptFile);
@@ -293,6 +299,7 @@
         private System.Windows.Forms.ToolStripMenuItem githubPageToolStripMenuItem;
         private System.Windows.Forms.Timer tmrTick;
         private System.Windows.Forms.ToolStripMenuItem automaticTakeoverToolStripMenuItem;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripMenuItem oldEncryptFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem oldDecryptFileToolStripMenuItem;
     }
 }
