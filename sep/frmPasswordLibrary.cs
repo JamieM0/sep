@@ -115,7 +115,7 @@ namespace sep
             OtherOperations.LineRemover("pwLib.conf", index);
             Hide();
             new frmHome().Show();
-            frmHome.a.FileEncrypt("pwLib.conf", password,false);
+            frmHome.a.FileEncrypt("pwLib.conf", password,false,0);
             File.Delete("pwLib.conf");
         }
 

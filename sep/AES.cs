@@ -32,7 +32,7 @@ namespace sep
             return data;
         }
 
-        public void FileEncrypt(string inputFile, string password, bool usingMFA)
+        public void FileEncrypt(string inputFile, string password, bool usingMFA, int currentID)
         {
             //http://stackoverflow.com/questions/27645527/aes-encryption-on-large-files
 
@@ -42,7 +42,16 @@ namespace sep
             //create output file name
             FileStream fsCrypt;
             if (usingMFA)
-                fsCrypt = new FileStream(inputFile + ".mfa", FileMode.Create);
+            {
+                string directory = Path.GetDirectoryName(inputFile);
+                string fileName = Path.GetFileName(inputFile);
+
+                string newFileName = $"{currentID}-{fileName}";
+
+                string outputFile = Path.Combine(directory, newFileName);
+                fsCrypt = new FileStream(outputFile + ".mfa", FileMode.Create);
+                
+            }
             else
                 fsCrypt = new FileStream(inputFile + ".aes", FileMode.Create);
 

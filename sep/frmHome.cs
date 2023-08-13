@@ -17,7 +17,7 @@ namespace sep
 
         public static AES a = new AES();
         bool sent = false;
-        
+
         public frmHome()
         {
             InitializeComponent();
@@ -41,7 +41,7 @@ namespace sep
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -190,7 +190,7 @@ namespace sep
             DialogResult result = MessageBox.Show("Automatic Takeover allows you to right click a file and select Encrypt or Decrypt right from the Windows context menu." +
                 "\nYou can also right click an entire folder and convert it to a locker, allowing you to encrypt its contents easily!" +
                 "\r\nThis will change registry values and may cause problems with your computer. \r\nAre you sure you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if(result==DialogResult.Yes)
+            if (result == DialogResult.Yes)
             {
                 try
                 {
@@ -213,7 +213,7 @@ namespace sep
 
                     MessageBox.Show("Automatic Takeover has been installed. \r\nYou can now right click a file and select SEP Encrypt, which allows you to\r\neither Ecrypt or Decrypt the file.\r\nYou can also convert an entire folder to a locker.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show("An error occured while installing Automatic Takeover. \r\nDid you run SEP as an administrator?\r\nPlease try again later.\r\n\r\nError: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -222,24 +222,34 @@ namespace sep
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            
+
         }
 
         private void oldEncryptFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Hide();
-            new frmEncryptFile().Show();
+            //Warn about old screen being very buggy and offer yes or no choice
+            DialogResult result = MessageBox.Show("This screen is very buggy and may not work properly. \r\nIt is recommended to use the new Encrypt File screen. \r\n\r\nDo you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                Hide();
+                new frmEncryptFile().Show();
+            }
         }
 
         private void oldDecryptFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Hide();
-            new frmDecryptFile().Show();
+            //Warn about old screen being very buggy and offer yes or no choice
+            DialogResult result = MessageBox.Show("This screen is very buggy and may not work properly. \r\nIt is recommended to use the new Decrypt File screen. \r\n\r\nDo you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                Hide();
+                new frmDecryptFile().Show();
+            }
         }
     }
 }

@@ -11,6 +11,8 @@ using System.Security.Cryptography;
 using System.IO;
 using Google.Authenticator;
 using QRCoder;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace sep
 {
@@ -70,7 +72,7 @@ namespace sep
             int diffX1 = cur1.X - pt1.X;
             Point cur2 = pnl2.Location;
             int diffX2 = cur2.X - pt2.X;
-            for (int i = 0; i < diffX1; i+=3)
+            for (int i = 0; i < diffX1; i += 3)
             {
                 pnl1.Location = new Point(pnl1.Location.X - 3, pnl1.Location.Y);
                 if (i < diffX2)
@@ -98,7 +100,7 @@ namespace sep
             }
             lbFileName.Text = fileName;
             int sizeOfFileName = TextRenderer.MeasureText(fileName, lbFileName.Font).Width;
-            if (sizeOfFileName+50 > pnlFileSelect.Width)
+            if (sizeOfFileName + 50 > pnlFileSelect.Width)
             {
                 bool validLength = false;
                 int i = 1;
@@ -110,9 +112,9 @@ namespace sep
                     if (sizeOfFileName + 50 < pnlFileSelect.Width)
                         validLength = true;
                 } while (!validLength);
-                
+
             }
-            lbFileName.Location = new Point((pnlFileSelect.Width/2)-sizeOfFileName/2, 150);
+            lbFileName.Location = new Point((pnlFileSelect.Width / 2) - sizeOfFileName / 2, 150);
             lbFileName.Visible = true;
 
             //Animate to left (2 sections)
@@ -145,8 +147,8 @@ namespace sep
                 animateSection(pnlFileSelect, new Point(6, 170), 20, pnlPasswordInput, new Point(383, 170), 20);
                 pnlFinalSteps.Visible = true;
             }
-            
-            if(!funcEncrypt)
+
+            if (!funcEncrypt)
             {
                 btnUseAuthenticator.Visible = false;
             }
@@ -154,7 +156,7 @@ namespace sep
 
         private void btnGenPassword_Click(object sender, EventArgs e)
         {
-            if(funcEncrypt)
+            if (funcEncrypt)
             {
                 var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+=-<?>:{}[]";
                 var stringChars = new char[16];
@@ -177,31 +179,19 @@ namespace sep
         private void btnPWLibFunc_Click(object sender, EventArgs e)
         {
             saveToLibrary = true;
-            //OtherOperations.SaveToLibrary(fileName, password);
         }
 
+        string secretKey;
         private void btnUseAuthenticator_Click(object sender, EventArgs e)
         {
             //MessageBox.Show("SEP uses the GoogleAuthenticator library to help link the encrypted file and your authenticator (MFA) app.\r\nA private key is generated and provided to your mobile device via the QR code. It is stored securely on your local PC using DPAPI, usually a servic like Google or Twitter will store this key on their servers.\r\nThis means that the file cannot be decrypted without having this key, so you cannot share it. It also means that anyone with access to your Windows PC has the potential to access this key.\r\nDo not use this as a replacement for a strong password, both are important.", "How do authenticator (MFA) apps work in SEP?");
             if (MessageBox.Show("Files using authenticator (MFA) apps cannot be shared.\r\nAnyone with access to your Windows PC can access the private key.\r\nDo Not use as replacement for strong password.\r\nLearn More: https://go.jmatthews.uk/sep/mfa\r\n\r\nWould you like to continue?", "How do authenticator (MFA) apps work in SEP?", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
-                if (!Directory.Exists(Path.Combine(OtherOperations.storeLoc, "privateKeys")))
-                {
-                    Directory.CreateDirectory(Path.Combine(OtherOperations.storeLoc, "privateKeys"));
-                }
                 pnlAuthApp.Visible = true;
                 hideMainElements();
 
                 string uuid = $"{fileName}";
-                string secretKey = GenerateRandomSecretKey();
-                if (File.Exists(Path.Combine(OtherOperations.storeLoc, "privateKeys", fileName)))
-                {
-                    MessageBox.Show("Sorry - this file name is already encrypted. Please change this file's name and try again.", "File name in use");
-                }
-                else
-                {
-                    File.WriteAllText(Path.Combine(OtherOperations.storeLoc, "privateKeys", fileName + ".key"), secretKey);
-                }
+                secretKey = GenerateRandomSecretKey();
                 string uri = CreateAuthenticatorUri(uuid, secretKey);
                 GenerateQRCode(uri);
             }
@@ -244,8 +234,6 @@ namespace sep
         }
         bool VerifyOTP(string secretKey, string userOTP)
         {
-            //var authenticator = new TwoFactorAuthenticator();
-            //return authenticator.ValidateTwoFactorPIN(secretKey, userOTP);
             TwoFactorAuthenticator tfa = new TwoFactorAuthenticator();
             return tfa.ValidateTwoFactorPIN(secretKey, userOTP, true);
         }
@@ -255,16 +243,19 @@ namespace sep
             pnlAuthApp.Visible = false;
             showMainElements();
         }
-
+        int nextID = 0;
         private void btnConfirmAuthSetup_Click(object sender, EventArgs e)
         {
             string testCode = txtAuthSetupVerify.Text;
-            string secretKey = File.ReadAllText(OtherOperations.storeLoc + @"\privateKeys\" + fileName + ".key");
             bool validCode = VerifyOTP(secretKey, testCode);
             if (!validCode)
                 MessageBox.Show("Sorry, that didn't work, please try again later!", "Invalid Code!");
             else
             {
+                nextID = DatabaseHelper.CountFileData() + 1;
+                fileName = nextID + "-" + fileName;
+                DatabaseHelper.InsertFileData(fileName, secretKey);
+
                 pnlAuthApp.Visible = false;
                 showMainElements();
                 usingMFA = true;
@@ -274,7 +265,7 @@ namespace sep
         private void btnAuthDecryptSubmit_Click(object sender, EventArgs e)
         {
             string testCode = txtAuthConfirmDecrypt.Text;
-            string secretKey = File.ReadAllText(OtherOperations.storeLoc + @"\privateKeys\" + fileName.Substring(0, fileName.Length - 4) + ".key");
+            string secretKey = DatabaseHelper.GetSecretKey(Convert.ToInt32(fileName.Split('-')[0]));
             bool validCode = VerifyOTP(secretKey, testCode);
             if (!validCode)
                 MessageBox.Show("Sorry, that didn't work, please try again later!", "Invalid Code!");
@@ -295,14 +286,14 @@ namespace sep
 
         private void btnGo_Click(object sender, EventArgs e)
         {
-            if(funcEncrypt)
+            if (funcEncrypt)
             {
                 if (usingMFA)
                 {
-                    string secretKey = File.ReadAllText(OtherOperations.storeLoc + $"\\privateKeys\\{fileName}.key");
+                    string secretKey = DatabaseHelper.GetSecretKey(Convert.ToInt32(fileName.Split('-')[0]));
                     password += "⌀" + secretKey;
                 }
-                frmHome.a.FileEncrypt(filePath, password, usingMFA);
+                frmHome.a.FileEncrypt(filePath, password, usingMFA, nextID);
                 password = "";
                 if (cbDeleteAsk.Checked)
                 {
@@ -317,14 +308,21 @@ namespace sep
                 txtPassword.Enabled = false;
                 if (usingMFA)
                 {
-                    string secretKey = File.ReadAllText(OtherOperations.storeLoc + $"\\privateKeys\\{fileName.Substring(0, fileName.Length - 4)}.key");
+                    string secretKey = DatabaseHelper.GetSecretKey(Convert.ToInt32(fileName.Split('-')[0]));
                     password += "⌀" + secretKey;
                 }
                 string filePathUnencrypted;
                 filePathUnencrypted = filePath.Substring(0, filePath.Length - 4);
+                string directory = Path.GetDirectoryName(filePathUnencrypted);
+                string oldFileName = Path.GetFileName(filePathUnencrypted);
+                int firstDashIndex = oldFileName.IndexOf("-");
+                string newFileName = $"{oldFileName.Substring(firstDashIndex+1)}";
+
+                filePathUnencrypted = Path.Combine(directory, newFileName);
+                
                 frmHome.a.FileDecrypt(filePath, filePathUnencrypted, password);
                 MessageBox.Show("The file has been decrypted successfully!", "Decrypted!");
-                
+
                 if (cbDeleteAsk.Checked)
                 {
                     if (MessageBox.Show("Entering the incorrect password WILL result in a corrupted file!\r\n\r\nAre you sure you want to delete the encrypted file?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
@@ -336,7 +334,7 @@ namespace sep
                 new frmHome().Show();
             }
         }
-        
+
         private void hideMainElements()
         {
             pnlFileSelect.Visible = false;

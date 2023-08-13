@@ -28,253 +28,241 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHome));
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.pbGithub = new System.Windows.Forms.PictureBox();
-            this.btnEncryptFile = new System.Windows.Forms.Button();
-            this.btnDecryptFile = new System.Windows.Forms.Button();
-            this.btnPWLib = new System.Windows.Forms.Button();
-            this.btnLockers = new System.Windows.Forms.Button();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.encryptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.encryptFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.encryptStringToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.oldEncryptFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.decryptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.decryptFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.decryptStringToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.oldDecryptFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.automaticTakeoverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.moreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lockersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.passwordLibraryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.githubPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tmrTick = new System.Windows.Forms.Timer(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.pbGithub)).BeginInit();
-            this.menuStrip1.SuspendLayout();
-            this.SuspendLayout();
+            label1 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            pbGithub = new System.Windows.Forms.PictureBox();
+            btnEncryptFile = new System.Windows.Forms.Button();
+            btnDecryptFile = new System.Windows.Forms.Button();
+            btnPWLib = new System.Windows.Forms.Button();
+            btnLockers = new System.Windows.Forms.Button();
+            menuStrip1 = new System.Windows.Forms.MenuStrip();
+            encryptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            encryptFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            encryptStringToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            oldEncryptFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            decryptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            decryptFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            decryptStringToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            oldDecryptFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            automaticTakeoverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            moreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            lockersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            passwordLibraryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            githubPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            tmrTick = new System.Windows.Forms.Timer(components);
+            ((System.ComponentModel.ISupportInitialize)pbGithub).BeginInit();
+            menuStrip1.SuspendLayout();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(8, 37);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(385, 65);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Welcome to SEP!";
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label1.Location = new System.Drawing.Point(12, 54);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(261, 45);
+            label1.TabIndex = 0;
+            label1.Text = "Welcome to SEP!";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(8, 102);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(499, 45);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "What would you like to do today?";
+            label2.AutoSize = true;
+            label2.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label2.Location = new System.Drawing.Point(12, 99);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(343, 37);
+            label2.TabIndex = 1;
+            label2.Text = "What would you like to do?";
             // 
             // pbGithub
             // 
-            this.pbGithub.Image = ((System.Drawing.Image)(resources.GetObject("pbGithub.Image")));
-            this.pbGithub.Location = new System.Drawing.Point(690, 54);
-            this.pbGithub.Name = "pbGithub";
-            this.pbGithub.Size = new System.Drawing.Size(80, 80);
-            this.pbGithub.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbGithub.TabIndex = 5;
-            this.pbGithub.TabStop = false;
-            this.pbGithub.Click += new System.EventHandler(this.pbGithub_Click);
+            pbGithub.Image = (System.Drawing.Image)resources.GetObject("pbGithub.Image");
+            pbGithub.Location = new System.Drawing.Point(690, 54);
+            pbGithub.Name = "pbGithub";
+            pbGithub.Size = new System.Drawing.Size(80, 80);
+            pbGithub.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            pbGithub.TabIndex = 5;
+            pbGithub.TabStop = false;
+            pbGithub.Click += pbGithub_Click;
             // 
             // btnEncryptFile
             // 
-            this.btnEncryptFile.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnEncryptFile.ForeColor = System.Drawing.Color.Black;
-            this.btnEncryptFile.Location = new System.Drawing.Point(119, 174);
-            this.btnEncryptFile.Name = "btnEncryptFile";
-            this.btnEncryptFile.Size = new System.Drawing.Size(230, 78);
-            this.btnEncryptFile.TabIndex = 6;
-            this.btnEncryptFile.Text = "Encrypt";
-            this.btnEncryptFile.UseVisualStyleBackColor = true;
-            this.btnEncryptFile.Click += new System.EventHandler(this.btnEncryptFile_Click);
+            btnEncryptFile.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnEncryptFile.ForeColor = System.Drawing.Color.Black;
+            btnEncryptFile.Location = new System.Drawing.Point(98, 186);
+            btnEncryptFile.Name = "btnEncryptFile";
+            btnEncryptFile.Size = new System.Drawing.Size(230, 78);
+            btnEncryptFile.TabIndex = 6;
+            btnEncryptFile.Text = "Encrypt";
+            btnEncryptFile.UseVisualStyleBackColor = true;
+            btnEncryptFile.Click += btnEncryptFile_Click;
             // 
             // btnDecryptFile
             // 
-            this.btnDecryptFile.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnDecryptFile.ForeColor = System.Drawing.Color.Black;
-            this.btnDecryptFile.Location = new System.Drawing.Point(449, 174);
-            this.btnDecryptFile.Name = "btnDecryptFile";
-            this.btnDecryptFile.Size = new System.Drawing.Size(230, 78);
-            this.btnDecryptFile.TabIndex = 7;
-            this.btnDecryptFile.Text = "Decrypt";
-            this.btnDecryptFile.UseVisualStyleBackColor = true;
-            this.btnDecryptFile.Click += new System.EventHandler(this.btnDecryptFile_Click);
+            btnDecryptFile.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnDecryptFile.ForeColor = System.Drawing.Color.Black;
+            btnDecryptFile.Location = new System.Drawing.Point(464, 186);
+            btnDecryptFile.Name = "btnDecryptFile";
+            btnDecryptFile.Size = new System.Drawing.Size(230, 78);
+            btnDecryptFile.TabIndex = 7;
+            btnDecryptFile.Text = "Decrypt";
+            btnDecryptFile.UseVisualStyleBackColor = true;
+            btnDecryptFile.Click += btnDecryptFile_Click;
             // 
             // btnPWLib
             // 
-            this.btnPWLib.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnPWLib.Location = new System.Drawing.Point(271, 367);
-            this.btnPWLib.Name = "btnPWLib";
-            this.btnPWLib.Size = new System.Drawing.Size(253, 54);
-            this.btnPWLib.TabIndex = 8;
-            this.btnPWLib.Text = "Password Library";
-            this.btnPWLib.UseVisualStyleBackColor = true;
-            this.btnPWLib.Click += new System.EventHandler(this.btnPWLib_Click);
+            btnPWLib.Enabled = false;
+            btnPWLib.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnPWLib.Location = new System.Drawing.Point(271, 367);
+            btnPWLib.Name = "btnPWLib";
+            btnPWLib.Size = new System.Drawing.Size(253, 54);
+            btnPWLib.TabIndex = 8;
+            btnPWLib.Text = "Password Library";
+            btnPWLib.UseVisualStyleBackColor = true;
+            btnPWLib.Click += btnPWLib_Click;
             // 
             // btnLockers
             // 
-            this.btnLockers.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnLockers.Location = new System.Drawing.Point(271, 307);
-            this.btnLockers.Name = "btnLockers";
-            this.btnLockers.Size = new System.Drawing.Size(253, 54);
-            this.btnLockers.TabIndex = 9;
-            this.btnLockers.Text = "Lockers";
-            this.btnLockers.UseVisualStyleBackColor = true;
-            this.btnLockers.Click += new System.EventHandler(this.btnLockers_Click);
+            btnLockers.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnLockers.Location = new System.Drawing.Point(271, 307);
+            btnLockers.Name = "btnLockers";
+            btnLockers.Size = new System.Drawing.Size(253, 54);
+            btnLockers.TabIndex = 9;
+            btnLockers.Text = "Lockers";
+            btnLockers.UseVisualStyleBackColor = true;
+            btnLockers.Click += btnLockers_Click;
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.encryptToolStripMenuItem,
-            this.decryptToolStripMenuItem,
-            this.automaticTakeoverToolStripMenuItem,
-            this.moreToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 38);
-            this.menuStrip1.TabIndex = 10;
-            this.menuStrip1.Text = "menuStrip1";
+            menuStrip1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { encryptToolStripMenuItem, decryptToolStripMenuItem, automaticTakeoverToolStripMenuItem, moreToolStripMenuItem });
+            menuStrip1.Location = new System.Drawing.Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new System.Drawing.Size(800, 38);
+            menuStrip1.TabIndex = 10;
+            menuStrip1.Text = "menuStrip1";
             // 
             // encryptToolStripMenuItem
             // 
-            this.encryptToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.encryptFileToolStripMenuItem,
-            this.encryptStringToolStripMenuItem,
-            this.oldEncryptFileToolStripMenuItem});
-            this.encryptToolStripMenuItem.Name = "encryptToolStripMenuItem";
-            this.encryptToolStripMenuItem.Size = new System.Drawing.Size(94, 34);
-            this.encryptToolStripMenuItem.Text = "Encrypt";
-            this.encryptToolStripMenuItem.Click += new System.EventHandler(this.encryptToolStripMenuItem_Click);
+            encryptToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { encryptFileToolStripMenuItem, encryptStringToolStripMenuItem, oldEncryptFileToolStripMenuItem });
+            encryptToolStripMenuItem.Name = "encryptToolStripMenuItem";
+            encryptToolStripMenuItem.Size = new System.Drawing.Size(94, 34);
+            encryptToolStripMenuItem.Text = "Encrypt";
+            encryptToolStripMenuItem.Click += encryptToolStripMenuItem_Click;
             // 
             // encryptFileToolStripMenuItem
             // 
-            this.encryptFileToolStripMenuItem.Name = "encryptFileToolStripMenuItem";
-            this.encryptFileToolStripMenuItem.Size = new System.Drawing.Size(231, 34);
-            this.encryptFileToolStripMenuItem.Text = "Encrypt File";
-            this.encryptFileToolStripMenuItem.Click += new System.EventHandler(this.encryptFileToolStripMenuItem_Click);
+            encryptFileToolStripMenuItem.Name = "encryptFileToolStripMenuItem";
+            encryptFileToolStripMenuItem.Size = new System.Drawing.Size(231, 34);
+            encryptFileToolStripMenuItem.Text = "Encrypt File";
+            encryptFileToolStripMenuItem.Click += encryptFileToolStripMenuItem_Click;
             // 
             // encryptStringToolStripMenuItem
             // 
-            this.encryptStringToolStripMenuItem.Name = "encryptStringToolStripMenuItem";
-            this.encryptStringToolStripMenuItem.Size = new System.Drawing.Size(231, 34);
-            this.encryptStringToolStripMenuItem.Text = "Encrypt String";
-            this.encryptStringToolStripMenuItem.Click += new System.EventHandler(this.encryptStringToolStripMenuItem_Click);
+            encryptStringToolStripMenuItem.Name = "encryptStringToolStripMenuItem";
+            encryptStringToolStripMenuItem.Size = new System.Drawing.Size(231, 34);
+            encryptStringToolStripMenuItem.Text = "Encrypt String";
+            encryptStringToolStripMenuItem.Click += encryptStringToolStripMenuItem_Click;
             // 
             // oldEncryptFileToolStripMenuItem
             // 
-            this.oldEncryptFileToolStripMenuItem.Name = "oldEncryptFileToolStripMenuItem";
-            this.oldEncryptFileToolStripMenuItem.Size = new System.Drawing.Size(231, 34);
-            this.oldEncryptFileToolStripMenuItem.Text = "Old Encrypt File";
-            this.oldEncryptFileToolStripMenuItem.Click += new System.EventHandler(this.oldEncryptFileToolStripMenuItem_Click);
+            oldEncryptFileToolStripMenuItem.Name = "oldEncryptFileToolStripMenuItem";
+            oldEncryptFileToolStripMenuItem.Size = new System.Drawing.Size(231, 34);
+            oldEncryptFileToolStripMenuItem.Text = "Old Encrypt File";
+            oldEncryptFileToolStripMenuItem.Click += oldEncryptFileToolStripMenuItem_Click;
             // 
             // decryptToolStripMenuItem
             // 
-            this.decryptToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.decryptFileToolStripMenuItem,
-            this.decryptStringToolStripMenuItem,
-            this.oldDecryptFileToolStripMenuItem});
-            this.decryptToolStripMenuItem.Name = "decryptToolStripMenuItem";
-            this.decryptToolStripMenuItem.Size = new System.Drawing.Size(97, 34);
-            this.decryptToolStripMenuItem.Text = "Decrypt";
+            decryptToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { decryptFileToolStripMenuItem, decryptStringToolStripMenuItem, oldDecryptFileToolStripMenuItem });
+            decryptToolStripMenuItem.Name = "decryptToolStripMenuItem";
+            decryptToolStripMenuItem.Size = new System.Drawing.Size(97, 34);
+            decryptToolStripMenuItem.Text = "Decrypt";
             // 
             // decryptFileToolStripMenuItem
             // 
-            this.decryptFileToolStripMenuItem.Name = "decryptFileToolStripMenuItem";
-            this.decryptFileToolStripMenuItem.Size = new System.Drawing.Size(234, 34);
-            this.decryptFileToolStripMenuItem.Text = "Decrypt File";
-            this.decryptFileToolStripMenuItem.Click += new System.EventHandler(this.decryptFileToolStripMenuItem_Click);
+            decryptFileToolStripMenuItem.Name = "decryptFileToolStripMenuItem";
+            decryptFileToolStripMenuItem.Size = new System.Drawing.Size(234, 34);
+            decryptFileToolStripMenuItem.Text = "Decrypt File";
+            decryptFileToolStripMenuItem.Click += decryptFileToolStripMenuItem_Click;
             // 
             // decryptStringToolStripMenuItem
             // 
-            this.decryptStringToolStripMenuItem.Name = "decryptStringToolStripMenuItem";
-            this.decryptStringToolStripMenuItem.Size = new System.Drawing.Size(234, 34);
-            this.decryptStringToolStripMenuItem.Text = "Decrypt String";
-            this.decryptStringToolStripMenuItem.Click += new System.EventHandler(this.decryptStringToolStripMenuItem_Click);
+            decryptStringToolStripMenuItem.Name = "decryptStringToolStripMenuItem";
+            decryptStringToolStripMenuItem.Size = new System.Drawing.Size(234, 34);
+            decryptStringToolStripMenuItem.Text = "Decrypt String";
+            decryptStringToolStripMenuItem.Click += decryptStringToolStripMenuItem_Click;
             // 
             // oldDecryptFileToolStripMenuItem
             // 
-            this.oldDecryptFileToolStripMenuItem.Name = "oldDecryptFileToolStripMenuItem";
-            this.oldDecryptFileToolStripMenuItem.Size = new System.Drawing.Size(234, 34);
-            this.oldDecryptFileToolStripMenuItem.Text = "Old Decrypt File";
-            this.oldDecryptFileToolStripMenuItem.Click += new System.EventHandler(this.oldDecryptFileToolStripMenuItem_Click);
+            oldDecryptFileToolStripMenuItem.Name = "oldDecryptFileToolStripMenuItem";
+            oldDecryptFileToolStripMenuItem.Size = new System.Drawing.Size(234, 34);
+            oldDecryptFileToolStripMenuItem.Text = "Old Decrypt File";
+            oldDecryptFileToolStripMenuItem.Click += oldDecryptFileToolStripMenuItem_Click;
             // 
             // automaticTakeoverToolStripMenuItem
             // 
-            this.automaticTakeoverToolStripMenuItem.Name = "automaticTakeoverToolStripMenuItem";
-            this.automaticTakeoverToolStripMenuItem.Size = new System.Drawing.Size(208, 34);
-            this.automaticTakeoverToolStripMenuItem.Text = "Automatic Takeover";
-            this.automaticTakeoverToolStripMenuItem.Click += new System.EventHandler(this.automaticTakeoverToolStripMenuItem_Click);
+            automaticTakeoverToolStripMenuItem.Name = "automaticTakeoverToolStripMenuItem";
+            automaticTakeoverToolStripMenuItem.Size = new System.Drawing.Size(208, 34);
+            automaticTakeoverToolStripMenuItem.Text = "Automatic Takeover";
+            automaticTakeoverToolStripMenuItem.Click += automaticTakeoverToolStripMenuItem_Click;
             // 
             // moreToolStripMenuItem
             // 
-            this.moreToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lockersToolStripMenuItem,
-            this.passwordLibraryToolStripMenuItem,
-            this.githubPageToolStripMenuItem});
-            this.moreToolStripMenuItem.Name = "moreToolStripMenuItem";
-            this.moreToolStripMenuItem.Size = new System.Drawing.Size(74, 34);
-            this.moreToolStripMenuItem.Text = "More";
+            moreToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { lockersToolStripMenuItem, passwordLibraryToolStripMenuItem, githubPageToolStripMenuItem });
+            moreToolStripMenuItem.Name = "moreToolStripMenuItem";
+            moreToolStripMenuItem.Size = new System.Drawing.Size(74, 34);
+            moreToolStripMenuItem.Text = "More";
             // 
             // lockersToolStripMenuItem
             // 
-            this.lockersToolStripMenuItem.Name = "lockersToolStripMenuItem";
-            this.lockersToolStripMenuItem.Size = new System.Drawing.Size(240, 34);
-            this.lockersToolStripMenuItem.Text = "Lockers";
-            this.lockersToolStripMenuItem.Click += new System.EventHandler(this.lockersToolStripMenuItem_Click);
+            lockersToolStripMenuItem.Name = "lockersToolStripMenuItem";
+            lockersToolStripMenuItem.Size = new System.Drawing.Size(240, 34);
+            lockersToolStripMenuItem.Text = "Lockers";
+            lockersToolStripMenuItem.Click += lockersToolStripMenuItem_Click;
             // 
             // passwordLibraryToolStripMenuItem
             // 
-            this.passwordLibraryToolStripMenuItem.Name = "passwordLibraryToolStripMenuItem";
-            this.passwordLibraryToolStripMenuItem.Size = new System.Drawing.Size(240, 34);
-            this.passwordLibraryToolStripMenuItem.Text = "Password Library";
-            this.passwordLibraryToolStripMenuItem.Click += new System.EventHandler(this.passwordLibraryToolStripMenuItem_Click);
+            passwordLibraryToolStripMenuItem.Enabled = false;
+            passwordLibraryToolStripMenuItem.Name = "passwordLibraryToolStripMenuItem";
+            passwordLibraryToolStripMenuItem.Size = new System.Drawing.Size(240, 34);
+            passwordLibraryToolStripMenuItem.Text = "Password Library";
+            passwordLibraryToolStripMenuItem.Click += passwordLibraryToolStripMenuItem_Click;
             // 
             // githubPageToolStripMenuItem
             // 
-            this.githubPageToolStripMenuItem.Name = "githubPageToolStripMenuItem";
-            this.githubPageToolStripMenuItem.Size = new System.Drawing.Size(240, 34);
-            this.githubPageToolStripMenuItem.Text = "Github Page";
-            this.githubPageToolStripMenuItem.Click += new System.EventHandler(this.githubPageToolStripMenuItem_Click);
+            githubPageToolStripMenuItem.Name = "githubPageToolStripMenuItem";
+            githubPageToolStripMenuItem.Size = new System.Drawing.Size(240, 34);
+            githubPageToolStripMenuItem.Text = "Github Page";
+            githubPageToolStripMenuItem.Click += githubPageToolStripMenuItem_Click;
             // 
             // tmrTick
             // 
-            this.tmrTick.Tick += new System.EventHandler(this.tmrTick_Tick);
+            tmrTick.Tick += tmrTick_Tick;
             // 
             // frmHome
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnLockers);
-            this.Controls.Add(this.btnPWLib);
-            this.Controls.Add(this.btnDecryptFile);
-            this.Controls.Add(this.btnEncryptFile);
-            this.Controls.Add(this.pbGithub);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
-            this.Name = "frmHome";
-            this.Text = "Simple Encryption Program (SEP) - Home";
-            this.Load += new System.EventHandler(this.frmHome_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pbGithub)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(800, 450);
+            Controls.Add(btnLockers);
+            Controls.Add(btnPWLib);
+            Controls.Add(btnDecryptFile);
+            Controls.Add(btnEncryptFile);
+            Controls.Add(pbGithub);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
+            Name = "frmHome";
+            Text = "Simple Encryption Program (SEP) - Home";
+            Load += frmHome_Load;
+            ((System.ComponentModel.ISupportInitialize)pbGithub).EndInit();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

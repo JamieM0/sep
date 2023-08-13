@@ -18,7 +18,15 @@ namespace sep
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            DatabaseHelper.InitializeDatabase();
             Application.Run(new frmHome());
         }
+    }
+
+    public class FileData
+    {
+        public int Id { get; set; }        // Unique identifier (primary key).
+        public string FileName { get; set; }
+        public string SecretKey { get; set; }
     }
 }

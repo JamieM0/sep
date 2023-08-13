@@ -66,7 +66,7 @@ namespace sep
                 string secretKey = File.ReadAllText(OtherOperations.storeLoc + $"\\privateKeys\\{lbFilePath.Text}.key");
                 password += "⌀"+secretKey;
             }
-            frmHome.a.FileEncrypt(filePath, password,usingMFA);
+            frmHome.a.FileEncrypt(filePath, password,usingMFA,0);
             password = "";
             if (!cbKeepOriginal.Checked)
             {
