@@ -49,12 +49,12 @@ namespace sep
             if (File.Exists(libEN))
             {
                 string pw = Microsoft.VisualBasic.Interaction.InputBox("Input password library master password: ", "Password Library Decryption");
-                frmHome.a.FileDecrypt(libEN, libDE, pw);
+                AES.FileDecrypt(libEN, libDE, pw);
                 current = DateTime.Now;
                 string currentWritable = current.ToString("d");
                 File.AppendAllText(libDE, $"\r\n{currentWritable}~{fileName}~{password}");
                 File.WriteAllLines(libDE, File.ReadAllLines(libDE).Where(l => !string.IsNullOrWhiteSpace(l)));
-                frmHome.a.FileEncrypt(libDE, pw, false,0);
+                AES.FileEncrypt(libDE, pw, false,"0");
                 File.Delete(libDE);
             }
             else
@@ -64,7 +64,7 @@ namespace sep
                 string currentWritable = current.ToString("d");
                 File.WriteAllText(libDE, $"{currentWritable}~{fileName}~{password}");
                 File.WriteAllLines(libDE, File.ReadAllLines(libDE).Where(l => !string.IsNullOrWhiteSpace(l)));
-                frmHome.a.FileEncrypt(libDE, pw,false,0);
+                AES.FileEncrypt(libDE, pw,false,"0");
                 File.Delete(libDE);
             }
         }

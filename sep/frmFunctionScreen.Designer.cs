@@ -35,6 +35,7 @@
             btnOpenFile = new System.Windows.Forms.Button();
             lbIns1 = new System.Windows.Forms.Label();
             pnlPasswordInput = new System.Windows.Forms.Panel();
+            pbCopyIcon = new System.Windows.Forms.PictureBox();
             btnConfirm = new System.Windows.Forms.Button();
             btnPWLibFunc = new System.Windows.Forms.Button();
             btnGenPassword = new System.Windows.Forms.Button();
@@ -69,14 +70,22 @@
             btnSkipFolder = new System.Windows.Forms.Button();
             btnChooseFolder = new System.Windows.Forms.Button();
             lbInsG1 = new System.Windows.Forms.Label();
+            pnlLibraryPassword = new System.Windows.Forms.Panel();
+            btnPWLibReveal = new System.Windows.Forms.Button();
+            btnConfirmPWLib = new System.Windows.Forms.Button();
+            txtPWLib = new System.Windows.Forms.TextBox();
+            label5 = new System.Windows.Forms.Label();
+            lbPWLib = new System.Windows.Forms.Label();
             pnlFileSelect.SuspendLayout();
             pnlPasswordInput.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbCopyIcon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbPWReveal).BeginInit();
             pnlFinalSteps.SuspendLayout();
             pnlAuthApp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbQRAuthSetup).BeginInit();
             pnlAuthDecrypt.SuspendLayout();
             pnlGuesser.SuspendLayout();
+            pnlLibraryPassword.SuspendLayout();
             SuspendLayout();
             // 
             // btnBack
@@ -144,6 +153,7 @@
             // 
             // pnlPasswordInput
             // 
+            pnlPasswordInput.Controls.Add(pbCopyIcon);
             pnlPasswordInput.Controls.Add(btnConfirm);
             pnlPasswordInput.Controls.Add(btnPWLibFunc);
             pnlPasswordInput.Controls.Add(btnGenPassword);
@@ -155,6 +165,18 @@
             pnlPasswordInput.Size = new System.Drawing.Size(370, 313);
             pnlPasswordInput.TabIndex = 4;
             pnlPasswordInput.Visible = false;
+            // 
+            // pbCopyIcon
+            // 
+            pbCopyIcon.Location = new System.Drawing.Point(313, 71);
+            pbCopyIcon.Name = "pbCopyIcon";
+            pbCopyIcon.Size = new System.Drawing.Size(48, 38);
+            pbCopyIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            pbCopyIcon.TabIndex = 6;
+            pbCopyIcon.TabStop = false;
+            pbCopyIcon.Click += pbCopyIcon_Click;
+            pbCopyIcon.MouseDown += pbCopyIcon_MouseDown;
+            pbCopyIcon.MouseUp += pbCopyIcon_MouseUp;
             // 
             // btnConfirm
             // 
@@ -169,7 +191,6 @@
             // 
             // btnPWLibFunc
             // 
-            btnPWLibFunc.Enabled = false;
             btnPWLibFunc.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             btnPWLibFunc.Location = new System.Drawing.Point(15, 178);
             btnPWLibFunc.Name = "btnPWLibFunc";
@@ -193,7 +214,7 @@
             // pbPWReveal
             // 
             pbPWReveal.Image = Properties.Resources.password_reveal_default;
-            pbPWReveal.Location = new System.Drawing.Point(313, 71);
+            pbPWReveal.Location = new System.Drawing.Point(259, 71);
             pbPWReveal.Name = "pbPWReveal";
             pbPWReveal.Size = new System.Drawing.Size(48, 38);
             pbPWReveal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -208,8 +229,9 @@
             txtPassword.Location = new System.Drawing.Point(13, 75);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
-            txtPassword.Size = new System.Drawing.Size(294, 33);
+            txtPassword.Size = new System.Drawing.Size(240, 33);
             txtPassword.TabIndex = 1;
+            txtPassword.TextChanged += txtPassword_TextChanged;
             // 
             // lbIns2
             // 
@@ -522,12 +544,75 @@
             lbInsG1.TabIndex = 0;
             lbInsG1.Text = "Guesser will attempt decryption on your selected file for each of the given passwords.\r\nEach time, creating a new copy of the supposedly decrypted file. \r\nPlease choose an output directory.";
             // 
+            // pnlLibraryPassword
+            // 
+            pnlLibraryPassword.Controls.Add(btnPWLibReveal);
+            pnlLibraryPassword.Controls.Add(btnConfirmPWLib);
+            pnlLibraryPassword.Controls.Add(txtPWLib);
+            pnlLibraryPassword.Controls.Add(label5);
+            pnlLibraryPassword.Controls.Add(lbPWLib);
+            pnlLibraryPassword.Location = new System.Drawing.Point(384, 151);
+            pnlLibraryPassword.Name = "pnlLibraryPassword";
+            pnlLibraryPassword.Size = new System.Drawing.Size(370, 336);
+            pnlLibraryPassword.TabIndex = 10;
+            pnlLibraryPassword.Visible = false;
+            // 
+            // btnPWLibReveal
+            // 
+            btnPWLibReveal.Location = new System.Drawing.Point(244, 260);
+            btnPWLibReveal.Name = "btnPWLibReveal";
+            btnPWLibReveal.Size = new System.Drawing.Size(117, 58);
+            btnPWLibReveal.TabIndex = 5;
+            btnPWLibReveal.Text = "Show";
+            btnPWLibReveal.UseVisualStyleBackColor = true;
+            btnPWLibReveal.MouseDown += btnPWLibReveal_MouseDown;
+            btnPWLibReveal.MouseUp += btnPWLibReveal_MouseUp;
+            // 
+            // btnConfirmPWLib
+            // 
+            btnConfirmPWLib.Location = new System.Drawing.Point(13, 260);
+            btnConfirmPWLib.Name = "btnConfirmPWLib";
+            btnConfirmPWLib.Size = new System.Drawing.Size(225, 58);
+            btnConfirmPWLib.TabIndex = 4;
+            btnConfirmPWLib.Text = "Confirm Password";
+            btnConfirmPWLib.UseVisualStyleBackColor = true;
+            btnConfirmPWLib.Click += button1_Click;
+            // 
+            // txtPWLib
+            // 
+            txtPWLib.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            txtPWLib.Location = new System.Drawing.Point(9, 212);
+            txtPWLib.Name = "txtPWLib";
+            txtPWLib.PasswordChar = '*';
+            txtPWLib.Size = new System.Drawing.Size(352, 33);
+            txtPWLib.TabIndex = 3;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label5.Location = new System.Drawing.Point(0, 67);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(371, 125);
+            label5.TabIndex = 2;
+            label5.Text = "Please enter a master password for your \r\npassword library.\r\n\r\nYou will need to remember it as contents\r\nof the library will be unavailable without it.";
+            label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lbPWLib
+            // 
+            lbPWLib.AutoSize = true;
+            lbPWLib.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lbPWLib.Location = new System.Drawing.Point(106, 24);
+            lbPWLib.Name = "lbPWLib";
+            lbPWLib.Size = new System.Drawing.Size(167, 30);
+            lbPWLib.TabIndex = 1;
+            lbPWLib.Text = "Password Library";
+            // 
             // frmFunctionScreen
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1134, 627);
-            Controls.Add(pnlAuthApp);
+            ClientSize = new System.Drawing.Size(1134, 578);
             Controls.Add(pnlFinalSteps);
             Controls.Add(pnlPasswordInput);
             Controls.Add(pnlFileSelect);
@@ -535,6 +620,8 @@
             Controls.Add(btnBack);
             Controls.Add(pnlGuesser);
             Controls.Add(pnlAuthDecrypt);
+            Controls.Add(pnlAuthApp);
+            Controls.Add(pnlLibraryPassword);
             Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             Name = "frmFunctionScreen";
@@ -544,6 +631,7 @@
             pnlFileSelect.PerformLayout();
             pnlPasswordInput.ResumeLayout(false);
             pnlPasswordInput.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pbCopyIcon).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbPWReveal).EndInit();
             pnlFinalSteps.ResumeLayout(false);
             pnlFinalSteps.PerformLayout();
@@ -554,6 +642,8 @@
             pnlAuthDecrypt.PerformLayout();
             pnlGuesser.ResumeLayout(false);
             pnlGuesser.PerformLayout();
+            pnlLibraryPassword.ResumeLayout(false);
+            pnlLibraryPassword.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -601,5 +691,12 @@
         private System.Windows.Forms.Button btnChooseFolder;
         private System.Windows.Forms.Label lbInsG1;
         private System.Windows.Forms.Button btnCancelGuesser;
+        private System.Windows.Forms.PictureBox pbCopyIcon;
+        private System.Windows.Forms.Panel pnlLibraryPassword;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbPWLib;
+        private System.Windows.Forms.Button btnConfirmPWLib;
+        private System.Windows.Forms.TextBox txtPWLib;
+        private System.Windows.Forms.Button btnPWLibReveal;
     }
 }

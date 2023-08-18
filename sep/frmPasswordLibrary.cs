@@ -25,7 +25,7 @@ namespace sep
             try
             {
                 password = Microsoft.VisualBasic.Interaction.InputBox("Input password library master password: ", "Password Library Decryption");
-                frmHome.a.FileDecrypt(libEN, libDE, password);
+                AES.FileDecrypt(libEN, libDE, password);
                 string[] lines = File.ReadAllLines(libDE);
                 //Array.Reverse(lines);
                 File.Delete(libDE);
@@ -109,13 +109,13 @@ namespace sep
         private void Remove_Click(object sender, EventArgs e)
         {
             //Get index from remove button
-            frmHome.a.FileDecrypt("pwLib.conf.aes", "pwLib.conf", password);
+            AES.FileDecrypt("pwLib.conf.aes", "pwLib.conf", password);
             PictureBox pb = sender as PictureBox;
             int index = Convert.ToInt32(pb.Name.Split('_')[1]);
             OtherOperations.LineRemover("pwLib.conf", index);
             Hide();
             new frmHome().Show();
-            frmHome.a.FileEncrypt("pwLib.conf", password,false,0);
+            AES.FileEncrypt("pwLib.conf", password,false,"0");
             File.Delete("pwLib.conf");
         }
 

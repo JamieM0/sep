@@ -116,7 +116,7 @@ namespace sep
                 {
                     string input = f;
                     string output = lockerLocations[index] + ".encloc\\" + Path.GetFileName(f) + ".aes";
-                    frmHome.a.FileEncrypt(input, output, pw);
+                    AES.FileEncrypt(input, output, pw);
                 }
                 OtherOperations.LineChanger(Path.Combine(OtherOperations.storeLoc, "lockersInfo.conf"), lockerLocations[index].Split('/')[0] + "~" + lockerLocations[index].Split('/')[1], lockerLocations[index].Split('/')[0] + "~" + lockerLocations[index].Split('/')[1] + "~1");
                 MessageBox.Show("Locker locked successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -131,7 +131,7 @@ namespace sep
                 {
                     string input = f;
                     string output = lockerLocations[index] + "\\" + $"{Path.GetFileName(f).Split('.')[0]}.{Path.GetFileName(f).Split('.')[1]}";
-                    frmHome.a.FileDecrypt(input, output, pw);
+                    AES.FileDecrypt(input, output, pw);
                 }
                 OtherOperations.LineChanger(Path.Combine(OtherOperations.storeLoc, "lockersInfo.conf"), lockerLocations[index].Split('/')[0] + "~" + lockerLocations[index].Split('/')[1], lockerLocations[index].Split('/')[0] + "~" + lockerLocations[index].Split('/')[1] + "~0");
                 MessageBox.Show("Locker unlocked successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

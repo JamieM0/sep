@@ -73,7 +73,7 @@ namespace sep
             {
                 string filePathUnencrypted;
                 filePathUnencrypted = filePath.Substring(0, filePath.Length - 4);
-                frmHome.a.FileDecrypt(filePath, filePathUnencrypted, password);
+                AES.FileDecrypt(filePath, filePathUnencrypted, password);
                 MessageBox.Show("The file has been decrypted!", "Decrypted!");
 
                 Hide();
@@ -143,7 +143,7 @@ namespace sep
                     foreach (string guess in guesses)
                     {
                         string output = $@"{dirPath}\{guess}_{fileName.Substring(0, fileName.Length - 4)}";
-                        frmHome.a.FileDecrypt(filePath, output, guess);
+                        AES.FileDecrypt(filePath, output, guess);
                     }
                     MessageBox.Show($"The file has been decrypted, and {guesses.Length} copies were made!", "Decrypted!");
                 }
@@ -173,7 +173,7 @@ namespace sep
                 {
                     string filePathUnencrypted;
                     filePathUnencrypted = filePath.Substring(0, filePath.Length - 4);
-                    frmHome.a.FileDecrypt(filePath, filePathUnencrypted, password + "⌀" + privateKey);
+                    AES.FileDecrypt(filePath, filePathUnencrypted, password + "⌀" + privateKey);
                     MessageBox.Show("The file has been decrypted!", "Decrypted!");
 
                     Hide();

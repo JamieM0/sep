@@ -19,6 +19,7 @@ namespace sep
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             DatabaseHelper.InitializeDatabase();
+            DatabaseHelperPL.InitializeDatabase();
             Application.Run(new frmHome());
         }
     }

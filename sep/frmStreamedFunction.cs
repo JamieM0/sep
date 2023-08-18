@@ -52,7 +52,7 @@ namespace sep
         {
             if (btnFunction.Text == "Encrypt")
             {
-                frmHome.a.FileEncrypt(filePath, txtPassword.Text,false,0);
+                AES.FileEncrypt(filePath, txtPassword.Text,false,"0");
                 if (!cbSaveOriginal.Checked)
                 {
                     File.Delete(filePath);
@@ -71,7 +71,7 @@ namespace sep
                         string filePathUnencrypted;
                         filePathUnencrypted = filePath.Substring(0, filePath.Length - 4);
 
-                        frmHome.a.FileDecrypt(filePath, filePathUnencrypted, txtPassword.Text);
+                        AES.FileDecrypt(filePath, filePathUnencrypted, txtPassword.Text);
 
                         if (!cbSaveOriginal.Checked)
                         {
@@ -89,7 +89,7 @@ namespace sep
                     string filePathUnencrypted;
                     filePathUnencrypted = filePath.Substring(0, filePath.Length - 4);
 
-                    frmHome.a.FileDecrypt(filePath, filePathUnencrypted, txtPassword.Text);
+                    AES.FileDecrypt(filePath, filePathUnencrypted, txtPassword.Text);
 
                     MessageBox.Show("The file has been decrypted!", "Decrypted!");
 

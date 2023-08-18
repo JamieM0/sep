@@ -32,12 +32,26 @@ namespace sep
             return data;
         }
 
-        public void FileEncrypt(string inputFile, string password, bool usingMFA, int currentID)
+        public static void FileEncrypt(string inputFile, string password, bool usingMFA, string currentID)
         {
             //http://stackoverflow.com/questions/27645527/aes-encryption-on-large-files
 
             //generate random salt
             byte[] salt = GenerateRandomSalt();
+
+            int pwLibID=0;
+            bool usingPWLib = false;
+            if(currentID.Contains("⌀"))
+            {
+                //Get pos of ⌀
+                int pos = currentID.IndexOf("⌀");
+                //Get the pwLibID (after the ⌀)
+                pwLibID = Convert.ToInt32(currentID.Substring(pos+1))+1;
+                //Get the ID
+                currentID = currentID.Substring(0, pos);
+
+                usingPWLib = true;
+            }
 
             //create output file name
             FileStream fsCrypt;
@@ -49,11 +63,21 @@ namespace sep
                 string newFileName = $"{currentID}-{fileName}";
 
                 string outputFile = Path.Combine(directory, newFileName);
-                fsCrypt = new FileStream(outputFile + ".mfa", FileMode.Create);
+
+                string extension = ".mfa";
+                if(usingPWLib)
+                    extension = ".lib"+pwLibID;
+
+                fsCrypt = new FileStream(outputFile + extension, FileMode.Create);
                 
             }
             else
-                fsCrypt = new FileStream(inputFile + ".aes", FileMode.Create);
+            {
+                string extension = ".aes";
+                if (usingPWLib)
+                    extension = ".lib" + pwLibID;
+                fsCrypt = new FileStream(inputFile + extension, FileMode.Create);
+            }
 
             //convert password string to byte arrray
             byte[] passwordBytes = System.Text.Encoding.UTF8.GetBytes(password);
@@ -105,7 +129,7 @@ namespace sep
                 fsCrypt.Close();
             }
         }
-        public void FileEncrypt(string inputFile, string outputFile, string password)
+        public static void FileEncrypt(string inputFile, string outputFile, string password)
         {
             //http://stackoverflow.com/questions/27645527/aes-encryption-on-large-files
 
@@ -172,7 +196,7 @@ namespace sep
         /// <param name="inputFile"></param>
         /// <param name="outputFile"></param>
         /// <param name="password"></param>
-        public void FileDecrypt(string inputFile, string outputFile, string password)
+        public static void FileDecrypt(string inputFile, string outputFile, string password)
         {
             byte[] passwordBytes = System.Text.Encoding.UTF8.GetBytes(password);
             byte[] salt = new byte[32];

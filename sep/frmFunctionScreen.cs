@@ -25,6 +25,7 @@ namespace sep
         string password;
         bool saveToLibrary = false;
         bool usingMFA = false;
+        int pwIdentifier;
         public frmFunctionScreen()
         {
             InitializeComponent();
@@ -45,6 +46,7 @@ namespace sep
             pnlFileSelect.Location = new Point(350, 170);
             pnlPasswordInput.Location = new Point(570, 170);
             pnlFinalSteps.Location = new Point(760, 170);
+            pbCopyIcon.Image = Properties.Resources.copy_icon;
         }
 
         private void frmFunctionScreen_Load(object sender, EventArgs e)
@@ -117,9 +119,12 @@ namespace sep
             lbFileName.Location = new Point((pnlFileSelect.Width / 2) - sizeOfFileName / 2, 150);
             lbFileName.Visible = true;
 
-            //Animate to left (2 sections)
-            animateSection(pnlFileSelect, new Point(170, 170), 10);
-            pnlPasswordInput.Visible = true;
+            if (lbFileName.Text.Length > 0)
+            {
+                //Animate to left (2 sections)
+                animateSection(pnlFileSelect, new Point(170, 170), 10);
+                pnlPasswordInput.Visible = true;
+            }
         }
 
         private void pbPWReveal_MouseDown(object sender, MouseEventArgs e)
@@ -134,10 +139,11 @@ namespace sep
             txtPassword.PasswordChar = '*';
         }
 
-        private void btnConfirm_Click(object sender, EventArgs e)
+        private void EncryptConfirmPassword()
         {
             password = txtPassword.Text;
-            if (fileName.EndsWith(".mfa"))
+            int extensionPoint = fileName.LastIndexOf('.');
+            if ((fileName.EndsWith(".mfa") || DatabaseHelper.SearchDatabase(fileName.Substring(0, extensionPoint))) && !funcEncrypt)
             {
                 pnlAuthDecrypt.Visible = true;
                 hideMainElements();
@@ -152,6 +158,10 @@ namespace sep
             {
                 btnUseAuthenticator.Visible = false;
             }
+        }
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            EncryptConfirmPassword();
         }
 
         private void btnGenPassword_Click(object sender, EventArgs e)
@@ -178,7 +188,21 @@ namespace sep
 
         private void btnPWLibFunc_Click(object sender, EventArgs e)
         {
-            saveToLibrary = true;
+            if (funcEncrypt)
+            {
+                saveToLibrary = true;
+                txtPassword.Enabled = false;
+
+                hideMainElements();
+                pnlLibraryPassword.Visible = true;
+            }
+            else
+            {
+                //Open Password
+                hideMainElements();
+                pnlLibraryPassword.Visible = true;
+            }
+
         }
 
         string secretKey;
@@ -187,6 +211,7 @@ namespace sep
             //MessageBox.Show("SEP uses the GoogleAuthenticator library to help link the encrypted file and your authenticator (MFA) app.\r\nA private key is generated and provided to your mobile device via the QR code. It is stored securely on your local PC using DPAPI, usually a servic like Google or Twitter will store this key on their servers.\r\nThis means that the file cannot be decrypted without having this key, so you cannot share it. It also means that anyone with access to your Windows PC has the potential to access this key.\r\nDo not use this as a replacement for a strong password, both are important.", "How do authenticator (MFA) apps work in SEP?");
             if (MessageBox.Show("Files using authenticator (MFA) apps cannot be shared.\r\nAnyone with access to your Windows PC can access the private key.\r\nDo Not use as replacement for strong password.\r\nLearn More: https://go.jmatthews.uk/sep/mfa\r\n\r\nWould you like to continue?", "How do authenticator (MFA) apps work in SEP?", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
+                btnUseAuthenticator.Enabled = false;
                 pnlAuthApp.Visible = true;
                 hideMainElements();
 
@@ -243,7 +268,7 @@ namespace sep
             pnlAuthApp.Visible = false;
             showMainElements();
         }
-        int nextID = 0;
+        string nextID = "";
         private void btnConfirmAuthSetup_Click(object sender, EventArgs e)
         {
             string testCode = txtAuthSetupVerify.Text;
@@ -252,7 +277,7 @@ namespace sep
                 MessageBox.Show("Sorry, that didn't work, please try again later!", "Invalid Code!");
             else
             {
-                nextID = DatabaseHelper.CountFileData() + 1;
+                nextID = Convert.ToString(DatabaseHelper.CountFileData() + 1);
                 fileName = nextID + "-" + fileName;
                 DatabaseHelper.InsertFileData(fileName, secretKey);
 
@@ -293,7 +318,11 @@ namespace sep
                     string secretKey = DatabaseHelper.GetSecretKey(Convert.ToInt32(fileName.Split('-')[0]));
                     password += "⌀" + secretKey;
                 }
-                frmHome.a.FileEncrypt(filePath, password, usingMFA, nextID);
+                if (saveToLibrary)
+                {
+                    nextID += "⌀" + pwIdentifier;
+                }
+                AES.FileEncrypt(filePath, password, usingMFA, nextID);
                 password = "";
                 if (cbDeleteAsk.Checked)
                 {
@@ -316,11 +345,11 @@ namespace sep
                 string directory = Path.GetDirectoryName(filePathUnencrypted);
                 string oldFileName = Path.GetFileName(filePathUnencrypted);
                 int firstDashIndex = oldFileName.IndexOf("-");
-                string newFileName = $"{oldFileName.Substring(firstDashIndex+1)}";
+                string newFileName = $"{oldFileName.Substring(firstDashIndex + 1)}";
 
                 filePathUnencrypted = Path.Combine(directory, newFileName);
-                
-                frmHome.a.FileDecrypt(filePath, filePathUnencrypted, password);
+
+                AES.FileDecrypt(filePath, filePathUnencrypted, password);
                 MessageBox.Show("The file has been decrypted successfully!", "Decrypted!");
 
                 if (cbDeleteAsk.Checked)
@@ -341,6 +370,7 @@ namespace sep
             pnlPasswordInput.Visible = false;
             pnlFinalSteps.Visible = false;
             btnBack.Visible = false;
+            pnlLibraryPassword.Visible = false;
         }
         private void showMainElements()
         {
@@ -348,6 +378,7 @@ namespace sep
             pnlPasswordInput.Visible = true;
             pnlFinalSteps.Visible = true;
             btnBack.Visible = true;
+            pnlLibraryPassword.Visible = true;
         }
 
         string dirPath;
@@ -383,7 +414,7 @@ namespace sep
                     foreach (string guess in guesses)
                     {
                         string output = $@"{dirPath}\{guess}_{fileName.Substring(0, fileName.Length - 4)}";
-                        frmHome.a.FileDecrypt(filePath, output, guess);
+                        AES.FileDecrypt(filePath, output, guess);
                     }
                     MessageBox.Show($"The file has been decrypted, and {guesses.Length} copies were made!", "Decrypted!");
                 }
@@ -408,6 +439,114 @@ namespace sep
             pnlGuesser.Visible = false;
             showMainElements();
             pnlFinalSteps.Visible = false;
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPassword.Text.Length > 0)
+            {
+                btnPWLibFunc.Enabled = true;
+            }
+            else
+            {
+                btnPWLibFunc.Enabled = false;
+            }
+        }
+
+        private void pbCopyIcon_MouseDown(object sender, MouseEventArgs e)
+        {
+            pbCopyIcon.Image = Properties.Resources.copy_icon_active;
+        }
+
+        private void pbCopyIcon_MouseUp(object sender, MouseEventArgs e)
+        {
+            pbCopyIcon.Image = Properties.Resources.copy_icon;
+        }
+
+        private void pbCopyIcon_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(txtPassword.Text);
+        }
+
+        private void btnPWLibReveal_MouseDown(object sender, MouseEventArgs e)
+        {
+            txtPWLib.PasswordChar = '\0';
+        }
+
+        private void btnPWLibReveal_MouseUp(object sender, MouseEventArgs e)
+        {
+            txtPWLib.PasswordChar = '*';
+        }
+        string pwlibmaster = "";
+        private void button1_Click(object sender, EventArgs e)
+        {
+            showMainElements();
+            pnlFinalSteps.Visible = false;
+            pnlLibraryPassword.Visible = false;
+            pwlibmaster = txtPWLib.Text;
+            if (funcEncrypt)
+            {
+                try
+                {
+                    if (File.Exists(DatabaseHelperPL.EncryptedDatabaseFilePath))
+                    {
+                        DatabaseHelperPL.DecryptPWLib(pwlibmaster);
+                        //Check if decrypted database is valid (has correct pw)
+                        if(DatabaseHelperPL.CountPasswordData()==-1)
+                        {
+                            throw new Exception("password_incorrect");
+                        }
+                    }
+                    pwIdentifier = DatabaseHelperPL.CountPasswordData();
+                    DatabaseHelperPL.InsertPWLib(filePath, txtPassword.Text);
+                    DatabaseHelperPL.EncryptPWLib(pwlibmaster);
+                    btnPWLibFunc.Enabled = false;
+                    btnGenPassword.Enabled = false;
+                    btnConfirm.Enabled = false;
+                    btnOpenFile.Enabled = false;
+                    EncryptConfirmPassword();
+                }
+                catch (Exception ex)
+                {
+                    if (ex.Message == "password_incorrect")
+                    {
+                        MessageBox.Show("The master password you entered was incorrect!", "Error!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sorry, there was a problem with the password library. Please try again.\r\nMore Details: " + ex.Message, "Error!");
+                    }
+                }
+            }
+            else
+            {
+                try
+                {
+                    if (File.Exists(DatabaseHelperPL.EncryptedDatabaseFilePath))
+                    {
+                        DatabaseHelperPL.DecryptPWLib(pwlibmaster);
+                        if (DatabaseHelperPL.CountPasswordData() == -1)
+                        {
+                            throw new Exception("password_incorrect");
+                        }
+                    }
+                    pwIdentifier = Convert.ToInt32(Path.GetExtension(filePath).Substring(4));
+                    txtPassword.Text = DatabaseHelperPL.GetPassword(pwIdentifier);
+                    DatabaseHelperPL.EncryptPWLib(pwlibmaster);
+                }
+                catch(Exception ex)
+                {
+                    if(ex.Message=="password_incorrect")
+                    {
+                        MessageBox.Show("The master password you entered was incorrect!", "Error!");
+                        File.Delete(DatabaseHelperPL.DatabaseFileName);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sorry, there was a problem with the password library. Please try again.\r\nMore Details: " + ex.Message, "Error!");
+                    }
+                }
+            }
         }
     }
 }
