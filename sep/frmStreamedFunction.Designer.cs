@@ -28,94 +28,106 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.btnGenPassword = new System.Windows.Forms.Button();
-            this.btnSavePassword = new System.Windows.Forms.Button();
-            this.lbInstructions = new System.Windows.Forms.Label();
-            this.btnFunction = new System.Windows.Forms.Button();
-            this.cbSaveOriginal = new System.Windows.Forms.CheckBox();
-            this.SuspendLayout();
+            txtPassword = new System.Windows.Forms.TextBox();
+            btnGenPassword = new System.Windows.Forms.Button();
+            btnSavePassword = new System.Windows.Forms.Button();
+            lbInstructions = new System.Windows.Forms.Label();
+            btnFunction = new System.Windows.Forms.Button();
+            cbSaveOriginal = new System.Windows.Forms.CheckBox();
+            btnPWLibFunc = new System.Windows.Forms.Button();
+            SuspendLayout();
             // 
             // txtPassword
             // 
-            this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPassword.Location = new System.Drawing.Point(12, 37);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(291, 29);
-            this.txtPassword.TabIndex = 0;
+            txtPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            txtPassword.Location = new System.Drawing.Point(12, 37);
+            txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '*';
+            txtPassword.Size = new System.Drawing.Size(222, 29);
+            txtPassword.TabIndex = 0;
             // 
             // btnGenPassword
             // 
-            this.btnGenPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnGenPassword.Location = new System.Drawing.Point(12, 72);
-            this.btnGenPassword.Name = "btnGenPassword";
-            this.btnGenPassword.Size = new System.Drawing.Size(151, 32);
-            this.btnGenPassword.TabIndex = 1;
-            this.btnGenPassword.Text = "Generate Password";
-            this.btnGenPassword.UseVisualStyleBackColor = true;
-            this.btnGenPassword.Click += new System.EventHandler(this.btnGenPassword_Click);
+            btnGenPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnGenPassword.Location = new System.Drawing.Point(12, 72);
+            btnGenPassword.Name = "btnGenPassword";
+            btnGenPassword.Size = new System.Drawing.Size(151, 32);
+            btnGenPassword.TabIndex = 1;
+            btnGenPassword.Text = "Generate Password";
+            btnGenPassword.UseVisualStyleBackColor = true;
+            btnGenPassword.Click += btnGenPassword_Click;
             // 
             // btnSavePassword
             // 
-            this.btnSavePassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnSavePassword.Location = new System.Drawing.Point(169, 72);
-            this.btnSavePassword.Name = "btnSavePassword";
-            this.btnSavePassword.Size = new System.Drawing.Size(134, 32);
-            this.btnSavePassword.TabIndex = 2;
-            this.btnSavePassword.Text = "Copy Password";
-            this.btnSavePassword.UseVisualStyleBackColor = true;
-            this.btnSavePassword.Click += new System.EventHandler(this.btnSavePassword_Click);
+            btnSavePassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnSavePassword.Location = new System.Drawing.Point(240, 36);
+            btnSavePassword.Name = "btnSavePassword";
+            btnSavePassword.Size = new System.Drawing.Size(63, 30);
+            btnSavePassword.TabIndex = 2;
+            btnSavePassword.Text = "Copy";
+            btnSavePassword.UseVisualStyleBackColor = true;
+            btnSavePassword.Click += btnSavePassword_Click;
             // 
             // lbInstructions
             // 
-            this.lbInstructions.AutoSize = true;
-            this.lbInstructions.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbInstructions.Location = new System.Drawing.Point(12, 9);
-            this.lbInstructions.Name = "lbInstructions";
-            this.lbInstructions.Size = new System.Drawing.Size(145, 25);
-            this.lbInstructions.TabIndex = 3;
-            this.lbInstructions.Text = "Enter password:";
+            lbInstructions.AutoSize = true;
+            lbInstructions.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lbInstructions.Location = new System.Drawing.Point(12, 9);
+            lbInstructions.Name = "lbInstructions";
+            lbInstructions.Size = new System.Drawing.Size(145, 25);
+            lbInstructions.TabIndex = 3;
+            lbInstructions.Text = "Enter password:";
             // 
             // btnFunction
             // 
-            this.btnFunction.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnFunction.Location = new System.Drawing.Point(12, 144);
-            this.btnFunction.Name = "btnFunction";
-            this.btnFunction.Size = new System.Drawing.Size(291, 43);
-            this.btnFunction.TabIndex = 4;
-            this.btnFunction.Text = "Encrypt";
-            this.btnFunction.UseVisualStyleBackColor = true;
-            this.btnFunction.Click += new System.EventHandler(this.btnFunction_Click);
+            btnFunction.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnFunction.Location = new System.Drawing.Point(12, 144);
+            btnFunction.Name = "btnFunction";
+            btnFunction.Size = new System.Drawing.Size(291, 43);
+            btnFunction.TabIndex = 4;
+            btnFunction.Text = "Encrypt";
+            btnFunction.UseVisualStyleBackColor = true;
+            btnFunction.Click += btnFunction_Click;
             // 
             // cbSaveOriginal
             // 
-            this.cbSaveOriginal.AutoSize = true;
-            this.cbSaveOriginal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cbSaveOriginal.Location = new System.Drawing.Point(12, 113);
-            this.cbSaveOriginal.Name = "cbSaveOriginal";
-            this.cbSaveOriginal.Size = new System.Drawing.Size(158, 25);
-            this.cbSaveOriginal.TabIndex = 5;
-            this.cbSaveOriginal.Text = "Keep Original File?";
-            this.cbSaveOriginal.UseVisualStyleBackColor = true;
+            cbSaveOriginal.AutoSize = true;
+            cbSaveOriginal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            cbSaveOriginal.Location = new System.Drawing.Point(12, 113);
+            cbSaveOriginal.Name = "cbSaveOriginal";
+            cbSaveOriginal.Size = new System.Drawing.Size(158, 25);
+            cbSaveOriginal.TabIndex = 5;
+            cbSaveOriginal.Text = "Keep Original File?";
+            cbSaveOriginal.UseVisualStyleBackColor = true;
+            // 
+            // btnPWLibFunc
+            // 
+            btnPWLibFunc.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnPWLibFunc.Location = new System.Drawing.Point(169, 72);
+            btnPWLibFunc.Name = "btnPWLibFunc";
+            btnPWLibFunc.Size = new System.Drawing.Size(134, 32);
+            btnPWLibFunc.TabIndex = 6;
+            btnPWLibFunc.Text = "Save Password";
+            btnPWLibFunc.UseVisualStyleBackColor = true;
+            btnPWLibFunc.Click += btnPWLibFunc_Click;
             // 
             // frmStreamedFunction
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(315, 199);
-            this.Controls.Add(this.cbSaveOriginal);
-            this.Controls.Add(this.btnFunction);
-            this.Controls.Add(this.lbInstructions);
-            this.Controls.Add(this.btnSavePassword);
-            this.Controls.Add(this.btnGenPassword);
-            this.Controls.Add(this.txtPassword);
-            this.Name = "frmStreamedFunction";
-            this.Text = "SEP";
-            this.Load += new System.EventHandler(this.frmStreamedFunction_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(315, 199);
+            Controls.Add(btnPWLibFunc);
+            Controls.Add(cbSaveOriginal);
+            Controls.Add(btnFunction);
+            Controls.Add(lbInstructions);
+            Controls.Add(btnSavePassword);
+            Controls.Add(btnGenPassword);
+            Controls.Add(txtPassword);
+            Name = "frmStreamedFunction";
+            Text = "SEP";
+            Load += frmStreamedFunction_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -126,5 +138,6 @@
         private System.Windows.Forms.Label lbInstructions;
         private System.Windows.Forms.Button btnFunction;
         private System.Windows.Forms.CheckBox cbSaveOriginal;
+        private System.Windows.Forms.Button btnPWLibFunc;
     }
 }

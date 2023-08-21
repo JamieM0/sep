@@ -41,9 +41,9 @@
             oldDecryptFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             automaticTakeoverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             moreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            passwordLibraryToolStripMenuItem = new System.Windows.Forms.ToolStripDropDownMenu();
             lockersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             githubPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            passwordLibraryToolStripMenuItem = new System.Windows.Forms.ToolStripDropDownMenu();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
@@ -120,8 +120,8 @@
             // automaticTakeoverToolStripMenuItem
             // 
             automaticTakeoverToolStripMenuItem.Name = "automaticTakeoverToolStripMenuItem";
-            automaticTakeoverToolStripMenuItem.Size = new System.Drawing.Size(208, 34);
-            automaticTakeoverToolStripMenuItem.Text = "Automatic Takeover";
+            automaticTakeoverToolStripMenuItem.Size = new System.Drawing.Size(226, 34);
+            automaticTakeoverToolStripMenuItem.Text = "Add to Context Menu";
             automaticTakeoverToolStripMenuItem.Click += automaticTakeoverToolStripMenuItem_Click;
             // 
             // moreToolStripMenuItem
@@ -130,12 +130,6 @@
             moreToolStripMenuItem.Name = "moreToolStripMenuItem";
             moreToolStripMenuItem.Size = new System.Drawing.Size(93, 34);
             moreToolStripMenuItem.Text = "Other...";
-            // 
-            // passwordLibraryToolStripMenuItem
-            // 
-            passwordLibraryToolStripMenuItem.AutoClose = false;
-            passwordLibraryToolStripMenuItem.Name = "passwordLibraryToolStripMenuItem";
-            passwordLibraryToolStripMenuItem.Size = new System.Drawing.Size(61, 4);
             // 
             // lockersToolStripMenuItem
             // 
@@ -150,6 +144,12 @@
             githubPageToolStripMenuItem.Size = new System.Drawing.Size(199, 34);
             githubPageToolStripMenuItem.Text = "Github Page";
             githubPageToolStripMenuItem.Click += githubPageToolStripMenuItem_Click;
+            // 
+            // passwordLibraryToolStripMenuItem
+            // 
+            passwordLibraryToolStripMenuItem.AutoClose = false;
+            passwordLibraryToolStripMenuItem.Name = "passwordLibraryToolStripMenuItem";
+            passwordLibraryToolStripMenuItem.Size = new System.Drawing.Size(61, 4);
             // 
             // menuStrip1
             // 
