@@ -492,7 +492,7 @@ namespace sep
                     {
                         DatabaseHelperPL.DecryptPWLib(pwlibmaster);
                         //Check if decrypted database is valid (has correct pw)
-                        if(DatabaseHelperPL.CountPasswordData()==-1)
+                        if (DatabaseHelperPL.CountPasswordData() == -1)
                         {
                             throw new Exception("password_incorrect");
                         }
@@ -534,9 +534,9 @@ namespace sep
                     txtPassword.Text = DatabaseHelperPL.GetPassword(pwIdentifier);
                     DatabaseHelperPL.EncryptPWLib(pwlibmaster);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-                    if(ex.Message=="password_incorrect")
+                    if (ex.Message == "password_incorrect")
                     {
                         MessageBox.Show("The master password you entered was incorrect!", "Error!");
                         File.Delete(DatabaseHelperPL.DatabaseFileName);

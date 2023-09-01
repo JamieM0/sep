@@ -209,7 +209,7 @@ namespace sep
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error occured while installing Automatic Takeover. \r\nDid you run SEP as an administrator?\r\nPlease try again later.\r\n\r\nError: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An error occured while installing Automatic Takeover. \r\nPlease try again later.\r\n\r\nError Details: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -242,6 +242,29 @@ namespace sep
             {
                 Hide();
                 new frmDecryptFile().Show();
+            }
+        }
+
+        private void removeFromContextMenuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //RegistryKey key = Registry.ClassesRoot.OpenSubKey(@"*\shell", true);
+                //key = key.OpenSubKey("SEP Encrypt", true);
+                //key.DeleteSubKeyTree("SEP Encrypt");
+
+                //key = Registry.ClassesRoot.OpenSubKey(@"Directory\shell", true);
+                //key = key.OpenSubKey("SEP Convert to Locker", true);
+                //key.DeleteSubKeyTree("SEP Convert to Locker");
+
+                //File.Delete(Path.Combine(OtherOperations.storeLoc, "autotakeover"));
+                //MessageBox.Show("Automatic Takeover has been uninstalled. \r\nYou will no longer see any refrences to SEP in your context menu.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                MessageBox.Show("This feature is not yet implemented.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occured while uninstalling Automatic Takeover. \r\nPlease try again later.\r\n\r\nError Details: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

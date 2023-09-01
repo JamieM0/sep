@@ -263,4 +263,102 @@ namespace sep
         }
         // Add other database operations as needed (e.g., retrieve data, update data, delete data, etc.).
     }
+
+    internal class DatabaseHelperLK
+    {
+
+        private static readonly string AppDataFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+        private static readonly string DatabaseFolderPath = Path.Combine(AppDataFolderPath, "sep"); // Change "YourAppName" to your application name.
+
+        public static readonly string DatabaseFileName = "lockers.db";
+        private static readonly string DatabaseFilePath = Path.Combine(DatabaseFolderPath, DatabaseFileName);
+        public static readonly string EncryptedDatabaseFilePath = DatabaseFilePath + ".aes";
+
+        private static readonly string ConnectionString = "Data Source=" + DatabaseFilePath + ";Version=3;";
+
+        public static void InitializeDatabase()
+        {
+            if (File.Exists(EncryptedDatabaseFilePath))
+                return;
+            if (!Directory.Exists(DatabaseFolderPath))
+            {
+                Directory.CreateDirectory(DatabaseFolderPath);
+            }
+
+            using (var connection = new SQLiteConnection(ConnectionString))
+            {
+                connection.Open();
+
+                // Create the table if it doesn't exist.
+                string createTableQuery = @"CREATE TABLE IF NOT EXISTS lockers (
+                                          Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                          LockerName TEXT NOT NULL,
+                                          LockerLocation TEXT NOT NULL,
+                                          LockerPassword TEXT NOT NULL
+                                      );";
+
+                using (var command = new SQLiteCommand(createTableQuery, connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        // Add a method to insert data into the table.
+        public static void InsertPWLib(string locName, string locLoc, string locPass)
+        {
+            using (var connection = new SQLiteConnection(ConnectionString))
+            {
+                connection.Open();
+
+                string insertQuery = "INSERT INTO lockers (FileName, LocLoc, Password) VALUES (@FileName, @LocLoc, @Password);";
+
+                using (var command = new SQLiteCommand(insertQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@FileName", locName);
+                    command.Parameters.AddWithValue("@LocLoc", locLoc);
+                    command.Parameters.AddWithValue("@Password", locPass);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        // Add a method to count the number of entries in the table.
+        public static int CountLockerData()
+        {
+            int count = 0;
+
+            try
+            {
+                using (var connection = new SQLiteConnection(ConnectionString))
+                {
+                    connection.Open();
+
+                    string countQuery = "SELECT COUNT(*) FROM lockers;";
+
+                    using (var command = new SQLiteCommand(countQuery, connection))
+                    {
+                        count = Convert.ToInt32(command.ExecuteScalar());
+                    }
+                }
+
+                return count;
+            }
+            catch
+            {
+                return -1;
+            }
+        }
+
+        public static void EncryptLockers(string pw)
+        {
+            AES.FileEncrypt(DatabaseFilePath, EncryptedDatabaseFilePath, pw);
+            File.Delete(DatabaseFilePath);
+        }
+        public static void DecryptLockers(string pw)
+        {
+            AES.FileDecrypt(EncryptedDatabaseFilePath, DatabaseFilePath, pw);
+        }
+        // Add other database operations as needed (e.g., retrieve data, update data, delete data, etc.).
+    }
 }

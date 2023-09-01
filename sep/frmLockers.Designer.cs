@@ -29,216 +29,215 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLockers));
-            this.lbTitles = new System.Windows.Forms.Label();
-            this.lbWelcome = new System.Windows.Forms.Label();
-            this.btnBack = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnCreateLocker = new System.Windows.Forms.Button();
-            this.btnDeleteLocker = new System.Windows.Forms.Button();
-            this.pnlCreateMenu = new System.Windows.Forms.Panel();
-            this.btnCreateLockerConfirm = new System.Windows.Forms.Button();
-            this.txtLockerName = new System.Windows.Forms.TextBox();
-            this.lbIns2 = new System.Windows.Forms.Label();
-            this.lbDirectoryListing = new System.Windows.Forms.Label();
-            this.btnOpenDirectory = new System.Windows.Forms.Button();
-            this.lbIns1 = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
-            this.pnlCreateMenu.SuspendLayout();
-            this.SuspendLayout();
+            lbTitles = new System.Windows.Forms.Label();
+            lbWelcome = new System.Windows.Forms.Label();
+            btnBack = new System.Windows.Forms.Button();
+            panel1 = new System.Windows.Forms.Panel();
+            button2 = new System.Windows.Forms.Button();
+            button1 = new System.Windows.Forms.Button();
+            label2 = new System.Windows.Forms.Label();
+            btnCreateLocker = new System.Windows.Forms.Button();
+            btnDeleteLocker = new System.Windows.Forms.Button();
+            pnlCreateMenu = new System.Windows.Forms.Panel();
+            btnCreateLockerConfirm = new System.Windows.Forms.Button();
+            txtLockerName = new System.Windows.Forms.TextBox();
+            lbIns2 = new System.Windows.Forms.Label();
+            lbDirectoryListing = new System.Windows.Forms.Label();
+            btnOpenDirectory = new System.Windows.Forms.Button();
+            lbIns1 = new System.Windows.Forms.Label();
+            panel1.SuspendLayout();
+            pnlCreateMenu.SuspendLayout();
+            SuspendLayout();
             // 
             // lbTitles
             // 
-            this.lbTitles.AutoSize = true;
-            this.lbTitles.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbTitles.Location = new System.Drawing.Point(12, 9);
-            this.lbTitles.Name = "lbTitles";
-            this.lbTitles.Size = new System.Drawing.Size(210, 47);
-            this.lbTitles.TabIndex = 0;
-            this.lbTitles.Text = "SEP: Lockers";
+            lbTitles.AutoSize = true;
+            lbTitles.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lbTitles.Location = new System.Drawing.Point(12, 9);
+            lbTitles.Name = "lbTitles";
+            lbTitles.Size = new System.Drawing.Size(210, 47);
+            lbTitles.TabIndex = 0;
+            lbTitles.Text = "SEP: Lockers";
             // 
             // lbWelcome
             // 
-            this.lbWelcome.AutoSize = true;
-            this.lbWelcome.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbWelcome.Location = new System.Drawing.Point(12, 56);
-            this.lbWelcome.Name = "lbWelcome";
-            this.lbWelcome.Size = new System.Drawing.Size(866, 42);
-            this.lbWelcome.TabIndex = 1;
-            this.lbWelcome.Text = resources.GetString("lbWelcome.Text");
+            lbWelcome.AutoSize = true;
+            lbWelcome.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lbWelcome.Location = new System.Drawing.Point(12, 56);
+            lbWelcome.Name = "lbWelcome";
+            lbWelcome.Size = new System.Drawing.Size(866, 42);
+            lbWelcome.TabIndex = 1;
+            lbWelcome.Text = resources.GetString("lbWelcome.Text");
             // 
             // btnBack
             // 
-            this.btnBack.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnBack.Location = new System.Drawing.Point(784, 12);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(119, 41);
-            this.btnBack.TabIndex = 2;
-            this.btnBack.Text = "<-- Back";
-            this.btnBack.UseVisualStyleBackColor = true;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            btnBack.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnBack.Location = new System.Drawing.Point(784, 12);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new System.Drawing.Size(119, 41);
+            btnBack.TabIndex = 2;
+            btnBack.Text = "<-- Back";
+            btnBack.UseVisualStyleBackColor = true;
+            btnBack.Click += btnBack_Click;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(12, 110);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(410, 45);
-            this.panel1.TabIndex = 3;
-            this.panel1.Visible = false;
+            panel1.Controls.Add(button2);
+            panel1.Controls.Add(button1);
+            panel1.Controls.Add(label2);
+            panel1.Location = new System.Drawing.Point(12, 110);
+            panel1.Name = "panel1";
+            panel1.Size = new System.Drawing.Size(410, 45);
+            panel1.TabIndex = 3;
+            panel1.Visible = false;
             // 
             // button2
             // 
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(296, 7);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(110, 32);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Open Locker";
-            this.button2.UseVisualStyleBackColor = true;
+            button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            button2.Location = new System.Drawing.Point(296, 7);
+            button2.Name = "button2";
+            button2.Size = new System.Drawing.Size(110, 32);
+            button2.TabIndex = 3;
+            button2.Text = "Open Locker";
+            button2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(180, 7);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 32);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Unlock";
-            this.button1.UseVisualStyleBackColor = true;
+            button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            button1.Location = new System.Drawing.Point(180, 7);
+            button1.Name = "button1";
+            button1.Size = new System.Drawing.Size(110, 32);
+            button1.TabIndex = 2;
+            button1.Text = "Unlock";
+            button1.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(171, 10);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 25);
-            this.label2.TabIndex = 0;
+            label2.AutoSize = true;
+            label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label2.Location = new System.Drawing.Point(171, 10);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(0, 25);
+            label2.TabIndex = 0;
             // 
             // btnCreateLocker
             // 
-            this.btnCreateLocker.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCreateLocker.Location = new System.Drawing.Point(499, 12);
-            this.btnCreateLocker.Name = "btnCreateLocker";
-            this.btnCreateLocker.Size = new System.Drawing.Size(258, 41);
-            this.btnCreateLocker.TabIndex = 5;
-            this.btnCreateLocker.Text = "+ Create a new locker";
-            this.btnCreateLocker.UseVisualStyleBackColor = true;
-            this.btnCreateLocker.Click += new System.EventHandler(this.btnCreateLocker_Click);
+            btnCreateLocker.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnCreateLocker.Location = new System.Drawing.Point(499, 12);
+            btnCreateLocker.Name = "btnCreateLocker";
+            btnCreateLocker.Size = new System.Drawing.Size(258, 41);
+            btnCreateLocker.TabIndex = 5;
+            btnCreateLocker.Text = "+ Create a new locker";
+            btnCreateLocker.UseVisualStyleBackColor = true;
+            btnCreateLocker.Click += btnCreateLocker_Click;
             // 
             // btnDeleteLocker
             // 
-            this.btnDeleteLocker.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnDeleteLocker.Location = new System.Drawing.Point(308, 12);
-            this.btnDeleteLocker.Name = "btnDeleteLocker";
-            this.btnDeleteLocker.Size = new System.Drawing.Size(176, 41);
-            this.btnDeleteLocker.TabIndex = 6;
-            this.btnDeleteLocker.Text = "- Delete Locker";
-            this.btnDeleteLocker.UseVisualStyleBackColor = true;
-            this.btnDeleteLocker.Click += new System.EventHandler(this.button3_Click);
+            btnDeleteLocker.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnDeleteLocker.Location = new System.Drawing.Point(308, 12);
+            btnDeleteLocker.Name = "btnDeleteLocker";
+            btnDeleteLocker.Size = new System.Drawing.Size(176, 41);
+            btnDeleteLocker.TabIndex = 6;
+            btnDeleteLocker.Text = "- Delete Locker";
+            btnDeleteLocker.UseVisualStyleBackColor = true;
+            btnDeleteLocker.Click += button3_Click;
             // 
             // pnlCreateMenu
             // 
-            this.pnlCreateMenu.Controls.Add(this.btnCreateLockerConfirm);
-            this.pnlCreateMenu.Controls.Add(this.txtLockerName);
-            this.pnlCreateMenu.Controls.Add(this.lbIns2);
-            this.pnlCreateMenu.Controls.Add(this.lbDirectoryListing);
-            this.pnlCreateMenu.Controls.Add(this.btnOpenDirectory);
-            this.pnlCreateMenu.Controls.Add(this.lbIns1);
-            this.pnlCreateMenu.Location = new System.Drawing.Point(12, 59);
-            this.pnlCreateMenu.Name = "pnlCreateMenu";
-            this.pnlCreateMenu.Size = new System.Drawing.Size(891, 379);
-            this.pnlCreateMenu.TabIndex = 7;
-            this.pnlCreateMenu.Visible = false;
+            pnlCreateMenu.Controls.Add(btnCreateLockerConfirm);
+            pnlCreateMenu.Controls.Add(txtLockerName);
+            pnlCreateMenu.Controls.Add(lbIns2);
+            pnlCreateMenu.Controls.Add(lbDirectoryListing);
+            pnlCreateMenu.Controls.Add(btnOpenDirectory);
+            pnlCreateMenu.Controls.Add(lbIns1);
+            pnlCreateMenu.Location = new System.Drawing.Point(12, 59);
+            pnlCreateMenu.Name = "pnlCreateMenu";
+            pnlCreateMenu.Size = new System.Drawing.Size(891, 379);
+            pnlCreateMenu.TabIndex = 7;
+            pnlCreateMenu.Visible = false;
             // 
             // btnCreateLockerConfirm
             // 
-            this.btnCreateLockerConfirm.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCreateLockerConfirm.Location = new System.Drawing.Point(3, 245);
-            this.btnCreateLockerConfirm.Name = "btnCreateLockerConfirm";
-            this.btnCreateLockerConfirm.Size = new System.Drawing.Size(511, 41);
-            this.btnCreateLockerConfirm.TabIndex = 6;
-            this.btnCreateLockerConfirm.Text = "Create Locker";
-            this.btnCreateLockerConfirm.UseVisualStyleBackColor = true;
-            this.btnCreateLockerConfirm.Click += new System.EventHandler(this.btnCreateLockerConfirm_Click);
+            btnCreateLockerConfirm.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnCreateLockerConfirm.Location = new System.Drawing.Point(3, 245);
+            btnCreateLockerConfirm.Name = "btnCreateLockerConfirm";
+            btnCreateLockerConfirm.Size = new System.Drawing.Size(511, 41);
+            btnCreateLockerConfirm.TabIndex = 6;
+            btnCreateLockerConfirm.Text = "Create Locker";
+            btnCreateLockerConfirm.UseVisualStyleBackColor = true;
+            btnCreateLockerConfirm.Click += btnCreateLockerConfirm_Click;
             // 
             // txtLockerName
             // 
-            this.txtLockerName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtLockerName.Location = new System.Drawing.Point(290, 158);
-            this.txtLockerName.Name = "txtLockerName";
-            this.txtLockerName.Size = new System.Drawing.Size(224, 29);
-            this.txtLockerName.TabIndex = 4;
+            txtLockerName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            txtLockerName.Location = new System.Drawing.Point(290, 158);
+            txtLockerName.Name = "txtLockerName";
+            txtLockerName.Size = new System.Drawing.Size(224, 29);
+            txtLockerName.TabIndex = 4;
             // 
             // lbIns2
             // 
-            this.lbIns2.AutoSize = true;
-            this.lbIns2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbIns2.Location = new System.Drawing.Point(3, 157);
-            this.lbIns2.Name = "lbIns2";
-            this.lbIns2.Size = new System.Drawing.Size(281, 30);
-            this.lbIns2.TabIndex = 3;
-            this.lbIns2.Text = "Enter a name for your locker:";
+            lbIns2.AutoSize = true;
+            lbIns2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lbIns2.Location = new System.Drawing.Point(3, 157);
+            lbIns2.Name = "lbIns2";
+            lbIns2.Size = new System.Drawing.Size(281, 30);
+            lbIns2.TabIndex = 3;
+            lbIns2.Text = "Enter a name for your locker:";
             // 
             // lbDirectoryListing
             // 
-            this.lbDirectoryListing.AutoSize = true;
-            this.lbDirectoryListing.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbDirectoryListing.Location = new System.Drawing.Point(3, 96);
-            this.lbDirectoryListing.Name = "lbDirectoryListing";
-            this.lbDirectoryListing.Size = new System.Drawing.Size(196, 21);
-            this.lbDirectoryListing.TabIndex = 2;
-            this.lbDirectoryListing.Text = "Directory Name Goes Here";
-            this.lbDirectoryListing.Visible = false;
+            lbDirectoryListing.AutoSize = true;
+            lbDirectoryListing.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lbDirectoryListing.Location = new System.Drawing.Point(3, 96);
+            lbDirectoryListing.Name = "lbDirectoryListing";
+            lbDirectoryListing.Size = new System.Drawing.Size(196, 21);
+            lbDirectoryListing.TabIndex = 2;
+            lbDirectoryListing.Text = "Directory Name Goes Here";
+            lbDirectoryListing.Visible = false;
             // 
             // btnOpenDirectory
             // 
-            this.btnOpenDirectory.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnOpenDirectory.Location = new System.Drawing.Point(388, 65);
-            this.btnOpenDirectory.Name = "btnOpenDirectory";
-            this.btnOpenDirectory.Size = new System.Drawing.Size(126, 36);
-            this.btnOpenDirectory.TabIndex = 1;
-            this.btnOpenDirectory.Text = "Open";
-            this.btnOpenDirectory.UseVisualStyleBackColor = true;
-            this.btnOpenDirectory.Click += new System.EventHandler(this.btnOpenDirectory_Click);
+            btnOpenDirectory.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnOpenDirectory.Location = new System.Drawing.Point(388, 65);
+            btnOpenDirectory.Name = "btnOpenDirectory";
+            btnOpenDirectory.Size = new System.Drawing.Size(126, 36);
+            btnOpenDirectory.TabIndex = 1;
+            btnOpenDirectory.Text = "Open";
+            btnOpenDirectory.UseVisualStyleBackColor = true;
+            btnOpenDirectory.Click += btnOpenDirectory_Click;
             // 
             // lbIns1
             // 
-            this.lbIns1.AutoSize = true;
-            this.lbIns1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbIns1.Location = new System.Drawing.Point(3, 66);
-            this.lbIns1.Name = "lbIns1";
-            this.lbIns1.Size = new System.Drawing.Size(369, 30);
-            this.lbIns1.TabIndex = 0;
-            this.lbIns1.Text = "Find a directory to store your locker in:";
+            lbIns1.AutoSize = true;
+            lbIns1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lbIns1.Location = new System.Drawing.Point(3, 66);
+            lbIns1.Name = "lbIns1";
+            lbIns1.Size = new System.Drawing.Size(369, 30);
+            lbIns1.TabIndex = 0;
+            lbIns1.Text = "Find a directory to store your locker in:";
             // 
             // frmLockers
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(915, 450);
-            this.Controls.Add(this.pnlCreateMenu);
-            this.Controls.Add(this.btnDeleteLocker);
-            this.Controls.Add(this.btnCreateLocker);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.lbWelcome);
-            this.Controls.Add(this.lbTitles);
-            this.Name = "frmLockers";
-            this.Text = "SEP: Lockers";
-            this.Load += new System.EventHandler(this.frmLockers_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.pnlCreateMenu.ResumeLayout(false);
-            this.pnlCreateMenu.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(915, 450);
+            Controls.Add(btnDeleteLocker);
+            Controls.Add(btnCreateLocker);
+            Controls.Add(panel1);
+            Controls.Add(btnBack);
+            Controls.Add(lbWelcome);
+            Controls.Add(lbTitles);
+            Controls.Add(pnlCreateMenu);
+            Name = "frmLockers";
+            Text = "SEP: Lockers";
+            Load += frmLockers_Load;
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            pnlCreateMenu.ResumeLayout(false);
+            pnlCreateMenu.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

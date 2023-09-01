@@ -16,7 +16,7 @@ namespace sep
         public frmLockers()
         {
             InitializeComponent();
-            if(!File.Exists(Path.Combine(OtherOperations.storeLoc, "lockersInfo.conf")))
+            if (!File.Exists(Path.Combine(OtherOperations.storeLoc, "lockersInfo.conf")))
             {
                 File.Create(Path.Combine(OtherOperations.storeLoc, "lockersInfo.conf")).Close();
             }
@@ -29,7 +29,7 @@ namespace sep
 
         public void Populator()
         {
-            foreach(Control c in Controls)
+            foreach (Control c in Controls)
             {
                 if (c.Name.Split('_')[0] == "pnlI")
                     Controls.Remove(c);
@@ -49,11 +49,11 @@ namespace sep
             Panel pnl = new Panel();
             if (index == 0 || index % 2 == 0)
             {
-                pnl.Location = new Point(12, 110 + index/2 * 53);
+                pnl.Location = new Point(12, 110 + index / 2 * 53);
             }
             else
             {
-                pnl.Location = new Point(493, 110 + index/2 * 53);
+                pnl.Location = new Point(493, 110 + index / 2 * 53);
             }
             pnl.BorderStyle = BorderStyle.FixedSingle;
             pnl.Size = new Size(410, 45);
@@ -103,15 +103,15 @@ namespace sep
             int index = int.Parse(btn.Name.Split('_')[1]);
 
             btn.Enabled = false;
-            if(btn.Text=="Lock")
+            if (btn.Text == "Lock")
             {
                 string pw = Microsoft.VisualBasic.Interaction.InputBox("Input encryption password\r\n(your files will be inaccessible if you forget this):", "Input Encryption Password");
-                if(Directory.Exists(lockerLocations[index] + ".encloc"))
+                if (Directory.Exists(lockerLocations[index] + ".encloc"))
                 {
-                    Directory.Delete(lockerLocations[index] + ".encloc",true);
+                    Directory.Delete(lockerLocations[index] + ".encloc", true);
                 }
                 Directory.CreateDirectory(lockerLocations[index] + ".encloc");
-                
+
                 foreach (string f in Directory.GetFiles(lockerLocations[index]))
                 {
                     string input = f;
@@ -123,11 +123,12 @@ namespace sep
                 Directory.Delete(lockerLocations[index], true);
                 btn.Text = "Unlock";
             }
-            else if (btn.Text == "Unlock") {
+            else if (btn.Text == "Unlock")
+            {
                 string pw = Microsoft.VisualBasic.Interaction.InputBox("Enter locker password:", "Input Locker Password");
                 Directory.CreateDirectory(lockerLocations[index]);
 
-                foreach(string f in Directory.GetFiles(lockerLocations[index]+".encloc"))
+                foreach (string f in Directory.GetFiles(lockerLocations[index] + ".encloc"))
                 {
                     string input = f;
                     string output = lockerLocations[index] + "\\" + $"{Path.GetFileName(f).Split('.')[0]}.{Path.GetFileName(f).Split('.')[1]}";
@@ -145,7 +146,7 @@ namespace sep
             Button btn = (Button)sender;
             int index = int.Parse(btn.Name.Split('_')[1]);
             string dirToOpen = lockerLocations[index];
-            if (btn.Text=="Fix")
+            if (btn.Text == "Fix")
             {
                 //System.Diagnostics.Process.Start("explorer.exe", @dirToOpen);
                 //OtherOperations.LineChanger()
@@ -160,7 +161,7 @@ namespace sep
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            if(!pnlCreateMenu.Visible)
+            if (!pnlCreateMenu.Visible)
             {
                 Hide();
                 new frmHome().Show();
@@ -175,7 +176,7 @@ namespace sep
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if(!deleting)
+            if (!deleting)
             {
                 btnDeleteLocker.Text = "Stop Deleting";
                 // Change all the open locker buttons' text to "Delete"
@@ -245,7 +246,7 @@ namespace sep
 
         private void btnCreateLockerConfirm_Click(object sender, EventArgs e)
         {
-            if(!String.IsNullOrEmpty(lbDirectoryListing.Text) && !String.IsNullOrEmpty(txtLockerName.Text))
+            if (!String.IsNullOrEmpty(lbDirectoryListing.Text) && !String.IsNullOrEmpty(txtLockerName.Text))
             {
                 File.AppendAllText(Path.Combine(OtherOperations.storeLoc, "lockersInfo.conf"), $"{lbDirectoryListing.Text}~{txtLockerName.Text}~0\r\n");
 
@@ -259,7 +260,7 @@ namespace sep
             {
                 MessageBox.Show("Invalid contents!", "Invalid locker settings!");
             }
-            
+
             Populator();
         }
 

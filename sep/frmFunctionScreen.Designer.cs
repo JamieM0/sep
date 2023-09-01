@@ -116,14 +116,14 @@
             pnlFileSelect.Controls.Add(lbIns1);
             pnlFileSelect.Location = new System.Drawing.Point(6, 174);
             pnlFileSelect.Name = "pnlFileSelect";
-            pnlFileSelect.Size = new System.Drawing.Size(370, 196);
+            pnlFileSelect.Size = new System.Drawing.Size(370, 222);
             pnlFileSelect.TabIndex = 2;
             // 
             // lbFileName
             // 
             lbFileName.AutoSize = true;
             lbFileName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            lbFileName.Location = new System.Drawing.Point(181, 150);
+            lbFileName.Location = new System.Drawing.Point(173, 164);
             lbFileName.Name = "lbFileName";
             lbFileName.Size = new System.Drawing.Size(22, 25);
             lbFileName.TabIndex = 2;
@@ -132,10 +132,10 @@
             // 
             // btnOpenFile
             // 
-            btnOpenFile.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            btnOpenFile.Location = new System.Drawing.Point(91, 75);
+            btnOpenFile.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnOpenFile.Location = new System.Drawing.Point(75, 76);
             btnOpenFile.Name = "btnOpenFile";
-            btnOpenFile.Size = new System.Drawing.Size(182, 59);
+            btnOpenFile.Size = new System.Drawing.Size(206, 66);
             btnOpenFile.TabIndex = 1;
             btnOpenFile.Text = "Open File";
             btnOpenFile.UseVisualStyleBackColor = true;
@@ -613,6 +613,7 @@
             AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1134, 578);
+            Controls.Add(pnlLibraryPassword);
             Controls.Add(pnlFinalSteps);
             Controls.Add(pnlPasswordInput);
             Controls.Add(pnlFileSelect);
@@ -621,7 +622,6 @@
             Controls.Add(pnlGuesser);
             Controls.Add(pnlAuthDecrypt);
             Controls.Add(pnlAuthApp);
-            Controls.Add(pnlLibraryPassword);
             Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             Name = "frmFunctionScreen";

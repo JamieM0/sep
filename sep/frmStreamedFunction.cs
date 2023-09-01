@@ -24,7 +24,7 @@ namespace sep
             CenterToScreen();
             filePath = OtherOperations.filePath;
             fileName = Path.GetFileName(filePath);
-            if (Path.GetExtension(filePath).Contains("lib"))
+            if (Path.GetExtension(filePath) == ".aes" || Path.GetExtension(filePath).Contains("lib"))
             {
                 funcEncrypt = false;
             }
@@ -33,6 +33,13 @@ namespace sep
             {
                 btnFunction.Text = "Decrypt";
                 btnPWLibFunc.Text = "Open Password";
+            }
+
+            if(Path.GetExtension(filePath) == ".mfa")
+            {
+                MessageBox.Show("This file is encrypted using MFA, so you must use the main program to decrypt it.", "MFA Encrypted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Close();
+                Application.Exit();
             }
         }
 
@@ -83,23 +90,25 @@ namespace sep
             {
                 if (!cbSaveOriginal.Checked)
                 {
-                    if (MessageBox.Show("Entering the incorrect password WILL result in a corrupted file!\r\n\r\nYou should keep the encrypted copy as well, just in case.\r\n\r\nClicking 'Yes' may be risky. If you're unsure, click 'No', and choose to keep the encrypted file!\r\n\r\nDo you wish to proceed?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    txtPassword.Enabled = false;
+                    string filePathUnencrypted;
+                    filePathUnencrypted = filePath.Substring(0, filePath.Length - 4);
+
+                    AES.FileDecrypt(filePath, filePathUnencrypted, txtPassword.Text);
+
+                    if (!cbSaveOriginal.Checked)
                     {
-                        txtPassword.Enabled = false;
-                        string filePathUnencrypted;
-                        filePathUnencrypted = filePath.Substring(0, filePath.Length - 4);
-
-                        AES.FileDecrypt(filePath, filePathUnencrypted, txtPassword.Text);
-
-                        if (!cbSaveOriginal.Checked)
+                        if (MessageBox.Show("Entering the incorrect password WILL result in a corrupted file!\r\n\r\nDo you want to delete the encrypted file?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
                             File.Delete(filePath);
                         }
-
-                        MessageBox.Show("The file has been decrypted!", "Decrypted!");
-
-                        Application.Exit();
                     }
+                    
+
+                    MessageBox.Show("The file has been decrypted!", "Decrypted!");
+
+                    Application.Exit();
+                    
                 }
                 else
                 {
