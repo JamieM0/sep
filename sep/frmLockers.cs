@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows;
 using System.IO;
 
 namespace sep
@@ -16,16 +17,13 @@ namespace sep
         public frmLockers()
         {
             InitializeComponent();
-            if (!File.Exists(Path.Combine(OtherOperations.storeLoc, "lockersInfo.conf")))
-            {
-                File.Create(Path.Combine(OtherOperations.storeLoc, "lockersInfo.conf")).Close();
-            }
             Populator();
             CenterToScreen();
         }
 
         bool deleting = false;
-        string[] lockerLocations;
+        string[] lockerLocations = new string[DatabaseHelperLK.CountLockerData()];
+        Locker[] lockersInfo = new Locker[DatabaseHelperLK.CountLockerData()];
 
         public void Populator()
         {
@@ -34,17 +32,25 @@ namespace sep
                 if (c.Name.Split('_')[0] == "pnlI")
                     Controls.Remove(c);
             }
-            lockerLocations = new string[File.ReadLines(Path.Combine(OtherOperations.storeLoc, "lockersInfo.conf")).Count()];
-            string[] lines = File.ReadAllLines(Path.Combine(OtherOperations.storeLoc, "lockersInfo.conf"));
-            for (int i = 0; i < lines.Length; i++)
+
+            for(int i=0; i<lockersInfo.Length; i++)
             {
-                string[] a = lines[i].Split('~');
-                lockerLocations[i] = a[0] + "/" + a[1];
-                PopulateFields(i, a[1], Convert.ToInt32(a[2]));
+                lockersInfo[i] = new Locker(i, DatabaseHelperLK.getRequestedDataFromID("LockerName",i), DatabaseHelperLK.getRequestedDataFromID("LockerLocation", i), DatabaseHelperLK.getRequestedDataFromID("LockerPassword", i), DatabaseHelperLK.getLockStateFromID(i));
+                lockerLocations[i] = lockersInfo[i].location;
+                PopulateFields(lockersInfo[i].ID, lockersInfo[i].name, lockersInfo[i].lockState);
+            }
+            
+            //lockerLocations = new string[File.ReadLines(Path.Combine(OtherOperations.storeLoc, "lockersInfo.conf")).Count()];
+            //string[] lines = File.ReadAllLines(Path.Combine(OtherOperations.storeLoc, "lockersInfo.conf"));
+            //for (int i = 0; i < lines.Length; i++)
+            //{
+            //    string[] a = lines[i].Split('~');
+            //    //lockerLocations[i] = a[0] + "/" + a[1];
+            //    PopulateFields(i, a[1], Convert.ToInt32(a[2]));
             }
         }
-
-        public void PopulateFields(int index, string lockname, int lockState)
+        
+        public void PopulateFields(int index, string lockname, bool lockState)
         {
             Panel pnl = new Panel();
             if (index == 0 || index % 2 == 0)
@@ -78,7 +84,7 @@ namespace sep
             Button lockAction = new Button();
             lockAction.Location = new Point(180, 6);
             lockAction.Size = new Size(110, 32);
-            if (lockState == 0)
+            if (lockState == false)
                 lockAction.Text = "Lock";
             else
                 lockAction.Text = "Unlock";
@@ -106,7 +112,7 @@ namespace sep
             if (btn.Text == "Lock")
             {
                 string pw = Microsoft.VisualBasic.Interaction.InputBox("Input encryption password\r\n(your files will be inaccessible if you forget this):", "Input Encryption Password");
-                if (Directory.Exists(lockerLocations[index] + ".encloc"))
+                if (Directory.Exists(lockersInfo[index] + ".encloc"))
                 {
                     Directory.Delete(lockerLocations[index] + ".encloc", true);
                 }

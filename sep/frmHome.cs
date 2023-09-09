@@ -76,8 +76,11 @@ namespace sep
             }
             else if (passArgs.Contains("-l"))
             {
-                File.AppendAllText(Path.Combine(OtherOperations.storeLoc, "lockersInfo.conf"), $"{Path.GetDirectoryName(passArgs[2])}~{Path.GetFileName(passArgs[2])}~0\r\n");
-                MessageBox.Show("Locker added to list.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string pw = Microsoft.VisualBasic.Interaction.InputBox("Enter the password for your locker:", "Password Library", "", -1, -1);
+                DatabaseHelperLK.InsertNewLocker(Path.GetFileName(passArgs[2]), Path.GetDirectoryName(passArgs[2]), pw, false);
+
+                //File.AppendAllText(Path.Combine(OtherOperations.storeLoc, "lockersInfo.conf"), $"{}~{}~0\r\n");
+                MessageBox.Show("Locker added to list.\nLock it through the \"Lockers\" screen in the main program.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 sent = true; //(movetoend)
             }
         }

@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.IO;
+using System.Windows.Forms.VisualStyles;
+using System.Security.Cryptography.X509Certificates;
 
 namespace sep
 {
@@ -294,7 +296,8 @@ namespace sep
                                           Id INTEGER PRIMARY KEY AUTOINCREMENT,
                                           LockerName TEXT NOT NULL,
                                           LockerLocation TEXT NOT NULL,
-                                          LockerPassword TEXT NOT NULL
+                                          LockerPassword TEXT NOT NULL,
+                                          LockState BOOLEAN NOT NULL
                                       );";
 
                 using (var command = new SQLiteCommand(createTableQuery, connection))
@@ -305,19 +308,20 @@ namespace sep
         }
 
         // Add a method to insert data into the table.
-        public static void InsertPWLib(string locName, string locLoc, string locPass)
+        public static void InsertNewLocker(string locName, string locLoc, string locPass, bool lockState)
         {
             using (var connection = new SQLiteConnection(ConnectionString))
             {
                 connection.Open();
 
-                string insertQuery = "INSERT INTO lockers (FileName, LocLoc, Password) VALUES (@FileName, @LocLoc, @Password);";
+                string insertQuery = "INSERT INTO lockers (LockerName, LockerLocation, LockerPassword, LockState) VALUES (@LockerName, @LockerLocation, @LockerPassword, @LockState);";
 
                 using (var command = new SQLiteCommand(insertQuery, connection))
                 {
-                    command.Parameters.AddWithValue("@FileName", locName);
-                    command.Parameters.AddWithValue("@LocLoc", locLoc);
-                    command.Parameters.AddWithValue("@Password", locPass);
+                    command.Parameters.AddWithValue("@LockerName", locName);
+                    command.Parameters.AddWithValue("@LockerLocation", locLoc);
+                    command.Parameters.AddWithValue("@LockerPassword", locPass);
+                    command.Parameters.AddWithValue("@LockState", lockState);
                     command.ExecuteNonQuery();
                 }
             }
@@ -350,6 +354,125 @@ namespace sep
             }
         }
 
+        public static string getRequestedDataFromID(string data, int id)
+        {
+            string requestedData = null;
+
+            using (var connection = new SQLiteConnection(ConnectionString))
+            {
+                connection.Open();
+
+                string selectQuery = "SELECT " + data + " FROM lockers WHERE Id = @Id;";
+
+                using (var command = new SQLiteCommand(selectQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@Id", id);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            requestedData = reader.GetString(0);
+                        }
+                    }
+                }
+            }
+
+            return requestedData;
+        }
+        public static bool getLockStateFromID(int id)
+        {
+            bool lockState = false;
+
+            using (var connection = new SQLiteConnection(ConnectionString))
+            {
+                connection.Open();
+
+                string selectQuery = "SELECT LockState FROM lockers WHERE Id = @Id;";
+
+                using (var command = new SQLiteCommand(selectQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@Id", id);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            lockState = reader.GetBoolean(0);
+                        }
+                    }
+                }
+            }
+
+            return lockState;
+        }
+
+        //public static string[] allLockersLocations()
+        //{
+        //    string[] locations = new string[CountLockerData()];
+        //    int i = 0;
+        //    try
+        //    {
+        //        using (var connection = new SQLiteConnection(ConnectionString))
+        //        {
+        //            connection.Open();
+
+        //            string selectQuery = "SELECT LockerLocation FROM lockers;";
+
+        //            using (var command = new SQLiteCommand(selectQuery, connection))
+        //            {
+        //                using (var reader = command.ExecuteReader())
+        //                {
+        //                    while (reader.Read())
+        //                    {
+        //                        locations[i] = reader.GetString(0);
+        //                        i++;
+        //                    }
+        //                }
+        //            }
+        //        }
+
+        //        return locations;
+        //    }
+        //    catch
+        //    {
+        //        return null;
+        //    }
+        //}
+        
+        //public static string[] allLockersNames()
+        //{
+        //    string[] names = new string[CountLockerData()];
+        //    int i = 0;
+        //    try
+        //    {
+        //        using (var connection = new SQLiteConnection(ConnectionString))
+        //        {
+        //            connection.Open();
+
+        //            string selectQuery = "SELECT LockerName FROM lockers;";
+
+        //            using (var command = new SQLiteCommand(selectQuery, connection))
+        //            {
+        //                using (var reader = command.ExecuteReader())
+        //                {
+        //                    while (reader.Read())
+        //                    {
+        //                        names[i] = reader.GetString(0);
+        //                        i++;
+        //                    }
+        //                }
+        //            }
+        //        }
+
+        //        return names;
+        //    }
+        //    catch
+        //    {
+        //        return null;
+        //    }
+        //}
+
         public static void EncryptLockers(string pw)
         {
             AES.FileEncrypt(DatabaseFilePath, EncryptedDatabaseFilePath, pw);
@@ -360,5 +483,23 @@ namespace sep
             AES.FileDecrypt(EncryptedDatabaseFilePath, DatabaseFilePath, pw);
         }
         // Add other database operations as needed (e.g., retrieve data, update data, delete data, etc.).
+    }
+
+    public class Locker
+    {
+        public int ID { get; set; }
+        public string name { get; set; }
+        public string location { get; set; }
+        public string password { get; set; }
+        public bool lockState { get; set; }
+        
+        public Locker(int id, string name, string location, string password, bool lockState)
+        {
+            this.ID = id;
+            this.name = name;
+            this.location = location;
+            this.password = password;
+            this.lockState = lockState;
+        }
     }
 }

@@ -20,6 +20,7 @@ namespace sep
             Application.SetCompatibleTextRenderingDefault(false);
             DatabaseHelper.InitializeDatabase();
             DatabaseHelperPL.InitializeDatabase();
+            DatabaseHelperLK.InitializeDatabase();
             Application.Run(new frmHome());
         }
     }
