@@ -6,8 +6,8 @@ The currently supported versions of this project will always be the most recent 
 
 | Version | Supported          |
 | ------- | ------------------ |
-| v1.0.0  | :x:                |
-| v1.0.1  | :white_check_mark: |
+| Older Versions  | :x:                |
+| Current Release Version  | :white_check_mark: |
 
 ## Reporting a Vulnerability
 

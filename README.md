@@ -1,5 +1,7 @@
 # Simple Encryption Program (SEP)
 
+###### This software is provided in an "As Is" state. ABSOLUTELY NO WARRANTY IS PROVIDED. [Learn More](https://github.com/JamieM0/sep/blob/main/NOTICE.md).
+
 Just a simple solution for encrypting files (AES) with a basic password, and storing them locally.
 
 ### Features
