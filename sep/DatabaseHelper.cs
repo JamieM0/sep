@@ -473,6 +473,23 @@ namespace sep
         //    }
         //}
 
+        public static void setLockState(int id, bool state)
+        {
+            using (var connection = new SQLiteConnection(ConnectionString))
+            {
+                connection.Open();
+
+                string updateQuery = "UPDATE lockers SET LockState = @LockState WHERE Id = @Id;";
+
+                using (var command = new SQLiteCommand(updateQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@LockState", state);
+                    command.Parameters.AddWithValue("@Id", id);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
         public static void EncryptLockers(string pw)
         {
             AES.FileEncrypt(DatabaseFilePath, EncryptedDatabaseFilePath, pw);

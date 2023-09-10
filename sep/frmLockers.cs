@@ -27,26 +27,21 @@ namespace sep
 
         public void Populator()
         {
+            for (int i = 0; i < lockersInfo.Length; i++)
+            {
+                lockersInfo[i] = new Locker(i + 1, DatabaseHelperLK.getRequestedDataFromID("LockerName", i+1), DatabaseHelperLK.getRequestedDataFromID("LockerLocation", i + 1), DatabaseHelperLK.getRequestedDataFromID("LockerPassword", i + 1), DatabaseHelperLK.getLockStateFromID(i + 1));
+                lockerLocations[i] = Path.Combine(lockersInfo[i].location, lockersInfo[i].name);
+                PopulateFields(lockersInfo[i].ID, lockersInfo[i].name, lockersInfo[i].lockState);
+            }
+
             foreach (Control c in Controls)
             {
                 if (c.Name.Split('_')[0] == "pnlI")
                     Controls.Remove(c);
-            }
 
-            for(int i=0; i<lockersInfo.Length; i++)
-            {
-                lockersInfo[i] = new Locker(i, DatabaseHelperLK.getRequestedDataFromID("LockerName",i), DatabaseHelperLK.getRequestedDataFromID("LockerLocation", i), DatabaseHelperLK.getRequestedDataFromID("LockerPassword", i), DatabaseHelperLK.getLockStateFromID(i));
-                lockerLocations[i] = lockersInfo[i].location;
-                PopulateFields(lockersInfo[i].ID, lockersInfo[i].name, lockersInfo[i].lockState);
-            }
-            
-            //lockerLocations = new string[File.ReadLines(Path.Combine(OtherOperations.storeLoc, "lockersInfo.conf")).Count()];
-            //string[] lines = File.ReadAllLines(Path.Combine(OtherOperations.storeLoc, "lockersInfo.conf"));
-            //for (int i = 0; i < lines.Length; i++)
-            //{
-            //    string[] a = lines[i].Split('~');
-            //    //lockerLocations[i] = a[0] + "/" + a[1];
-            //    PopulateFields(i, a[1], Convert.ToInt32(a[2]));
+                //Make all labels visible
+                if (c.Name.Split('_')[0] == "lb")
+                    c.Visible = true;
             }
         }
         
@@ -70,14 +65,11 @@ namespace sep
             lockerName.Font = new Font("Segoe UI", 14);
             //lockerName.Location = new Point(180 - TextRenderer.MeasureText(lockname, lockerName.Font).Width, 10);
             lockerName.Location = new Point(3, 10);
-            if (TextRenderer.MeasureText(lockname, lockerName.Font).Width > 171)
-            {
-                do
-                {
-                    lockname = lockname.Substring(0, lockname.Length - 1);
-                } while (TextRenderer.MeasureText(lockname, lockerName.Font).Width > 171);
-            }
-            lockerName.Text = lockname;
+            //Truncate lockername if the text goes behind the buttons
+            if (lockname.Length > 9)
+                lockerName.Text = lockname.Substring(0, 9) + "...";
+            else
+                lockerName.Text = lockname;
             lockerName.Name = $"txtLockerName_{index}";
             pnl.Controls.Add(lockerName);
 
@@ -106,12 +98,12 @@ namespace sep
         private void LockAction_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            int index = int.Parse(btn.Name.Split('_')[1]);
+            int index = (int.Parse(btn.Name.Split('_')[1])-1);
 
             btn.Enabled = false;
             if (btn.Text == "Lock")
             {
-                string pw = Microsoft.VisualBasic.Interaction.InputBox("Input encryption password\r\n(your files will be inaccessible if you forget this):", "Input Encryption Password");
+                string pw = lockersInfo[index].password;
                 if (Directory.Exists(lockersInfo[index] + ".encloc"))
                 {
                     Directory.Delete(lockerLocations[index] + ".encloc", true);
@@ -124,14 +116,35 @@ namespace sep
                     string output = lockerLocations[index] + ".encloc\\" + Path.GetFileName(f) + ".aes";
                     AES.FileEncrypt(input, output, pw);
                 }
-                OtherOperations.LineChanger(Path.Combine(OtherOperations.storeLoc, "lockersInfo.conf"), lockerLocations[index].Split('/')[0] + "~" + lockerLocations[index].Split('/')[1], lockerLocations[index].Split('/')[0] + "~" + lockerLocations[index].Split('/')[1] + "~1");
+                
+                //Get every directory inside the locker & recreate this within the .encloc folder
+                foreach (string d in Directory.GetDirectories(lockerLocations[index]))
+                {
+                    //split and get directory name from path
+                    string p = d.Split(Path.DirectorySeparatorChar).Last();
+                    
+                    if (!Directory.Exists(lockerLocations[index] + ".encloc\\"+p))
+                        Directory.CreateDirectory(lockerLocations[index] + ".encloc\\" + p);
+                    foreach (string f in Directory.GetDirectories(lockerLocations[index] + ".encloc\\" + p))
+                    {
+                        string input = f;
+                        string output = Path.Combine(d, Path.GetFileName(f) + ".aes");
+                        AES.FileEncrypt(input, output, pw);
+                    }
+                }
+
+                DatabaseHelperLK.setLockState(index, true);
                 MessageBox.Show("Locker locked successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Directory.Delete(lockerLocations[index], true);
                 btn.Text = "Unlock";
             }
             else if (btn.Text == "Unlock")
             {
-                string pw = Microsoft.VisualBasic.Interaction.InputBox("Enter locker password:", "Input Locker Password");
+                string pw;
+                if (MessageBox.Show("Would you like to use the saved password for this locker?", "Use saved password?", MessageBoxButtons.YesNo)==DialogResult.Yes)
+                    pw = lockersInfo[index].password;
+                else
+                    pw = Microsoft.VisualBasic.Interaction.InputBox("Enter locker password:", "Input Locker Password");
                 Directory.CreateDirectory(lockerLocations[index]);
 
                 foreach (string f in Directory.GetFiles(lockerLocations[index] + ".encloc"))
@@ -140,7 +153,19 @@ namespace sep
                     string output = lockerLocations[index] + "\\" + $"{Path.GetFileName(f).Split('.')[0]}.{Path.GetFileName(f).Split('.')[1]}";
                     AES.FileDecrypt(input, output, pw);
                 }
-                OtherOperations.LineChanger(Path.Combine(OtherOperations.storeLoc, "lockersInfo.conf"), lockerLocations[index].Split('/')[0] + "~" + lockerLocations[index].Split('/')[1], lockerLocations[index].Split('/')[0] + "~" + lockerLocations[index].Split('/')[1] + "~0");
+                
+                //Get every directory inside the locker & recreate this within the .encloc folder
+                foreach (string d in Directory.GetDirectories(lockerLocations[index]))
+                {
+                    foreach (string f in Directory.GetDirectories(d))
+                    {
+                        string input = f;
+                        string output = Path.Combine(d, Path.GetFileName(f).Split('.')[0]+"."+Path.GetFileName(f).Split('.')[1]);
+                        AES.FileEncrypt(input, output, pw);
+                    }
+                }
+
+                DatabaseHelperLK.setLockState(index, false);
                 MessageBox.Show("Locker unlocked successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btn.Text = "Lock";
             }
