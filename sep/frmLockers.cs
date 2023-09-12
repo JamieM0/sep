@@ -131,7 +131,7 @@ namespace sep
                     foreach (string f in Directory.GetDirectories(lockerLocations[index]/* + ".encloc\\" + p*/))
                     {
                         string input = f;
-                        string output = Path.Combine(d, Path.GetFileName(f) + ".aes");
+                        string output = Path.Combine(lockerLocations[index] + ".encloc\\",p, Path.GetFileName(f) + ".aes");
                         AES.FileEncrypt(input, output, pw);
                     }
                 }
