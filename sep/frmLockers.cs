@@ -36,8 +36,8 @@ namespace sep
 
             foreach (Control c in Controls)
             {
-                if (c.Name.Split('_')[0] == "pnlI")
-                    Controls.Remove(c);
+                //if (c.Name.Split('_')[0] == "pnlI")
+                //    Controls.Remove(c);
 
                 //Make all labels visible
                 if (c.Name.Split('_')[0] == "lb")
@@ -47,6 +47,7 @@ namespace sep
         
         public void PopulateFields(int index, string lockname, bool lockState)
         {
+            index --;
             Panel pnl = new Panel();
             if (index == 0 || index % 2 == 0)
             {
@@ -61,16 +62,18 @@ namespace sep
             pnl.Name = $"pnlI_{index}";
             Controls.Add(pnl);
 
+            index ++;
             Label lockerName = new Label();
             lockerName.Font = new Font("Segoe UI", 14);
             //lockerName.Location = new Point(180 - TextRenderer.MeasureText(lockname, lockerName.Font).Width, 10);
-            lockerName.Location = new Point(3, 10);
+            lockerName.Location = new Point(3, 8);
             //Truncate lockername if the text goes behind the buttons
-            if (lockname.Length > 9)
+            if (lockname.Length > 20)
                 lockerName.Text = lockname.Substring(0, 9) + "...";
             else
                 lockerName.Text = lockname;
             lockerName.Name = $"txtLockerName_{index}";
+            lockerName.BringToFront();
             pnl.Controls.Add(lockerName);
 
             Button lockAction = new Button();
@@ -125,7 +128,7 @@ namespace sep
                     
                     if (!Directory.Exists(lockerLocations[index] + ".encloc\\"+p))
                         Directory.CreateDirectory(lockerLocations[index] + ".encloc\\" + p);
-                    foreach (string f in Directory.GetDirectories(lockerLocations[index] + ".encloc\\" + p))
+                    foreach (string f in Directory.GetDirectories(lockerLocations[index]/* + ".encloc\\" + p*/))
                     {
                         string input = f;
                         string output = Path.Combine(d, Path.GetFileName(f) + ".aes");
