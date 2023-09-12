@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLockers));
             lbTitles = new System.Windows.Forms.Label();
             lbWelcome = new System.Windows.Forms.Label();
             btnBack = new System.Windows.Forms.Button();
@@ -65,9 +64,10 @@
             lbWelcome.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             lbWelcome.Location = new System.Drawing.Point(12, 56);
             lbWelcome.Name = "lbWelcome";
-            lbWelcome.Size = new System.Drawing.Size(866, 42);
+            lbWelcome.Size = new System.Drawing.Size(877, 42);
             lbWelcome.TabIndex = 1;
-            lbWelcome.Text = resources.GetString("lbWelcome.Text");
+            lbWelcome.Text = "Lockers are secure, encrypted folders. You can create them by right-clicking any folder, and selecting \"SEP Convert to Locker\". \r\nLearn More by clicking this message.";
+            lbWelcome.Click += lbWelcome_Click;
             // 
             // btnBack
             // 
@@ -129,12 +129,13 @@
             btnCreateLocker.TabIndex = 5;
             btnCreateLocker.Text = "+ Create a new locker";
             btnCreateLocker.UseVisualStyleBackColor = true;
+            btnCreateLocker.Visible = false;
             btnCreateLocker.Click += btnCreateLocker_Click;
             // 
             // btnDeleteLocker
             // 
             btnDeleteLocker.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            btnDeleteLocker.Location = new System.Drawing.Point(308, 12);
+            btnDeleteLocker.Location = new System.Drawing.Point(581, 12);
             btnDeleteLocker.Name = "btnDeleteLocker";
             btnDeleteLocker.Size = new System.Drawing.Size(176, 41);
             btnDeleteLocker.TabIndex = 6;

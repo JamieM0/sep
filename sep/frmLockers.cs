@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows;
 using System.IO;
+using System.Diagnostics;
 
 namespace sep
 {
@@ -29,7 +30,7 @@ namespace sep
         {
             for (int i = 0; i < lockersInfo.Length; i++)
             {
-                lockersInfo[i] = new Locker(i + 1, DatabaseHelperLK.getRequestedDataFromID("LockerName", i+1), DatabaseHelperLK.getRequestedDataFromID("LockerLocation", i + 1), DatabaseHelperLK.getRequestedDataFromID("LockerPassword", i + 1), DatabaseHelperLK.getLockStateFromID(i + 1));
+                lockersInfo[i] = new Locker(i + 1, DatabaseHelperLK.getRequestedDataFromID("LockerName", i + 1), DatabaseHelperLK.getRequestedDataFromID("LockerLocation", i + 1), DatabaseHelperLK.getRequestedDataFromID("LockerPassword", i + 1), DatabaseHelperLK.getLockStateFromID(i + 1));
                 lockerLocations[i] = Path.Combine(lockersInfo[i].location, lockersInfo[i].name);
                 PopulateFields(lockersInfo[i].ID, lockersInfo[i].name, lockersInfo[i].lockState);
             }
@@ -44,10 +45,10 @@ namespace sep
                     c.Visible = true;
             }
         }
-        
+
         public void PopulateFields(int index, string lockname, bool lockState)
         {
-            index --;
+            index--;
             Panel pnl = new Panel();
             if (index == 0 || index % 2 == 0)
             {
@@ -62,7 +63,7 @@ namespace sep
             pnl.Name = $"pnlI_{index}";
             Controls.Add(pnl);
 
-            index ++;
+            index++;
             Label lockerName = new Label();
             lockerName.Font = new Font("Segoe UI", 14);
             //lockerName.Location = new Point(180 - TextRenderer.MeasureText(lockname, lockerName.Font).Width, 10);
@@ -91,7 +92,7 @@ namespace sep
             Button openLocker = new Button();
             openLocker.Location = new Point(296, 6);
             openLocker.Size = new Size(110, 32);
-            openLocker.Text = "Fix";
+            openLocker.Text = "Open";
             openLocker.Font = new Font("Segoe UI", 14);
             openLocker.Name = $"btnOpenLocker_{index}";
             openLocker.Click += OpenLockerAction_Click;
@@ -101,7 +102,7 @@ namespace sep
         private void LockAction_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            int index = (int.Parse(btn.Name.Split('_')[1])-1);
+            int index = (int.Parse(btn.Name.Split('_')[1]) - 1);
 
             btn.Enabled = false;
             if (btn.Text == "Lock")
@@ -119,19 +120,22 @@ namespace sep
                     string output = lockerLocations[index] + ".encloc\\" + Path.GetFileName(f) + ".aes";
                     AES.FileEncrypt(input, output, pw);
                 }
-                
-                //Get every directory inside the locker & recreate this within the .encloc folder
-                foreach (string d in Directory.GetDirectories(lockerLocations[index]))
+
+                //populate dirsToCheck with all the directories & subdirectories inside the chosen folder
+                string[] dirsToCheck = Directory.GetDirectories(lockerLocations[index], "*", SearchOption.AllDirectories);
+
+                foreach (string dir in dirsToCheck)
                 {
-                    //split and get directory name from path
-                    string p = d.Split(Path.DirectorySeparatorChar).Last();
-                    
-                    if (!Directory.Exists(lockerLocations[index] + ".encloc\\"+p))
-                        Directory.CreateDirectory(lockerLocations[index] + ".encloc\\" + p);
-                    foreach (string f in Directory.GetDirectories(lockerLocations[index]/* + ".encloc\\" + p*/))
+                    //populate filesToCheck with all the files inside the chosen folder
+                    string[] filesToCheck = Directory.GetFiles(dir, "*", SearchOption.TopDirectoryOnly);
+                    string subdirName = dir.Substring(lockerLocations[index].Length + 1);
+
+                    Directory.CreateDirectory(lockerLocations[index] + ".encloc\\" + subdirName);
+
+                    foreach (string file in filesToCheck)
                     {
-                        string input = f;
-                        string output = Path.Combine(lockerLocations[index] + ".encloc\\",p, Path.GetFileName(f) + ".aes");
+                        string input = file;
+                        string output = lockerLocations[index] + ".encloc\\" + subdirName + "\\" + Path.GetFileName(file) + ".aes";
                         AES.FileEncrypt(input, output, pw);
                     }
                 }
@@ -144,7 +148,7 @@ namespace sep
             else if (btn.Text == "Unlock")
             {
                 string pw;
-                if (MessageBox.Show("Would you like to use the saved password for this locker?", "Use saved password?", MessageBoxButtons.YesNo)==DialogResult.Yes)
+                if (MessageBox.Show("Would you like to use the saved password for this locker?", "Use saved password?", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     pw = lockersInfo[index].password;
                 else
                     pw = Microsoft.VisualBasic.Interaction.InputBox("Enter locker password:", "Input Locker Password");
@@ -156,20 +160,33 @@ namespace sep
                     string output = lockerLocations[index] + "\\" + $"{Path.GetFileName(f).Split('.')[0]}.{Path.GetFileName(f).Split('.')[1]}";
                     AES.FileDecrypt(input, output, pw);
                 }
-                
-                //Get every directory inside the locker & recreate this within the .encloc folder
-                foreach (string d in Directory.GetDirectories(lockerLocations[index]))
+
+                //populate dirsToCheck with all the directories & subdirectories inside the chosen folder
+                string[] dirsToCheck = Directory.GetDirectories(lockerLocations[index] + ".encloc", "*", SearchOption.AllDirectories);
+
+                foreach (string dir in dirsToCheck)
                 {
-                    foreach (string f in Directory.GetDirectories(d))
+                    //populate filesToCheck with all the files inside the chosen folder
+                    string[] filesToCheck = Directory.GetFiles(dir, "*", SearchOption.TopDirectoryOnly);
+                    string subdirName = dir.Substring(lockerLocations[index].Length + 8);
+
+                    Directory.CreateDirectory(lockerLocations[index] + "\\" + subdirName);
+
+                    foreach (string file in filesToCheck)
                     {
-                        string input = f;
-                        string output = Path.Combine(d, Path.GetFileName(f).Split('.')[0]+"."+Path.GetFileName(f).Split('.')[1]);
-                        AES.FileEncrypt(input, output, pw);
+                        string input = file;
+                        string output = lockerLocations[index] + "\\" + subdirName + "\\" + $"{Path.GetFileName(file).Split('.')[0]}.{Path.GetFileName(file).Split('.')[1]}";
+                        AES.FileDecrypt(input, output, pw);
                     }
                 }
 
                 DatabaseHelperLK.setLockState(index, false);
                 MessageBox.Show("Locker unlocked successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (!Directory.Exists(OtherOperations.storeLoc + "\\backupLockers\\"))
+                    Directory.CreateDirectory(OtherOperations.storeLoc + "\\backupLockers\\");
+                if (Directory.Exists(OtherOperations.storeLoc + "\\backupLockers\\" + lockersInfo[index].name + ".encloc"))
+                    Directory.Delete(OtherOperations.storeLoc + "\\backupLockers\\" + lockersInfo[index].name + ".encloc", true);
+                Directory.Move(lockerLocations[index] + ".encloc", OtherOperations.storeLoc + "\\backupLockers\\" + lockersInfo[index].name + ".encloc");
                 btn.Text = "Lock";
             }
             btn.Enabled = true;
@@ -179,17 +196,23 @@ namespace sep
         {
             Button btn = (Button)sender;
             int index = int.Parse(btn.Name.Split('_')[1]);
-            string dirToOpen = lockerLocations[index];
-            if (btn.Text == "Fix")
+            string dirToOpen = lockerLocations[index - 1];
+            if (btn.Text == "Open")
             {
-                //System.Diagnostics.Process.Start("explorer.exe", @dirToOpen);
+                Process.Start("explorer.exe", dirToOpen);
                 //OtherOperations.LineChanger()
             }
             else
             {
-                OtherOperations.LineRemover(Path.Combine(OtherOperations.storeLoc, "lockersInfo.conf"), index);
-                MessageBox.Show("Locker deleted, but the files are still on your PC, you can now delete them manually.");
-                System.Diagnostics.Process.Start("explorer.exe", @dirToOpen);
+                if (MessageBox.Show("WARNING: Clicking 'Yes' will result in the deletion of all files in this locker. \r\nAre you sure you want to continue?", "Delete Locker", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    if (Directory.Exists(dirToOpen))
+                        Directory.Delete(dirToOpen, true);
+                    if (Directory.Exists(dirToOpen + ".encloc"))
+                        Directory.Delete(dirToOpen + ".encloc", true);
+                    DatabaseHelperLK.deleteLocker(index);
+                    MessageBox.Show("Locker deleted successfully!\r\nKeep in mind, there may be a backup of the contents in the %appdata%\\SEP\\backupLockers directory.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 
@@ -224,7 +247,7 @@ namespace sep
                             {
                                 if (c2.Text == "Open")
                                 {
-                                    c2.Text = "Fix";
+                                    c2.Text = "Delete";
                                 }
                             }
                         }
@@ -244,7 +267,7 @@ namespace sep
                         {
                             if (c2 is Button)
                             {
-                                if (c2.Text == "Fix")
+                                if (c2.Text == "Delete")
                                 {
                                     c2.Text = "Open";
                                 }
@@ -301,6 +324,13 @@ namespace sep
         private void frmLockers_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void lbWelcome_Click(object sender, EventArgs e)
+        {
+            string docURL = "https://docs.jmatthews.uk";
+            //Open docURL in the default web browser
+            Process.Start(docURL);
         }
     }
 }

@@ -117,8 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lbWelcome.Text" xml:space="preserve">
-    <value>Lockers allows you to have a folder with encrypted contents - you choose what directory to store this in, and when you click 
-"Lock", all its contents are encrypted with your chosen password. Unlocking will then require the password.</value>
-  </data>
 </root>

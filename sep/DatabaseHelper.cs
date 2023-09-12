@@ -406,73 +406,7 @@ namespace sep
 
             return lockState;
         }
-
-        //public static string[] allLockersLocations()
-        //{
-        //    string[] locations = new string[CountLockerData()];
-        //    int i = 0;
-        //    try
-        //    {
-        //        using (var connection = new SQLiteConnection(ConnectionString))
-        //        {
-        //            connection.Open();
-
-        //            string selectQuery = "SELECT LockerLocation FROM lockers;";
-
-        //            using (var command = new SQLiteCommand(selectQuery, connection))
-        //            {
-        //                using (var reader = command.ExecuteReader())
-        //                {
-        //                    while (reader.Read())
-        //                    {
-        //                        locations[i] = reader.GetString(0);
-        //                        i++;
-        //                    }
-        //                }
-        //            }
-        //        }
-
-        //        return locations;
-        //    }
-        //    catch
-        //    {
-        //        return null;
-        //    }
-        //}
         
-        //public static string[] allLockersNames()
-        //{
-        //    string[] names = new string[CountLockerData()];
-        //    int i = 0;
-        //    try
-        //    {
-        //        using (var connection = new SQLiteConnection(ConnectionString))
-        //        {
-        //            connection.Open();
-
-        //            string selectQuery = "SELECT LockerName FROM lockers;";
-
-        //            using (var command = new SQLiteCommand(selectQuery, connection))
-        //            {
-        //                using (var reader = command.ExecuteReader())
-        //                {
-        //                    while (reader.Read())
-        //                    {
-        //                        names[i] = reader.GetString(0);
-        //                        i++;
-        //                    }
-        //                }
-        //            }
-        //        }
-
-        //        return names;
-        //    }
-        //    catch
-        //    {
-        //        return null;
-        //    }
-        //}
-
         public static void setLockState(int id, bool state)
         {
             using (var connection = new SQLiteConnection(ConnectionString))
@@ -484,6 +418,22 @@ namespace sep
                 using (var command = new SQLiteCommand(updateQuery, connection))
                 {
                     command.Parameters.AddWithValue("@LockState", state);
+                    command.Parameters.AddWithValue("@Id", id);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+        
+        public static void deleteLocker(int id)
+        {
+            using (var connection = new SQLiteConnection(ConnectionString))
+            {
+                connection.Open();
+
+                string deleteQuery = "DELETE FROM lockers WHERE Id = @Id;";
+
+                using (var command = new SQLiteCommand(deleteQuery, connection))
+                {
                     command.Parameters.AddWithValue("@Id", id);
                     command.ExecuteNonQuery();
                 }
