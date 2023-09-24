@@ -8,4 +8,7 @@ You agree to use this project at your own risk and understand that it may have l
 
 By using this project, you acknowledge and accept this disclaimer of warranties and limitation of liability. If you do not agree with these terms, do not use or distribute this project.
 
+While this program uses a strong encryption standard (AES with a 256-bit key), no system is completely secure. Always keep your passwords safe and stay informed about best practices for data security.
+
 ###### Effective From: 09/09/2023
+###### Updated: 24/09/2023
