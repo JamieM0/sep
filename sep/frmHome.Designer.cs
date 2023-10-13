@@ -52,6 +52,7 @@
             btnPWLib = new System.Windows.Forms.Button();
             btnLockers = new System.Windows.Forms.Button();
             pbGithub = new System.Windows.Forms.PictureBox();
+            label3 = new System.Windows.Forms.Label();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbGithub).BeginInit();
             SuspendLayout();
@@ -240,11 +241,21 @@
             pbGithub.TabStop = false;
             pbGithub.Click += pbGithub_Click;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(214, 342);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(38, 15);
+            label3.TabIndex = 11;
+            label3.Text = "label3";
+            // 
             // frmHome
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(800, 450);
+            Controls.Add(label3);
             Controls.Add(btnLockers);
             Controls.Add(btnPWLib);
             Controls.Add(btnDecryptFile);
@@ -287,5 +298,6 @@
         private System.Windows.Forms.PictureBox pbGithub;
         private System.Windows.Forms.ToolStripMenuItem removeFromContextMenuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wipeFileToolStripMenuItem;
+        private System.Windows.Forms.Label label3;
     }
 }
