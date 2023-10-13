@@ -47,6 +47,7 @@ namespace sep
             pnlPasswordInput.Location = new Point(570, 170);
             pnlFinalSteps.Location = new Point(760, 170);
             pbCopyIcon.Image = Properties.Resources.copy_icon;
+            pnlShareFile.Visible = false;
         }
 
         private void frmFunctionScreen_Load(object sender, EventArgs e)
@@ -329,6 +330,7 @@ namespace sep
                     File.Delete(filePath);
                 }
                 MessageBox.Show("The file has been encrypted successfully!", "Encrypted!");
+                pnlShareFile.Visible = true;
                 Hide();
                 new frmHome().Show();
             }

@@ -270,5 +270,12 @@ namespace sep
                 MessageBox.Show("An error occured while uninstalling Automatic Takeover. \r\nPlease try again later.\r\n\r\nError Details: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void wipeFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Prompt user to input file to wipe, and number of passes
+            Hide();
+            new frmWipeFile().Show();
+        }
     }
 }

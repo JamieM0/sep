@@ -42,6 +42,7 @@
             lockersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             githubPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             removeFromContextMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            wipeFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             passwordLibraryToolStripMenuItem = new System.Windows.Forms.ToolStripDropDownMenu();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             label1 = new System.Windows.Forms.Label();
@@ -111,7 +112,7 @@
             // 
             // moreToolStripMenuItem
             // 
-            moreToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { lockersToolStripMenuItem, githubPageToolStripMenuItem, removeFromContextMenuToolStripMenuItem });
+            moreToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { lockersToolStripMenuItem, githubPageToolStripMenuItem, removeFromContextMenuToolStripMenuItem, wipeFileToolStripMenuItem });
             moreToolStripMenuItem.Name = "moreToolStripMenuItem";
             moreToolStripMenuItem.Size = new System.Drawing.Size(93, 34);
             moreToolStripMenuItem.Text = "Other...";
@@ -136,6 +137,13 @@
             removeFromContextMenuToolStripMenuItem.Size = new System.Drawing.Size(348, 34);
             removeFromContextMenuToolStripMenuItem.Text = "Remove from Context Menu";
             removeFromContextMenuToolStripMenuItem.Click += removeFromContextMenuToolStripMenuItem_Click;
+            // 
+            // wipeFileToolStripMenuItem
+            // 
+            wipeFileToolStripMenuItem.Name = "wipeFileToolStripMenuItem";
+            wipeFileToolStripMenuItem.Size = new System.Drawing.Size(348, 34);
+            wipeFileToolStripMenuItem.Text = "Wipe File (Secure Delete)";
+            wipeFileToolStripMenuItem.Click += wipeFileToolStripMenuItem_Click;
             // 
             // passwordLibraryToolStripMenuItem
             // 
@@ -278,5 +286,6 @@
         private System.Windows.Forms.Button btnLockers;
         private System.Windows.Forms.PictureBox pbGithub;
         private System.Windows.Forms.ToolStripMenuItem removeFromContextMenuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem wipeFileToolStripMenuItem;
     }
 }
