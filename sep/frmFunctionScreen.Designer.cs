@@ -275,6 +275,7 @@
             cbDeleteAsk.TabIndex = 2;
             cbDeleteAsk.Text = "Delete the selected file after \r\nencryption.";
             cbDeleteAsk.UseVisualStyleBackColor = true;
+            cbDeleteAsk.CheckedChanged += cbDeleteAsk_CheckedChanged;
             // 
             // btnUseAuthenticator
             // 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using System.Windows.Forms;
 
 namespace sep
 {
@@ -111,6 +112,7 @@ namespace sep
             catch (Exception ex)
             {
                 Console.WriteLine("An error occurred: {0}", ex.Message);
+                MessageBox.Show($"Sorry, these files could not be deleted. Please try again.\r\nMore Details: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

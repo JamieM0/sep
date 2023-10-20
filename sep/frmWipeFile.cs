@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,8 +21,8 @@ namespace sep
             CenterToScreen();
         }
 
-        string filePath;
-        string fileName;
+        string[] filePath;
+        string[] fileName;
         int numP;
         private void btnBrowse_Click(object sender, EventArgs e)
         {
@@ -27,19 +30,31 @@ namespace sep
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Title = "Select a file to wipe";
             ofd.Filter = "All Files (*.*)|*.*";
+            ofd.Multiselect = true;
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                filePath = ofd.FileName;
-                fileName = ofd.SafeFileName;
+                filePath = ofd.FileNames;
+                fileName = ofd.SafeFileNames;
             }
-            lbFileName.Text = fileName;
+            if (filePath.Length != 1)
+                lbFileName.Text = $"{filePath.Length} files selected!";
+            else
+                lbFileName.Text = fileName[0];
         }
 
         private void btnWipe_Click(object sender, EventArgs e)
         {
             numP = Convert.ToInt32(txtNumP.Text);
             //If user has chosen more than 15 passes ask to confirm to continue
-            if (numP>15)
+            if (numP > 25)
+            {
+                DialogResult ar = MessageBox.Show("You are about to make " + numP + " passes.\r\nThis is an extremely high number of passes, and may take a long time. It may also cause damage to your drive, but this is unlikely.\r\n3 times is likely enough, as recommended by security experts.\r\nAre you sure you want to proceed?", "EXTREMELY HIGH NUMBER OF PASSES. Please Confirm.", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (ar == DialogResult.No)
+                {
+                    return;
+                }
+            }
+            else if (numP > 10)
             {
                 DialogResult ar = MessageBox.Show("Are you sure you want to make " + numP + " passes?\r\n3 times is likely enough, as recommended by security experts, and this may be overkill.", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (ar == DialogResult.No)
@@ -49,18 +64,77 @@ namespace sep
             }
 
             //Ask user to confirm
-            DialogResult dr = MessageBox.Show("Are you sure you want to wipe this file? It will become unrecoverable, and lost forever?\r\nClick \"Cancel\" to cancel.", "Confirm", MessageBoxButtons.OKCancel);
+            DialogResult dr = MessageBox.Show("Are you sure you want to wipe these files? They will become unrecoverable, and lost forever.\r\nClick \"Cancel\" to cancel.", "Confirm", MessageBoxButtons.OKCancel);
             if (dr == DialogResult.OK)
             {
-                //Wipe the file
-                AesOperation.SecureDelete(filePath, numP);
-                MessageBox.Show("File Wiped Successfully!");
+                try
+                {
+                    //Wipe the file
+                    foreach (string file in filePath)
+                    {
+                        AesOperation.SecureDelete(file, numP);
+                    }
+                    MessageBox.Show("Files Wiped Successfully!");
+                    lbFileName.Text = "";
+                    fileName = null;
+                    filePath = null;
+                }
+                catch
+                {
+                    MessageBox.Show("There was an error.");
+                }
             }
             else
             {
                 Hide();
                 new frmHome().Show();
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new frmHome().Show();
+        }
+
+        private void frmWipeFile_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmWipeFile_DragEnter(object sender, DragEventArgs e)
+        {
+            // Check if the data being dragged in is a file (or files)
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Copy; // Show a "copy" cursor
+            else
+                e.Effect = DragDropEffects.None; // Show a "stop" cursor
+        }
+
+        private void frmWipeFile_DragDrop(object sender, DragEventArgs e)
+        {
+            // Get the filenames of all files being dragged into the form
+            filePath = (string[])e.Data.GetData(DataFormats.FileDrop);
+            fileName = (string[])e.Data.GetData(DataFormats.FileDrop);
+
+            for (int i = 0; i < fileName.Length; i++)
+            {
+                fileName[i] = Path.GetFileName(filePath[i]);
+            }
+
+            if (filePath.Length != 1)
+                lbFileName.Text = $"{filePath.Length} files selected!";
+            else
+                lbFileName.Text = fileName[0];
+        }
+
+        private void lbDocLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            // Specify that the link was visited.
+            this.lbDocLink.LinkVisited = true;
+
+            // Navigate to a URL.
+            Process.Start(new ProcessStartInfo("https://docs.jmatthews.uk/sep/secure-delete") { UseShellExecute = true });
         }
     }
 }

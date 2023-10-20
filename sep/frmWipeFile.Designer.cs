@@ -36,6 +36,8 @@
             label1 = new System.Windows.Forms.Label();
             txtNumP = new System.Windows.Forms.TextBox();
             btnWipe = new System.Windows.Forms.Button();
+            lbDocDisclosure = new System.Windows.Forms.Label();
+            lbDocLink = new System.Windows.Forms.LinkLabel();
             SuspendLayout();
             // 
             // lbTitle
@@ -60,13 +62,14 @@
             // 
             // btnCancel
             // 
-            btnCancel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnCancel.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             btnCancel.Location = new System.Drawing.Point(155, 9);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new System.Drawing.Size(111, 37);
             btnCancel.TabIndex = 2;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // btnBrowse
             // 
@@ -110,7 +113,7 @@
             // btnWipe
             // 
             btnWipe.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            btnWipe.Location = new System.Drawing.Point(12, 198);
+            btnWipe.Location = new System.Drawing.Point(12, 190);
             btnWipe.Name = "btnWipe";
             btnWipe.Size = new System.Drawing.Size(254, 56);
             btnWipe.TabIndex = 7;
@@ -118,11 +121,35 @@
             btnWipe.UseVisualStyleBackColor = true;
             btnWipe.Click += btnWipe_Click;
             // 
+            // lbDocDisclosure
+            // 
+            lbDocDisclosure.AutoSize = true;
+            lbDocDisclosure.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lbDocDisclosure.Location = new System.Drawing.Point(4, 259);
+            lbDocDisclosure.Name = "lbDocDisclosure";
+            lbDocDisclosure.Size = new System.Drawing.Size(273, 17);
+            lbDocDisclosure.TabIndex = 8;
+            lbDocDisclosure.Text = "Before using, please read the documentation:";
+            // 
+            // lbDocLink
+            // 
+            lbDocLink.AutoSize = true;
+            lbDocLink.Location = new System.Drawing.Point(17, 276);
+            lbDocLink.Name = "lbDocLink";
+            lbDocLink.Size = new System.Drawing.Size(245, 15);
+            lbDocLink.TabIndex = 10;
+            lbDocLink.TabStop = true;
+            lbDocLink.Text = "https://docs.jmatthews.uk/sep/secure-delete";
+            lbDocLink.LinkClicked += lbDocLink_LinkClicked;
+            // 
             // frmWipeFile
             // 
+            AllowDrop = true;
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(276, 281);
+            ClientSize = new System.Drawing.Size(276, 306);
+            Controls.Add(lbDocLink);
+            Controls.Add(lbDocDisclosure);
             Controls.Add(btnWipe);
             Controls.Add(txtNumP);
             Controls.Add(label1);
@@ -133,6 +160,9 @@
             Controls.Add(lbTitle);
             Name = "frmWipeFile";
             Text = "SEP: Wipe File";
+            Load += frmWipeFile_Load;
+            DragDrop += frmWipeFile_DragDrop;
+            DragEnter += frmWipeFile_DragEnter;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -147,5 +177,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNumP;
         private System.Windows.Forms.Button btnWipe;
+        private System.Windows.Forms.Label lbDocDisclosure;
+        private System.Windows.Forms.LinkLabel lbDocLink;
     }
 }

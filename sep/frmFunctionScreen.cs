@@ -327,7 +327,7 @@ namespace sep
                 password = "";
                 if (cbDeleteAsk.Checked)
                 {
-                    File.Delete(filePath);
+                    AesOperation.SecureDelete(filePath, 3);
                 }
                 MessageBox.Show("The file has been encrypted successfully!", "Encrypted!");
                 //pnlShareFile.Visible = true;
@@ -358,7 +358,7 @@ namespace sep
                 {
                     if (MessageBox.Show("Entering the incorrect password WILL result in a corrupted file!\r\n\r\nAre you sure you want to delete the encrypted file?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
-                        File.Delete(filePath);
+                        AesOperation.SecureDelete(filePath, 3);
                     }
                 }
                 Hide();
@@ -547,6 +547,17 @@ namespace sep
                     {
                         MessageBox.Show("Sorry, there was a problem with the password library. Please try again.\r\nMore Details: " + ex.Message, "Error!");
                     }
+                }
+            }
+        }
+
+        private void cbDeleteAsk_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbDeleteAsk.Checked)
+            {
+                if (MessageBox.Show($"Are you sure you want to delete this file?\r\n\r\nThe original file will be securely deleted after it has been {funcText.ToLower()}ed.\r\n\r\nIt will be overwritten 3 times, and become unrecoverable.\r\nThis is the only warning.", "Delete original file?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                {
+                    cbDeleteAsk.Checked = false;
                 }
             }
         }
