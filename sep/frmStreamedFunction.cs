@@ -28,14 +28,14 @@ namespace sep
             {
                 funcEncrypt = false;
             }
-            
+
             if (!funcEncrypt)
             {
                 btnFunction.Text = "Decrypt";
                 btnPWLibFunc.Text = "Open Password";
             }
 
-            if(Path.GetExtension(filePath) == ".mfa")
+            if (Path.GetExtension(filePath) == ".mfa")
             {
                 MessageBox.Show("This file is encrypted using MFA, so you must use the main program to decrypt it.", "MFA Encrypted", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Close();
@@ -68,7 +68,7 @@ namespace sep
         {
             if (funcEncrypt)
             {
-                if(savingPW)
+                if (savingPW)
                 {
                     string nextID = "0⌀" + pwIdentifier;
                     AES.FileEncrypt(filePath, txtPassword.Text, false, nextID);
@@ -77,10 +77,10 @@ namespace sep
                 {
                     AES.FileEncrypt(filePath, txtPassword.Text, false, "0");
                 }
-                
-                if (!cbSaveOriginal.Checked)
+
+                if (!cbDeleteAsk.Checked)
                 {
-                    File.Delete(filePath);
+                    AesOperation.SecureDelete(filePath, 3);
                 }
 
                 MessageBox.Show("The file has been encrypted!", "Encrypted!");
@@ -88,7 +88,7 @@ namespace sep
             }
             else
             {
-                if (!cbSaveOriginal.Checked)
+                if (!cbDeleteAsk.Checked)
                 {
                     txtPassword.Enabled = false;
                     string filePathUnencrypted;
@@ -96,19 +96,19 @@ namespace sep
 
                     AES.FileDecrypt(filePath, filePathUnencrypted, txtPassword.Text);
 
-                    if (!cbSaveOriginal.Checked)
+                    if (!cbDeleteAsk.Checked)
                     {
                         if (MessageBox.Show("Entering the incorrect password WILL result in a corrupted file!\r\n\r\nDo you want to delete the encrypted file?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
-                            File.Delete(filePath);
+                            AesOperation.SecureDelete(filePath, 3);
                         }
                     }
-                    
+
 
                     MessageBox.Show("The file has been decrypted!", "Decrypted!");
 
                     Application.Exit();
-                    
+
                 }
                 else
                 {
@@ -133,7 +133,7 @@ namespace sep
 
         int pwIdentifier;
         string pwlibmaster;
-        bool savingPW=false;
+        bool savingPW = false;
         private void btnPWLibFunc_Click(object sender, EventArgs e)
         {
             if (!funcEncrypt)
@@ -201,6 +201,17 @@ namespace sep
                     {
                         MessageBox.Show("Sorry, there was a problem with the password library. Please try again.\r\nMore Details: " + ex.Message, "Error!");
                     }
+                }
+            }
+        }
+
+        private void cbSaveOriginal_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbDeleteAsk.Checked)
+            {
+                if (MessageBox.Show($"Are you sure you want to delete this file?\r\n\r\nThe original file will be securely deleted after it has been {btnFunction.Text.ToLower()}ed.\r\n\r\nIt will be overwritten 3 times, and become unrecoverable.\r\nThis is the only warning.", "Delete original file?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                {
+                    cbDeleteAsk.Checked = false;
                 }
             }
         }

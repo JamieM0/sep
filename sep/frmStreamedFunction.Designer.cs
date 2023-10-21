@@ -33,7 +33,7 @@
             btnSavePassword = new System.Windows.Forms.Button();
             lbInstructions = new System.Windows.Forms.Label();
             btnFunction = new System.Windows.Forms.Button();
-            cbSaveOriginal = new System.Windows.Forms.CheckBox();
+            cbDeleteAsk = new System.Windows.Forms.CheckBox();
             btnPWLibFunc = new System.Windows.Forms.Button();
             SuspendLayout();
             // 
@@ -89,16 +89,17 @@
             btnFunction.UseVisualStyleBackColor = true;
             btnFunction.Click += btnFunction_Click;
             // 
-            // cbSaveOriginal
+            // cbDeleteAsk
             // 
-            cbSaveOriginal.AutoSize = true;
-            cbSaveOriginal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            cbSaveOriginal.Location = new System.Drawing.Point(12, 113);
-            cbSaveOriginal.Name = "cbSaveOriginal";
-            cbSaveOriginal.Size = new System.Drawing.Size(158, 25);
-            cbSaveOriginal.TabIndex = 5;
-            cbSaveOriginal.Text = "Keep Original File?";
-            cbSaveOriginal.UseVisualStyleBackColor = true;
+            cbDeleteAsk.AutoSize = true;
+            cbDeleteAsk.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            cbDeleteAsk.Location = new System.Drawing.Point(12, 113);
+            cbDeleteAsk.Name = "cbDeleteAsk";
+            cbDeleteAsk.Size = new System.Drawing.Size(170, 25);
+            cbDeleteAsk.TabIndex = 5;
+            cbDeleteAsk.Text = "Delete Selected File?";
+            cbDeleteAsk.UseVisualStyleBackColor = true;
+            cbDeleteAsk.CheckedChanged += cbSaveOriginal_CheckedChanged;
             // 
             // btnPWLibFunc
             // 
@@ -117,7 +118,7 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(315, 199);
             Controls.Add(btnPWLibFunc);
-            Controls.Add(cbSaveOriginal);
+            Controls.Add(cbDeleteAsk);
             Controls.Add(btnFunction);
             Controls.Add(lbInstructions);
             Controls.Add(btnSavePassword);
@@ -137,7 +138,7 @@
         private System.Windows.Forms.Button btnSavePassword;
         private System.Windows.Forms.Label lbInstructions;
         private System.Windows.Forms.Button btnFunction;
-        private System.Windows.Forms.CheckBox cbSaveOriginal;
+        private System.Windows.Forms.CheckBox cbDeleteAsk;
         private System.Windows.Forms.Button btnPWLibFunc;
     }
 }
