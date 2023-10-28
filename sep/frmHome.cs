@@ -277,5 +277,11 @@ namespace sep
             Hide();
             new frmWipeFile().Show();
         }
+
+        private void btnSecureDelete_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new frmWipeFile().Show();
+        }
     }
 }

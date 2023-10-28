@@ -31,6 +31,8 @@
             btnBack = new System.Windows.Forms.Button();
             lbTitle = new System.Windows.Forms.Label();
             pnlFileSelect = new System.Windows.Forms.Panel();
+            label6 = new System.Windows.Forms.Label();
+            pbDropIcon = new System.Windows.Forms.PictureBox();
             lbFileName = new System.Windows.Forms.Label();
             btnOpenFile = new System.Windows.Forms.Button();
             lbIns1 = new System.Windows.Forms.Label();
@@ -77,6 +79,7 @@
             label5 = new System.Windows.Forms.Label();
             lbPWLib = new System.Windows.Forms.Label();
             pnlFileSelect.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbDropIcon).BeginInit();
             pnlPasswordInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbCopyIcon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbPWReveal).BeginInit();
@@ -111,24 +114,46 @@
             // 
             // pnlFileSelect
             // 
+            pnlFileSelect.Controls.Add(label6);
+            pnlFileSelect.Controls.Add(pbDropIcon);
             pnlFileSelect.Controls.Add(lbFileName);
             pnlFileSelect.Controls.Add(btnOpenFile);
             pnlFileSelect.Controls.Add(lbIns1);
-            pnlFileSelect.Location = new System.Drawing.Point(6, 174);
+            pnlFileSelect.Location = new System.Drawing.Point(8, 92);
             pnlFileSelect.Name = "pnlFileSelect";
-            pnlFileSelect.Size = new System.Drawing.Size(370, 222);
+            pnlFileSelect.Size = new System.Drawing.Size(370, 474);
             pnlFileSelect.TabIndex = 2;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new System.Drawing.Point(98, 294);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(166, 30);
+            label6.TabIndex = 4;
+            label6.Text = "Drop file(s) here.";
+            // 
+            // pbDropIcon
+            // 
+            pbDropIcon.Image = Properties.Resources.noun_drag_and_drop_2709846;
+            pbDropIcon.Location = new System.Drawing.Point(108, 327);
+            pbDropIcon.Name = "pbDropIcon";
+            pbDropIcon.Size = new System.Drawing.Size(137, 118);
+            pbDropIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            pbDropIcon.TabIndex = 3;
+            pbDropIcon.TabStop = false;
             // 
             // lbFileName
             // 
             lbFileName.AutoSize = true;
-            lbFileName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            lbFileName.Location = new System.Drawing.Point(173, 164);
+            lbFileName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lbFileName.Location = new System.Drawing.Point(108, 170);
             lbFileName.Name = "lbFileName";
-            lbFileName.Size = new System.Drawing.Size(22, 25);
+            lbFileName.Size = new System.Drawing.Size(18, 21);
             lbFileName.TabIndex = 2;
             lbFileName.Text = "a";
             lbFileName.Visible = false;
+            lbFileName.DragDrop += lbFileName_DragDrop;
             // 
             // btnOpenFile
             // 
@@ -137,7 +162,7 @@
             btnOpenFile.Name = "btnOpenFile";
             btnOpenFile.Size = new System.Drawing.Size(206, 66);
             btnOpenFile.TabIndex = 1;
-            btnOpenFile.Text = "Open File";
+            btnOpenFile.Text = "Choose File(s)";
             btnOpenFile.UseVisualStyleBackColor = true;
             btnOpenFile.Click += btnOpenFile_Click;
             // 
@@ -145,11 +170,11 @@
             // 
             lbIns1.AutoSize = true;
             lbIns1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            lbIns1.Location = new System.Drawing.Point(40, 26);
+            lbIns1.Location = new System.Drawing.Point(37, 26);
             lbIns1.Name = "lbIns1";
-            lbIns1.Size = new System.Drawing.Size(287, 30);
+            lbIns1.Size = new System.Drawing.Size(291, 30);
             lbIns1.TabIndex = 0;
-            lbIns1.Text = "Please select a file to encrypt.";
+            lbIns1.Text = "Please select file(s) to encrypt.";
             // 
             // pnlPasswordInput
             // 
@@ -250,9 +275,9 @@
             pnlFinalSteps.Controls.Add(cbDeleteAsk);
             pnlFinalSteps.Controls.Add(btnUseAuthenticator);
             pnlFinalSteps.Controls.Add(lbIns3);
-            pnlFinalSteps.Location = new System.Drawing.Point(760, 174);
+            pnlFinalSteps.Location = new System.Drawing.Point(760, 117);
             pnlFinalSteps.Name = "pnlFinalSteps";
-            pnlFinalSteps.Size = new System.Drawing.Size(370, 313);
+            pnlFinalSteps.Size = new System.Drawing.Size(370, 386);
             pnlFinalSteps.TabIndex = 5;
             pnlFinalSteps.Visible = false;
             // 
@@ -271,9 +296,9 @@
             cbDeleteAsk.AutoSize = true;
             cbDeleteAsk.Location = new System.Drawing.Point(32, 133);
             cbDeleteAsk.Name = "cbDeleteAsk";
-            cbDeleteAsk.Size = new System.Drawing.Size(299, 64);
+            cbDeleteAsk.Size = new System.Drawing.Size(320, 64);
             cbDeleteAsk.TabIndex = 2;
-            cbDeleteAsk.Text = "Delete the selected file after \r\nencryption.";
+            cbDeleteAsk.Text = "Delete the selected file(s) after \r\nencryption.";
             cbDeleteAsk.UseVisualStyleBackColor = true;
             cbDeleteAsk.CheckedChanged += cbDeleteAsk_CheckedChanged;
             // 
@@ -552,9 +577,9 @@
             pnlLibraryPassword.Controls.Add(txtPWLib);
             pnlLibraryPassword.Controls.Add(label5);
             pnlLibraryPassword.Controls.Add(lbPWLib);
-            pnlLibraryPassword.Location = new System.Drawing.Point(384, 151);
+            pnlLibraryPassword.Location = new System.Drawing.Point(384, 94);
             pnlLibraryPassword.Name = "pnlLibraryPassword";
-            pnlLibraryPassword.Size = new System.Drawing.Size(370, 336);
+            pnlLibraryPassword.Size = new System.Drawing.Size(370, 409);
             pnlLibraryPassword.TabIndex = 10;
             pnlLibraryPassword.Visible = false;
             // 
@@ -621,15 +646,18 @@
             Controls.Add(lbTitle);
             Controls.Add(btnBack);
             Controls.Add(pnlGuesser);
-            Controls.Add(pnlAuthDecrypt);
             Controls.Add(pnlAuthApp);
+            Controls.Add(pnlAuthDecrypt);
             Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             Name = "frmFunctionScreen";
             Text = "SEP: Encrypt File";
             Load += frmFunctionScreen_Load;
+            DragDrop += frmFunctionScreen_DragDrop;
+            DragEnter += frmFunctionScreen_DragEnter;
             pnlFileSelect.ResumeLayout(false);
             pnlFileSelect.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pbDropIcon).EndInit();
             pnlPasswordInput.ResumeLayout(false);
             pnlPasswordInput.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pbCopyIcon).EndInit();
@@ -699,5 +727,7 @@
         private System.Windows.Forms.Button btnConfirmPWLib;
         private System.Windows.Forms.TextBox txtPWLib;
         private System.Windows.Forms.Button btnPWLibReveal;
+        private System.Windows.Forms.PictureBox pbDropIcon;
+        private System.Windows.Forms.Label label6;
     }
 }

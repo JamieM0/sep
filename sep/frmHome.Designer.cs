@@ -52,6 +52,7 @@
             btnPWLib = new System.Windows.Forms.Button();
             btnLockers = new System.Windows.Forms.Button();
             pbGithub = new System.Windows.Forms.PictureBox();
+            btnSecureDelete = new System.Windows.Forms.Button();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbGithub).BeginInit();
             SuspendLayout();
@@ -114,8 +115,8 @@
             // 
             moreToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { lockersToolStripMenuItem, githubPageToolStripMenuItem, removeFromContextMenuToolStripMenuItem, wipeFileToolStripMenuItem });
             moreToolStripMenuItem.Name = "moreToolStripMenuItem";
-            moreToolStripMenuItem.Size = new System.Drawing.Size(93, 34);
-            moreToolStripMenuItem.Text = "Other...";
+            moreToolStripMenuItem.Size = new System.Drawing.Size(89, 34);
+            moreToolStripMenuItem.Text = "More...";
             // 
             // lockersToolStripMenuItem
             // 
@@ -167,9 +168,9 @@
             label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             label1.Location = new System.Drawing.Point(12, 54);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(261, 45);
+            label1.Size = new System.Drawing.Size(597, 45);
             label1.TabIndex = 0;
-            label1.Text = "Welcome to SEP!";
+            label1.Text = "Welcome to Simple Encryption Program!";
             // 
             // label2
             // 
@@ -185,6 +186,8 @@
             // 
             btnEncryptFile.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             btnEncryptFile.ForeColor = System.Drawing.Color.Black;
+            btnEncryptFile.Image = Properties.Resources.noun_encrypt_33883351;
+            btnEncryptFile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             btnEncryptFile.Location = new System.Drawing.Point(98, 186);
             btnEncryptFile.Name = "btnEncryptFile";
             btnEncryptFile.Size = new System.Drawing.Size(230, 78);
@@ -197,6 +200,8 @@
             // 
             btnDecryptFile.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             btnDecryptFile.ForeColor = System.Drawing.Color.Black;
+            btnDecryptFile.Image = Properties.Resources.noun_unlock_50913241;
+            btnDecryptFile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             btnDecryptFile.Location = new System.Drawing.Point(464, 186);
             btnDecryptFile.Name = "btnDecryptFile";
             btnDecryptFile.Size = new System.Drawing.Size(230, 78);
@@ -209,7 +214,7 @@
             // 
             btnPWLib.Enabled = false;
             btnPWLib.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            btnPWLib.Location = new System.Drawing.Point(271, 367);
+            btnPWLib.Location = new System.Drawing.Point(271, 377);
             btnPWLib.Name = "btnPWLib";
             btnPWLib.Size = new System.Drawing.Size(253, 54);
             btnPWLib.TabIndex = 8;
@@ -221,7 +226,9 @@
             // btnLockers
             // 
             btnLockers.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            btnLockers.Location = new System.Drawing.Point(271, 333);
+            btnLockers.Image = Properties.Resources.noun_folder_lock_56684341;
+            btnLockers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnLockers.Location = new System.Drawing.Point(271, 307);
             btnLockers.Name = "btnLockers";
             btnLockers.Size = new System.Drawing.Size(253, 54);
             btnLockers.TabIndex = 9;
@@ -240,11 +247,25 @@
             pbGithub.TabStop = false;
             pbGithub.Click += pbGithub_Click;
             // 
+            // btnSecureDelete
+            // 
+            btnSecureDelete.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnSecureDelete.Image = Properties.Resources.noun_burn_file_43239321;
+            btnSecureDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            btnSecureDelete.Location = new System.Drawing.Point(271, 377);
+            btnSecureDelete.Name = "btnSecureDelete";
+            btnSecureDelete.Size = new System.Drawing.Size(253, 54);
+            btnSecureDelete.TabIndex = 11;
+            btnSecureDelete.Text = "Wipe File";
+            btnSecureDelete.UseVisualStyleBackColor = true;
+            btnSecureDelete.Click += btnSecureDelete_Click;
+            // 
             // frmHome
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(800, 450);
+            ClientSize = new System.Drawing.Size(800, 496);
+            Controls.Add(btnSecureDelete);
             Controls.Add(btnLockers);
             Controls.Add(btnPWLib);
             Controls.Add(btnDecryptFile);
@@ -287,5 +308,6 @@
         private System.Windows.Forms.PictureBox pbGithub;
         private System.Windows.Forms.ToolStripMenuItem removeFromContextMenuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wipeFileToolStripMenuItem;
+        private System.Windows.Forms.Button btnSecureDelete;
     }
 }

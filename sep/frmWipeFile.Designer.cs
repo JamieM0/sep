@@ -109,9 +109,11 @@
             txtNumP.Size = new System.Drawing.Size(62, 29);
             txtNumP.TabIndex = 6;
             txtNumP.Text = "3";
+            txtNumP.TextChanged += txtNumP_TextChanged;
             // 
             // btnWipe
             // 
+            btnWipe.Enabled = false;
             btnWipe.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             btnWipe.Location = new System.Drawing.Point(12, 190);
             btnWipe.Name = "btnWipe";

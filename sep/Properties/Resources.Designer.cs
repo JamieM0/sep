@@ -123,6 +123,96 @@ namespace sep.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap noun_burn_file_4323932 {
+            get {
+                object obj = ResourceManager.GetObject("noun-burn-file-4323932", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap noun_burn_file_43239321 {
+            get {
+                object obj = ResourceManager.GetObject("noun-burn-file-43239321", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap noun_drag_and_drop_2709846 {
+            get {
+                object obj = ResourceManager.GetObject("noun-drag-and-drop-2709846", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap noun_encrypt_3388335 {
+            get {
+                object obj = ResourceManager.GetObject("noun-encrypt-3388335", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap noun_encrypt_33883351 {
+            get {
+                object obj = ResourceManager.GetObject("noun-encrypt-33883351", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap noun_folder_lock_5668434 {
+            get {
+                object obj = ResourceManager.GetObject("noun-folder-lock-5668434", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap noun_folder_lock_56684341 {
+            get {
+                object obj = ResourceManager.GetObject("noun-folder-lock-56684341", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap noun_unlock_5091324 {
+            get {
+                object obj = ResourceManager.GetObject("noun-unlock-5091324", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap noun_unlock_50913241 {
+            get {
+                object obj = ResourceManager.GetObject("noun-unlock-50913241", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap password_reveal_active {
             get {
                 object obj = ResourceManager.GetObject("password_reveal_active", resourceCulture);

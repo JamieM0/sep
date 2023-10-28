@@ -20,8 +20,8 @@ namespace sep
     {
         bool funcEncrypt = OtherOperations.funcEncrypt;
         string funcText = "Encrypt";
-        string filePath;
-        string fileName;
+        string[] filePath;
+        string[] fileName;
         string password;
         bool saveToLibrary = false;
         bool usingMFA = false;
@@ -43,11 +43,13 @@ namespace sep
             lbIns1.Text = $"Please select a file to {funcText.ToLower()}";
             lbIns2.Text = $"Enter a password to {funcText.ToLower()} the file";
             lbIns3.Text = $"Ready to {funcText.ToLower()}!";
-            pnlFileSelect.Location = new Point(350, 170);
-            pnlPasswordInput.Location = new Point(570, 170);
-            pnlFinalSteps.Location = new Point(760, 170);
+            pnlFileSelect.Location = new Point(350, 92);
+            pnlPasswordInput.Location = new Point(570, 92);
+            pnlFinalSteps.Location = new Point(760, 92);
             pbCopyIcon.Image = Properties.Resources.copy_icon;
             //pnlShareFile.Visible = false;
+            lbFileName.TextAlign = ContentAlignment.MiddleCenter;
+            this.AllowDrop = true;
         }
 
         private void frmFunctionScreen_Load(object sender, EventArgs e)
@@ -95,35 +97,55 @@ namespace sep
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "All Files (*.*)|*.*";
-            ofd.Title = $"Select a file to {funcText.ToLower()}";
+            ofd.Title = $"Choose file(s) to {funcText.ToLower()}";
+            ofd.Multiselect = true;
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                filePath = ofd.FileName;
-                fileName = ofd.SafeFileName;
-            }
-            lbFileName.Text = fileName;
-            int sizeOfFileName = TextRenderer.MeasureText(fileName, lbFileName.Font).Width;
-            if (sizeOfFileName + 50 > pnlFileSelect.Width)
-            {
-                bool validLength = false;
-                int i = 1;
-                do
+                if (!funcEncrypt && ofd.FileNames.Length > 1)
                 {
-                    lbFileName.Text = fileName.Substring(0, fileName.Length - i) + "...";
-                    i++;
-                    sizeOfFileName = TextRenderer.MeasureText(lbFileName.Text, lbFileName.Font).Width;
-                    if (sizeOfFileName + 50 < pnlFileSelect.Width)
-                        validLength = true;
-                } while (!validLength);
-
+                    MessageBox.Show("You can only decrypt one file at a time.", "SEP", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else
+                {
+                    filePath = ofd.FileNames;
+                    fileName = ofd.SafeFileNames;
+                }
             }
-            lbFileName.Location = new Point((pnlFileSelect.Width / 2) - sizeOfFileName / 2, 150);
+            lbFileName.Text = "";
+            if (filePath.Length <= 3)
+            {
+
+                foreach (string item in fileName)
+                {
+                    int itemSize = TextRenderer.MeasureText(item, lbFileName.Font).Width;
+                    string itemToAdd = item;
+                    lbFileName.Text += itemToAdd + "\r\n";
+                }
+                lbFileName.Text += ". . .\r\n" + filePath.Length + " files selected.";
+            }
+            else
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    string item = fileName[i];
+                    int itemSize = TextRenderer.MeasureText(item, lbFileName.Font).Width;
+                    string itemToAdd = item;
+                    lbFileName.Text += itemToAdd + "\r\n";
+                }
+                lbFileName.Text += ". . .\r\n" + filePath.Length + " files selected.";
+            }
+            int sizeOfFileName = TextRenderer.MeasureText(fileName.OrderByDescending(s => s.Length).First(), lbFileName.Font).Width;
+            //lbFileName.Location = new Point((pnlFileSelect.Width / 2) - sizeOfFileName / 2, 150);
             lbFileName.Visible = true;
+
+            if (fileName.Length > 1)
+                btnUseAuthenticator.Enabled = false;
 
             if (lbFileName.Text.Length > 0)
             {
                 //Animate to left (2 sections)
-                animateSection(pnlFileSelect, new Point(170, 170), 10);
+                animateSection(pnlFileSelect, new Point(170, 92), 10);
                 pnlPasswordInput.Visible = true;
             }
         }
@@ -143,15 +165,15 @@ namespace sep
         private void EncryptConfirmPassword()
         {
             password = txtPassword.Text;
-            int extensionPoint = fileName.LastIndexOf('.');
-            if ((fileName.EndsWith(".mfa") || DatabaseHelper.SearchDatabase(fileName.Substring(0, extensionPoint))) && !funcEncrypt)
+            int extensionPoint = fileName[0].LastIndexOf('.');
+            if ((fileName[0].EndsWith(".mfa") || DatabaseHelper.SearchDatabase(fileName[0].Substring(0, extensionPoint))) && !funcEncrypt)
             {
                 pnlAuthDecrypt.Visible = true;
                 hideMainElements();
             }
             else
             {
-                animateSection(pnlFileSelect, new Point(6, 170), 20, pnlPasswordInput, new Point(383, 170), 20);
+                animateSection(pnlFileSelect, new Point(6, 92), 20, pnlPasswordInput, new Point(383, 92), 20);
                 pnlFinalSteps.Visible = true;
             }
 
@@ -279,8 +301,8 @@ namespace sep
             else
             {
                 nextID = Convert.ToString(DatabaseHelper.CountFileData() + 1);
-                fileName = nextID + "-" + fileName;
-                DatabaseHelper.InsertFileData(fileName, secretKey);
+                fileName[0] = nextID + "-" + fileName;
+                DatabaseHelper.InsertFileData(fileName[0], secretKey);
 
                 pnlAuthApp.Visible = false;
                 showMainElements();
@@ -291,7 +313,7 @@ namespace sep
         private void btnAuthDecryptSubmit_Click(object sender, EventArgs e)
         {
             string testCode = txtAuthConfirmDecrypt.Text;
-            string secretKey = DatabaseHelper.GetSecretKey(Convert.ToInt32(fileName.Split('-')[0]));
+            string secretKey = DatabaseHelper.GetSecretKey(Convert.ToInt32(fileName[0].Split('-')[0]));
             bool validCode = VerifyOTP(secretKey, testCode);
             if (!validCode)
                 MessageBox.Show("Sorry, that didn't work, please try again later!", "Invalid Code!");
@@ -299,7 +321,7 @@ namespace sep
             {
                 pnlAuthDecrypt.Visible = false;
                 showMainElements();
-                animateSection(pnlFileSelect, new Point(6, 170), 20, pnlPasswordInput, new Point(383, 170), 20);
+                animateSection(pnlFileSelect, new Point(6, 92), 20, pnlPasswordInput, new Point(383, 92), 20);
                 usingMFA = true;
             }
         }
@@ -316,20 +338,26 @@ namespace sep
             {
                 if (usingMFA)
                 {
-                    string secretKey = DatabaseHelper.GetSecretKey(Convert.ToInt32(fileName.Split('-')[0]));
+                    string secretKey = DatabaseHelper.GetSecretKey(Convert.ToInt32(fileName[0].Split('-')[0]));
                     password += "⌀" + secretKey;
                 }
                 if (saveToLibrary)
                 {
                     nextID += "⌀" + pwIdentifier;
                 }
-                AES.FileEncrypt(filePath, password, usingMFA, nextID);
-                password = "";
-                if (cbDeleteAsk.Checked)
+
+                for (int i = 0; i < fileName.Length; i++)
                 {
-                    AesOperation.SecureDelete(filePath, 3);
+                    AES.FileEncrypt(filePath[i], password, usingMFA, nextID);
+
+                    if (cbDeleteAsk.Checked)
+                    {
+                        AesOperation.SecureDelete(filePath[i], 3);
+                    }
                 }
-                MessageBox.Show("The file has been encrypted successfully!", "Encrypted!");
+
+                password = "";
+                MessageBox.Show("The file(s) have been encrypted successfully!", "Encrypted!");
                 //pnlShareFile.Visible = true;
                 Hide();
                 new frmHome().Show();
@@ -339,11 +367,11 @@ namespace sep
                 txtPassword.Enabled = false;
                 if (usingMFA)
                 {
-                    string secretKey = DatabaseHelper.GetSecretKey(Convert.ToInt32(fileName.Split('-')[0]));
+                    string secretKey = DatabaseHelper.GetSecretKey(Convert.ToInt32(fileName[0].Split('-')[0]));
                     password += "⌀" + secretKey;
                 }
                 string filePathUnencrypted;
-                filePathUnencrypted = filePath.Substring(0, filePath.Length - 4);
+                filePathUnencrypted = filePath[0].Substring(0, filePath[0].Length - 4);
                 string directory = Path.GetDirectoryName(filePathUnencrypted);
                 string oldFileName = Path.GetFileName(filePathUnencrypted);
                 int firstDashIndex = oldFileName.IndexOf("-");
@@ -351,14 +379,14 @@ namespace sep
 
                 filePathUnencrypted = Path.Combine(directory, newFileName);
 
-                AES.FileDecrypt(filePath, filePathUnencrypted, password);
+                AES.FileDecrypt(filePath[0], filePathUnencrypted, password);
                 MessageBox.Show("The file has been decrypted successfully!", "Decrypted!");
 
                 if (cbDeleteAsk.Checked)
                 {
                     if (MessageBox.Show("Entering the incorrect password WILL result in a corrupted file!\r\n\r\nAre you sure you want to delete the encrypted file?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                     {
-                        AesOperation.SecureDelete(filePath, 3);
+                        AesOperation.SecureDelete(filePath[0], 3);
                     }
                 }
                 Hide();
@@ -415,8 +443,8 @@ namespace sep
                 {
                     foreach (string guess in guesses)
                     {
-                        string output = $@"{dirPath}\{guess}_{fileName.Substring(0, fileName.Length - 4)}";
-                        AES.FileDecrypt(filePath, output, guess);
+                        string output = $@"{dirPath}\{guess}_{fileName[0].Substring(0, fileName[0].Length - 4)}";
+                        AES.FileDecrypt(filePath[0], output, guess);
                     }
                     MessageBox.Show($"The file has been decrypted, and {guesses.Length} copies were made!", "Decrypted!");
                 }
@@ -499,8 +527,11 @@ namespace sep
                             throw new Exception("password_incorrect");
                         }
                     }
-                    pwIdentifier = DatabaseHelperPL.CountPasswordData();
-                    DatabaseHelperPL.InsertPWLib(filePath, txtPassword.Text);
+                    for (int i = 0; i < fileName.Length; i++)
+                    {
+                        pwIdentifier = DatabaseHelperPL.CountPasswordData();
+                        DatabaseHelperPL.InsertPWLib(filePath[i], txtPassword.Text);
+                    }
                     DatabaseHelperPL.EncryptPWLib(pwlibmaster);
                     btnPWLibFunc.Enabled = false;
                     btnGenPassword.Enabled = false;
@@ -532,7 +563,7 @@ namespace sep
                             throw new Exception("password_incorrect");
                         }
                     }
-                    pwIdentifier = Convert.ToInt32(Path.GetExtension(filePath).Substring(4));
+                    pwIdentifier = Convert.ToInt32(Path.GetExtension(filePath[0]).Substring(4));
                     txtPassword.Text = DatabaseHelperPL.GetPassword(pwIdentifier);
                     DatabaseHelperPL.EncryptPWLib(pwlibmaster);
                 }
@@ -560,6 +591,73 @@ namespace sep
                     cbDeleteAsk.Checked = false;
                 }
             }
+        }
+
+        private void lbFileName_DragDrop(object sender, DragEventArgs e)
+        {
+            // Check if the data being dragged in is a file (or files)
+            if (e.Data.GetDataPresent(DataFormats.FileDrop) && lbFileName.Text == "")
+                e.Effect = DragDropEffects.Copy; // Show a "copy" cursor
+            else
+                e.Effect = DragDropEffects.None; // Show a "stop" cursor
+        }
+
+        private void frmFunctionScreen_DragDrop(object sender, DragEventArgs e)
+        {
+            // Get the filenames of all files being dragged into the form
+            filePath = (string[])e.Data.GetData(DataFormats.FileDrop);
+            fileName = (string[])e.Data.GetData(DataFormats.FileDrop);
+
+            for (int i = 0; i < fileName.Length; i++)
+            {
+                fileName[i] = Path.GetFileName(filePath[i]);
+            }
+
+            lbFileName.Text = "";
+            if (filePath.Length <= 3)
+            {
+
+                foreach (string item in fileName)
+                {
+                    int itemSize = TextRenderer.MeasureText(item, lbFileName.Font).Width;
+                    string itemToAdd = item;
+                    lbFileName.Text += itemToAdd + "\r\n";
+                }
+                lbFileName.Text += ". . .\r\n" + filePath.Length + " files selected.";
+            }
+            else
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    string item = fileName[i];
+                    int itemSize = TextRenderer.MeasureText(item, lbFileName.Font).Width;
+                    string itemToAdd = item;
+                    lbFileName.Text += itemToAdd + "\r\n";
+                }
+                lbFileName.Text += ". . .\r\n" + filePath.Length + " files selected.";
+            }
+            int sizeOfFileName = TextRenderer.MeasureText(fileName.OrderByDescending(s => s.Length).First(), lbFileName.Font).Width;
+            //lbFileName.Location = new Point((pnlFileSelect.Width / 2) - sizeOfFileName / 2, 150);
+            lbFileName.Visible = true;
+
+            if (fileName.Length > 1)
+                btnUseAuthenticator.Enabled = false;
+
+            if (lbFileName.Text.Length > 0)
+            {
+                //Animate to left (2 sections)
+                animateSection(pnlFileSelect, new Point(170, 92), 10);
+                pnlPasswordInput.Visible = true;
+            }
+        }
+
+        private void frmFunctionScreen_DragEnter(object sender, DragEventArgs e)
+        {
+            // Check if the data being dragged in is a file (or files)
+            if (e.Data.GetDataPresent(DataFormats.FileDrop) && pnlPasswordInput.Visible == false)
+                e.Effect = DragDropEffects.Copy; // Show a "copy" cursor
+            else
+                e.Effect = DragDropEffects.None; // Show a "stop" cursor
         }
     }
 }

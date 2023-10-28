@@ -118,11 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="_1_fixed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1_fixed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="copy_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\copy-icon.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="copy_icon_active" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\copy-icon_active.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="noun-burn-file-4323932" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\noun-burn-file-4323932.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="githublogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\githublogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -133,16 +136,40 @@
   <data name="password_reveal_default" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\password_reveal-default.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="remove" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\remove.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="noun-drag-and-drop-2709846" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\noun-drag-and-drop-2709846.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="_1_fixed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\1_fixed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="noun-folder-lock-56684341" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\noun-folder-lock-56684341.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_3_fixed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\3_fixed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="noun-folder-lock-5668434" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\noun-folder-lock-5668434.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="copy_icon_active" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\copy-icon_active.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="noun-encrypt-33883351" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\noun-encrypt-33883351.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_2_fixed" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\2_fixed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="_3_fixed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\3_fixed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="noun-encrypt-3388335" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\noun-encrypt-3388335.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="noun-unlock-50913241" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\noun-unlock-50913241.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="remove" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\remove.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="noun-unlock-5091324" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\noun-unlock-5091324.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="noun-burn-file-43239321" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\noun-burn-file-43239321.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

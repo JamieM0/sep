@@ -35,6 +35,19 @@ namespace sep
             {
                 filePath = ofd.FileNames;
                 fileName = ofd.SafeFileNames;
+                string currentText = txtNumP.Text;
+                try
+                {
+                    int testCase = Convert.ToInt32(currentText);
+                    if (testCase >= 3 && testCase <= 100)
+                        btnWipe.Enabled = true;
+                    else
+                        btnWipe.Enabled = false;
+                }
+                catch (Exception ex)
+                {
+                    btnWipe.Enabled = false;
+                }
             }
             if (filePath.Length != 1)
                 lbFileName.Text = $"{filePath.Length} files selected!";
@@ -135,6 +148,27 @@ namespace sep
 
             // Navigate to a URL.
             Process.Start(new ProcessStartInfo("https://docs.jmatthews.uk/sep/secure-delete") { UseShellExecute = true });
+        }
+
+        private void txtNumP_TextChanged(object sender, EventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (textBox != null)
+            {
+                string currentText = textBox.Text;
+                try
+                {
+                    int testCase = Convert.ToInt32(currentText);
+                    if (testCase >= 3 && testCase <= 100)
+                        btnWipe.Enabled = true;
+                    else
+                        btnWipe.Enabled = false;
+                }
+                catch (Exception ex)
+                {
+                    btnWipe.Enabled = false;
+                }
+            }
         }
     }
 }
