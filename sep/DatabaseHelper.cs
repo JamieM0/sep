@@ -7,6 +7,8 @@ using System.Data.SQLite;
 using System.IO;
 using System.Windows.Forms.VisualStyles;
 using System.Security.Cryptography.X509Certificates;
+using System.Security.Cryptography;
+using System.Windows.Forms;
 
 namespace sep
 {
@@ -169,7 +171,7 @@ namespace sep
                 // Create the table if it doesn't exist.
                 string createTableQuery = @"CREATE TABLE IF NOT EXISTS PWLib (
                                           Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                          FileName TEXT NOT NULL,
+                                          UFID TEXT NOT NULL,
                                           Password TEXT NOT NULL
                                       );";
 
@@ -181,17 +183,18 @@ namespace sep
         }
 
         // Add a method to insert data into the table.
-        public static void InsertPWLib(string fileName, string password)
+        public static void InsertPWLib(string rawUFID, string password)
         {
+            string ufID=ComputeSHA256Hash(rawUFID);
             using (var connection = new SQLiteConnection(ConnectionString))
             {
                 connection.Open();
 
-                string insertQuery = "INSERT INTO PWLib (FileName, Password) VALUES (@FileName, @Password);";
+                string insertQuery = "INSERT INTO PWLib (UFID, Password) VALUES (@UFID, @Password);";
 
                 using (var command = new SQLiteCommand(insertQuery, connection))
                 {
-                    command.Parameters.AddWithValue("@FileName", fileName);
+                    command.Parameters.AddWithValue("@UFID", ufID);
                     command.Parameters.AddWithValue("@Password", password);
                     command.ExecuteNonQuery();
                 }
@@ -200,19 +203,21 @@ namespace sep
 
 
         // Add a method to retrieve the Password from a given id
-        public static string GetPassword(int id)
+        public static string GetPassword(string rawUFID)
         {
+            string ufID = ComputeSHA256Hash(rawUFID);
+
             string password = null;
 
             using (var connection = new SQLiteConnection(ConnectionString))
             {
                 connection.Open();
 
-                string selectQuery = "SELECT Password FROM PWLib WHERE Id = @Id;";
+                string selectQuery = "SELECT Password FROM PWLib WHERE UFID = @UFID;";
 
                 using (var command = new SQLiteCommand(selectQuery, connection))
                 {
-                    command.Parameters.AddWithValue("@Id", id);
+                    command.Parameters.AddWithValue("@UFID", ufID);
 
                     using (var reader = command.ExecuteReader())
                     {
@@ -222,6 +227,11 @@ namespace sep
                         }
                     }
                 }
+            }
+
+            if (password == null)
+            {
+                MessageBox.Show("Password not in Password Library!", "Invalid File!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             return password;
@@ -264,6 +274,14 @@ namespace sep
             AES.FileDecrypt(EncryptedDatabaseFilePath, DatabaseFilePath, pw);
         }
         // Add other database operations as needed (e.g., retrieve data, update data, delete data, etc.).
+
+        public static string ComputeSHA256Hash(string text)
+        {
+            using (var sha256 = new SHA256Managed())
+            {
+                return BitConverter.ToString(sha256.ComputeHash(Encoding.UTF8.GetBytes(text))).Replace("-", "");
+            }
+        }
     }
 
     internal class DatabaseHelperLK

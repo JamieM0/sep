@@ -41,17 +41,8 @@ namespace sep
 
             int pwLibID=0;
             bool usingPWLib = false;
-            if(currentID.Contains("⌀"))
-            {
-                //Get pos of ⌀
-                int pos = currentID.IndexOf("⌀");
-                //Get the pwLibID (after the ⌀)
-                pwLibID = Convert.ToInt32(currentID.Substring(pos+1))+1;
-                //Get the ID
-                currentID = currentID.Substring(0, pos);
 
-                usingPWLib = true;
-            }
+            DateTime inputCreationDate = File.GetCreationTime(inputFile);
 
             //create output file name
             FileStream fsCrypt;
@@ -65,8 +56,6 @@ namespace sep
                 string outputFile = Path.Combine(directory, newFileName);
 
                 string extension = ".mfa";
-                if(usingPWLib)
-                    extension = ".lib"+pwLibID;
 
                 fsCrypt = new FileStream(outputFile + extension, FileMode.Create);
                 
@@ -74,8 +63,6 @@ namespace sep
             else
             {
                 string extension = ".aes";
-                if (usingPWLib)
-                    extension = ".lib" + pwLibID;
                 fsCrypt = new FileStream(inputFile + extension, FileMode.Create);
             }
 
@@ -125,6 +112,8 @@ namespace sep
             }
             finally
             {
+                File.SetCreationTime(fsCrypt.Name, inputCreationDate);
+
                 cs.Close();
                 fsCrypt.Close();
             }
@@ -247,6 +236,7 @@ namespace sep
             }
             finally
             {
+                File.SetCreationTime(fsOut.Name, DateTime.Now);
                 fsOut.Close();
                 fsCrypt.Close();
             }

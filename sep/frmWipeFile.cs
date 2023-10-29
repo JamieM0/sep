@@ -139,6 +139,8 @@ namespace sep
                 lbFileName.Text = $"{filePath.Length} files selected!";
             else
                 lbFileName.Text = fileName[0];
+
+            btnWipe.Enabled = true;
         }
 
         private void lbDocLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

@@ -68,17 +68,17 @@ namespace sep
         {
             if (funcEncrypt)
             {
-                if (savingPW)
-                {
-                    string nextID = "0⌀" + pwIdentifier;
-                    AES.FileEncrypt(filePath, txtPassword.Text, false, nextID);
-                }
-                else
-                {
+                //if (savingPW)
+                //{
+                //    string nextID = "0⌀" + pwIdentifier;
+                //    AES.FileEncrypt(filePath, txtPassword.Text, false, nextID);
+                //}
+                //else
+                //{
                     AES.FileEncrypt(filePath, txtPassword.Text, false, "0");
-                }
+                //}
 
-                if (!cbDeleteAsk.Checked)
+                if (cbDeleteAsk.Checked)
                 {
                     AesOperation.SecureDelete(filePath, 3);
                 }
@@ -88,7 +88,7 @@ namespace sep
             }
             else
             {
-                if (!cbDeleteAsk.Checked)
+                if (cbDeleteAsk.Checked)
                 {
                     txtPassword.Enabled = false;
                     string filePathUnencrypted;
@@ -96,7 +96,7 @@ namespace sep
 
                     AES.FileDecrypt(filePath, filePathUnencrypted, txtPassword.Text);
 
-                    if (!cbDeleteAsk.Checked)
+                    if (cbDeleteAsk.Checked)
                     {
                         if (MessageBox.Show("Entering the incorrect password WILL result in a corrupted file!\r\n\r\nDo you want to delete the encrypted file?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
@@ -133,7 +133,6 @@ namespace sep
 
         int pwIdentifier;
         string pwlibmaster;
-        bool savingPW = false;
         private void btnPWLibFunc_Click(object sender, EventArgs e)
         {
             if (!funcEncrypt)
@@ -151,8 +150,7 @@ namespace sep
                             throw new Exception("password_incorrect");
                         }
                     }
-                    pwIdentifier = Convert.ToInt32(Path.GetExtension(filePath).Substring(4));
-                    txtPassword.Text = DatabaseHelperPL.GetPassword(pwIdentifier);
+                    txtPassword.Text = DatabaseHelperPL.GetPassword(fileName.Substring(0, fileName.Length-4) + "~" + File.GetCreationTime(fileName));
                     DatabaseHelperPL.EncryptPWLib(pwlibmaster);
                 }
                 catch (Exception ex)
@@ -185,11 +183,10 @@ namespace sep
                         }
                     }
                     pwIdentifier = DatabaseHelperPL.CountPasswordData();
-                    DatabaseHelperPL.InsertPWLib(filePath, txtPassword.Text);
+                    DatabaseHelperPL.InsertPWLib(fileName + "~" + File.GetCreationTime(filePath), txtPassword.Text);
                     DatabaseHelperPL.EncryptPWLib(pwlibmaster);
                     btnPWLibFunc.Enabled = false;
                     btnGenPassword.Enabled = false;
-                    savingPW = true;
                 }
                 catch (Exception ex)
                 {

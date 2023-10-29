@@ -184,6 +184,7 @@ namespace sep
         }
         private void btnConfirm_Click(object sender, EventArgs e)
         {
+            txtPassword.Enabled = false;
             EncryptConfirmPassword();
         }
 
@@ -291,7 +292,7 @@ namespace sep
             pnlAuthApp.Visible = false;
             showMainElements();
         }
-        string nextID = "";
+        //string nextID = "";
         private void btnConfirmAuthSetup_Click(object sender, EventArgs e)
         {
             string testCode = txtAuthSetupVerify.Text;
@@ -300,8 +301,8 @@ namespace sep
                 MessageBox.Show("Sorry, that didn't work, please try again later!", "Invalid Code!");
             else
             {
-                nextID = Convert.ToString(DatabaseHelper.CountFileData() + 1);
-                fileName[0] = nextID + "-" + fileName;
+                //nextID = Convert.ToString(DatabaseHelper.CountFileData() + 1);
+                //fileName[0] = nextID + "-" + fileName;
                 DatabaseHelper.InsertFileData(fileName[0], secretKey);
 
                 pnlAuthApp.Visible = false;
@@ -341,14 +342,14 @@ namespace sep
                     string secretKey = DatabaseHelper.GetSecretKey(Convert.ToInt32(fileName[0].Split('-')[0]));
                     password += "⌀" + secretKey;
                 }
-                if (saveToLibrary)
-                {
-                    nextID += "⌀" + pwIdentifier;
-                }
+                //if (saveToLibrary)
+                //{
+                //    nextID += "⌀" + pwIdentifier;
+                //}
 
                 for (int i = 0; i < fileName.Length; i++)
                 {
-                    AES.FileEncrypt(filePath[i], password, usingMFA, nextID);
+                    AES.FileEncrypt(filePath[i], password, usingMFA, "0");
 
                     if (cbDeleteAsk.Checked)
                     {
@@ -530,7 +531,7 @@ namespace sep
                     for (int i = 0; i < fileName.Length; i++)
                     {
                         pwIdentifier = DatabaseHelperPL.CountPasswordData();
-                        DatabaseHelperPL.InsertPWLib(filePath[i], txtPassword.Text);
+                        DatabaseHelperPL.InsertPWLib(fileName[i] + "~" + File.GetCreationTime(filePath[i]), txtPassword.Text);
                     }
                     DatabaseHelperPL.EncryptPWLib(pwlibmaster);
                     btnPWLibFunc.Enabled = false;
@@ -544,10 +545,12 @@ namespace sep
                     if (ex.Message == "password_incorrect")
                     {
                         MessageBox.Show("The master password you entered was incorrect!", "Error!");
+                        txtPassword.Enabled = true;
                     }
                     else
                     {
                         MessageBox.Show("Sorry, there was a problem with the password library. Please try again.\r\nMore Details: " + ex.Message, "Error!");
+                        txtPassword.Enabled = true;
                     }
                 }
             }
@@ -563,8 +566,7 @@ namespace sep
                             throw new Exception("password_incorrect");
                         }
                     }
-                    pwIdentifier = Convert.ToInt32(Path.GetExtension(filePath[0]).Substring(4));
-                    txtPassword.Text = DatabaseHelperPL.GetPassword(pwIdentifier);
+                    txtPassword.Text = DatabaseHelperPL.GetPassword(fileName[0].Substring(0, fileName[0].Length - 4) + "~" + File.GetCreationTime(filePath[0]));
                     DatabaseHelperPL.EncryptPWLib(pwlibmaster);
                 }
                 catch (Exception ex)

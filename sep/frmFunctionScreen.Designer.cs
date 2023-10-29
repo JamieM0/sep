@@ -311,15 +311,16 @@
             btnUseAuthenticator.TabIndex = 1;
             btnUseAuthenticator.Text = "Use Authenticator";
             btnUseAuthenticator.UseVisualStyleBackColor = true;
+            btnUseAuthenticator.Visible = false;
             btnUseAuthenticator.Click += btnUseAuthenticator_Click;
             // 
             // lbIns3
             // 
             lbIns3.AutoSize = true;
-            lbIns3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            lbIns3.Location = new System.Drawing.Point(106, 26);
+            lbIns3.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lbIns3.Location = new System.Drawing.Point(91, 36);
             lbIns3.Name = "lbIns3";
-            lbIns3.Size = new System.Drawing.Size(169, 30);
+            lbIns3.Size = new System.Drawing.Size(194, 32);
             lbIns3.TabIndex = 0;
             lbIns3.Text = "Ready to encrypt";
             // 
