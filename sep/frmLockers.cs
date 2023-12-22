@@ -25,14 +25,19 @@ namespace sep
         bool deleting = false;
         string[] lockerLocations = new string[DatabaseHelperLK.CountLockerData()];
         Locker[] lockersInfo = new Locker[DatabaseHelperLK.CountLockerData()];
+        string[] allLockerID = DatabaseHelperLK.getRequstedData("Id");
+        string[] allLockerNames = DatabaseHelperLK.getRequstedData("LockerName");
+        string[] allLockerLocations = DatabaseHelperLK.getRequstedData("LockerLocation");
+        string[] allLockerPasswords = DatabaseHelperLK.getRequstedData("LockerPassword");
+        string[] allLockerLockStates = DatabaseHelperLK.getRequstedData("LockState");
 
         public void Populator()
         {
             for (int i = 0; i < lockersInfo.Length; i++)
             {
-                lockersInfo[i] = new Locker(i + 1, DatabaseHelperLK.getRequestedDataFromID("LockerName", i + 1), DatabaseHelperLK.getRequestedDataFromID("LockerLocation", i + 1), DatabaseHelperLK.getRequestedDataFromID("LockerPassword", i + 1), DatabaseHelperLK.getLockStateFromID(i + 1));
+                lockersInfo[i] = new Locker(Convert.ToInt32(allLockerID[i]), allLockerNames[i], allLockerLocations[i], allLockerPasswords[i], Convert.ToBoolean(allLockerLockStates[i]));
                 lockerLocations[i] = Path.Combine(lockersInfo[i].location, lockersInfo[i].name);
-                PopulateFields(lockersInfo[i].ID, lockersInfo[i].name, lockersInfo[i].lockState);
+                PopulateFields(/*lockersInfo[i].ID*/i, lockersInfo[i].name, lockersInfo[i].lockState);
             }
 
             foreach (Control c in Controls)

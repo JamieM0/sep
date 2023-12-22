@@ -37,6 +37,9 @@ namespace sep
             {
                 btnPWLib.Enabled = false;
             }
+
+            menuStrip1.Anchor = AnchorStyles.Top;
+            menuStrip1.Left = this.ClientSize.Width / 2 - menuStrip1.Width / 2;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -119,8 +122,9 @@ namespace sep
 
         private void btnLockers_Click(object sender, EventArgs e)
         {
-            Hide();
-            new frmLockers().Show();
+            //Hide();
+            //new frmLockers().Show();
+            MessageBox.Show("Lockers are disabled until the browser can be properly implemented.\r\nFor more info, visit the Github Issues page. (#20)", "Disabled", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void encryptToolStripMenuItem_Click(object sender, EventArgs e)
@@ -273,13 +277,18 @@ namespace sep
 
         private void wipeFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Prompt user to input file to wipe, and number of passes
-            Hide();
-            new frmWipeFile().Show();
+
         }
 
         private void btnSecureDelete_Click(object sender, EventArgs e)
         {
+            Hide();
+            new frmWipeFile().Show();
+        }
+
+        private void wipeFileSecureDeleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Prompt user to input file to wipe, and number of passes
             Hide();
             new frmWipeFile().Show();
         }

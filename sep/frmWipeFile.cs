@@ -24,6 +24,8 @@ namespace sep
         string[] filePath;
         string[] fileName;
         int numP;
+        bool dirMode = false;
+        string dirPath = "";
         private void btnBrowse_Click(object sender, EventArgs e)
         {
             //Open file dialog, and get a file to wipe
@@ -33,6 +35,7 @@ namespace sep
             ofd.Multiselect = true;
             if (ofd.ShowDialog() == DialogResult.OK)
             {
+                dirMode = false;
                 filePath = ofd.FileNames;
                 fileName = ofd.SafeFileNames;
                 string currentText = txtNumP.Text;
@@ -87,14 +90,18 @@ namespace sep
                     {
                         AesOperation.SecureDelete(file, numP);
                     }
+                    if(dirMode)
+                        Directory.Delete(dirPath);
                     MessageBox.Show("Files Wiped Successfully!");
                     lbFileName.Text = "";
                     fileName = null;
                     filePath = null;
+                    dirMode = false;
+                    dirPath = "";
                 }
-                catch
+                catch (Exception ex)
                 {
-                    MessageBox.Show("There was an error.");
+                    MessageBox.Show("There was an error.\r\nMore Details: " + ex.Message);
                 }
             }
             else
@@ -126,21 +133,44 @@ namespace sep
 
         private void frmWipeFile_DragDrop(object sender, DragEventArgs e)
         {
-            // Get the filenames of all files being dragged into the form
-            filePath = (string[])e.Data.GetData(DataFormats.FileDrop);
-            fileName = (string[])e.Data.GetData(DataFormats.FileDrop);
-
-            for (int i = 0; i < fileName.Length; i++)
+            var path = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
+            if (!Directory.Exists(path))
             {
-                fileName[i] = Path.GetFileName(filePath[i]);
+                // Get the filenames of all files being dragged into the form
+                dirMode = false;
+                filePath = (string[])e.Data.GetData(DataFormats.FileDrop);
+                fileName = (string[])e.Data.GetData(DataFormats.FileDrop);
+
+                for (int i = 0; i < fileName.Length; i++)
+                {
+                    fileName[i] = Path.GetFileName(filePath[i]);
+                }
+
+                if (filePath.Length != 1)
+                    lbFileName.Text = $"{filePath.Length} files selected!";
+                else
+                    lbFileName.Text = fileName[0];
+
+                btnWipe.Enabled = true;
             }
-
-            if (filePath.Length != 1)
-                lbFileName.Text = $"{filePath.Length} files selected!";
             else
-                lbFileName.Text = fileName[0];
+            {
+                dirMode = true;
+                dirPath = path;
+                filePath = Directory.GetFiles(dirPath);
+                fileName = Directory.GetFiles(dirPath);
+                for (int i = 0; i < fileName.Length; i++)
+                {
+                    fileName[i] = Path.GetFileName(filePath[i]);
+                }
 
-            btnWipe.Enabled = true;
+                if (filePath.Length != 1)
+                    lbFileName.Text = $"{filePath.Length} files selected!";
+                else
+                    lbFileName.Text = fileName[0];
+
+                btnWipe.Enabled = true;
+            }
         }
 
         private void lbDocLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -169,6 +199,45 @@ namespace sep
                 catch (Exception ex)
                 {
                     btnWipe.Enabled = false;
+                }
+            }
+        }
+
+        private void btnSelectDirectory_Click(object sender, EventArgs e)
+        {
+            using (var fbd = new FolderBrowserDialog())
+            {
+                DialogResult result = fbd.ShowDialog();
+
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                    dirMode = true;
+                    dirPath = fbd.SelectedPath;
+                    filePath = Directory.GetFiles(fbd.SelectedPath);
+                    fileName = Directory.GetFiles(fbd.SelectedPath);
+
+                    for (int i = 0; i < fileName.Length; i++)
+                    {
+                        fileName[i] = Path.GetFileName(filePath[i]);
+                    }
+
+                    string currentText = txtNumP.Text;
+                    try
+                    {
+                        int testCase = Convert.ToInt32(currentText);
+                        if (testCase >= 3 && testCase <= 100)
+                            btnWipe.Enabled = true;
+                        else
+                            btnWipe.Enabled = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        btnWipe.Enabled = false;
+                    }
+                    if (filePath.Length != 1)
+                        lbFileName.Text = $"{filePath.Length} files selected!";
+                    else
+                        lbFileName.Text = fileName[0];
                 }
             }
         }

@@ -38,6 +38,7 @@
             btnWipe = new System.Windows.Forms.Button();
             lbDocDisclosure = new System.Windows.Forms.Label();
             lbDocLink = new System.Windows.Forms.LinkLabel();
+            btnSelectDirectory = new System.Windows.Forms.Button();
             SuspendLayout();
             // 
             // lbTitle
@@ -52,16 +53,18 @@
             // 
             // lbFileInfo
             // 
+            lbFileInfo.Anchor = System.Windows.Forms.AnchorStyles.Left;
             lbFileInfo.AutoSize = true;
-            lbFileInfo.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lbFileInfo.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             lbFileInfo.Location = new System.Drawing.Point(12, 54);
             lbFileInfo.Name = "lbFileInfo";
-            lbFileInfo.Size = new System.Drawing.Size(128, 30);
+            lbFileInfo.Size = new System.Drawing.Size(66, 25);
             lbFileInfo.TabIndex = 1;
-            lbFileInfo.Text = "File to Wipe:";
+            lbFileInfo.Text = "Select:";
             // 
             // btnCancel
             // 
+            btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
             btnCancel.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             btnCancel.Location = new System.Drawing.Point(155, 9);
             btnCancel.Name = "btnCancel";
@@ -73,29 +76,32 @@
             // 
             // btnBrowse
             // 
+            btnBrowse.Anchor = System.Windows.Forms.AnchorStyles.Left;
             btnBrowse.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            btnBrowse.Location = new System.Drawing.Point(155, 53);
+            btnBrowse.Location = new System.Drawing.Point(78, 51);
             btnBrowse.Name = "btnBrowse";
-            btnBrowse.Size = new System.Drawing.Size(111, 37);
+            btnBrowse.Size = new System.Drawing.Size(91, 33);
             btnBrowse.TabIndex = 3;
-            btnBrowse.Text = "Browse...";
+            btnBrowse.Text = "Files...";
             btnBrowse.UseVisualStyleBackColor = true;
             btnBrowse.Click += btnBrowse_Click;
             // 
             // lbFileName
             // 
+            lbFileName.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             lbFileName.AutoSize = true;
             lbFileName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            lbFileName.Location = new System.Drawing.Point(12, 96);
+            lbFileName.Location = new System.Drawing.Point(12, 94);
             lbFileName.Name = "lbFileName";
             lbFileName.Size = new System.Drawing.Size(0, 21);
             lbFileName.TabIndex = 4;
             // 
             // label1
             // 
+            label1.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
             label1.AutoSize = true;
             label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label1.Location = new System.Drawing.Point(12, 135);
+            label1.Location = new System.Drawing.Point(12, 134);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(186, 30);
             label1.TabIndex = 5;
@@ -103,8 +109,9 @@
             // 
             // txtNumP
             // 
+            txtNumP.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
             txtNumP.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            txtNumP.Location = new System.Drawing.Point(204, 139);
+            txtNumP.Location = new System.Drawing.Point(204, 138);
             txtNumP.Name = "txtNumP";
             txtNumP.Size = new System.Drawing.Size(62, 29);
             txtNumP.TabIndex = 6;
@@ -113,9 +120,10 @@
             // 
             // btnWipe
             // 
+            btnWipe.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             btnWipe.Enabled = false;
             btnWipe.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            btnWipe.Location = new System.Drawing.Point(12, 190);
+            btnWipe.Location = new System.Drawing.Point(12, 189);
             btnWipe.Name = "btnWipe";
             btnWipe.Size = new System.Drawing.Size(254, 56);
             btnWipe.TabIndex = 7;
@@ -125,9 +133,10 @@
             // 
             // lbDocDisclosure
             // 
+            lbDocDisclosure.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             lbDocDisclosure.AutoSize = true;
             lbDocDisclosure.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            lbDocDisclosure.Location = new System.Drawing.Point(4, 259);
+            lbDocDisclosure.Location = new System.Drawing.Point(4, 258);
             lbDocDisclosure.Name = "lbDocDisclosure";
             lbDocDisclosure.Size = new System.Drawing.Size(273, 17);
             lbDocDisclosure.TabIndex = 8;
@@ -135,8 +144,9 @@
             // 
             // lbDocLink
             // 
+            lbDocLink.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             lbDocLink.AutoSize = true;
-            lbDocLink.Location = new System.Drawing.Point(17, 276);
+            lbDocLink.Location = new System.Drawing.Point(17, 275);
             lbDocLink.Name = "lbDocLink";
             lbDocLink.Size = new System.Drawing.Size(245, 15);
             lbDocLink.TabIndex = 10;
@@ -144,12 +154,25 @@
             lbDocLink.Text = "https://docs.jmatthews.uk/sep/secure-delete";
             lbDocLink.LinkClicked += lbDocLink_LinkClicked;
             // 
+            // btnSelectDirectory
+            // 
+            btnSelectDirectory.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            btnSelectDirectory.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnSelectDirectory.Location = new System.Drawing.Point(175, 51);
+            btnSelectDirectory.Name = "btnSelectDirectory";
+            btnSelectDirectory.Size = new System.Drawing.Size(91, 33);
+            btnSelectDirectory.TabIndex = 11;
+            btnSelectDirectory.Text = "Directory...";
+            btnSelectDirectory.UseVisualStyleBackColor = true;
+            btnSelectDirectory.Click += btnSelectDirectory_Click;
+            // 
             // frmWipeFile
             // 
             AllowDrop = true;
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(276, 306);
+            ClientSize = new System.Drawing.Size(276, 299);
+            Controls.Add(btnSelectDirectory);
             Controls.Add(lbDocLink);
             Controls.Add(lbDocDisclosure);
             Controls.Add(btnWipe);
@@ -181,5 +204,6 @@
         private System.Windows.Forms.Button btnWipe;
         private System.Windows.Forms.Label lbDocDisclosure;
         private System.Windows.Forms.LinkLabel lbDocLink;
+        private System.Windows.Forms.Button btnSelectDirectory;
     }
 }

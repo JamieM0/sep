@@ -13,7 +13,7 @@ Just a simple solution for encrypting files (AES) with a basic password, and sto
 * Context Menu (Adds "SEP" button to Windows right-click context menu to encrypt/decrypt files).
 * Secure with MFA (Authenticator) apps using a private key (secret).
 
-#### [Full Feature List, including Potential Features](https://github.com/users/JamieM0/projects/5)
+#### [Full Feature List, including Potential Features](https://github.com/JamieM0/sep/issues?q=label%3Aenhancement)
 
 ## Download
 

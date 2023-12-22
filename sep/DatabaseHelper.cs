@@ -372,6 +372,31 @@ namespace sep
             }
         }
 
+        public static string[] getRequstedData(string data)
+        {
+            List<string> requestedData = new List<string>();
+
+            using (var connection = new SQLiteConnection(ConnectionString))
+            {
+                connection.Open();
+
+                string selectQuery = "SELECT " + data + " FROM lockers;";
+
+                using (var command = new SQLiteCommand(selectQuery, connection))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            requestedData.Add(reader[0].ToString());
+                        }
+                    }
+                }
+            }
+
+            return requestedData.ToArray();
+        }
+
         public static string getRequestedDataFromID(string data, int id)
         {
             string requestedData = null;
