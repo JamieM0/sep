@@ -335,63 +335,76 @@ namespace sep
 
         private void btnGo_Click(object sender, EventArgs e)
         {
-            if (funcEncrypt)
+            try
             {
-                if (usingMFA)
+                if (funcEncrypt)
                 {
-                    string secretKey = DatabaseHelper.GetSecretKey(Convert.ToInt32(fileName[0].Split('-')[0]));
-                    password += "⌀" + secretKey;
-                }
-                //if (saveToLibrary)
-                //{
-                //    nextID += "⌀" + pwIdentifier;
-                //}
+                    if (usingMFA)
+                    {
+                        string secretKey = DatabaseHelper.GetSecretKey(Convert.ToInt32(fileName[0].Split('-')[0]));
+                        password += "⌀" + secretKey;
+                    }
+                    //if (saveToLibrary)
+                    //{
+                    //    nextID += "⌀" + pwIdentifier;
+                    //}
 
-                for (int i = 0; i < fileName.Length; i++)
+                    for (int i = 0; i < fileName.Length; i++)
+                    {
+                        AES.FileEncrypt(filePath[i], password, usingMFA, "0");
+
+                        if (cbDeleteAsk.Checked)
+                        {
+                            AesOperation.SecureDelete(filePath[i], 3);
+                        }
+                    }
+
+                    password = "";
+                    MessageBox.Show("The file(s) have been encrypted successfully!", "Encrypted!");
+                    //pnlShareFile.Visible = true;
+                    Hide();
+                    new frmHome().Show();
+                }
+                else
                 {
-                    AES.FileEncrypt(filePath[i], password, usingMFA, "0");
+                    txtPassword.Enabled = false;
+                    if (usingMFA)
+                    {
+                        string secretKey = DatabaseHelper.GetSecretKey(Convert.ToInt32(fileName[0].Split('-')[0]));
+                        password += "⌀" + secretKey;
+                    }
+
+                    for (int i = 0; i < fileName.Length; i++)
+                    {
+                        string filePathUnencrypted;
+                        filePathUnencrypted = filePath[i].Substring(0, filePath[i].Length - 4);
+                        string directory = Path.GetDirectoryName(filePathUnencrypted);
+                        string oldFileName = Path.GetFileName(filePathUnencrypted);
+                        int firstDashIndex = oldFileName.IndexOf("-");
+                        string newFileName = $"{oldFileName.Substring(firstDashIndex + 1)}";
+
+                        filePathUnencrypted = Path.Combine(directory, newFileName);
+                        AES.FileDecrypt(filePath[i], filePathUnencrypted, password);
+                    }
+                    MessageBox.Show("The file(s) has been decrypted successfully!", "Decrypted!");
 
                     if (cbDeleteAsk.Checked)
                     {
-                        AesOperation.SecureDelete(filePath[i], 3);
+                        if (MessageBox.Show("Entering the incorrect password WILL result in a corrupted file!\r\n\r\nAre you sure you want to delete the encrypted files?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        {
+                            for (int i = 0; i < fileName.Length; i++)
+                            {
+                                AesOperation.SecureDelete(filePath[i], 3);
+                            }
+                        }
                     }
+                    Hide();
+                    new frmHome().Show();
                 }
-
-                password = "";
-                MessageBox.Show("The file(s) have been encrypted successfully!", "Encrypted!");
-                //pnlShareFile.Visible = true;
-                Hide();
-                new frmHome().Show();
             }
-            else
+            catch(Exception ex)
             {
-                txtPassword.Enabled = false;
-                if (usingMFA)
-                {
-                    string secretKey = DatabaseHelper.GetSecretKey(Convert.ToInt32(fileName[0].Split('-')[0]));
-                    password += "⌀" + secretKey;
-                }
-                string filePathUnencrypted;
-                filePathUnencrypted = filePath[0].Substring(0, filePath[0].Length - 4);
-                string directory = Path.GetDirectoryName(filePathUnencrypted);
-                string oldFileName = Path.GetFileName(filePathUnencrypted);
-                int firstDashIndex = oldFileName.IndexOf("-");
-                string newFileName = $"{oldFileName.Substring(firstDashIndex + 1)}";
-
-                filePathUnencrypted = Path.Combine(directory, newFileName);
-
-                AES.FileDecrypt(filePath[0], filePathUnencrypted, password);
-                MessageBox.Show("The file has been decrypted successfully!", "Decrypted!");
-
-                if (cbDeleteAsk.Checked)
-                {
-                    if (MessageBox.Show("Entering the incorrect password WILL result in a corrupted file!\r\n\r\nAre you sure you want to delete the encrypted file?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                    {
-                        AesOperation.SecureDelete(filePath[0], 3);
-                    }
-                }
-                Hide();
-                new frmHome().Show();
+                MessageBox.Show("There was a problem completing the operation!\r\n\r\nMore Details: " + ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

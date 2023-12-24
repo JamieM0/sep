@@ -84,6 +84,7 @@ namespace sep
 
                 //File.AppendAllText(Path.Combine(OtherOperations.storeLoc, "lockersInfo.conf"), $"{}~{}~0\r\n");
                 MessageBox.Show("Locker added to list.\nLock it through the \"Lockers\" screen in the main program.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Application.Exit();
                 sent = true; //(movetoend)
             }
         }
@@ -124,7 +125,9 @@ namespace sep
         {
             //Hide();
             //new frmLockers().Show();
-            MessageBox.Show("Lockers are disabled until the browser can be properly implemented.\r\nFor more info, visit the Github Issues page. (#20)", "Disabled", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //MessageBox.Show("Lockers are disabled until the browser can be properly implemented.\r\nFor more info, visit the Github Issues page. (#20)", "Disabled", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Hide();
+            new frmLockerBrowser().Show();
         }
 
         private void encryptToolStripMenuItem_Click(object sender, EventArgs e)
@@ -158,8 +161,10 @@ namespace sep
 
         private void lockersToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Hide();
+            //new frmLockers().Show();
             Hide();
-            new frmLockers().Show();
+            new frmLockerBrowser().Show();
         }
 
         private void passwordLibraryToolStripMenuItem_Click(object sender, EventArgs e)

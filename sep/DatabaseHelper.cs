@@ -345,6 +345,37 @@ namespace sep
             }
         }
 
+        public static Locker[] getLockers()
+        {
+            Locker[] lockers = new Locker[CountLockerData()];
+            using (var connection = new SQLiteConnection(ConnectionString))
+            {
+                connection.Open();
+
+                string selectQuery = "SELECT * FROM lockers;";
+
+                using (var command = new SQLiteCommand(selectQuery, connection))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        int i = 0;
+                        while (reader.Read())
+                        {
+                            Locker locker = new Locker();
+                            locker.ID = reader.GetInt32(0);
+                            locker.name = reader.GetString(1);
+                            locker.location = reader.GetString(2);
+                            locker.password = reader.GetString(3);
+                            locker.lockState = reader.GetBoolean(4);
+                            lockers[i] = locker;
+                            i++;
+                        }
+                    }
+                }
+            }
+            return lockers;
+        }
+
         // Add a method to count the number of entries in the table.
         public static int CountLockerData()
         {
@@ -510,6 +541,17 @@ namespace sep
             this.location = location;
             this.password = password;
             this.lockState = lockState;
+        }
+        public Locker(string name, string location, string password, bool lockState)
+        {
+            this.name = name;
+            this.location = location;
+            this.password = password;
+            this.lockState = lockState;
+        }
+        public Locker()
+        {
+            
         }
     }
 }

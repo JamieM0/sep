@@ -337,5 +337,10 @@ namespace sep
             //Open docURL in the default web browser
             Process.Start(docURL);
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
