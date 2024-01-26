@@ -12,6 +12,7 @@ namespace sep
         public static string filePath { get; set; }
         public static string storeLoc { get; set; }
         public static bool funcEncrypt { get; set; }
+        public static bool debug { get; set; }
 
         public static void LineRemover(string file, int indexRemove)
         {

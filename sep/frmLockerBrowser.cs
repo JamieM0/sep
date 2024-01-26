@@ -129,12 +129,12 @@ namespace sep
                     string[] filesToCheck = Directory.GetFiles(dir, "*", SearchOption.TopDirectoryOnly);
                     string subDirName = dir.Substring(sourceDir.Length + 1);
 
-                    Directory.CreateDirectory(targetDirLocked +"\\"+ subDirName);
+                    Directory.CreateDirectory(targetDirLocked + "\\" + subDirName);
 
                     foreach (string file in filesToCheck)
                     {
                         string input = file;
-                        string output = targetDirLocked +"\\"+ subDirName + "\\" + Path.GetFileName(file) + ".aes";
+                        string output = targetDirLocked + "\\" + subDirName + "\\" + Path.GetFileName(file) + ".aes";
                         AES.FileEncrypt(input, output, pw);
                     }
                 }

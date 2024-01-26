@@ -87,6 +87,17 @@ namespace sep
                 Application.Exit();
                 sent = true; //(movetoend)
             }
+
+            if (OtherOperations.debug == true)
+            {
+                enableDebugModeToolStripMenuItem.Text = "Disable Debug Mode";
+
+            }
+            else if (OtherOperations.debug == false)
+            {
+                enableDebugModeToolStripMenuItem.Text = "Enable Debug Mode";
+
+            }
         }
 
         private void pbGithub_Click(object sender, EventArgs e)
@@ -296,6 +307,23 @@ namespace sep
             //Prompt user to input file to wipe, and number of passes
             Hide();
             new frmWipeFile().Show();
+        }
+
+        private void enableDebugModeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (OtherOperations.debug)
+            {
+                OtherOperations.debug = false;
+                enableDebugModeToolStripMenuItem.Text = "Enable Debug Mode";
+                MessageBox.Show("Debug Mode has been disabled.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                OtherOperations.debug = true;
+                enableDebugModeToolStripMenuItem.Text = "Disable Debug Mode";
+                MessageBox.Show("Debug Mode has been enabled.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
         }
     }
 }

@@ -120,7 +120,6 @@
             // 
             // btnWipe
             // 
-            btnWipe.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             btnWipe.Enabled = false;
             btnWipe.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             btnWipe.Location = new System.Drawing.Point(12, 189);

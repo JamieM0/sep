@@ -42,6 +42,7 @@
             lockersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             githubPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             removeFromContextMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            enableDebugModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             passwordLibraryToolStripMenuItem = new System.Windows.Forms.ToolStripDropDownMenu();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             wipeFileSecureDeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -113,7 +114,7 @@
             // 
             // moreToolStripMenuItem
             // 
-            moreToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { lockersToolStripMenuItem, githubPageToolStripMenuItem, removeFromContextMenuToolStripMenuItem });
+            moreToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { lockersToolStripMenuItem, githubPageToolStripMenuItem, removeFromContextMenuToolStripMenuItem, enableDebugModeToolStripMenuItem });
             moreToolStripMenuItem.Name = "moreToolStripMenuItem";
             moreToolStripMenuItem.Size = new System.Drawing.Size(89, 34);
             moreToolStripMenuItem.Text = "More...";
@@ -138,6 +139,13 @@
             removeFromContextMenuToolStripMenuItem.Size = new System.Drawing.Size(348, 34);
             removeFromContextMenuToolStripMenuItem.Text = "Remove from Context Menu";
             removeFromContextMenuToolStripMenuItem.Click += removeFromContextMenuToolStripMenuItem_Click;
+            // 
+            // enableDebugModeToolStripMenuItem
+            // 
+            enableDebugModeToolStripMenuItem.Name = "enableDebugModeToolStripMenuItem";
+            enableDebugModeToolStripMenuItem.Size = new System.Drawing.Size(348, 34);
+            enableDebugModeToolStripMenuItem.Text = "Enable Debug Mode";
+            enableDebugModeToolStripMenuItem.Click += enableDebugModeToolStripMenuItem_Click;
             // 
             // passwordLibraryToolStripMenuItem
             // 
@@ -198,6 +206,7 @@
             // 
             // btnDecryptFile
             // 
+            btnDecryptFile.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
             btnDecryptFile.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             btnDecryptFile.ForeColor = System.Drawing.Color.Black;
             btnDecryptFile.Image = Properties.Resources.noun_unlock_50913241;
@@ -312,5 +321,6 @@
         private System.Windows.Forms.ToolStripMenuItem removeFromContextMenuToolStripMenuItem;
         private System.Windows.Forms.Button btnSecureDelete;
         private System.Windows.Forms.ToolStripMenuItem wipeFileSecureDeleteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem enableDebugModeToolStripMenuItem;
     }
 }

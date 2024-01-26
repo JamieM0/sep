@@ -52,10 +52,17 @@ namespace sep
                     btnWipe.Enabled = false;
                 }
             }
-            if (filePath.Length != 1)
-                lbFileName.Text = $"{filePath.Length} files selected!";
-            else
-                lbFileName.Text = fileName[0];
+            try
+            {
+                if (filePath.Length != 1)
+                    lbFileName.Text = $"{filePath.Length} files selected!";
+                else
+                    lbFileName.Text = fileName[0];
+            }
+            catch (NullReferenceException ex)
+            {
+
+            }
         }
 
         private void btnWipe_Click(object sender, EventArgs e)
@@ -90,8 +97,8 @@ namespace sep
                     {
                         AesOperation.SecureDelete(file, numP);
                     }
-                    if(dirMode)
-                        Directory.Delete(dirPath);
+                    if (dirMode)
+                        Directory.Delete(dirPath,true);
                     MessageBox.Show("Files Wiped Successfully!");
                     lbFileName.Text = "";
                     fileName = null;
@@ -213,8 +220,8 @@ namespace sep
                 {
                     dirMode = true;
                     dirPath = fbd.SelectedPath;
-                    filePath = Directory.GetFiles(fbd.SelectedPath);
-                    fileName = Directory.GetFiles(fbd.SelectedPath);
+                    filePath = Directory.GetFiles(fbd.SelectedPath, "*", SearchOption.AllDirectories);
+                    fileName = Directory.GetFiles(fbd.SelectedPath, "*", SearchOption.AllDirectories);
 
                     for (int i = 0; i < fileName.Length; i++)
                     {
