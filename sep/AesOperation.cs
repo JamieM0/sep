@@ -16,7 +16,7 @@ namespace sep
 
             using (Aes aes = Aes.Create())
             {
-                aes.Key = Encoding.UTF8.GetBytes(key);
+                aes.Key = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(key));
                 aes.IV = iv;
 
                 ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
@@ -45,7 +45,7 @@ namespace sep
 
             using (Aes aes = Aes.Create())
             {
-                aes.Key = Encoding.UTF8.GetBytes(key);
+                aes.Key = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(key));
                 aes.IV = iv;
                 ICryptoTransform decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
 

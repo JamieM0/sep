@@ -79,29 +79,29 @@ namespace sep
 
         private void btnConfirmPass_Click(object sender, EventArgs e)
         {
-            if (txtPasswordInput.TextLength == 16)
-            {
-                key = txtPasswordInput.Text;
-                txtPasswordInput.Enabled = false;
-                btnConfirmPassword.Enabled = false;
-                btnConfirmInputEncrypt.Enabled = true;
-                lbPasswordLengthWarn.Visible = false;
-                btnGenPass.Enabled = false;
-                lbIns2.Visible = true;
-                txtEncryptInput.Visible = true;
-                btnConfirmInputEncrypt.Visible = true;
-            }
+            //if (txtPasswordInput.TextLength == 16)
+            //{
+            key = txtPasswordInput.Text;
+            txtPasswordInput.Enabled = false;
+            btnConfirmPassword.Enabled = false;
+            btnConfirmInputEncrypt.Enabled = true;
+            lbPasswordLengthWarn.Visible = false;
+            btnGenPass.Enabled = false;
+            lbIns2.Visible = true;
+            txtEncryptInput.Visible = true;
+            btnConfirmInputEncrypt.Visible = true;
+            //}
 
-            else
-            {
-                lbPasswordLengthWarn.Visible = true;
-                //lbIns1.Text = ("Please choose a password that is 16 characters in length.");
-                //txtPass.Enabled = false;
-                //Thread.Sleep(1000000);
-                //txtPass.Enabled = false;
-                //lbIns1.Text = ("1. Enter a password to encrypt the string with.");
-                //lbPassLengthWarn.Visible = false;
-            }
+            //else
+            //{
+            //    lbPasswordLengthWarn.Visible = true;
+            //    //lbIns1.Text = ("Please choose a password that is 16 characters in length.");
+            //    //txtPass.Enabled = false;
+            //    //Thread.Sleep(1000000);
+            //    //txtPass.Enabled = false;
+            //    //lbIns1.Text = ("1. Enter a password to encrypt the string with.");
+            //    //lbPassLengthWarn.Visible = false;
+            //}
         }
 
         private void btnConfirmInputEncrypt_Click(object sender, EventArgs e)
@@ -147,7 +147,7 @@ namespace sep
                 //this.Close();
 
                 string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                current= DateTime.Now;
+                current = DateTime.Now;
                 string currentWritable = current.ToString("yyyy.MM.dd.HH.mm.ss");
                 string locationPath = ($@"{docPath}\SEPSaves\{currentWritable}");
                 string locationPathIncFile = ($@"{locationPath}\{savepassworda}.txt");
@@ -169,51 +169,52 @@ namespace sep
                 //this.Close();
                 //Close();
             }
-
         }
 
         private void btnSaveEncryptedText_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("You are about to save a text (.txt) file in your documents folder which is called SEPEText and contains your encrypted text.", "Save Encrypted Text?", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                //some interesting behaviour here
-                //gbConfirmPasswordSave.Visible = false;
-                //this.Close();
+            //if (MessageBox.Show("You are about to save a text (.txt) file in your documents folder which is called SEPEText and contains your encrypted text.", "Save Encrypted Text?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            //{
+            //    //some interesting behaviour here
+            //    //gbConfirmPasswordSave.Visible = false;
+            //    //this.Close();
 
-                string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                //DateTime current /* */= DateTime.Now;
-                string currentWritable = current/*.*/.ToString("yyyy.MM.dd.HH.mm.ss");
-                string locationPath = ($@"{docPath}\SEPSaves\{currentWritable}");
-                //string FileName = ""
-                string FileName = "SEPEText.txt";
-                string locationPathIncFile = (/* +  + */$@"{locationPath}\{/*savepassworda*/FileName}.txt");
+            //    string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            //    //DateTime current /* */= DateTime.Now;
+            //    string currentWritable = current/*.*/.ToString("yyyy.MM.dd.HH.mm.ss");
+            //    string locationPath = ($@"{docPath}\SEPSaves\{currentWritable}");
+            //    //string FileName = ""
+            //    string FileName = "SEPEText.txt";
+            //    string locationPathIncFile = (/* +  + */$@"{locationPath}\{/*savepassworda*/FileName}.txt");
 
-                if (!Directory.Exists(locationPath))
-                {
-                    Directory.CreateDirectory(locationPath);
-                }
+            //    if (!Directory.Exists(locationPath))
+            //    {
+            //        Directory.CreateDirectory(locationPath);
+            //    }
 
-                string docPath2 = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            //    string docPath2 = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
-                using (StreamWriter outputFile = new StreamWriter(/*Path.Combine(docPath, "TEPPEText.txt")*/locationPathIncFile))
-                {
-                    outputFile.WriteLine(saveetexta);
-                }
+            //    using (StreamWriter outputFile = new StreamWriter(/*Path.Combine(docPath, "TEPPEText.txt")*/locationPathIncFile))
+            //    {
+            //        outputFile.WriteLine(saveetexta);
+            //    }
 
-                btnSaveEncryptedText.Enabled = false;
-                btnGoToMainMenu.Enabled = true;
-            }
-            else
-            {
-                //this.Close();
-                //Close();
-            }
+            //    btnSaveEncryptedText.Enabled = false;
+            //    btnGoToMainMenu.Enabled = true;
+            //}
+            //else
+            //{
+            //    //this.Close();
+            //    //Close();
+            //}
+
+            Clipboard.SetText(lbEncryptOutput.Text);
         }
 
         private void btnSavePasswordConfirmYes_Click(object sender, EventArgs e)
         {
             //gbConfirmPasswordSave.Visible = false;
-            
+
             //string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
             //using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, $"{savepassworda}.txt")))
@@ -251,6 +252,11 @@ namespace sep
         private void btnGoToMainMenu_Click(object sender, EventArgs e)
         {
             Hide();
+        }
+
+        private void btnCopy_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(txtPasswordInput.Text);
         }
     }
 }
