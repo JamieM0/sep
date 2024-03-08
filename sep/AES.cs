@@ -112,10 +112,41 @@ namespace sep
             }
             finally
             {
-                File.SetCreationTime(fsCrypt.Name, inputCreationDate);
+                Options options = new Options();
+                options = options.ReadFromFile();
+                if (options.EncryptFileNames)
+                {
+                    //Get the file name (without extension or path)
+                    string fileName = Path.GetFileNameWithoutExtension(inputFile);
 
-                cs.Close();
-                fsCrypt.Close();
+                    //Encrypt the file name (excluding path and extension)
+                    string encFileName = AesOperation.EncryptString(password, fileName);
+
+                    //Get the file extension
+                    string extension = Path.GetExtension(inputFile) + ".aes";
+
+                    //Get the directory
+                    string directory = Path.GetDirectoryName(inputFile);
+
+                    //Create the new file name
+                    string newFileName = Path.Combine(directory, encFileName + extension);
+
+                    //Close the CryptoStream before renaming the file
+                    cs.Close();
+                    fsCrypt.Close();
+
+                    //Rename the file
+                    File.Move(inputFile + ".aes", newFileName);
+                }
+                else
+                {
+                    // Close the CryptoStream and FileStream
+                    cs.Close();
+                    fsCrypt.Close();
+
+                    // Set the creation time of the encrypted file
+                    File.SetCreationTime(fsCrypt.Name, inputCreationDate);
+                }
             }
         }
         public static void FileEncrypt(string inputFile, string outputFile, string password)
@@ -236,9 +267,40 @@ namespace sep
             }
             finally
             {
-                File.SetCreationTime(fsOut.Name, DateTime.Now);
-                fsOut.Close();
-                fsCrypt.Close();
+                Options options = new Options();
+                options = options.ReadFromFile();
+                if(options.EncryptFileNames)
+                {
+                    //Get the file name (without extension or path)
+                    string fileNameStep1 = Path.GetFileNameWithoutExtension(inputFile);
+                    string fileName = fileNameStep1.Split('.')[0];
+
+                    //Decrypt the file name (excluding path and extension)
+                    string decFileName = AesOperation.DecryptString(password, fileName);
+
+                    //Get the directory
+                    string directory = Path.GetDirectoryName(inputFile);
+
+                    //Get the file extension
+                    string extension = Path.GetExtension(Path.Combine(directory,fileNameStep1));
+
+                    //Create the new file name
+                    string newFileName = Path.Combine(directory, decFileName + extension);
+
+                    //Close the CryptoStream before renaming the file
+                    fsOut.Close();
+                    cs.Close();
+                    fsCrypt.Close();
+
+                    //Rename the file
+                    File.Move(fsOut.Name, newFileName);
+                }
+                else
+                {
+                    File.SetCreationTime(fsOut.Name, DateTime.Now);
+                    fsOut.Close();
+                    fsCrypt.Close();
+                }
             }
         }
     }

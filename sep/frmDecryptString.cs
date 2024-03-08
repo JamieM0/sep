@@ -52,8 +52,8 @@ namespace sep
         {
             btnOpenEncrypt.Visible = true;
             btnSavePasswordOpen.Enabled = false;
-            if (txtPasswordInput.TextLength == 16)
-            {
+            //if (txtPasswordInput.TextLength == 16)
+            //{
                 key = txtPasswordInput.Text;
                 txtPasswordInput.Enabled = false;
                 btnConfirmPassword.Enabled = false;
@@ -63,18 +63,18 @@ namespace sep
                 lbIns2.Visible = true;
                 txtEncryptInput.Visible = true;
                 btnConfirmInputEncrypt.Visible = true;
-            }
+            //}
 
-            else
-            {
-                lbPasswordLengthWarn.Visible = true;
-                //lbIns1.Text = ("Please choose a password that is 16 characters in length.");
-                //txtPass.Enabled = false;
-                //Thread.Sleep(1000000);
-                //txtPass.Enabled = false;
-                //lbIns1.Text = ("1. Enter a password to encrypt the string with.");
-                //lbPassLengthWarn.Visible = false;
-            }
+            //else
+            //{
+            //    lbPasswordLengthWarn.Visible = true;
+            //    //lbIns1.Text = ("Please choose a password that is 16 characters in length.");
+            //    //txtPass.Enabled = false;
+            //    //Thread.Sleep(1000000);
+            //    //txtPass.Enabled = false;
+            //    //lbIns1.Text = ("1. Enter a password to encrypt the string with.");
+            //    //lbPassLengthWarn.Visible = false;
+            //}
         }
 
         private void btnConfirmInputEncrypt_Click(object sender, EventArgs e)

@@ -50,11 +50,20 @@ namespace sep
             //pnlShareFile.Visible = false;
             lbFileName.TextAlign = ContentAlignment.MiddleCenter;
             this.AllowDrop = true;
+            Options options = new Options();
+            options = options.ReadFromFile();
+            if (!options.DebugMode)
+            {
+                btnPWLibFunc.Enabled = false;
+            }
         }
 
         private void frmFunctionScreen_Load(object sender, EventArgs e)
         {
-
+            Options options = new Options();
+            options = options.ReadFromFile();
+            if (options.EncryptFileNames)
+                btnPWLibFunc.Enabled = false;
         }
 
         private void animateSection(Panel panel, Point newPoint, int speed)
@@ -99,54 +108,61 @@ namespace sep
             ofd.Filter = "All Files (*.*)|*.*";
             ofd.Title = $"Choose file(s) to {funcText.ToLower()}";
             ofd.Multiselect = true;
-            if (ofd.ShowDialog() == DialogResult.OK)
+            try
             {
-                if (!funcEncrypt && ofd.FileNames.Length > 1)
+                if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                    MessageBox.Show("You can only decrypt one file at a time.", "SEP", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    if (!funcEncrypt && ofd.FileNames.Length > 1)
+                    {
+                        MessageBox.Show("You can only decrypt one file at a time.", "SEP", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else
+                    {
+                        filePath = ofd.FileNames;
+                        fileName = ofd.SafeFileNames;
+                    }
+                }
+                lbFileName.Text = "";
+                if (filePath.Length <= 3)
+                {
+
+                    foreach (string item in fileName)
+                    {
+                        int itemSize = TextRenderer.MeasureText(item, lbFileName.Font).Width;
+                        string itemToAdd = item;
+                        lbFileName.Text += itemToAdd + "\r\n";
+                    }
+                    lbFileName.Text += ". . .\r\n" + filePath.Length + " files selected.";
                 }
                 else
                 {
-                    filePath = ofd.FileNames;
-                    fileName = ofd.SafeFileNames;
+                    for (int i = 0; i < 3; i++)
+                    {
+                        string item = fileName[i];
+                        int itemSize = TextRenderer.MeasureText(item, lbFileName.Font).Width;
+                        string itemToAdd = item;
+                        lbFileName.Text += itemToAdd + "\r\n";
+                    }
+                    lbFileName.Text += ". . .\r\n" + filePath.Length + " files selected.";
                 }
-            }
-            lbFileName.Text = "";
-            if (filePath.Length <= 3)
-            {
+                int sizeOfFileName = TextRenderer.MeasureText(fileName.OrderByDescending(s => s.Length).First(), lbFileName.Font).Width;
+                //lbFileName.Location = new Point((pnlFileSelect.Width / 2) - sizeOfFileName / 2, 150);
+                lbFileName.Visible = true;
 
-                foreach (string item in fileName)
+                if (fileName.Length > 1)
+                    btnUseAuthenticator.Enabled = false;
+
+                if (lbFileName.Text.Length > 0)
                 {
-                    int itemSize = TextRenderer.MeasureText(item, lbFileName.Font).Width;
-                    string itemToAdd = item;
-                    lbFileName.Text += itemToAdd + "\r\n";
+                    //Animate to left (2 sections)
+                    animateSection(pnlFileSelect, new Point(170, 92), 10);
+                    pnlPasswordInput.Visible = true;
                 }
-                lbFileName.Text += ". . .\r\n" + filePath.Length + " files selected.";
             }
-            else
+            catch(Exception ex)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    string item = fileName[i];
-                    int itemSize = TextRenderer.MeasureText(item, lbFileName.Font).Width;
-                    string itemToAdd = item;
-                    lbFileName.Text += itemToAdd + "\r\n";
-                }
-                lbFileName.Text += ". . .\r\n" + filePath.Length + " files selected.";
-            }
-            int sizeOfFileName = TextRenderer.MeasureText(fileName.OrderByDescending(s => s.Length).First(), lbFileName.Font).Width;
-            //lbFileName.Location = new Point((pnlFileSelect.Width / 2) - sizeOfFileName / 2, 150);
-            lbFileName.Visible = true;
-
-            if (fileName.Length > 1)
-                btnUseAuthenticator.Enabled = false;
-
-            if (lbFileName.Text.Length > 0)
-            {
-                //Animate to left (2 sections)
-                animateSection(pnlFileSelect, new Point(170, 92), 10);
-                pnlPasswordInput.Visible = true;
+                MessageBox.Show("Sorry about that! There was a problem selecting this file. Please try again. \r\n More Details: " + ex.Message, "SEP", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -212,7 +228,9 @@ namespace sep
 
         private void btnPWLibFunc_Click(object sender, EventArgs e)
         {
-            if (funcEncrypt)
+            Options options = new Options();
+            options = options.ReadFromFile();
+            if (funcEncrypt && !options.DebugMode)
             {
                 saveToLibrary = true;
                 txtPassword.Enabled = false;

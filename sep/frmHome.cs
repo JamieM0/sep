@@ -24,6 +24,11 @@ namespace sep
             CenterToScreen();
 
             OtherOperations.storeLoc = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SEP");
+            if (!File.Exists(Path.Combine(OtherOperations.storeLoc, "options.json")))
+            {
+                Options options = new Options();
+                options.SaveToFile();
+            }
             if (File.Exists(Path.Combine(OtherOperations.storeLoc, "autotakeover")))
                 automaticTakeoverToolStripMenuItem.Visible = false;
             if (!File.Exists(Path.Combine(OtherOperations.storeLoc, "first.load")))
@@ -88,16 +93,16 @@ namespace sep
                 sent = true; //(movetoend)
             }
 
-            if (OtherOperations.debug == true)
-            {
-                enableDebugModeToolStripMenuItem.Text = "Disable Debug Mode";
+            //if (OtherOperations.debug == true)
+            //{
+            //    enableDebugModeToolStripMenuItem.Text = "Disable Debug Mode";
 
-            }
-            else if (OtherOperations.debug == false)
-            {
-                enableDebugModeToolStripMenuItem.Text = "Enable Debug Mode";
+            //}
+            //else if (OtherOperations.debug == false)
+            //{
+            //    enableDebugModeToolStripMenuItem.Text = "Enable Debug Mode";
 
-            }
+            //}
         }
 
         private void pbGithub_Click(object sender, EventArgs e)
@@ -309,21 +314,33 @@ namespace sep
             new frmWipeFile().Show();
         }
 
-        private void enableDebugModeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (OtherOperations.debug)
-            {
-                OtherOperations.debug = false;
-                enableDebugModeToolStripMenuItem.Text = "Enable Debug Mode";
-                MessageBox.Show("Debug Mode has been disabled.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                OtherOperations.debug = true;
-                enableDebugModeToolStripMenuItem.Text = "Disable Debug Mode";
-                MessageBox.Show("Debug Mode has been enabled.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //private void enableDebugModeToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    if (OtherOperations.debug)
+        //    {
+        //        OtherOperations.debug = false;
+        //        enableDebugModeToolStripMenuItem.Text = "Enable Debug Mode";
+        //        MessageBox.Show("Debug Mode has been disabled.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //    else
+        //    {
+        //        OtherOperations.debug = true;
+        //        enableDebugModeToolStripMenuItem.Text = "Disable Debug Mode";
+        //        MessageBox.Show("Debug Mode has been enabled.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            }
+        //    }
+        //}
+
+        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new frmOptions().Show();
+        }
+
+        private void optionsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new frmOptions().Show();
         }
     }
 }

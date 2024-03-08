@@ -40,9 +40,7 @@
             automaticTakeoverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             moreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             lockersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            githubPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            removeFromContextMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            enableDebugModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             passwordLibraryToolStripMenuItem = new System.Windows.Forms.ToolStripDropDownMenu();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             wipeFileSecureDeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,6 +52,7 @@
             btnLockers = new System.Windows.Forms.Button();
             pbGithub = new System.Windows.Forms.PictureBox();
             btnSecureDelete = new System.Windows.Forms.Button();
+            optionsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbGithub).BeginInit();
             SuspendLayout();
@@ -66,21 +65,21 @@
             // 
             encryptToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { encryptFileToolStripMenuItem, encryptStringToolStripMenuItem });
             encryptToolStripMenuItem.Name = "encryptToolStripMenuItem";
-            encryptToolStripMenuItem.Size = new System.Drawing.Size(94, 34);
+            encryptToolStripMenuItem.Size = new System.Drawing.Size(74, 25);
             encryptToolStripMenuItem.Text = "Encrypt";
             encryptToolStripMenuItem.Click += encryptToolStripMenuItem_Click;
             // 
             // encryptFileToolStripMenuItem
             // 
             encryptFileToolStripMenuItem.Name = "encryptFileToolStripMenuItem";
-            encryptFileToolStripMenuItem.Size = new System.Drawing.Size(214, 34);
+            encryptFileToolStripMenuItem.Size = new System.Drawing.Size(177, 26);
             encryptFileToolStripMenuItem.Text = "Encrypt File";
             encryptFileToolStripMenuItem.Click += encryptFileToolStripMenuItem_Click;
             // 
             // encryptStringToolStripMenuItem
             // 
             encryptStringToolStripMenuItem.Name = "encryptStringToolStripMenuItem";
-            encryptStringToolStripMenuItem.Size = new System.Drawing.Size(214, 34);
+            encryptStringToolStripMenuItem.Size = new System.Drawing.Size(177, 26);
             encryptStringToolStripMenuItem.Text = "Encrypt String";
             encryptStringToolStripMenuItem.Click += encryptStringToolStripMenuItem_Click;
             // 
@@ -88,64 +87,51 @@
             // 
             decryptToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { decryptFileToolStripMenuItem, decryptStringToolStripMenuItem });
             decryptToolStripMenuItem.Name = "decryptToolStripMenuItem";
-            decryptToolStripMenuItem.Size = new System.Drawing.Size(97, 34);
+            decryptToolStripMenuItem.Size = new System.Drawing.Size(76, 25);
             decryptToolStripMenuItem.Text = "Decrypt";
             // 
             // decryptFileToolStripMenuItem
             // 
             decryptFileToolStripMenuItem.Name = "decryptFileToolStripMenuItem";
-            decryptFileToolStripMenuItem.Size = new System.Drawing.Size(217, 34);
+            decryptFileToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             decryptFileToolStripMenuItem.Text = "Decrypt File";
             decryptFileToolStripMenuItem.Click += decryptFileToolStripMenuItem_Click;
             // 
             // decryptStringToolStripMenuItem
             // 
             decryptStringToolStripMenuItem.Name = "decryptStringToolStripMenuItem";
-            decryptStringToolStripMenuItem.Size = new System.Drawing.Size(217, 34);
+            decryptStringToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             decryptStringToolStripMenuItem.Text = "Decrypt String";
             decryptStringToolStripMenuItem.Click += decryptStringToolStripMenuItem_Click;
             // 
             // automaticTakeoverToolStripMenuItem
             // 
             automaticTakeoverToolStripMenuItem.Name = "automaticTakeoverToolStripMenuItem";
-            automaticTakeoverToolStripMenuItem.Size = new System.Drawing.Size(226, 34);
+            automaticTakeoverToolStripMenuItem.Size = new System.Drawing.Size(169, 25);
             automaticTakeoverToolStripMenuItem.Text = "Add to Context Menu";
             automaticTakeoverToolStripMenuItem.Click += automaticTakeoverToolStripMenuItem_Click;
             // 
             // moreToolStripMenuItem
             // 
-            moreToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { lockersToolStripMenuItem, githubPageToolStripMenuItem, removeFromContextMenuToolStripMenuItem, enableDebugModeToolStripMenuItem });
+            moreToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { lockersToolStripMenuItem, optionsToolStripMenuItem });
             moreToolStripMenuItem.Name = "moreToolStripMenuItem";
-            moreToolStripMenuItem.Size = new System.Drawing.Size(89, 34);
+            moreToolStripMenuItem.Size = new System.Drawing.Size(68, 25);
             moreToolStripMenuItem.Text = "More...";
+            moreToolStripMenuItem.Visible = false;
             // 
             // lockersToolStripMenuItem
             // 
             lockersToolStripMenuItem.Name = "lockersToolStripMenuItem";
-            lockersToolStripMenuItem.Size = new System.Drawing.Size(348, 34);
+            lockersToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             lockersToolStripMenuItem.Text = "Lockers";
             lockersToolStripMenuItem.Click += lockersToolStripMenuItem_Click;
             // 
-            // githubPageToolStripMenuItem
+            // optionsToolStripMenuItem
             // 
-            githubPageToolStripMenuItem.Name = "githubPageToolStripMenuItem";
-            githubPageToolStripMenuItem.Size = new System.Drawing.Size(348, 34);
-            githubPageToolStripMenuItem.Text = "Github Page";
-            githubPageToolStripMenuItem.Click += githubPageToolStripMenuItem_Click;
-            // 
-            // removeFromContextMenuToolStripMenuItem
-            // 
-            removeFromContextMenuToolStripMenuItem.Name = "removeFromContextMenuToolStripMenuItem";
-            removeFromContextMenuToolStripMenuItem.Size = new System.Drawing.Size(348, 34);
-            removeFromContextMenuToolStripMenuItem.Text = "Remove from Context Menu";
-            removeFromContextMenuToolStripMenuItem.Click += removeFromContextMenuToolStripMenuItem_Click;
-            // 
-            // enableDebugModeToolStripMenuItem
-            // 
-            enableDebugModeToolStripMenuItem.Name = "enableDebugModeToolStripMenuItem";
-            enableDebugModeToolStripMenuItem.Size = new System.Drawing.Size(348, 34);
-            enableDebugModeToolStripMenuItem.Text = "Enable Debug Mode";
-            enableDebugModeToolStripMenuItem.Click += enableDebugModeToolStripMenuItem_Click;
+            optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            optionsToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            optionsToolStripMenuItem.Text = "Options";
+            optionsToolStripMenuItem.Click += optionsToolStripMenuItem_Click;
             // 
             // passwordLibraryToolStripMenuItem
             // 
@@ -155,38 +141,38 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { encryptToolStripMenuItem, decryptToolStripMenuItem, automaticTakeoverToolStripMenuItem, wipeFileSecureDeleteToolStripMenuItem, moreToolStripMenuItem });
+            menuStrip1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { encryptToolStripMenuItem, decryptToolStripMenuItem, automaticTakeoverToolStripMenuItem, wipeFileSecureDeleteToolStripMenuItem, moreToolStripMenuItem, optionsToolStripMenuItem1 });
             menuStrip1.Location = new System.Drawing.Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new System.Drawing.Size(800, 38);
+            menuStrip1.Size = new System.Drawing.Size(800, 29);
             menuStrip1.TabIndex = 10;
             menuStrip1.Text = "menuStrip1";
             // 
             // wipeFileSecureDeleteToolStripMenuItem
             // 
             wipeFileSecureDeleteToolStripMenuItem.Name = "wipeFileSecureDeleteToolStripMenuItem";
-            wipeFileSecureDeleteToolStripMenuItem.Size = new System.Drawing.Size(256, 34);
+            wipeFileSecureDeleteToolStripMenuItem.Size = new System.Drawing.Size(195, 25);
             wipeFileSecureDeleteToolStripMenuItem.Text = "Wipe File (Secure Delete)";
             wipeFileSecureDeleteToolStripMenuItem.Click += wipeFileSecureDeleteToolStripMenuItem_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label1.Location = new System.Drawing.Point(12, 54);
+            label1.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label1.Location = new System.Drawing.Point(12, 55);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(597, 45);
+            label1.Size = new System.Drawing.Size(497, 37);
             label1.TabIndex = 0;
             label1.Text = "Welcome to Simple Encryption Program!";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label2.Location = new System.Drawing.Point(12, 99);
+            label2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label2.Location = new System.Drawing.Point(16, 92);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(343, 37);
+            label2.Size = new System.Drawing.Size(266, 30);
             label2.TabIndex = 1;
             label2.Text = "What would you like to do?";
             // 
@@ -196,7 +182,7 @@
             btnEncryptFile.ForeColor = System.Drawing.Color.Black;
             btnEncryptFile.Image = Properties.Resources.noun_encrypt_33883351;
             btnEncryptFile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnEncryptFile.Location = new System.Drawing.Point(98, 186);
+            btnEncryptFile.Location = new System.Drawing.Point(93, 160);
             btnEncryptFile.Name = "btnEncryptFile";
             btnEncryptFile.Size = new System.Drawing.Size(230, 78);
             btnEncryptFile.TabIndex = 6;
@@ -211,7 +197,7 @@
             btnDecryptFile.ForeColor = System.Drawing.Color.Black;
             btnDecryptFile.Image = Properties.Resources.noun_unlock_50913241;
             btnDecryptFile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnDecryptFile.Location = new System.Drawing.Point(464, 186);
+            btnDecryptFile.Location = new System.Drawing.Point(475, 160);
             btnDecryptFile.Name = "btnDecryptFile";
             btnDecryptFile.Size = new System.Drawing.Size(230, 78);
             btnDecryptFile.TabIndex = 7;
@@ -223,7 +209,7 @@
             // 
             btnPWLib.Enabled = false;
             btnPWLib.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            btnPWLib.Location = new System.Drawing.Point(270, 372);
+            btnPWLib.Location = new System.Drawing.Point(268, 351);
             btnPWLib.Name = "btnPWLib";
             btnPWLib.Size = new System.Drawing.Size(253, 54);
             btnPWLib.TabIndex = 8;
@@ -238,7 +224,7 @@
             btnLockers.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             btnLockers.Image = Properties.Resources.noun_folder_lock_56684341;
             btnLockers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnLockers.Location = new System.Drawing.Point(270, 302);
+            btnLockers.Location = new System.Drawing.Point(268, 281);
             btnLockers.Name = "btnLockers";
             btnLockers.Size = new System.Drawing.Size(253, 54);
             btnLockers.TabIndex = 9;
@@ -250,7 +236,7 @@
             // 
             pbGithub.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
             pbGithub.Image = (System.Drawing.Image)resources.GetObject("pbGithub.Image");
-            pbGithub.Location = new System.Drawing.Point(690, 54);
+            pbGithub.Location = new System.Drawing.Point(708, 43);
             pbGithub.Name = "pbGithub";
             pbGithub.Size = new System.Drawing.Size(80, 80);
             pbGithub.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -264,13 +250,20 @@
             btnSecureDelete.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             btnSecureDelete.Image = Properties.Resources.noun_burn_file_43239321;
             btnSecureDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnSecureDelete.Location = new System.Drawing.Point(270, 372);
+            btnSecureDelete.Location = new System.Drawing.Point(268, 351);
             btnSecureDelete.Name = "btnSecureDelete";
             btnSecureDelete.Size = new System.Drawing.Size(253, 54);
             btnSecureDelete.TabIndex = 11;
             btnSecureDelete.Text = "Wipe File";
             btnSecureDelete.UseVisualStyleBackColor = true;
             btnSecureDelete.Click += btnSecureDelete_Click;
+            // 
+            // optionsToolStripMenuItem1
+            // 
+            optionsToolStripMenuItem1.Name = "optionsToolStripMenuItem1";
+            optionsToolStripMenuItem1.Size = new System.Drawing.Size(77, 25);
+            optionsToolStripMenuItem1.Text = "Options";
+            optionsToolStripMenuItem1.Click += optionsToolStripMenuItem1_Click;
             // 
             // frmHome
             // 
@@ -308,7 +301,6 @@
         private System.Windows.Forms.ToolStripMenuItem automaticTakeoverToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem moreToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lockersToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem githubPageToolStripMenuItem;
         private System.Windows.Forms.ToolStripDropDownMenu passwordLibraryToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Label label1;
@@ -318,9 +310,9 @@
         private System.Windows.Forms.Button btnPWLib;
         private System.Windows.Forms.Button btnLockers;
         private System.Windows.Forms.PictureBox pbGithub;
-        private System.Windows.Forms.ToolStripMenuItem removeFromContextMenuToolStripMenuItem;
         private System.Windows.Forms.Button btnSecureDelete;
         private System.Windows.Forms.ToolStripMenuItem wipeFileSecureDeleteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem enableDebugModeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem1;
     }
 }

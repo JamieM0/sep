@@ -28,349 +28,346 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.gbMain = new System.Windows.Forms.GroupBox();
-            this.btnOpenEncrypt = new System.Windows.Forms.Button();
-            this.btnCopy = new System.Windows.Forms.Button();
-            this.lbPasswordLengthWarn = new System.Windows.Forms.Label();
-            this.btnSavePasswordOpen = new System.Windows.Forms.Button();
-            this.lbCleartext = new System.Windows.Forms.Label();
-            this.lbIns3 = new System.Windows.Forms.Label();
-            this.btnConfirmInputEncrypt = new System.Windows.Forms.Button();
-            this.gbConfirmPasswordSave = new System.Windows.Forms.GroupBox();
-            this.btnSavePasswordConfirmNo = new System.Windows.Forms.Button();
-            this.btnSavePasswordConfirmYes = new System.Windows.Forms.Button();
-            this.lbSavePasswordConfirmTitle = new System.Windows.Forms.Label();
-            this.lbSavePasswordConfirmMessage = new System.Windows.Forms.Label();
-            this.txtEncryptInput = new System.Windows.Forms.TextBox();
-            this.lbIns2 = new System.Windows.Forms.Label();
-            this.btnConfirmPassword = new System.Windows.Forms.Button();
-            this.txtPasswordInput = new System.Windows.Forms.TextBox();
-            this.lbIns1 = new System.Windows.Forms.Label();
-            this.gbSaveETextConfirm = new System.Windows.Forms.GroupBox();
-            this.btnSaveEncryptedText = new System.Windows.Forms.Button();
-            this.btnSaveETextConfirmNo = new System.Windows.Forms.Button();
-            this.btnSaveETextConfirmYes = new System.Windows.Forms.Button();
-            this.lbSaveETextConfirmTitle = new System.Windows.Forms.Label();
-            this.lbSaveETextConfirmMessage = new System.Windows.Forms.Label();
-            this.btnGenPass = new System.Windows.Forms.Button();
-            this.btnGoToMainMenu = new System.Windows.Forms.Button();
-            this.gbMain.SuspendLayout();
-            this.gbConfirmPasswordSave.SuspendLayout();
-            this.gbSaveETextConfirm.SuspendLayout();
-            this.SuspendLayout();
+            label1 = new System.Windows.Forms.Label();
+            gbMain = new System.Windows.Forms.GroupBox();
+            btnOpenEncrypt = new System.Windows.Forms.Button();
+            btnCopy = new System.Windows.Forms.Button();
+            lbPasswordLengthWarn = new System.Windows.Forms.Label();
+            btnSavePasswordOpen = new System.Windows.Forms.Button();
+            lbCleartext = new System.Windows.Forms.Label();
+            lbIns3 = new System.Windows.Forms.Label();
+            btnConfirmInputEncrypt = new System.Windows.Forms.Button();
+            gbConfirmPasswordSave = new System.Windows.Forms.GroupBox();
+            btnSavePasswordConfirmNo = new System.Windows.Forms.Button();
+            btnSavePasswordConfirmYes = new System.Windows.Forms.Button();
+            lbSavePasswordConfirmTitle = new System.Windows.Forms.Label();
+            lbSavePasswordConfirmMessage = new System.Windows.Forms.Label();
+            txtEncryptInput = new System.Windows.Forms.TextBox();
+            lbIns2 = new System.Windows.Forms.Label();
+            btnConfirmPassword = new System.Windows.Forms.Button();
+            txtPasswordInput = new System.Windows.Forms.TextBox();
+            lbIns1 = new System.Windows.Forms.Label();
+            gbSaveETextConfirm = new System.Windows.Forms.GroupBox();
+            btnSaveEncryptedText = new System.Windows.Forms.Button();
+            btnSaveETextConfirmNo = new System.Windows.Forms.Button();
+            btnSaveETextConfirmYes = new System.Windows.Forms.Button();
+            lbSaveETextConfirmTitle = new System.Windows.Forms.Label();
+            lbSaveETextConfirmMessage = new System.Windows.Forms.Label();
+            btnGenPass = new System.Windows.Forms.Button();
+            btnGoToMainMenu = new System.Windows.Forms.Button();
+            gbMain.SuspendLayout();
+            gbConfirmPasswordSave.SuspendLayout();
+            gbSaveETextConfirm.SuspendLayout();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(487, 45);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Simple Encryption Program (SEP)";
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label1.Location = new System.Drawing.Point(12, 9);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(487, 45);
+            label1.TabIndex = 0;
+            label1.Text = "Simple Encryption Program (SEP)";
             // 
             // gbMain
             // 
-            this.gbMain.Controls.Add(this.btnOpenEncrypt);
-            this.gbMain.Controls.Add(this.btnCopy);
-            this.gbMain.Controls.Add(this.lbPasswordLengthWarn);
-            this.gbMain.Controls.Add(this.btnSavePasswordOpen);
-            this.gbMain.Controls.Add(this.lbCleartext);
-            this.gbMain.Controls.Add(this.lbIns3);
-            this.gbMain.Controls.Add(this.btnConfirmInputEncrypt);
-            this.gbMain.Controls.Add(this.gbConfirmPasswordSave);
-            this.gbMain.Controls.Add(this.txtEncryptInput);
-            this.gbMain.Controls.Add(this.lbIns2);
-            this.gbMain.Controls.Add(this.btnConfirmPassword);
-            this.gbMain.Controls.Add(this.txtPasswordInput);
-            this.gbMain.Controls.Add(this.lbIns1);
-            this.gbMain.Controls.Add(this.gbSaveETextConfirm);
-            this.gbMain.Controls.Add(this.btnGenPass);
-            this.gbMain.Location = new System.Drawing.Point(12, 57);
-            this.gbMain.Name = "gbMain";
-            this.gbMain.Size = new System.Drawing.Size(734, 319);
-            this.gbMain.TabIndex = 4;
-            this.gbMain.TabStop = false;
+            gbMain.Controls.Add(btnOpenEncrypt);
+            gbMain.Controls.Add(btnCopy);
+            gbMain.Controls.Add(lbPasswordLengthWarn);
+            gbMain.Controls.Add(btnSavePasswordOpen);
+            gbMain.Controls.Add(lbCleartext);
+            gbMain.Controls.Add(lbIns3);
+            gbMain.Controls.Add(btnConfirmInputEncrypt);
+            gbMain.Controls.Add(gbConfirmPasswordSave);
+            gbMain.Controls.Add(txtEncryptInput);
+            gbMain.Controls.Add(lbIns2);
+            gbMain.Controls.Add(btnConfirmPassword);
+            gbMain.Controls.Add(txtPasswordInput);
+            gbMain.Controls.Add(lbIns1);
+            gbMain.Controls.Add(gbSaveETextConfirm);
+            gbMain.Controls.Add(btnGenPass);
+            gbMain.Location = new System.Drawing.Point(12, 57);
+            gbMain.Name = "gbMain";
+            gbMain.Size = new System.Drawing.Size(734, 319);
+            gbMain.TabIndex = 4;
+            gbMain.TabStop = false;
             // 
             // btnOpenEncrypt
             // 
-            this.btnOpenEncrypt.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnOpenEncrypt.Location = new System.Drawing.Point(373, 158);
-            this.btnOpenEncrypt.Name = "btnOpenEncrypt";
-            this.btnOpenEncrypt.Size = new System.Drawing.Size(133, 31);
-            this.btnOpenEncrypt.TabIndex = 11;
-            this.btnOpenEncrypt.Text = "Open Saved";
-            this.btnOpenEncrypt.UseVisualStyleBackColor = true;
-            this.btnOpenEncrypt.Click += new System.EventHandler(this.btnOpenEncrypt_Click);
+            btnOpenEncrypt.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            btnOpenEncrypt.Location = new System.Drawing.Point(373, 158);
+            btnOpenEncrypt.Name = "btnOpenEncrypt";
+            btnOpenEncrypt.Size = new System.Drawing.Size(133, 31);
+            btnOpenEncrypt.TabIndex = 11;
+            btnOpenEncrypt.Text = "Open Saved";
+            btnOpenEncrypt.UseVisualStyleBackColor = true;
+            btnOpenEncrypt.Click += btnOpenEncrypt_Click;
             // 
             // btnCopy
             // 
-            this.btnCopy.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnCopy.ForeColor = System.Drawing.Color.Black;
-            this.btnCopy.Location = new System.Drawing.Point(566, 252);
-            this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Size = new System.Drawing.Size(168, 61);
-            this.btnCopy.TabIndex = 12;
-            this.btnCopy.Text = "Copy Non-Encrypted Text";
-            this.btnCopy.UseVisualStyleBackColor = true;
-            this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
+            btnCopy.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            btnCopy.ForeColor = System.Drawing.Color.Black;
+            btnCopy.Location = new System.Drawing.Point(566, 252);
+            btnCopy.Name = "btnCopy";
+            btnCopy.Size = new System.Drawing.Size(168, 61);
+            btnCopy.TabIndex = 12;
+            btnCopy.Text = "Copy Non-Encrypted Text";
+            btnCopy.UseVisualStyleBackColor = true;
+            btnCopy.Click += btnCopy_Click;
             // 
             // lbPasswordLengthWarn
             // 
-            this.lbPasswordLengthWarn.AutoSize = true;
-            this.lbPasswordLengthWarn.Location = new System.Drawing.Point(615, 62);
-            this.lbPasswordLengthWarn.Name = "lbPasswordLengthWarn";
-            this.lbPasswordLengthWarn.Size = new System.Drawing.Size(119, 30);
-            this.lbPasswordLengthWarn.TabIndex = 9;
-            this.lbPasswordLengthWarn.Text = "Password must be \r\nexactly 16 characters.";
-            this.lbPasswordLengthWarn.Visible = false;
+            lbPasswordLengthWarn.AutoSize = true;
+            lbPasswordLengthWarn.Location = new System.Drawing.Point(615, 62);
+            lbPasswordLengthWarn.Name = "lbPasswordLengthWarn";
+            lbPasswordLengthWarn.Size = new System.Drawing.Size(119, 30);
+            lbPasswordLengthWarn.TabIndex = 9;
+            lbPasswordLengthWarn.Text = "Password must be \r\nexactly 16 characters.";
+            lbPasswordLengthWarn.Visible = false;
             // 
             // btnSavePasswordOpen
             // 
-            this.btnSavePasswordOpen.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnSavePasswordOpen.Location = new System.Drawing.Point(240, 64);
-            this.btnSavePasswordOpen.Name = "btnSavePasswordOpen";
-            this.btnSavePasswordOpen.Size = new System.Drawing.Size(133, 29);
-            this.btnSavePasswordOpen.TabIndex = 10;
-            this.btnSavePasswordOpen.Text = "Open Saved";
-            this.btnSavePasswordOpen.UseVisualStyleBackColor = true;
-            this.btnSavePasswordOpen.Click += new System.EventHandler(this.btnSavePasswordOpen_Click);
+            btnSavePasswordOpen.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            btnSavePasswordOpen.Location = new System.Drawing.Point(240, 64);
+            btnSavePasswordOpen.Name = "btnSavePasswordOpen";
+            btnSavePasswordOpen.Size = new System.Drawing.Size(133, 29);
+            btnSavePasswordOpen.TabIndex = 10;
+            btnSavePasswordOpen.Text = "Open Saved";
+            btnSavePasswordOpen.UseVisualStyleBackColor = true;
+            btnSavePasswordOpen.Click += btnSavePasswordOpen_Click;
             // 
             // lbCleartext
             // 
-            this.lbCleartext.AutoSize = true;
-            this.lbCleartext.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbCleartext.Location = new System.Drawing.Point(52, 265);
-            this.lbCleartext.Name = "lbCleartext";
-            this.lbCleartext.Size = new System.Drawing.Size(143, 25);
-            this.lbCleartext.TabIndex = 8;
-            this.lbCleartext.Text = "abcimherehehe";
+            lbCleartext.AutoSize = true;
+            lbCleartext.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lbCleartext.Location = new System.Drawing.Point(52, 265);
+            lbCleartext.Name = "lbCleartext";
+            lbCleartext.Size = new System.Drawing.Size(143, 25);
+            lbCleartext.TabIndex = 8;
+            lbCleartext.Text = "abcimherehehe";
             // 
             // lbIns3
             // 
-            this.lbIns3.AutoSize = true;
-            this.lbIns3.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbIns3.Location = new System.Drawing.Point(38, 225);
-            this.lbIns3.Name = "lbIns3";
-            this.lbIns3.Size = new System.Drawing.Size(311, 25);
-            this.lbIns3.TabIndex = 7;
-            this.lbIns3.Text = "3. Here\'s the non-encrypted phrase.";
+            lbIns3.AutoSize = true;
+            lbIns3.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lbIns3.Location = new System.Drawing.Point(38, 225);
+            lbIns3.Name = "lbIns3";
+            lbIns3.Size = new System.Drawing.Size(311, 25);
+            lbIns3.TabIndex = 7;
+            lbIns3.Text = "3. Here's the non-encrypted phrase.";
             // 
             // btnConfirmInputEncrypt
             // 
-            this.btnConfirmInputEncrypt.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnConfirmInputEncrypt.ForeColor = System.Drawing.Color.Black;
-            this.btnConfirmInputEncrypt.Location = new System.Drawing.Point(508, 157);
-            this.btnConfirmInputEncrypt.Name = "btnConfirmInputEncrypt";
-            this.btnConfirmInputEncrypt.Size = new System.Drawing.Size(101, 32);
-            this.btnConfirmInputEncrypt.TabIndex = 6;
-            this.btnConfirmInputEncrypt.Text = "Confirm";
-            this.btnConfirmInputEncrypt.UseVisualStyleBackColor = true;
-            this.btnConfirmInputEncrypt.Click += new System.EventHandler(this.btnConfirmInputEncrypt_Click);
+            btnConfirmInputEncrypt.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            btnConfirmInputEncrypt.ForeColor = System.Drawing.Color.Black;
+            btnConfirmInputEncrypt.Location = new System.Drawing.Point(508, 157);
+            btnConfirmInputEncrypt.Name = "btnConfirmInputEncrypt";
+            btnConfirmInputEncrypt.Size = new System.Drawing.Size(101, 32);
+            btnConfirmInputEncrypt.TabIndex = 6;
+            btnConfirmInputEncrypt.Text = "Confirm";
+            btnConfirmInputEncrypt.UseVisualStyleBackColor = true;
+            btnConfirmInputEncrypt.Click += btnConfirmInputEncrypt_Click;
             // 
             // gbConfirmPasswordSave
             // 
-            this.gbConfirmPasswordSave.Controls.Add(this.btnSavePasswordConfirmNo);
-            this.gbConfirmPasswordSave.Controls.Add(this.btnSavePasswordConfirmYes);
-            this.gbConfirmPasswordSave.Controls.Add(this.lbSavePasswordConfirmTitle);
-            this.gbConfirmPasswordSave.Controls.Add(this.lbSavePasswordConfirmMessage);
-            this.gbConfirmPasswordSave.Enabled = false;
-            this.gbConfirmPasswordSave.Location = new System.Drawing.Point(162, 293);
-            this.gbConfirmPasswordSave.Name = "gbConfirmPasswordSave";
-            this.gbConfirmPasswordSave.Size = new System.Drawing.Size(306, 197);
-            this.gbConfirmPasswordSave.TabIndex = 4;
-            this.gbConfirmPasswordSave.TabStop = false;
-            this.gbConfirmPasswordSave.Visible = false;
+            gbConfirmPasswordSave.Controls.Add(btnSavePasswordConfirmNo);
+            gbConfirmPasswordSave.Controls.Add(btnSavePasswordConfirmYes);
+            gbConfirmPasswordSave.Controls.Add(lbSavePasswordConfirmTitle);
+            gbConfirmPasswordSave.Controls.Add(lbSavePasswordConfirmMessage);
+            gbConfirmPasswordSave.Enabled = false;
+            gbConfirmPasswordSave.Location = new System.Drawing.Point(162, 293);
+            gbConfirmPasswordSave.Name = "gbConfirmPasswordSave";
+            gbConfirmPasswordSave.Size = new System.Drawing.Size(306, 197);
+            gbConfirmPasswordSave.TabIndex = 4;
+            gbConfirmPasswordSave.TabStop = false;
+            gbConfirmPasswordSave.Visible = false;
             // 
             // btnSavePasswordConfirmNo
             // 
-            this.btnSavePasswordConfirmNo.Location = new System.Drawing.Point(18, 144);
-            this.btnSavePasswordConfirmNo.Name = "btnSavePasswordConfirmNo";
-            this.btnSavePasswordConfirmNo.Size = new System.Drawing.Size(93, 35);
-            this.btnSavePasswordConfirmNo.TabIndex = 3;
-            this.btnSavePasswordConfirmNo.Text = "Cancel";
-            this.btnSavePasswordConfirmNo.UseVisualStyleBackColor = true;
+            btnSavePasswordConfirmNo.Location = new System.Drawing.Point(18, 144);
+            btnSavePasswordConfirmNo.Name = "btnSavePasswordConfirmNo";
+            btnSavePasswordConfirmNo.Size = new System.Drawing.Size(93, 35);
+            btnSavePasswordConfirmNo.TabIndex = 3;
+            btnSavePasswordConfirmNo.Text = "Cancel";
+            btnSavePasswordConfirmNo.UseVisualStyleBackColor = true;
             // 
             // btnSavePasswordConfirmYes
             // 
-            this.btnSavePasswordConfirmYes.Location = new System.Drawing.Point(202, 144);
-            this.btnSavePasswordConfirmYes.Name = "btnSavePasswordConfirmYes";
-            this.btnSavePasswordConfirmYes.Size = new System.Drawing.Size(86, 35);
-            this.btnSavePasswordConfirmYes.TabIndex = 2;
-            this.btnSavePasswordConfirmYes.Text = "Ok";
-            this.btnSavePasswordConfirmYes.UseVisualStyleBackColor = true;
+            btnSavePasswordConfirmYes.Location = new System.Drawing.Point(202, 144);
+            btnSavePasswordConfirmYes.Name = "btnSavePasswordConfirmYes";
+            btnSavePasswordConfirmYes.Size = new System.Drawing.Size(86, 35);
+            btnSavePasswordConfirmYes.TabIndex = 2;
+            btnSavePasswordConfirmYes.Text = "Ok";
+            btnSavePasswordConfirmYes.UseVisualStyleBackColor = true;
             // 
             // lbSavePasswordConfirmTitle
             // 
-            this.lbSavePasswordConfirmTitle.AutoSize = true;
-            this.lbSavePasswordConfirmTitle.Location = new System.Drawing.Point(1, 24);
-            this.lbSavePasswordConfirmTitle.Name = "lbSavePasswordConfirmTitle";
-            this.lbSavePasswordConfirmTitle.Size = new System.Drawing.Size(128, 15);
-            this.lbSavePasswordConfirmTitle.TabIndex = 1;
-            this.lbSavePasswordConfirmTitle.Text = "Open Saved Password?";
+            lbSavePasswordConfirmTitle.AutoSize = true;
+            lbSavePasswordConfirmTitle.Location = new System.Drawing.Point(1, 24);
+            lbSavePasswordConfirmTitle.Name = "lbSavePasswordConfirmTitle";
+            lbSavePasswordConfirmTitle.Size = new System.Drawing.Size(128, 15);
+            lbSavePasswordConfirmTitle.TabIndex = 1;
+            lbSavePasswordConfirmTitle.Text = "Open Saved Password?";
             // 
             // lbSavePasswordConfirmMessage
             // 
-            this.lbSavePasswordConfirmMessage.AutoSize = true;
-            this.lbSavePasswordConfirmMessage.Location = new System.Drawing.Point(1, 58);
-            this.lbSavePasswordConfirmMessage.Name = "lbSavePasswordConfirmMessage";
-            this.lbSavePasswordConfirmMessage.Size = new System.Drawing.Size(305, 45);
-            this.lbSavePasswordConfirmMessage.TabIndex = 0;
-            this.lbSavePasswordConfirmMessage.Text = "You are about to save a text (.txt) file in your documents \r\nfolder which is call" +
-    "ed your password and contains your \r\npassword.";
-            this.lbSavePasswordConfirmMessage.Visible = false;
+            lbSavePasswordConfirmMessage.AutoSize = true;
+            lbSavePasswordConfirmMessage.Location = new System.Drawing.Point(1, 58);
+            lbSavePasswordConfirmMessage.Name = "lbSavePasswordConfirmMessage";
+            lbSavePasswordConfirmMessage.Size = new System.Drawing.Size(305, 45);
+            lbSavePasswordConfirmMessage.TabIndex = 0;
+            lbSavePasswordConfirmMessage.Text = "You are about to save a text (.txt) file in your documents \r\nfolder which is called your password and contains your \r\npassword.";
+            lbSavePasswordConfirmMessage.Visible = false;
             // 
             // txtEncryptInput
             // 
-            this.txtEncryptInput.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txtEncryptInput.Location = new System.Drawing.Point(52, 160);
-            this.txtEncryptInput.Name = "txtEncryptInput";
-            this.txtEncryptInput.Size = new System.Drawing.Size(315, 29);
-            this.txtEncryptInput.TabIndex = 5;
+            txtEncryptInput.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            txtEncryptInput.Location = new System.Drawing.Point(52, 160);
+            txtEncryptInput.Name = "txtEncryptInput";
+            txtEncryptInput.Size = new System.Drawing.Size(315, 29);
+            txtEncryptInput.TabIndex = 5;
             // 
             // lbIns2
             // 
-            this.lbIns2.AutoSize = true;
-            this.lbIns2.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbIns2.Location = new System.Drawing.Point(38, 128);
-            this.lbIns2.Name = "lbIns2";
-            this.lbIns2.Size = new System.Drawing.Size(586, 25);
-            this.lbIns2.TabIndex = 4;
-            this.lbIns2.Text = "2. Enter the encrypted string that was encrypted with your password.";
+            lbIns2.AutoSize = true;
+            lbIns2.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lbIns2.Location = new System.Drawing.Point(38, 128);
+            lbIns2.Name = "lbIns2";
+            lbIns2.Size = new System.Drawing.Size(586, 25);
+            lbIns2.TabIndex = 4;
+            lbIns2.Text = "2. Enter the encrypted string that was encrypted with your password.";
             // 
             // btnConfirmPassword
             // 
-            this.btnConfirmPassword.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnConfirmPassword.ForeColor = System.Drawing.Color.Black;
-            this.btnConfirmPassword.Location = new System.Drawing.Point(508, 60);
-            this.btnConfirmPassword.Name = "btnConfirmPassword";
-            this.btnConfirmPassword.Size = new System.Drawing.Size(101, 32);
-            this.btnConfirmPassword.TabIndex = 3;
-            this.btnConfirmPassword.Text = "Confirm";
-            this.btnConfirmPassword.UseVisualStyleBackColor = true;
-            this.btnConfirmPassword.Click += new System.EventHandler(this.btnConfirmPass_Click);
+            btnConfirmPassword.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            btnConfirmPassword.ForeColor = System.Drawing.Color.Black;
+            btnConfirmPassword.Location = new System.Drawing.Point(508, 60);
+            btnConfirmPassword.Name = "btnConfirmPassword";
+            btnConfirmPassword.Size = new System.Drawing.Size(101, 32);
+            btnConfirmPassword.TabIndex = 3;
+            btnConfirmPassword.Text = "Confirm";
+            btnConfirmPassword.UseVisualStyleBackColor = true;
+            btnConfirmPassword.Click += btnConfirmPass_Click;
             // 
             // txtPasswordInput
             // 
-            this.txtPasswordInput.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txtPasswordInput.Location = new System.Drawing.Point(52, 64);
-            this.txtPasswordInput.Name = "txtPasswordInput";
-            this.txtPasswordInput.Size = new System.Drawing.Size(182, 29);
-            this.txtPasswordInput.TabIndex = 1;
+            txtPasswordInput.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            txtPasswordInput.Location = new System.Drawing.Point(52, 64);
+            txtPasswordInput.Name = "txtPasswordInput";
+            txtPasswordInput.Size = new System.Drawing.Size(182, 29);
+            txtPasswordInput.TabIndex = 1;
             // 
             // lbIns1
             // 
-            this.lbIns1.AutoSize = true;
-            this.lbIns1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbIns1.Location = new System.Drawing.Point(38, 24);
-            this.lbIns1.Name = "lbIns1";
-            this.lbIns1.Size = new System.Drawing.Size(485, 25);
-            this.lbIns1.TabIndex = 0;
-            this.lbIns1.Text = "1. Enter the password that you encrypted the string with.";
+            lbIns1.AutoSize = true;
+            lbIns1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lbIns1.Location = new System.Drawing.Point(38, 24);
+            lbIns1.Name = "lbIns1";
+            lbIns1.Size = new System.Drawing.Size(485, 25);
+            lbIns1.TabIndex = 0;
+            lbIns1.Text = "1. Enter the password that you encrypted the string with.";
             // 
             // gbSaveETextConfirm
             // 
-            this.gbSaveETextConfirm.Controls.Add(this.btnSaveEncryptedText);
-            this.gbSaveETextConfirm.Controls.Add(this.btnSaveETextConfirmNo);
-            this.gbSaveETextConfirm.Controls.Add(this.btnSaveETextConfirmYes);
-            this.gbSaveETextConfirm.Controls.Add(this.lbSaveETextConfirmTitle);
-            this.gbSaveETextConfirm.Controls.Add(this.lbSaveETextConfirmMessage);
-            this.gbSaveETextConfirm.Enabled = false;
-            this.gbSaveETextConfirm.Location = new System.Drawing.Point(28, 293);
-            this.gbSaveETextConfirm.Name = "gbSaveETextConfirm";
-            this.gbSaveETextConfirm.Size = new System.Drawing.Size(306, 197);
-            this.gbSaveETextConfirm.TabIndex = 5;
-            this.gbSaveETextConfirm.TabStop = false;
-            this.gbSaveETextConfirm.Visible = false;
+            gbSaveETextConfirm.Controls.Add(btnSaveEncryptedText);
+            gbSaveETextConfirm.Controls.Add(btnSaveETextConfirmNo);
+            gbSaveETextConfirm.Controls.Add(btnSaveETextConfirmYes);
+            gbSaveETextConfirm.Controls.Add(lbSaveETextConfirmTitle);
+            gbSaveETextConfirm.Controls.Add(lbSaveETextConfirmMessage);
+            gbSaveETextConfirm.Enabled = false;
+            gbSaveETextConfirm.Location = new System.Drawing.Point(28, 293);
+            gbSaveETextConfirm.Name = "gbSaveETextConfirm";
+            gbSaveETextConfirm.Size = new System.Drawing.Size(306, 197);
+            gbSaveETextConfirm.TabIndex = 5;
+            gbSaveETextConfirm.TabStop = false;
+            gbSaveETextConfirm.Visible = false;
             // 
             // btnSaveEncryptedText
             // 
-            this.btnSaveEncryptedText.Location = new System.Drawing.Point(322, 229);
-            this.btnSaveEncryptedText.Name = "btnSaveEncryptedText";
-            this.btnSaveEncryptedText.Size = new System.Drawing.Size(45, 23);
-            this.btnSaveEncryptedText.TabIndex = 11;
-            this.btnSaveEncryptedText.Text = "Save";
-            this.btnSaveEncryptedText.UseVisualStyleBackColor = true;
+            btnSaveEncryptedText.Location = new System.Drawing.Point(322, 229);
+            btnSaveEncryptedText.Name = "btnSaveEncryptedText";
+            btnSaveEncryptedText.Size = new System.Drawing.Size(45, 23);
+            btnSaveEncryptedText.TabIndex = 11;
+            btnSaveEncryptedText.Text = "Save";
+            btnSaveEncryptedText.UseVisualStyleBackColor = true;
             // 
             // btnSaveETextConfirmNo
             // 
-            this.btnSaveETextConfirmNo.Location = new System.Drawing.Point(18, 144);
-            this.btnSaveETextConfirmNo.Name = "btnSaveETextConfirmNo";
-            this.btnSaveETextConfirmNo.Size = new System.Drawing.Size(93, 35);
-            this.btnSaveETextConfirmNo.TabIndex = 3;
-            this.btnSaveETextConfirmNo.Text = "Cancel";
-            this.btnSaveETextConfirmNo.UseVisualStyleBackColor = true;
+            btnSaveETextConfirmNo.Location = new System.Drawing.Point(18, 144);
+            btnSaveETextConfirmNo.Name = "btnSaveETextConfirmNo";
+            btnSaveETextConfirmNo.Size = new System.Drawing.Size(93, 35);
+            btnSaveETextConfirmNo.TabIndex = 3;
+            btnSaveETextConfirmNo.Text = "Cancel";
+            btnSaveETextConfirmNo.UseVisualStyleBackColor = true;
             // 
             // btnSaveETextConfirmYes
             // 
-            this.btnSaveETextConfirmYes.Location = new System.Drawing.Point(202, 144);
-            this.btnSaveETextConfirmYes.Name = "btnSaveETextConfirmYes";
-            this.btnSaveETextConfirmYes.Size = new System.Drawing.Size(86, 35);
-            this.btnSaveETextConfirmYes.TabIndex = 2;
-            this.btnSaveETextConfirmYes.Text = "Ok";
-            this.btnSaveETextConfirmYes.UseVisualStyleBackColor = true;
+            btnSaveETextConfirmYes.Location = new System.Drawing.Point(202, 144);
+            btnSaveETextConfirmYes.Name = "btnSaveETextConfirmYes";
+            btnSaveETextConfirmYes.Size = new System.Drawing.Size(86, 35);
+            btnSaveETextConfirmYes.TabIndex = 2;
+            btnSaveETextConfirmYes.Text = "Ok";
+            btnSaveETextConfirmYes.UseVisualStyleBackColor = true;
             // 
             // lbSaveETextConfirmTitle
             // 
-            this.lbSaveETextConfirmTitle.AutoSize = true;
-            this.lbSaveETextConfirmTitle.Location = new System.Drawing.Point(1, 24);
-            this.lbSaveETextConfirmTitle.Name = "lbSaveETextConfirmTitle";
-            this.lbSaveETextConfirmTitle.Size = new System.Drawing.Size(116, 15);
-            this.lbSaveETextConfirmTitle.TabIndex = 1;
-            this.lbSaveETextConfirmTitle.Text = "Save Encrypted Text?";
+            lbSaveETextConfirmTitle.AutoSize = true;
+            lbSaveETextConfirmTitle.Location = new System.Drawing.Point(1, 24);
+            lbSaveETextConfirmTitle.Name = "lbSaveETextConfirmTitle";
+            lbSaveETextConfirmTitle.Size = new System.Drawing.Size(116, 15);
+            lbSaveETextConfirmTitle.TabIndex = 1;
+            lbSaveETextConfirmTitle.Text = "Save Encrypted Text?";
             // 
             // lbSaveETextConfirmMessage
             // 
-            this.lbSaveETextConfirmMessage.AutoSize = true;
-            this.lbSaveETextConfirmMessage.Location = new System.Drawing.Point(1, 58);
-            this.lbSaveETextConfirmMessage.Name = "lbSaveETextConfirmMessage";
-            this.lbSaveETextConfirmMessage.Size = new System.Drawing.Size(305, 45);
-            this.lbSaveETextConfirmMessage.TabIndex = 0;
-            this.lbSaveETextConfirmMessage.Text = "You are about to save a text (.txt) file in your documents \r\nfolder which is call" +
-    "ed TEPPEText and contains your \r\nencrypted text.";
+            lbSaveETextConfirmMessage.AutoSize = true;
+            lbSaveETextConfirmMessage.Location = new System.Drawing.Point(1, 58);
+            lbSaveETextConfirmMessage.Name = "lbSaveETextConfirmMessage";
+            lbSaveETextConfirmMessage.Size = new System.Drawing.Size(305, 45);
+            lbSaveETextConfirmMessage.TabIndex = 0;
+            lbSaveETextConfirmMessage.Text = "You are about to save a text (.txt) file in your documents \r\nfolder which is called TEPPEText and contains your \r\nencrypted text.";
             // 
             // btnGenPass
             // 
-            this.btnGenPass.Location = new System.Drawing.Point(240, 64);
-            this.btnGenPass.Name = "btnGenPass";
-            this.btnGenPass.Size = new System.Drawing.Size(127, 23);
-            this.btnGenPass.TabIndex = 2;
-            this.btnGenPass.Text = "Generate a Password";
-            this.btnGenPass.UseVisualStyleBackColor = true;
-            this.btnGenPass.Visible = false;
+            btnGenPass.Location = new System.Drawing.Point(240, 64);
+            btnGenPass.Name = "btnGenPass";
+            btnGenPass.Size = new System.Drawing.Size(127, 23);
+            btnGenPass.TabIndex = 2;
+            btnGenPass.Text = "Generate a Password";
+            btnGenPass.UseVisualStyleBackColor = true;
+            btnGenPass.Visible = false;
             // 
             // btnGoToMainMenu
             // 
-            this.btnGoToMainMenu.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnGoToMainMenu.Location = new System.Drawing.Point(578, 389);
-            this.btnGoToMainMenu.Name = "btnGoToMainMenu";
-            this.btnGoToMainMenu.Size = new System.Drawing.Size(168, 36);
-            this.btnGoToMainMenu.TabIndex = 5;
-            this.btnGoToMainMenu.Text = "Back to main menu";
-            this.btnGoToMainMenu.UseVisualStyleBackColor = true;
-            this.btnGoToMainMenu.Click += new System.EventHandler(this.btnGoToMainMenu_Click);
+            btnGoToMainMenu.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            btnGoToMainMenu.Location = new System.Drawing.Point(578, 389);
+            btnGoToMainMenu.Name = "btnGoToMainMenu";
+            btnGoToMainMenu.Size = new System.Drawing.Size(168, 36);
+            btnGoToMainMenu.TabIndex = 5;
+            btnGoToMainMenu.Text = "Back to main menu";
+            btnGoToMainMenu.UseVisualStyleBackColor = true;
+            btnGoToMainMenu.Click += btnGoToMainMenu_Click;
             // 
             // frmDecryptString
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnGoToMainMenu);
-            this.Controls.Add(this.gbMain);
-            this.Controls.Add(this.label1);
-            this.Name = "frmDecryptString";
-            this.Text = "TEPP: Decrpytion";
-            this.Load += new System.EventHandler(this.Form3_Load);
-            this.gbMain.ResumeLayout(false);
-            this.gbMain.PerformLayout();
-            this.gbConfirmPasswordSave.ResumeLayout(false);
-            this.gbConfirmPasswordSave.PerformLayout();
-            this.gbSaveETextConfirm.ResumeLayout(false);
-            this.gbSaveETextConfirm.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(800, 450);
+            Controls.Add(btnGoToMainMenu);
+            Controls.Add(gbMain);
+            Controls.Add(label1);
+            Name = "frmDecryptString";
+            Text = "TEPP: Decrpytion";
+            Load += Form3_Load;
+            gbMain.ResumeLayout(false);
+            gbMain.PerformLayout();
+            gbConfirmPasswordSave.ResumeLayout(false);
+            gbConfirmPasswordSave.PerformLayout();
+            gbSaveETextConfirm.ResumeLayout(false);
+            gbSaveETextConfirm.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
