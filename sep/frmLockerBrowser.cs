@@ -8,9 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using sep;
 using System.IO;
 using System.Reflection;
+using sep.Models;
 
 namespace sep
 {

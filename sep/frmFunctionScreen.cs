@@ -13,6 +13,7 @@ using Google.Authenticator;
 using QRCoder;
 using System.Data.SqlClient;
 using System.Data;
+using sep.Models;
 
 namespace sep
 {

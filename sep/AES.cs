@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Runtime.InteropServices;
 using System.IO;
 using System.Windows.Forms;
+using sep.Models;
 
 namespace sep
 {

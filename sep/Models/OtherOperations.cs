@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace sep
+namespace sep.Models
 {
     internal class OtherOperations
     {
@@ -33,7 +33,7 @@ namespace sep
         public static void LineChanger(string file, string find, string replace)
         {
             string[] lines = File.ReadAllLines(file);
-            for(int i=0; i<lines.Length; i++)
+            for (int i = 0; i < lines.Length; i++)
             {
                 if (lines[i].Contains(find))
                 {
@@ -55,7 +55,7 @@ namespace sep
                 string currentWritable = current.ToString("d");
                 File.AppendAllText(libDE, $"\r\n{currentWritable}~{fileName}~{password}");
                 File.WriteAllLines(libDE, File.ReadAllLines(libDE).Where(l => !string.IsNullOrWhiteSpace(l)));
-                AES.FileEncrypt(libDE, pw, false,"0");
+                AES.FileEncrypt(libDE, pw, false, "0");
                 File.Delete(libDE);
             }
             else
@@ -65,7 +65,7 @@ namespace sep
                 string currentWritable = current.ToString("d");
                 File.WriteAllText(libDE, $"{currentWritable}~{fileName}~{password}");
                 File.WriteAllLines(libDE, File.ReadAllLines(libDE).Where(l => !string.IsNullOrWhiteSpace(l)));
-                AES.FileEncrypt(libDE, pw,false,"0");
+                AES.FileEncrypt(libDE, pw, false, "0");
                 File.Delete(libDE);
             }
         }

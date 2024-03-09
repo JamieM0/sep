@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Text.Json;
 using System.IO;
 
-namespace sep
+namespace sep.Models
 {
     public class Options
     {

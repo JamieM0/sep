@@ -11,6 +11,7 @@ using System.IO;
 using System.Linq;
 using Google.Authenticator;
 using QRCoder;
+using sep.Models;
 
 namespace sep
 {

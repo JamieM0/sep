@@ -10,7 +10,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Security.Cryptography;
 using System.Windows.Forms;
 
-namespace sep
+namespace sep.Models
 {
     internal class DatabaseHelper
     {
@@ -64,7 +64,7 @@ namespace sep
                 }
             }
         }
-        
+
         // Add a method to retrieve the SecretKey from a given id
         public static string GetSecretKey(int id)
         {
@@ -142,17 +142,17 @@ namespace sep
         }
         // Add other database operations as needed (e.g., retrieve data, update data, delete data, etc.).
     }
-    
-    internal class DatabaseHelperPL 
+
+    internal class DatabaseHelperPL
     {
-        
+
         private static readonly string AppDataFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
         private static readonly string DatabaseFolderPath = Path.Combine(AppDataFolderPath, "sep"); // Change "YourAppName" to your application name.
 
         public static readonly string DatabaseFileName = "pwLib.db";
         private static readonly string DatabaseFilePath = Path.Combine(DatabaseFolderPath, DatabaseFileName);
         public static readonly string EncryptedDatabaseFilePath = DatabaseFilePath + ".aes";
-        
+
         private static readonly string ConnectionString = "Data Source=" + DatabaseFilePath + ";Version=3;";
 
         public static void InitializeDatabase()
@@ -163,7 +163,7 @@ namespace sep
             {
                 Directory.CreateDirectory(DatabaseFolderPath);
             }
-            
+
             using (var connection = new SQLiteConnection(ConnectionString))
             {
                 connection.Open();
@@ -185,7 +185,7 @@ namespace sep
         // Add a method to insert data into the table.
         public static void InsertPWLib(string rawUFID, string password)
         {
-            string ufID=ComputeSHA256Hash(rawUFID);
+            string ufID = ComputeSHA256Hash(rawUFID);
             using (var connection = new SQLiteConnection(ConnectionString))
             {
                 connection.Open();
@@ -480,7 +480,7 @@ namespace sep
 
             return lockState;
         }
-        
+
         public static void setLockState(int id, bool state)
         {
             using (var connection = new SQLiteConnection(ConnectionString))
@@ -497,7 +497,7 @@ namespace sep
                 }
             }
         }
-        
+
         public static void deleteLocker(int id)
         {
             using (var connection = new SQLiteConnection(ConnectionString))
@@ -533,10 +533,10 @@ namespace sep
         public string location { get; set; }
         public string password { get; set; }
         public bool lockState { get; set; }
-        
+
         public Locker(int id, string name, string location, string password, bool lockState)
         {
-            this.ID = id;
+            ID = id;
             this.name = name;
             this.location = location;
             this.password = password;
@@ -551,7 +551,7 @@ namespace sep
         }
         public Locker()
         {
-            
+
         }
     }
 }
