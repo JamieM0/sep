@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+//using Microsoft.VisualBasic;
+//using Microsoft.VisualBasic.FileIO;
+//using static System.Net.WebRequestMethods;
 
 namespace sep
 {
@@ -98,13 +101,14 @@ namespace sep
 
                     if (cbDeleteAsk.Checked)
                     {
-                        if (MessageBox.Show("Entering the incorrect password WILL result in a corrupted file!\r\n\r\nDo you want to delete the encrypted file?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        if (MessageBox.Show("File decryption attempted. If you entered the incorrect password, the decrypted file WILL be corrupted and is likely unrecoverable.\r\nClick \"Yes\" to delete the encypted file (send it to the recycle bin)\r\nDo you want to delete the encrypted file?", "Warning! Entering the incorrect password WILL result in a corrupted file!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
-                            AesOperation.SecureDelete(filePath, 3);
+                            //AesOperation.SecureDelete(filePath, 3);
+                            Microsoft.VisualBasic.FileIO.FileSystem.DeleteFile(filePath,Microsoft.VisualBasic.FileIO.UIOption.OnlyErrorDialogs,Microsoft.VisualBasic.FileIO.RecycleOption.SendToRecycleBin);
                         }
                     }
 
-
+                    
                     MessageBox.Show("The file has been decrypted!", "Decrypted!");
 
                     Application.Exit();
@@ -204,13 +208,13 @@ namespace sep
 
         private void cbSaveOriginal_CheckedChanged(object sender, EventArgs e)
         {
-            if (cbDeleteAsk.Checked)
-            {
-                if (MessageBox.Show($"Are you sure you want to delete this file?\r\n\r\nThe original file will be securely deleted after it has been {btnFunction.Text.ToLower()}ed.\r\n\r\nIt will be overwritten 3 times, and become unrecoverable.\r\nThis is the only warning.", "Delete original file?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
-                {
-                    cbDeleteAsk.Checked = false;
-                }
-            }
+            //if (cbDeleteAsk.Checked)
+            //{
+            //    if (MessageBox.Show($"Are you sure you want to delete this file?\r\n\r\nThe original file will be securely deleted after it has been {btnFunction.Text.ToLower()}ed.\r\n\r\nIt will be overwritten 3 times, and become unrecoverable.\r\nThis is the only warning.", "Delete original file?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+            //    {
+            //        cbDeleteAsk.Checked = false;
+            //    }
+            //}
         }
     }
 }

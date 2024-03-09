@@ -408,14 +408,15 @@ namespace sep
 
                     if (cbDeleteAsk.Checked)
                     {
-                        if (MessageBox.Show("Entering the incorrect password WILL result in a corrupted file!\r\n\r\nAre you sure you want to delete the encrypted files?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        if (MessageBox.Show("File decryption attempted. If you entered the incorrect password, the decrypted file WILL be corrupted and is likely unrecoverable.\r\nClick \"Yes\" to delete the encypted file (send it to the recycle bin)\r\nDo you want to delete the encrypted file?", "Warning! Entering the incorrect password WILL result in a corrupted file!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
                             for (int i = 0; i < fileName.Length; i++)
                             {
-                                AesOperation.SecureDelete(filePath[i], 3);
+                                Microsoft.VisualBasic.FileIO.FileSystem.DeleteFile(filePath[i], Microsoft.VisualBasic.FileIO.UIOption.OnlyErrorDialogs, Microsoft.VisualBasic.FileIO.RecycleOption.SendToRecycleBin);
                             }
                         }
                     }
+                    
                     Hide();
                     new frmHome().Show();
                 }
