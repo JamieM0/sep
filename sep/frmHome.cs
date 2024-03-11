@@ -343,5 +343,17 @@ namespace sep
             Hide();
             new frmOptions().Show();
         }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            Hide();
+            new frmFunctionString(true).Show();
+        }
+
+        private void button2_Click_2(object sender, EventArgs e)
+        {
+            Hide();
+            new frmFunctionString(false).Show();
+        }
     }
 }

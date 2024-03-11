@@ -117,7 +117,8 @@ namespace sep
                 {
                     string input = file;
                     string output = targetDirLocked + "\\" + Path.GetFileName(file) + ".aes";
-                    AES.FileEncrypt(input, output, pw);
+                    //AES.FileEncrypt(input, output, pw);
+                    AES.FileEncrypt(input, pw, false, "0");
                 }
 
                 //populate dirsToCheck with all the directories & subdirectories inside the chosen folder

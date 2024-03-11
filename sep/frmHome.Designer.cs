@@ -44,6 +44,7 @@
             passwordLibraryToolStripMenuItem = new System.Windows.Forms.ToolStripDropDownMenu();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             wipeFileSecureDeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            optionsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             btnEncryptFile = new System.Windows.Forms.Button();
@@ -52,7 +53,8 @@
             btnLockers = new System.Windows.Forms.Button();
             pbGithub = new System.Windows.Forms.PictureBox();
             btnSecureDelete = new System.Windows.Forms.Button();
-            optionsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            button1 = new System.Windows.Forms.Button();
+            button2 = new System.Windows.Forms.Button();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbGithub).BeginInit();
             SuspendLayout();
@@ -122,14 +124,14 @@
             // lockersToolStripMenuItem
             // 
             lockersToolStripMenuItem.Name = "lockersToolStripMenuItem";
-            lockersToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            lockersToolStripMenuItem.Size = new System.Drawing.Size(135, 26);
             lockersToolStripMenuItem.Text = "Lockers";
             lockersToolStripMenuItem.Click += lockersToolStripMenuItem_Click;
             // 
             // optionsToolStripMenuItem
             // 
             optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            optionsToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            optionsToolStripMenuItem.Size = new System.Drawing.Size(135, 26);
             optionsToolStripMenuItem.Text = "Options";
             optionsToolStripMenuItem.Click += optionsToolStripMenuItem_Click;
             // 
@@ -155,6 +157,13 @@
             wipeFileSecureDeleteToolStripMenuItem.Size = new System.Drawing.Size(195, 25);
             wipeFileSecureDeleteToolStripMenuItem.Text = "Wipe File (Secure Delete)";
             wipeFileSecureDeleteToolStripMenuItem.Click += wipeFileSecureDeleteToolStripMenuItem_Click;
+            // 
+            // optionsToolStripMenuItem1
+            // 
+            optionsToolStripMenuItem1.Name = "optionsToolStripMenuItem1";
+            optionsToolStripMenuItem1.Size = new System.Drawing.Size(77, 25);
+            optionsToolStripMenuItem1.Text = "Options";
+            optionsToolStripMenuItem1.Click += optionsToolStripMenuItem1_Click;
             // 
             // label1
             // 
@@ -258,18 +267,33 @@
             btnSecureDelete.UseVisualStyleBackColor = true;
             btnSecureDelete.Click += btnSecureDelete_Click;
             // 
-            // optionsToolStripMenuItem1
+            // button1
             // 
-            optionsToolStripMenuItem1.Name = "optionsToolStripMenuItem1";
-            optionsToolStripMenuItem1.Size = new System.Drawing.Size(77, 25);
-            optionsToolStripMenuItem1.Text = "Options";
-            optionsToolStripMenuItem1.Click += optionsToolStripMenuItem1_Click;
+            button1.Location = new System.Drawing.Point(94, 315);
+            button1.Name = "button1";
+            button1.Size = new System.Drawing.Size(123, 23);
+            button1.TabIndex = 12;
+            button1.Text = "Encrypt String";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_2;
+            // 
+            // button2
+            // 
+            button2.Location = new System.Drawing.Point(94, 344);
+            button2.Name = "button2";
+            button2.Size = new System.Drawing.Size(123, 23);
+            button2.TabIndex = 13;
+            button2.Text = "Decrypt String";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click_2;
             // 
             // frmHome
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(800, 460);
+            Controls.Add(button2);
+            Controls.Add(button1);
             Controls.Add(btnSecureDelete);
             Controls.Add(btnLockers);
             Controls.Add(btnPWLib);
@@ -314,5 +338,7 @@
         private System.Windows.Forms.ToolStripMenuItem wipeFileSecureDeleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
