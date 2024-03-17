@@ -137,7 +137,15 @@ namespace sep
                     fsCrypt.Close();
 
                     //Rename the file
-                    File.Move(inputFile + ".aes", newFileName);
+                    try
+                    {
+                        File.Move(inputFile + ".aes", newFileName);
+                    }
+                    catch(Exception ex)
+                    {
+                        newFileName = Path.Combine(directory+".encloc", fileName + extension);
+                        File.Move(inputFile + ".aes", newFileName);
+                    }
                 }
                 else
                 {

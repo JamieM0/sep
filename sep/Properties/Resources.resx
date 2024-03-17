@@ -118,9 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="_1_fixed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\1_fixed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="copy_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\copy-icon.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -177,5 +174,20 @@
   </data>
   <data name="save_icon_small__Custom_" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\save_icon_small (Custom).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Background_FunctionString" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Background_FunctionString.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Background_Options" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Background_Options.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="reset_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\reset_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="reset_icon_active" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\reset_icon_active.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_1_fixed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1_fixed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

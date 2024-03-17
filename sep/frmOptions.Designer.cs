@@ -54,6 +54,7 @@
             // lbTitle
             // 
             lbTitle.AutoSize = true;
+            lbTitle.BackColor = System.Drawing.Color.Transparent;
             lbTitle.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             lbTitle.Location = new System.Drawing.Point(151, 9);
             lbTitle.Name = "lbTitle";
@@ -64,39 +65,43 @@
             // cbDebugMode
             // 
             cbDebugMode.AutoSize = true;
+            cbDebugMode.BackColor = System.Drawing.Color.Transparent;
             cbDebugMode.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             cbDebugMode.Location = new System.Drawing.Point(12, 45);
             cbDebugMode.Name = "cbDebugMode";
             cbDebugMode.Size = new System.Drawing.Size(141, 29);
             cbDebugMode.TabIndex = 2;
             cbDebugMode.Text = "Debug Mode";
-            cbDebugMode.UseVisualStyleBackColor = true;
+            cbDebugMode.UseVisualStyleBackColor = false;
             // 
             // cbEncryptFileNames
             // 
             cbEncryptFileNames.AutoSize = true;
+            cbEncryptFileNames.BackColor = System.Drawing.Color.Transparent;
             cbEncryptFileNames.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             cbEncryptFileNames.Location = new System.Drawing.Point(12, 105);
             cbEncryptFileNames.Name = "cbEncryptFileNames";
             cbEncryptFileNames.Size = new System.Drawing.Size(191, 29);
             cbEncryptFileNames.TabIndex = 3;
             cbEncryptFileNames.Text = "Encrypt File Names";
-            cbEncryptFileNames.UseVisualStyleBackColor = true;
+            cbEncryptFileNames.UseVisualStyleBackColor = false;
             // 
             // cbRemoveDirectoryStructure
             // 
             cbRemoveDirectoryStructure.AutoSize = true;
+            cbRemoveDirectoryStructure.BackColor = System.Drawing.Color.Transparent;
             cbRemoveDirectoryStructure.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             cbRemoveDirectoryStructure.Location = new System.Drawing.Point(12, 166);
             cbRemoveDirectoryStructure.Name = "cbRemoveDirectoryStructure";
             cbRemoveDirectoryStructure.Size = new System.Drawing.Size(349, 29);
             cbRemoveDirectoryStructure.TabIndex = 4;
             cbRemoveDirectoryStructure.Text = "Remove Directory Structure in Lockers";
-            cbRemoveDirectoryStructure.UseVisualStyleBackColor = true;
+            cbRemoveDirectoryStructure.UseVisualStyleBackColor = false;
             // 
             // lbDebugModeInfo
             // 
             lbDebugModeInfo.AutoSize = true;
+            lbDebugModeInfo.BackColor = System.Drawing.Color.Transparent;
             lbDebugModeInfo.Location = new System.Drawing.Point(32, 72);
             lbDebugModeInfo.Name = "lbDebugModeInfo";
             lbDebugModeInfo.Size = new System.Drawing.Size(119, 15);
@@ -106,6 +111,7 @@
             // lbEncryptFileNamesInfo
             // 
             lbEncryptFileNamesInfo.AutoSize = true;
+            lbEncryptFileNamesInfo.BackColor = System.Drawing.Color.Transparent;
             lbEncryptFileNamesInfo.Location = new System.Drawing.Point(32, 132);
             lbEncryptFileNamesInfo.Name = "lbEncryptFileNamesInfo";
             lbEncryptFileNamesInfo.Size = new System.Drawing.Size(366, 15);
@@ -115,6 +121,7 @@
             // lbRemoveDirectoryStructureInLockersInfo
             // 
             lbRemoveDirectoryStructureInLockersInfo.AutoSize = true;
+            lbRemoveDirectoryStructureInLockersInfo.BackColor = System.Drawing.Color.Transparent;
             lbRemoveDirectoryStructureInLockersInfo.Location = new System.Drawing.Point(32, 193);
             lbRemoveDirectoryStructureInLockersInfo.Name = "lbRemoveDirectoryStructureInLockersInfo";
             lbRemoveDirectoryStructureInLockersInfo.Size = new System.Drawing.Size(270, 15);
@@ -125,6 +132,8 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.Background_Options;
+            BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             ClientSize = new System.Drawing.Size(403, 285);
             Controls.Add(lbDebugModeInfo);
             Controls.Add(lbRemoveDirectoryStructureInLockersInfo);

@@ -93,6 +93,26 @@ namespace sep.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Background_FunctionString {
+            get {
+                object obj = ResourceManager.GetObject("Background_FunctionString", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Background_Options {
+            get {
+                object obj = ResourceManager.GetObject("Background_Options", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap copy_icon {
             get {
                 object obj = ResourceManager.GetObject("copy_icon", resourceCulture);
@@ -236,6 +256,26 @@ namespace sep.Properties {
         internal static System.Drawing.Bitmap remove {
             get {
                 object obj = ResourceManager.GetObject("remove", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap reset_icon {
+            get {
+                object obj = ResourceManager.GetObject("reset_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap reset_icon_active {
+            get {
+                object obj = ResourceManager.GetObject("reset_icon_active", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
