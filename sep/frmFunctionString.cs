@@ -25,8 +25,12 @@ namespace sep
                 lbInfoInput.Text = "Enter the encrypted string you want to decrypt:";
                 btnConfirmInput.Text = "Decrypt String";
                 lbInfoOutput.Text = "Decrypted String:";
+                txtInput.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+                txtOutput.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
+                pnlPassword.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
             }
             CenterControlToFormHorizontally(lbInfo);
+            CenterToScreen();
         }
 
         public void CenterControlToFormHorizontally(Control control)
@@ -69,11 +73,61 @@ namespace sep
             txtOutput.Visible = true;
             lbInfoOutput.Visible = true;
             btnCopy.Visible = true;
+            btnReset.Visible = true;
         }
 
         private void btnCopy_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(txtOutput.Text);
+        }
+
+        private void txtInput_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbInfo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCopy_MouseEnter(object sender, EventArgs e)
+        {
+            btnCopy.BackgroundImage = Properties.Resources.copy_icon_active;
+        }
+
+        private void btnCopy_MouseLeave(object sender, EventArgs e)
+        {
+            btnCopy.BackgroundImage = Properties.Resources.copy_icon;
+        }
+
+        private void btnReset_MouseEnter(object sender, EventArgs e)
+        {
+            btnReset.BackgroundImage = Properties.Resources.reset_icon_active;
+        }
+
+        private void btnReset_MouseLeave(object sender, EventArgs e)
+        {
+            btnReset.BackgroundImage = Properties.Resources.reset_icon;
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            btnCopy.Visible = false;
+            btnReset.Visible = false;
+            txtOutput.Visible = false;
+            lbInfoOutput.Visible = false;
+            txtInput.Enabled = true;
+            txtPassword.Enabled = true;
+            txtInput.Text = "";
+            txtPassword.Text = "";
+            txtOutput.Text = "";
+        }
+
+        private void btnGoMainMenu_Click(object sender, EventArgs e)
+        {
+            Hide();
+            new frmHome().Show();
         }
     }
 }

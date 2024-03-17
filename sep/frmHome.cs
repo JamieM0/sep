@@ -9,7 +9,9 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Microsoft.Win32;
+using Octokit;
 using sep.Models;
+using System.Threading.Tasks;
 
 namespace sep
 {
@@ -61,8 +63,8 @@ namespace sep
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Hide();
-            new frmDecryptString().Show();
+            //Hide();
+            //new frmDecryptString().Show();
         }
 
         private void frmHome_Load(object sender, EventArgs e)
@@ -90,9 +92,10 @@ namespace sep
 
                 //File.AppendAllText(Path.Combine(OtherOperations.storeLoc, "lockersInfo.conf"), $"{}~{}~0\r\n");
                 MessageBox.Show("Locker added to list.\nLock it through the \"Lockers\" screen in the main program.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Application.Exit();
+                System.Windows.Forms.Application.Exit();
                 sent = true; //(movetoend)
             }
+            UpdateVersionLabel();
 
             //if (OtherOperations.debug == true)
             //{
@@ -104,6 +107,26 @@ namespace sep
             //    enableDebugModeToolStripMenuItem.Text = "Enable Debug Mode";
 
             //}
+        }
+
+        private async void UpdateVersionLabel()
+        {
+            // Assuming 'lbVersionNumber' is your label on the form
+            lbVersionNumber.Text = "Loading...";
+            lbVersionNumber.Text = await VersionGetter();
+        }
+        static async Task<String> VersionGetter()
+        {
+            // Initialize a new instance of the GitHubClient with a ProductHeaderValue
+            var client = new GitHubClient(new ProductHeaderValue("SEP"));
+
+            // Replace 'owner' with the username and 'repo' with the repository name
+            var releases = await client.Repository.Release.GetAll("JamieM0", "sep");
+
+            // The first item in the list will be the latest release
+            var latestRelease = releases[0];
+
+            return ($"SEP {latestRelease.TagName}");
         }
 
         private void pbGithub_Click(object sender, EventArgs e)
@@ -161,7 +184,8 @@ namespace sep
 
         private void encryptStringToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new frmEncryptString().Show();
+            Hide();
+            new frmFunctionString(true).Show();
         }
 
         private void decryptFileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -173,7 +197,9 @@ namespace sep
 
         private void decryptStringToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new frmDecryptString().Show();
+            //new frmDecryptString().Show();
+            Hide();
+            new frmFunctionString(false).Show();
         }
 
         private void lockersToolStripMenuItem_Click(object sender, EventArgs e)
@@ -224,7 +250,7 @@ namespace sep
                 key.SetValue("icon", Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "enclogo.ico"));
                 key.CreateSubKey("command");
                 key = key.OpenSubKey("command", true);
-                key.SetValue("", "\"" + Application.ExecutablePath + "\" -e \"%1\"");
+                key.SetValue("", "\"" + System.Windows.Forms.Application.ExecutablePath + "\" -e \"%1\"");
 
                 key = Registry.ClassesRoot.OpenSubKey(@"Directory\shell", true);
                 key.CreateSubKey("SEP Convert to Locker");
@@ -232,7 +258,7 @@ namespace sep
                 key.SetValue("icon", Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "enclogo.ico"));
                 key.CreateSubKey("command");
                 key = key.OpenSubKey("command", true);
-                key.SetValue("", "\"" + Application.ExecutablePath + "\" -l \"%V\"");
+                key.SetValue("", "\"" + System.Windows.Forms.Application.ExecutablePath + "\" -l \"%V\"");
 
                 MessageBox.Show("Automatic Takeover has been installed. \r\nYou can now right click a file and select SEP Encrypt, which allows you to\r\neither Ecrypt or Decrypt the file.\r\nYou can also convert an entire folder to a locker.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -346,14 +372,12 @@ namespace sep
 
         private void button1_Click_2(object sender, EventArgs e)
         {
-            Hide();
-            new frmFunctionString(true).Show();
+            
         }
 
         private void button2_Click_2(object sender, EventArgs e)
         {
-            Hide();
-            new frmFunctionString(false).Show();
+            
         }
     }
 }

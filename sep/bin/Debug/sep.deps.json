@@ -10,6 +10,7 @@
         "dependencies": {
           "CommunityToolkit.WinUI.Notifications": "7.1.2",
           "GoogleAuthenticator": "3.1.0",
+          "Octokit": "10.0.0",
           "QRCoder": "1.4.3",
           "System.Data.SQLite": "1.0.118",
           "System.Data.SqlClient": "4.8.6"
@@ -68,6 +69,14 @@
         }
       },
       "Microsoft.Win32.SystemEvents/6.0.0": {},
+      "Octokit/10.0.0": {
+        "runtime": {
+          "lib/netstandard2.0/Octokit.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.0.0"
+          }
+        }
+      },
       "QRCoder/1.4.3": {
         "dependencies": {
           "System.Drawing.Common": "6.0.0"
@@ -281,6 +290,13 @@
       "sha512": "sha512-hqTM5628jSsQiv+HGpiq3WKBl2c8v1KZfby2J6Pr7pEPlK9waPdgEO6b8A/+/xn/yZ9ulv8HuqK71ONy2tg67A==",
       "path": "microsoft.win32.systemevents/6.0.0",
       "hashPath": "microsoft.win32.systemevents.6.0.0.nupkg.sha512"
+    },
+    "Octokit/10.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-PHUXVZwE0C2wW9Slkfvw85YNr+uPvLKDgnmxVOzDds+jsv7TgTW9GiGNs4ENYKx1vHfZuH2/VmUlJ9W6GKfDSA==",
+      "path": "octokit/10.0.0",
+      "hashPath": "octokit.10.0.0.nupkg.sha512"
     },
     "QRCoder/1.4.3": {
       "type": "package",

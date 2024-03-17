@@ -53,8 +53,7 @@
             btnLockers = new System.Windows.Forms.Button();
             pbGithub = new System.Windows.Forms.PictureBox();
             btnSecureDelete = new System.Windows.Forms.Button();
-            button1 = new System.Windows.Forms.Button();
-            button2 = new System.Windows.Forms.Button();
+            lbVersionNumber = new System.Windows.Forms.Label();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbGithub).BeginInit();
             SuspendLayout();
@@ -267,33 +266,22 @@
             btnSecureDelete.UseVisualStyleBackColor = true;
             btnSecureDelete.Click += btnSecureDelete_Click;
             // 
-            // button1
+            // lbVersionNumber
             // 
-            button1.Location = new System.Drawing.Point(94, 315);
-            button1.Name = "button1";
-            button1.Size = new System.Drawing.Size(123, 23);
-            button1.TabIndex = 12;
-            button1.Text = "Encrypt String";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click_2;
-            // 
-            // button2
-            // 
-            button2.Location = new System.Drawing.Point(94, 344);
-            button2.Name = "button2";
-            button2.Size = new System.Drawing.Size(123, 23);
-            button2.TabIndex = 13;
-            button2.Text = "Decrypt String";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click_2;
+            lbVersionNumber.AutoSize = true;
+            lbVersionNumber.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            lbVersionNumber.Location = new System.Drawing.Point(12, 421);
+            lbVersionNumber.Name = "lbVersionNumber";
+            lbVersionNumber.Size = new System.Drawing.Size(106, 30);
+            lbVersionNumber.TabIndex = 14;
+            lbVersionNumber.Text = "SEP v1.7.0";
             // 
             // frmHome
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(800, 460);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(lbVersionNumber);
             Controls.Add(btnSecureDelete);
             Controls.Add(btnLockers);
             Controls.Add(btnPWLib);
@@ -338,7 +326,6 @@
         private System.Windows.Forms.ToolStripMenuItem wipeFileSecureDeleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label lbVersionNumber;
     }
 }

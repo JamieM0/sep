@@ -407,3 +407,7 @@ FodyWeavers.xsd
 *.clef
 *.sarif
 *.load
+/sep/frmEncryptString.cs
+/sep/frmDecryptString.cs
+/sep/frmDecryptFile.cs
+/sep/frmEncryptFile.cs

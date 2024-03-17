@@ -32,12 +32,14 @@
             txtInput = new System.Windows.Forms.TextBox();
             lbInfoInput = new System.Windows.Forms.Label();
             pnlPassword = new System.Windows.Forms.Panel();
+            btnReset = new System.Windows.Forms.Button();
             btnCopy = new System.Windows.Forms.Button();
             lbInfoOutput = new System.Windows.Forms.Label();
             txtOutput = new System.Windows.Forms.TextBox();
             label1 = new System.Windows.Forms.Label();
             txtPassword = new System.Windows.Forms.TextBox();
             btnConfirmInput = new System.Windows.Forms.Button();
+            btnGoMainMenu = new System.Windows.Forms.Button();
             pnlPassword.SuspendLayout();
             SuspendLayout();
             // 
@@ -45,12 +47,14 @@
             // 
             lbInfo.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             lbInfo.AutoSize = true;
+            lbInfo.BackColor = System.Drawing.Color.Transparent;
             lbInfo.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             lbInfo.Location = new System.Drawing.Point(335, 9);
             lbInfo.Name = "lbInfo";
             lbInfo.Size = new System.Drawing.Size(141, 30);
             lbInfo.TabIndex = 0;
             lbInfo.Text = "Encrypt String";
+            lbInfo.Click += lbInfo_Click;
             // 
             // txtInput
             // 
@@ -59,11 +63,13 @@
             txtInput.Multiline = true;
             txtInput.Name = "txtInput";
             txtInput.Size = new System.Drawing.Size(760, 114);
-            txtInput.TabIndex = 1;
+            txtInput.TabIndex = 0;
+            txtInput.TextChanged += txtInput_TextChanged;
             // 
             // lbInfoInput
             // 
             lbInfoInput.AutoSize = true;
+            lbInfoInput.BackColor = System.Drawing.Color.Transparent;
             lbInfoInput.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             lbInfoInput.Location = new System.Drawing.Point(12, 43);
             lbInfoInput.Name = "lbInfoInput";
@@ -74,6 +80,8 @@
             // pnlPassword
             // 
             pnlPassword.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            pnlPassword.BackColor = System.Drawing.Color.Transparent;
+            pnlPassword.Controls.Add(btnReset);
             pnlPassword.Controls.Add(btnCopy);
             pnlPassword.Controls.Add(lbInfoOutput);
             pnlPassword.Controls.Add(txtOutput);
@@ -85,18 +93,37 @@
             pnlPassword.Size = new System.Drawing.Size(776, 262);
             pnlPassword.TabIndex = 3;
             // 
+            // btnReset
+            // 
+            btnReset.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            btnReset.BackgroundImage = Properties.Resources.reset_icon;
+            btnReset.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            btnReset.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnReset.Location = new System.Drawing.Point(689, 96);
+            btnReset.Name = "btnReset";
+            btnReset.Size = new System.Drawing.Size(36, 36);
+            btnReset.TabIndex = 7;
+            btnReset.UseVisualStyleBackColor = true;
+            btnReset.Visible = false;
+            btnReset.Click += btnReset_Click;
+            btnReset.MouseEnter += btnReset_MouseEnter;
+            btnReset.MouseLeave += btnReset_MouseLeave;
+            // 
             // btnCopy
             // 
             btnCopy.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            btnCopy.BackgroundImage = Properties.Resources.copy_icon;
+            btnCopy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             btnCopy.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            btnCopy.Location = new System.Drawing.Point(546, 90);
+            btnCopy.Location = new System.Drawing.Point(731, 96);
             btnCopy.Name = "btnCopy";
-            btnCopy.Size = new System.Drawing.Size(221, 45);
-            btnCopy.TabIndex = 7;
-            btnCopy.Text = "Copy Encrypted String";
+            btnCopy.Size = new System.Drawing.Size(36, 36);
+            btnCopy.TabIndex = 3;
             btnCopy.UseVisualStyleBackColor = true;
             btnCopy.Visible = false;
             btnCopy.Click += btnCopy_Click;
+            btnCopy.MouseEnter += btnCopy_MouseEnter;
+            btnCopy.MouseLeave += btnCopy_MouseLeave;
             // 
             // lbInfoOutput
             // 
@@ -116,8 +143,9 @@
             txtOutput.Multiline = true;
             txtOutput.Name = "txtOutput";
             txtOutput.ReadOnly = true;
+            txtOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             txtOutput.Size = new System.Drawing.Size(760, 114);
-            txtOutput.TabIndex = 5;
+            txtOutput.TabIndex = 4;
             txtOutput.Visible = false;
             // 
             // label1
@@ -137,7 +165,7 @@
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
             txtPassword.Size = new System.Drawing.Size(589, 23);
-            txtPassword.TabIndex = 3;
+            txtPassword.TabIndex = 1;
             // 
             // btnConfirmInput
             // 
@@ -146,16 +174,31 @@
             btnConfirmInput.Location = new System.Drawing.Point(602, 10);
             btnConfirmInput.Name = "btnConfirmInput";
             btnConfirmInput.Size = new System.Drawing.Size(165, 45);
-            btnConfirmInput.TabIndex = 0;
+            btnConfirmInput.TabIndex = 2;
             btnConfirmInput.Text = "Encrypt String";
             btnConfirmInput.UseVisualStyleBackColor = true;
             btnConfirmInput.Click += btnConfirmInput_Click;
+            // 
+            // btnGoMainMenu
+            // 
+            btnGoMainMenu.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            btnGoMainMenu.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnGoMainMenu.Location = new System.Drawing.Point(607, 4);
+            btnGoMainMenu.Name = "btnGoMainMenu";
+            btnGoMainMenu.Size = new System.Drawing.Size(165, 45);
+            btnGoMainMenu.TabIndex = 4;
+            btnGoMainMenu.Text = "Return to Home";
+            btnGoMainMenu.UseVisualStyleBackColor = true;
+            btnGoMainMenu.Click += btnGoMainMenu_Click;
             // 
             // frmFunctionString
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.Background_FunctionString;
+            BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             ClientSize = new System.Drawing.Size(784, 461);
+            Controls.Add(btnGoMainMenu);
             Controls.Add(pnlPassword);
             Controls.Add(lbInfoInput);
             Controls.Add(txtInput);
@@ -181,5 +224,7 @@
         private System.Windows.Forms.Label lbInfoOutput;
         private System.Windows.Forms.TextBox txtOutput;
         private System.Windows.Forms.Button btnCopy;
+        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.Button btnGoMainMenu;
     }
 }
