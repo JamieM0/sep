@@ -151,6 +151,9 @@ namespace sep
                 //lbFileName.Location = new Point((pnlFileSelect.Width / 2) - sizeOfFileName / 2, 150);
                 lbFileName.Visible = true;
 
+                //Center the label in the panel
+                lbFileName.Location = new Point((pnlFileSelect.Width / 2) - (lbFileName.Width / 2), 164);
+
                 if (fileName.Length > 1)
                     btnUseAuthenticator.Enabled = false;
 
@@ -503,6 +506,7 @@ namespace sep
             pnlGuesser.Visible = false;
             showMainElements();
             pnlFinalSteps.Visible = false;
+            pnlLibraryPassword.Visible = false;
         }
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
@@ -674,6 +678,9 @@ namespace sep
             int sizeOfFileName = TextRenderer.MeasureText(fileName.OrderByDescending(s => s.Length).First(), lbFileName.Font).Width;
             //lbFileName.Location = new Point((pnlFileSelect.Width / 2) - sizeOfFileName / 2, 150);
             lbFileName.Visible = true;
+
+            //Center the label in the panel
+            lbFileName.Location = new Point((pnlFileSelect.Width / 2) - (lbFileName.Width / 2), 164);
 
             if (fileName.Length > 1)
                 btnUseAuthenticator.Enabled = false;

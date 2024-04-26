@@ -44,7 +44,7 @@ namespace sep
         {
             ProcessStartInfo psInfo = new ProcessStartInfo
             {
-                FileName = "https://docs.jmatthews.uk/sep/lockers",
+                FileName = "https://docs.jmatthews.uk/docs/sep/features/lockers/",
                 UseShellExecute = true
             };
             Process.Start(psInfo);

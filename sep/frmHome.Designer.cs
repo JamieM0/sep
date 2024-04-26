@@ -275,6 +275,7 @@
             lbVersionNumber.Size = new System.Drawing.Size(106, 30);
             lbVersionNumber.TabIndex = 14;
             lbVersionNumber.Text = "SEP v1.7.0";
+            lbVersionNumber.Visible = false;
             // 
             // frmHome
             // 

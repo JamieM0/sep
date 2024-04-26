@@ -11,6 +11,24 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="frmDecryptFile.cs" />
+	  <Compile Remove="frmDecryptFile.Designer.cs" />
+	  <Compile Remove="frmDecryptString.cs" />
+	  <Compile Remove="frmDecryptString.Designer.cs" />
+	  <Compile Remove="frmEncryptFile.cs" />
+	  <Compile Remove="frmEncryptFile.Designer.cs" />
+	  <Compile Remove="frmEncryptString.cs" />
+	  <Compile Remove="frmEncryptString.Designer.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Remove="frmDecryptFile.resx" />
+	  <EmbeddedResource Remove="frmDecryptString.resx" />
+	  <EmbeddedResource Remove="frmEncryptFile.resx" />
+	  <EmbeddedResource Remove="frmEncryptString.resx" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <PackageReference Include="CommunityToolkit.WinUI.Notifications" Version="7.1.2" />
 	  <PackageReference Include="GoogleAuthenticator" Version="3.1.0" />
 	  <PackageReference Include="Octokit" Version="10.0.0" />

@@ -12,6 +12,7 @@ using Microsoft.Win32;
 using Octokit;
 using sep.Models;
 using System.Threading.Tasks;
+using System.Reflection;
 
 namespace sep
 {
@@ -57,8 +58,7 @@ namespace sep
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Hide();
-            new frmEncryptString().Show();
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -95,7 +95,7 @@ namespace sep
                 System.Windows.Forms.Application.Exit();
                 sent = true; //(movetoend)
             }
-            UpdateVersionLabel();
+            //UpdateVersionLabel();
 
             //if (OtherOperations.debug == true)
             //{
@@ -109,25 +109,71 @@ namespace sep
             //}
         }
 
-        private async void UpdateVersionLabel()
-        {
-            // Assuming 'lbVersionNumber' is your label on the form
-            lbVersionNumber.Text = "Loading...";
-            lbVersionNumber.Text = await VersionGetter();
-        }
-        static async Task<String> VersionGetter()
-        {
-            // Initialize a new instance of the GitHubClient with a ProductHeaderValue
-            var client = new GitHubClient(new ProductHeaderValue("SEP"));
+        //private async void UpdateVersionLabel()
+        //{
+        //    // Assuming 'lbVersionNumber' is your label on the form
+        //    lbVersionNumber.Text = "Loading...";
+        //    //lbVersionNumber.Text = "Unknown SEP Version";
+        //    lbVersionNumber.Text = await VersionGetter();
+        //}
+        //static async Task<String> VersionGetter()
+        //{
+        //    // Initialize a new instance of the GitHubClient with a ProductHeaderValue
+        //    var client = new GitHubClient(new ProductHeaderValue("SEP"));
 
-            // Replace 'owner' with the username and 'repo' with the repository name
-            var releases = await client.Repository.Release.GetAll("JamieM0", "sep");
+        //    // Replace 'owner' with the username and 'repo' with the repository name
+        //    var releases = await client.Repository.Release.GetAll("JamieM0", "sep");
 
-            // The first item in the list will be the latest release
-            var latestRelease = releases[0];
+        //    // The first item in the list will be the latest release
+        //    var latestRelease = releases[0];
+        //    var currentRelease=releases[0];
+        //    DateTime compileTimeTracker = new FileInfo(Assembly.GetExecutingAssembly().Location).LastWriteTime;
 
-            return ($"SEP {latestRelease.TagName}");
-        }
+        //    if (latestRelease.PublishedAt > compileTimeTracker)
+        //    {
+        //        return "New version available: " + latestRelease.TagName;
+        //    }
+        //    else
+        //    {
+        //        //bool validReleaseDate = false;
+        //        //while(!validReleaseDate)
+        //        //{
+        //        //    if (Convert.ToDateTime(latestRelease.PublishedAt).Date == compileTimeTracker.Date)
+        //        //    {
+        //        //        validReleaseDate = true;
+        //        //        currentRelease=latestRelease;
+        //        //    }
+        //        //    else
+        //        //    {
+        //        //        compileTimeTracker.AddDays(-1);
+        //        //    }
+        //        //}
+
+        //        return ($"SEP {currentRelease.TagName}");
+        //    }
+        //}
+
+        //public static DateTime GetLinkerTime(this Assembly assembly, TimeZoneInfo target = null)
+        //{
+        //    var filePath = assembly.Location;
+        //    const int c_PeHeaderOffset = 60;
+        //    const int c_LinkerTimestampOffset = 8;
+        //    var buffer = new byte[2048];
+
+        //    using (var stream = new FileStream(filePath, System.IO.FileMode.Open, FileAccess.Read))
+        //    {
+        //        stream.Read(buffer, 0, 2048);
+        //    }
+
+        //    var offset = BitConverter.ToInt32(buffer, c_PeHeaderOffset);
+        //    var secondsSince1970 = BitConverter.ToInt32(buffer, offset + c_LinkerTimestampOffset);
+        //    var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        //    var linkTimeUtc = epoch.AddSeconds(secondsSince1970);
+
+        //    var tz = target ?? TimeZoneInfo.Local;
+        //    var localTime = TimeZoneInfo.ConvertTimeFromUtc(linkTimeUtc, tz);
+        //    return localTime;
+        //}
 
         private void pbGithub_Click(object sender, EventArgs e)
         {
@@ -281,23 +327,23 @@ namespace sep
         private void oldEncryptFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Warn about old screen being very buggy and offer yes or no choice
-            DialogResult result = MessageBox.Show("This screen is very buggy and may not work properly. \r\nIt is recommended to use the new Encrypt File screen. \r\n\r\nDo you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (result == DialogResult.Yes)
-            {
-                Hide();
-                new frmEncryptFile().Show();
-            }
+            //DialogResult result = MessageBox.Show("This screen is very buggy and may not work properly. \r\nIt is recommended to use the new Encrypt File screen. \r\n\r\nDo you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            //if (result == DialogResult.Yes)
+            //{
+            //    Hide();
+            //    new frmEncryptFile().Show();
+            //}
         }
 
         private void oldDecryptFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Warn about old screen being very buggy and offer yes or no choice
-            DialogResult result = MessageBox.Show("This screen is very buggy and may not work properly. \r\nIt is recommended to use the new Decrypt File screen. \r\n\r\nDo you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (result == DialogResult.Yes)
-            {
-                Hide();
-                new frmDecryptFile().Show();
-            }
+            //DialogResult result = MessageBox.Show("This screen is very buggy and may not work properly. \r\nIt is recommended to use the new Decrypt File screen. \r\n\r\nDo you want to continue?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            //if (result == DialogResult.Yes)
+            //{
+            //    Hide();
+            //    new frmDecryptFile().Show();
+            //}
         }
 
         private void removeFromContextMenuToolStripMenuItem_Click(object sender, EventArgs e)

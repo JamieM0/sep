@@ -147,11 +147,11 @@
             // 
             lbFileName.AutoSize = true;
             lbFileName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            lbFileName.Location = new System.Drawing.Point(108, 170);
+            lbFileName.Location = new System.Drawing.Point(37, 164);
             lbFileName.Name = "lbFileName";
-            lbFileName.Size = new System.Drawing.Size(18, 21);
+            lbFileName.Size = new System.Drawing.Size(313, 21);
             lbFileName.TabIndex = 2;
-            lbFileName.Text = "a";
+            lbFileName.Text = "{File names go here when they are selected}";
             lbFileName.Visible = false;
             lbFileName.DragDrop += lbFileName_DragDrop;
             // 
