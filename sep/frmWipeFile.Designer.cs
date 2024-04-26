@@ -145,12 +145,12 @@
             // 
             lbDocLink.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             lbDocLink.AutoSize = true;
-            lbDocLink.Location = new System.Drawing.Point(17, 275);
+            lbDocLink.Location = new System.Drawing.Point(65, 275);
             lbDocLink.Name = "lbDocLink";
-            lbDocLink.Size = new System.Drawing.Size(245, 15);
+            lbDocLink.Size = new System.Drawing.Size(146, 15);
             lbDocLink.TabIndex = 10;
             lbDocLink.TabStop = true;
-            lbDocLink.Text = "https://docs.jmatthews.uk/sep/secure-delete";
+            lbDocLink.Text = "https://docs.jmatthews.uk";
             lbDocLink.LinkClicked += lbDocLink_LinkClicked;
             // 
             // btnSelectDirectory

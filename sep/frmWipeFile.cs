@@ -186,7 +186,7 @@ namespace sep
             this.lbDocLink.LinkVisited = true;
 
             // Navigate to a URL.
-            Process.Start(new ProcessStartInfo("https://docs.jmatthews.uk/sep/secure-delete") { UseShellExecute = true });
+            Process.Start(new ProcessStartInfo("https://docs.jmatthews.uk/docs/sep/features/secure-delete/") { UseShellExecute = true });
         }
 
         private void txtNumP_TextChanged(object sender, EventArgs e)
