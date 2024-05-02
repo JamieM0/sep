@@ -17,11 +17,13 @@ namespace sep
     public partial class frmLockerBrowser : Form
     {
         Locker selectedLocker = new Locker();
+        Options options = new Options();
         public frmLockerBrowser()
         {
             InitializeComponent();
             CenterToScreen();
             PopulateLockerBrowser();
+            options = options.ReadFromFile();
         }
         private void PopulateLockerBrowser()
         {
@@ -79,27 +81,41 @@ namespace sep
             {
                 DatabaseHelperLK.deleteLocker(selectedLocker.ID);
                 PopulateLockerBrowser();
-                if (MessageBox.Show("Locker Deleted. Remember that files are NOT DELETED, only the locker has been deleted.\r\nWould you also like to delete the files in the locker?", "Delete Files", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                {
-                    try
-                    {
-                        foreach (string file in Directory.GetFiles(Path.Combine(selectedLocker.location, selectedLocker.name)))
-                        {
-                            AesOperation.SecureDelete(file, 3);
-                        }
-                        Directory.Delete(Path.Combine(selectedLocker.location, selectedLocker.name));
-                        MessageBox.Show("Action completed. Locker and Locker files have been deleted.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch
-                    {
+                MessageBox.Show("Locker Deleted. Remember that files are NOT DELETED, only the locker has been deleted.", "Locker Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //if (MessageBox.Show("Locker Deleted. Remember that files are NOT DELETED, only the locker has been deleted.\r\nWould you also like to delete the files in the locker?", "Delete Files", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                //{
+                //    try
+                //    {
+                //        if(selectedLocker.lockState != true)
+                //        {
+                //            foreach (string file in Directory.GetFiles(Path.Combine(selectedLocker.location, selectedLocker.name)))
+                //            {
+                //                AesOperation.SecureDelete(file, 3);
+                //            }
+                //            Directory.Delete(Path.Combine(selectedLocker.location, selectedLocker.name));
+                //        }
+                //        else
+                //        {
+                //            foreach (string file in Directory.GetFiles(Path.Combine(selectedLocker.location, selectedLocker.name + ".encloc")))
+                //            {
+                //                AesOperation.SecureDelete(file, 3);
+                //            }
+                //            Directory.Delete(Path.Combine(selectedLocker.location, selectedLocker.name + ".encloc"));
+                //        }
+                //        MessageBox.Show("Action completed. Locker and Locker files have been deleted.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //    }
+                //    catch
+                //    {
 
-                    }
-                }
+                //    }
+                //}
             }
         }
 
         private void btnLockAction_Click(object sender, EventArgs e)
         {
+            bool removeDirectoryStructure = options.RemoveDirectoryStructure;
+
             if (!selectedLocker.lockState)
             {
                 //Get empty locker
@@ -112,13 +128,22 @@ namespace sep
                 }
                 Directory.CreateDirectory(targetDirLocked);
 
+                if (removeDirectoryStructure == true)
+                {
+                    File.Create(targetDirLocked + "\\structure.conf").Close();
+                }
+
                 //Encrypt each file in directory
                 foreach (string file in Directory.GetFiles(sourceDir))
                 {
                     string input = file;
                     string output = targetDirLocked + "\\" + Path.GetFileName(file) + ".aes";
                     //AES.FileEncrypt(input, output, pw);
-                    AES.FileEncrypt(input, pw, false, "0");
+                    AES.FileEncrypt(input, output, pw);
+                    if (removeDirectoryStructure == true)
+                    {
+                        File.AppendAllText(targetDirLocked + "\\structure.conf", Path.GetFileName(file) + Environment.NewLine);
+                    }
                 }
 
                 //populate dirsToCheck with all the directories & subdirectories inside the chosen folder
@@ -130,19 +155,37 @@ namespace sep
                     string[] filesToCheck = Directory.GetFiles(dir, "*", SearchOption.TopDirectoryOnly);
                     string subDirName = dir.Substring(sourceDir.Length + 1);
 
-                    Directory.CreateDirectory(targetDirLocked + "\\" + subDirName);
+                    if(removeDirectoryStructure!=true)
+                    {
+                        Directory.CreateDirectory(targetDirLocked + "\\" + subDirName);
+                    }
 
                     foreach (string file in filesToCheck)
                     {
                         string input = file;
-                        string output = targetDirLocked + "\\" + subDirName + "\\" + Path.GetFileName(file) + ".aes";
+                        string output = "";
+                        if (removeDirectoryStructure == true)
+                        {
+                            output = targetDirLocked + "\\" + Path.GetFileName(file) + ".aes";
+                            File.AppendAllText(targetDirLocked + "\\structure.conf", subDirName + "/" + Path.GetFileName(file) + Environment.NewLine);
+                        }
+                        else
+                        {
+                            output = targetDirLocked + "\\" + subDirName + "\\" + Path.GetFileName(file) + ".aes";
+                        }
                         AES.FileEncrypt(input, output, pw);
                     }
                 }
 
+                if (removeDirectoryStructure == true)
+                {
+                    AES.FileEncrypt(targetDirLocked + "\\structure.conf", targetDirLocked + "\\structure.conf.aes", pw);
+                    File.Delete(targetDirLocked + "\\structure.conf");
+                }
+
+                Directory.Delete(sourceDir, true);
                 DatabaseHelperLK.setLockState(selectedLocker.ID, true);
                 MessageBox.Show("Locker locked successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Directory.Delete(sourceDir, true);
                 btnLockAction.Text = "Unlock Locker";
                 PopulateLockerBrowser();
                 selectedLocker = dgLockersBrowser.SelectedRows[0].DataBoundItem as Locker;
@@ -164,20 +207,78 @@ namespace sep
                 //populate dirsToCheck with all the directories & subdirectories inside the chosen folder
                 string[] dirsToCheck = Directory.GetDirectories(sourceDirLocked, "*", SearchOption.AllDirectories);
 
-                foreach (string dir in dirsToCheck)
+                if(removeDirectoryStructure!=true)
                 {
-                    //populate filesToCheck with all the files inside the chosen folder
-                    string[] filesToCheck = Directory.GetFiles(dir, "*", SearchOption.TopDirectoryOnly);
-                    string subdirName = dir.Substring(targetDir.Length + 8);
-
-                    Directory.CreateDirectory(targetDir + "\\" + subdirName);
-
-                    foreach (string file in filesToCheck)
+                    foreach (string dir in dirsToCheck)
                     {
-                        string input = file;
-                        string output = targetDir + "\\" + subdirName + "\\" + $"{Path.GetFileName(file).Split('.')[0]}.{Path.GetFileName(file).Split('.')[1]}";
-                        AES.FileDecrypt(input, output, pw);
+                        //populate filesToCheck with all the files inside the chosen folder
+                        string[] filesToCheck = Directory.GetFiles(dir, "*", SearchOption.TopDirectoryOnly);
+                        string subdirName = dir.Substring(targetDir.Length + 8);
+
+                        Directory.CreateDirectory(targetDir + "\\" + subdirName);
+
+                        foreach (string file in filesToCheck)
+                        {
+                            string input = file;
+                            string output = targetDir + "\\" + subdirName + "\\" + $"{Path.GetFileName(file).Split('.')[0]}.{Path.GetFileName(file).Split('.')[1]}";
+                            AES.FileDecrypt(input, output, pw);
+                        }
                     }
+                }
+                else
+                {
+                    foreach (string file in Directory.GetFiles(selectedLocker.location + "\\" + selectedLocker.name + ".encloc"))
+                    {
+                        string output = selectedLocker.location + "\\" + selectedLocker.name + "\\" + Path.GetFileNameWithoutExtension(file);
+                        AES.FileDecrypt(file, output, pw);
+                    }
+                    if(removeDirectoryStructure==true)
+                    {
+                        Structurise();
+                    }
+                    
+                    //foreach (string line in File.ReadAllLines(selectedLocker.location + "\\" + selectedLocker.name + ".encloc" + "\\structure.conf"))
+                    //{
+                    //    //string[] parts = line.Split('/');
+                    //    //Get a string which has all the split items in 'parts' except the last one
+                    
+                    //    //string input = "test/hello/world/another/test";
+                    //    if(line=="" || line ==null || line==" ")
+                    //    {
+                    //        break;
+                    //    }
+                    //    int lastIndex = line.LastIndexOf('/');
+                    //    string subDir = "";
+                    //    string fileName = "";
+                    //    if (lastIndex != -1)
+                    //    {
+                    //        subDir = line.Substring(0, lastIndex);
+                    //        subDir = subDir.Replace("/","\\");
+                    //        fileName = line.Substring(lastIndex);
+                    //        Directory.CreateDirectory(subDir);
+                    //    }
+                    //    else
+                    //    {
+                    //        fileName = line;
+                    //    }
+                        
+                    //    string input = selectedLocker.location + "\\" + selectedLocker.name + ".encloc" + "\\" + fileName + ".aes";
+                    //    string output = selectedLocker.location + "\\" + selectedLocker.name + "\\" + line;
+                    //    AES.FileDecrypt(input, output, pw);
+                        
+                    //    //populate filesToCheck with all the files inside the chosen folder
+                    //    //string[] filesToCheck = Directory.GetFiles(dir, "*", SearchOption.TopDirectoryOnly);
+                    //    //string subdirName = dir.Substring(targetDir.Length + 8);
+
+                    //    //Directory.CreateDirectory(targetDir + "\\" + subdirName);
+
+                    //    //foreach (string file in filesToCheck)
+                    //    //{
+                    //    //    string input = file;
+                    //    //    string output = targetDir + "\\" + subdirName + "\\" + $"{Path.GetFileName(file).Split('.')[0]}.{Path.GetFileName(file).Split('.')[1]}";
+                    //    //    AES.FileDecrypt(input, output, pw);
+                    //    //}
+                    //}
                 }
 
                 DatabaseHelperLK.setLockState(selectedLocker.ID, false);
@@ -190,6 +291,44 @@ namespace sep
                 btnLockAction.Text = "Lock Locker";
                 PopulateLockerBrowser();
             }
+        }
+
+        private void Structurise()
+        {
+            string[] lines = File.ReadAllLines(Path.Combine(selectedLocker.location, selectedLocker.name, "structure.conf"));
+            foreach(string file in lines)
+            {
+                if(file.Contains("/"))
+                {
+                    string[] partsOfFile = file.Split('/');
+                    //Remove last item from partsOfFile
+                    string[] parts = new string[partsOfFile.Length - 1];
+                    Array.Copy(partsOfFile, parts, partsOfFile.Length - 1);
+                    string currentDirectory = Path.Combine(selectedLocker.location, selectedLocker.name);
+                    for (int i = 0; i < parts.Length; i++)
+                    {
+                        currentDirectory = Path.Combine(currentDirectory, parts[i]);
+                        if (!Directory.Exists(currentDirectory))
+                            Directory.CreateDirectory(currentDirectory);
+                    }
+
+                    //Get the last item from partsOfFile
+                    string fileName = partsOfFile[partsOfFile.Length - 1];
+
+                    string subDir = "";
+                    foreach (string part in parts)
+                    {
+                        subDir = Path.Combine(subDir, part);
+                    }
+
+                    File.Move(Path.Combine(selectedLocker.location, selectedLocker.name, fileName), Path.Combine(selectedLocker.location, selectedLocker.name, subDir, fileName));
+                }
+                else
+                {
+                    
+                }
+            }
+            File.Delete(Path.Combine(selectedLocker.location, selectedLocker.name, "structure.conf"));
         }
 
         private void btnCreateLocker_Click(object sender, EventArgs e)

@@ -47,5 +47,18 @@ namespace sep
         {
 
         }
+
+        private void cbEncryptFileNames_CheckedChanged(object sender, EventArgs e)
+        {
+            //Tell the user that this feature is in beta, and ask if they want to continue
+            if (cbEncryptFileNames.Checked)
+            {
+                DialogResult dialogResult = MessageBox.Show("This feature is in beta, and may not work as expected. Are you sure you want to continue?", "Warning", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.No)
+                {
+                    cbEncryptFileNames.Checked = false;
+                }
+            }
+        }
     }
 }

@@ -43,7 +43,6 @@
             optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             passwordLibraryToolStripMenuItem = new System.Windows.Forms.ToolStripDropDownMenu();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
-            wipeFileSecureDeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             optionsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
@@ -142,20 +141,14 @@
             // 
             // menuStrip1
             // 
+            menuStrip1.BackColor = System.Drawing.Color.WhiteSmoke;
             menuStrip1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { encryptToolStripMenuItem, decryptToolStripMenuItem, automaticTakeoverToolStripMenuItem, wipeFileSecureDeleteToolStripMenuItem, moreToolStripMenuItem, optionsToolStripMenuItem1 });
+            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { automaticTakeoverToolStripMenuItem, encryptToolStripMenuItem, decryptToolStripMenuItem, moreToolStripMenuItem, optionsToolStripMenuItem1 });
             menuStrip1.Location = new System.Drawing.Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new System.Drawing.Size(800, 29);
             menuStrip1.TabIndex = 10;
             menuStrip1.Text = "menuStrip1";
-            // 
-            // wipeFileSecureDeleteToolStripMenuItem
-            // 
-            wipeFileSecureDeleteToolStripMenuItem.Name = "wipeFileSecureDeleteToolStripMenuItem";
-            wipeFileSecureDeleteToolStripMenuItem.Size = new System.Drawing.Size(195, 25);
-            wipeFileSecureDeleteToolStripMenuItem.Text = "Wipe File (Secure Delete)";
-            wipeFileSecureDeleteToolStripMenuItem.Click += wipeFileSecureDeleteToolStripMenuItem_Click;
             // 
             // optionsToolStripMenuItem1
             // 
@@ -324,7 +317,6 @@
         private System.Windows.Forms.Button btnLockers;
         private System.Windows.Forms.PictureBox pbGithub;
         private System.Windows.Forms.Button btnSecureDelete;
-        private System.Windows.Forms.ToolStripMenuItem wipeFileSecureDeleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem1;
         private System.Windows.Forms.Label lbVersionNumber;

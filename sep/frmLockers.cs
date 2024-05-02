@@ -21,6 +21,7 @@ namespace sep
             InitializeComponent();
             Populator();
             CenterToScreen();
+            options = options.ReadFromFile();
         }
 
         bool deleting = false;
@@ -31,6 +32,7 @@ namespace sep
         string[] allLockerLocations = DatabaseHelperLK.getRequstedData("LockerLocation");
         string[] allLockerPasswords = DatabaseHelperLK.getRequstedData("LockerPassword");
         string[] allLockerLockStates = DatabaseHelperLK.getRequstedData("LockState");
+        Options options = new Options();
 
         public void Populator()
         {
@@ -110,6 +112,8 @@ namespace sep
             Button btn = (Button)sender;
             int index = (int.Parse(btn.Name.Split('_')[1]) - 1);
 
+            bool removeDirectoryStructure = options.RemoveDirectoryStructure;
+
             btn.Enabled = false;
             if (btn.Text == "Lock")
             {
@@ -119,30 +123,59 @@ namespace sep
                     Directory.Delete(lockerLocations[index] + ".encloc", true);
                 }
                 Directory.CreateDirectory(lockerLocations[index] + ".encloc");
+                
+                if(removeDirectoryStructure==true)
+                {
+                    File.Create(lockerLocations[index] + ".encloc\\structure.conf").Close();
+                }
 
                 foreach (string f in Directory.GetFiles(lockerLocations[index]))
                 {
                     string input = f;
                     string output = lockerLocations[index] + ".encloc\\" + Path.GetFileName(f) + ".aes";
                     AES.FileEncrypt(input, output, pw);
+                    if(removeDirectoryStructure==true)
+                    {
+                        File.AppendAllText(lockerLocations[index] + ".encloc\\structure.conf", Path.GetFileName(f) + Environment.NewLine);
+                    }
                 }
 
                 //populate dirsToCheck with all the directories & subdirectories inside the chosen folder
                 string[] dirsToCheck = Directory.GetDirectories(lockerLocations[index], "*", SearchOption.AllDirectories);
 
-                foreach (string dir in dirsToCheck)
+                if(removeDirectoryStructure!=true)
                 {
-                    //populate filesToCheck with all the files inside the chosen folder
-                    string[] filesToCheck = Directory.GetFiles(dir, "*", SearchOption.TopDirectoryOnly);
-                    string subdirName = dir.Substring(lockerLocations[index].Length + 1);
-
-                    Directory.CreateDirectory(lockerLocations[index] + ".encloc\\" + subdirName);
-
-                    foreach (string file in filesToCheck)
+                    foreach (string dir in dirsToCheck)
                     {
-                        string input = file;
-                        string output = lockerLocations[index] + ".encloc\\" + subdirName + "\\" + Path.GetFileName(file) + ".aes";
-                        AES.FileEncrypt(input, output, pw);
+                        //populate filesToCheck with all the files inside the chosen folder
+                        string[] filesToCheck = Directory.GetFiles(dir, "*", SearchOption.TopDirectoryOnly);
+                        string subdirName = dir.Substring(lockerLocations[index].Length + 1);
+
+                        Directory.CreateDirectory(lockerLocations[index] + ".encloc\\" + subdirName);
+
+                        foreach (string file in filesToCheck)
+                        {
+                            string input = file;
+                            string output = lockerLocations[index] + ".encloc\\" + subdirName + "\\" + Path.GetFileName(file) + ".aes";
+                            AES.FileEncrypt(input, output, pw);
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (string dir in dirsToCheck)
+                    {
+                        //populate filesToCheck with all the files inside the chosen folder
+                        string[] filesToCheck = Directory.GetFiles(dir, "*", SearchOption.TopDirectoryOnly);
+                        string subdirName = dir.Substring(lockerLocations[index].Length + 1);
+
+                        foreach (string file in filesToCheck)
+                        {
+                            string input = file;
+                            string output = lockerLocations[index] + ".encloc\\" + Path.GetFileName(file) + ".aes";
+                            File.AppendAllText(lockerLocations[index] + ".encloc\\structure.conf", subdirName + Path.GetFileName(file) + Environment.NewLine);
+                            AES.FileEncrypt(input, output, pw);
+                        }
                     }
                 }
 

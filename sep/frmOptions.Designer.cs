@@ -85,6 +85,7 @@
             cbEncryptFileNames.TabIndex = 3;
             cbEncryptFileNames.Text = "Encrypt File Names";
             cbEncryptFileNames.UseVisualStyleBackColor = false;
+            cbEncryptFileNames.CheckedChanged += cbEncryptFileNames_CheckedChanged;
             // 
             // cbRemoveDirectoryStructure
             // 
