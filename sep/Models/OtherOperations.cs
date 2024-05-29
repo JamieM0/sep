@@ -12,6 +12,8 @@ namespace sep.Models
         public static string filePath { get; set; }
         public static string storeLoc { get; set; }
         public static bool funcEncrypt { get; set; }
+        public static bool folderMode { get; set; }
+        public static bool contextMenu { get; set; }
         //public static bool debug { get; set; }
 
         public static void LineRemover(string file, int indexRemove)

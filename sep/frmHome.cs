@@ -30,8 +30,7 @@ namespace sep
             OtherOperations.storeLoc = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SEP");
             if (!File.Exists(Path.Combine(OtherOperations.storeLoc, "options.json")))
             {
-                Options options = new Options();
-                options.SaveToFile();
+                Options.SaveToFile();
             }
             if (File.Exists(Path.Combine(OtherOperations.storeLoc, "autotakeover")))
                 automaticTakeoverToolStripMenuItem.Visible = false;
@@ -94,6 +93,24 @@ namespace sep
                 MessageBox.Show("Locker added to list.\nLock it through the \"Lockers\" screen in the main program.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 System.Windows.Forms.Application.Exit();
                 sent = true; //(movetoend)
+            }
+            else if (passArgs.Contains("-w"))
+            {
+                sent = true;
+                OtherOperations.filePath = passArgs[2];
+                OtherOperations.folderMode = false;
+                OtherOperations.contextMenu = true;
+                Hide();
+                new frmWipeFile().Show();
+            }
+            else if (passArgs.Contains("-f"))
+            {
+                sent = true; //(movetoend)
+                OtherOperations.filePath = passArgs[2];
+                OtherOperations.folderMode = true;
+                OtherOperations.contextMenu = true;
+                Hide();
+                new frmWipeFile().Show();
             }
             //UpdateVersionLabel();
 
@@ -306,11 +323,27 @@ namespace sep
                 key = key.OpenSubKey("command", true);
                 key.SetValue("", "\"" + System.Windows.Forms.Application.ExecutablePath + "\" -l \"%V\"");
 
-                MessageBox.Show("Automatic Takeover has been installed. \r\nYou can now right click a file and select SEP Encrypt, which allows you to\r\neither Ecrypt or Decrypt the file.\r\nYou can also convert an entire folder to a locker.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                key = Registry.ClassesRoot.OpenSubKey(@"*\shell", true);
+                key.CreateSubKey("SEP Wipe File");
+                key = key.OpenSubKey("SEP Wipe File", true);
+                key.SetValue("icon", Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "enclogo.ico"));
+                key.CreateSubKey("command");
+                key = key.OpenSubKey("command", true);
+                key.SetValue("", "\"" + System.Windows.Forms.Application.ExecutablePath + "\" -w \"%1\"");
+
+                key = Registry.ClassesRoot.OpenSubKey(@"Directory\shell", true);
+                key.CreateSubKey("SEP Wipe Directory");
+                key = key.OpenSubKey("SEP Wipe Directory", true);
+                key.SetValue("icon", Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "enclogo.ico"));
+                key.CreateSubKey("command");
+                key = key.OpenSubKey("command", true);
+                key.SetValue("", "\"" + System.Windows.Forms.Application.ExecutablePath + "\" -f \"%V\"");
+
+                MessageBox.Show("Context Menu has been updated. \r\nYou can now right click a file and select SEP Encrypt, which allows you to\r\neither Ecrypt or Decrypt the file.\r\nYou can also convert an entire folder to a locker, or wipe a file or directory.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error occured while installing Automatic Takeover. \r\nPlease try again later.\r\n\r\nError Details: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An error occured while updating Context Menu. \r\nPlease try again later.\r\n\r\nError Details: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -113,9 +113,7 @@ namespace sep
             }
             finally
             {
-                Options options = new Options();
-                options = options.ReadFromFile();
-                if (options.EncryptFileNames)
+                if (Options.EncryptFileNames)
                 {
                     //Get the file name (without extension or path)
                     string fileName = Path.GetFileNameWithoutExtension(inputFile);
@@ -276,9 +274,7 @@ namespace sep
             }
             finally
             {
-                Options options = new Options();
-                options = options.ReadFromFile();
-                if(options.EncryptFileNames)
+                if(Options.EncryptFileNames)
                 {
                     //Get the file name (without extension or path)
                     string fileNameStep1 = Path.GetFileNameWithoutExtension(inputFile);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using sep.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,6 +20,48 @@ namespace sep
         {
             InitializeComponent();
             CenterToScreen();
+            if(OtherOperations.contextMenu==true)
+            {
+                OtherOperations.contextMenu = false;
+                string path = OtherOperations.filePath;
+                if (!Directory.Exists(path))
+                {
+                    // Get the filenames of all files being dragged into the form
+                    dirMode = false;
+                    filePath[0] = path;
+                    fileName[0] = filePath[0];
+
+                    for (int i = 0; i < fileName.Length; i++)
+                    {
+                        fileName[i] = Path.GetFileName(filePath[i]);
+                    }
+
+                    if (filePath.Length != 1)
+                        lbFileName.Text = $"{filePath.Length} files selected!";
+                    else
+                        lbFileName.Text = fileName[0];
+
+                    btnWipe.Enabled = true;
+                }
+                else
+                {
+                    dirMode = true;
+                    dirPath = path;
+                    filePath = Directory.GetFiles(dirPath);
+                    fileName = Directory.GetFiles(dirPath);
+                    for (int i = 0; i < fileName.Length; i++)
+                    {
+                        fileName[i] = Path.GetFileName(filePath[i]);
+                    }
+
+                    if (filePath.Length != 1)
+                        lbFileName.Text = $"{filePath.Length} files selected!";
+                    else
+                        lbFileName.Text = fileName[0];
+
+                    btnWipe.Enabled = true;
+                }
+            }
         }
 
         string[] filePath;

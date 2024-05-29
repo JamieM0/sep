@@ -1,4 +1,5 @@
-﻿using System;
+﻿using sep.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,6 +32,10 @@ namespace sep
             }
             CenterControlToFormHorizontally(lbInfo);
             CenterToScreen();
+            if(Options.EncryptionAlgorithm != "AES-256")
+            {
+                MessageBox.Show($"{Options.EncryptionAlgorithm} is your current encryption algorithm, but it won't be used for encrypting or decrypting strings, instead, AES-256 will be used.", "AES-256 will be used for encrypting or decrypting strings.",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            }
         }
 
         public void CenterControlToFormHorizontally(Control control)

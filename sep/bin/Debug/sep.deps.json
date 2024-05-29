@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v7.0": {
       "sep/1.0.0": {
         "dependencies": {
+          "BouncyCastle.Cryptography": "2.4.0",
           "CommunityToolkit.WinUI.Notifications": "7.1.2",
           "GoogleAuthenticator": "3.1.0",
           "Octokit": "10.0.0",
@@ -17,6 +18,14 @@
         },
         "runtime": {
           "sep.dll": {}
+        }
+      },
+      "BouncyCastle.Cryptography/2.4.0": {
+        "runtime": {
+          "lib/net6.0/BouncyCastle.Cryptography.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.4.0.33771"
+          }
         }
       },
       "CommunityToolkit.WinUI.Notifications/7.1.2": {
@@ -241,6 +250,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "BouncyCastle.Cryptography/2.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-SwXsAV3sMvAU/Nn31pbjhWurYSjJ+/giI/0n6tCrYoupEK34iIHCuk3STAd9fx8yudM85KkLSVdn951vTng/vQ==",
+      "path": "bouncycastle.cryptography/2.4.0",
+      "hashPath": "bouncycastle.cryptography.2.4.0.nupkg.sha512"
     },
     "CommunityToolkit.WinUI.Notifications/7.1.2": {
       "type": "package",

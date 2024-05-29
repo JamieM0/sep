@@ -115,5 +115,10 @@ namespace sep
                 MessageBox.Show($"Sorry, these files could not be deleted. Please try again.\r\nMore Details: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        public static byte[] Hasher(string pw)
+        {
+            return SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(pw));
+        }
     }
 }

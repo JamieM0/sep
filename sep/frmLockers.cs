@@ -21,7 +21,6 @@ namespace sep
             InitializeComponent();
             Populator();
             CenterToScreen();
-            options = options.ReadFromFile();
         }
 
         bool deleting = false;
@@ -32,7 +31,6 @@ namespace sep
         string[] allLockerLocations = DatabaseHelperLK.getRequstedData("LockerLocation");
         string[] allLockerPasswords = DatabaseHelperLK.getRequstedData("LockerPassword");
         string[] allLockerLockStates = DatabaseHelperLK.getRequstedData("LockState");
-        Options options = new Options();
 
         public void Populator()
         {
@@ -112,7 +110,7 @@ namespace sep
             Button btn = (Button)sender;
             int index = (int.Parse(btn.Name.Split('_')[1]) - 1);
 
-            bool removeDirectoryStructure = options.RemoveDirectoryStructure;
+            bool removeDirectoryStructure = Options.RemoveDirectoryStructure;
 
             btn.Enabled = false;
             if (btn.Text == "Lock")

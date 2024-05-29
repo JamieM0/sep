@@ -51,9 +51,7 @@ namespace sep
             //pnlShareFile.Visible = false;
             lbFileName.TextAlign = ContentAlignment.MiddleCenter;
             this.AllowDrop = true;
-            Options options = new Options();
-            options = options.ReadFromFile();
-            if (!options.DebugMode)
+            if (!Options.DebugMode)
             {
                 btnPWLibFunc.Enabled = false;
             }
@@ -61,9 +59,7 @@ namespace sep
 
         private void frmFunctionScreen_Load(object sender, EventArgs e)
         {
-            Options options = new Options();
-            options = options.ReadFromFile();
-            if (options.EncryptFileNames)
+            if (Options.EncryptFileNames)
                 btnPWLibFunc.Enabled = false;
         }
 
@@ -232,9 +228,7 @@ namespace sep
 
         private void btnPWLibFunc_Click(object sender, EventArgs e)
         {
-            Options options = new Options();
-            options = options.ReadFromFile();
-            if (funcEncrypt && !options.DebugMode)
+            if (funcEncrypt && !Options.DebugMode)
             {
                 saveToLibrary = true;
                 txtPassword.Enabled = false;
@@ -373,7 +367,10 @@ namespace sep
 
                     for (int i = 0; i < fileName.Length; i++)
                     {
-                        AES.FileEncrypt(filePath[i], password, usingMFA, "0");
+                        if (Options.EncryptionAlgorithm == "AES-256")
+                            AES.FileEncrypt(filePath[i], password, usingMFA, "0");
+                        else if (Options.EncryptionAlgorithm == "Twofish")
+                            Twofish.EncryptFile(filePath[i],AesOperation.Hasher(password));
 
                         if (cbDeleteAsk.Checked)
                         {
@@ -406,7 +403,11 @@ namespace sep
                         string newFileName = $"{oldFileName.Substring(firstDashIndex + 1)}";
 
                         filePathUnencrypted = Path.Combine(directory, newFileName);
-                        AES.FileDecrypt(filePath[i], filePathUnencrypted, password);
+
+                        if (Options.EncryptionAlgorithm == "AES-256")
+                            AES.FileDecrypt(filePath[i], filePathUnencrypted, password);
+                        else if (Options.EncryptionAlgorithm == "Twofish")
+                            Twofish.DecryptFile(filePath[i], AesOperation.Hasher(password));
                     }
                     MessageBox.Show("The file(s) has been decrypted successfully!", "Decrypted!");
 

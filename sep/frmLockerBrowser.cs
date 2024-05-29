@@ -17,13 +17,11 @@ namespace sep
     public partial class frmLockerBrowser : Form
     {
         Locker selectedLocker = new Locker();
-        Options options = new Options();
         public frmLockerBrowser()
         {
             InitializeComponent();
             CenterToScreen();
             PopulateLockerBrowser();
-            options = options.ReadFromFile();
         }
         private void PopulateLockerBrowser()
         {
@@ -114,7 +112,7 @@ namespace sep
 
         private void btnLockAction_Click(object sender, EventArgs e)
         {
-            bool removeDirectoryStructure = options.RemoveDirectoryStructure;
+            bool removeDirectoryStructure = Options.RemoveDirectoryStructure;
 
             if (!selectedLocker.lockState)
             {

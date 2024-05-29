@@ -28,7 +28,7 @@ namespace sep
             CenterToScreen();
             filePath = OtherOperations.filePath;
             fileName = Path.GetFileName(filePath);
-            if (Path.GetExtension(filePath) == ".aes" || Path.GetExtension(filePath).Contains("lib"))
+            if (Path.GetExtension(filePath) == ".aes" || Path.GetExtension(filePath).Contains("lib") || Path.GetExtension(filePath) == ".2fs")
             {
                 funcEncrypt = false;
             }
@@ -45,6 +45,7 @@ namespace sep
                 Close();
                 Application.Exit();
             }
+            Options.ReadFromFile();
         }
 
         private void btnGenPassword_Click(object sender, EventArgs e)
@@ -72,15 +73,10 @@ namespace sep
         {
             if (funcEncrypt)
             {
-                //if (savingPW)
-                //{
-                //    string nextID = "0⌀" + pwIdentifier;
-                //    AES.FileEncrypt(filePath, txtPassword.Text, false, nextID);
-                //}
-                //else
-                //{
+                if (Options.EncryptionAlgorithm == "AES-256")
                     AES.FileEncrypt(filePath, txtPassword.Text, false, "0");
-                //}
+                else if (Options.EncryptionAlgorithm == "Twofish")
+                    Twofish.EncryptFile(filePath,AesOperation.Hasher(txtPassword.Text));
 
                 if (cbDeleteAsk.Checked)
                 {
@@ -98,7 +94,10 @@ namespace sep
                     string filePathUnencrypted;
                     filePathUnencrypted = filePath.Substring(0, filePath.Length - 4);
 
-                    AES.FileDecrypt(filePath, filePathUnencrypted, txtPassword.Text);
+                    if(Options.EncryptionAlgorithm == "AES-256")
+                        AES.FileDecrypt(filePath, filePathUnencrypted, txtPassword.Text);
+                    else if(Options.EncryptionAlgorithm == "Twofish")
+                        Twofish.DecryptFile(filePath, AesOperation.Hasher(txtPassword.Text));
 
                     if (cbDeleteAsk.Checked)
                     {
@@ -121,7 +120,10 @@ namespace sep
                     string filePathUnencrypted;
                     filePathUnencrypted = filePath.Substring(0, filePath.Length - 4);
 
-                    AES.FileDecrypt(filePath, filePathUnencrypted, txtPassword.Text);
+                    if (Options.EncryptionAlgorithm == "AES-256")
+                        AES.FileDecrypt(filePath, filePathUnencrypted, txtPassword.Text);
+                    else if (Options.EncryptionAlgorithm == "Twofish")
+                        Twofish.DecryptFile(filePath, AesOperation.Hasher(txtPassword.Text));
 
                     MessageBox.Show("The file has been decrypted!", "Decrypted!");
 

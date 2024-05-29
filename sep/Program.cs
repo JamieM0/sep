@@ -23,6 +23,8 @@ namespace sep
             DatabaseHelper.InitializeDatabase();
             DatabaseHelperPL.InitializeDatabase();
             DatabaseHelperLK.InitializeDatabase();
+            OtherOperations.storeLoc = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SEP");
+            Options.ReadFromFile();
             Application.Run(new frmHome());
         }
     }
