@@ -32,9 +32,9 @@ namespace sep
             }
             CenterControlToFormHorizontally(lbInfo);
             CenterToScreen();
-            if(Options.EncryptionAlgorithm != "AES-256")
+            if (Options.EncryptionAlgorithm != "AES-256")
             {
-                MessageBox.Show($"{Options.EncryptionAlgorithm} is your current encryption algorithm, but it won't be used for encrypting or decrypting strings, instead, AES-256 will be used.", "AES-256 will be used for encrypting or decrypting strings.",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show($"{Options.EncryptionAlgorithm} is your current encryption algorithm, but it won't be used for encrypting or decrypting strings, instead, AES-256 will be used.", "AES-256 will be used for encrypting or decrypting strings.", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -68,17 +68,44 @@ namespace sep
 
             if (encryptMode)
             {
-                txtOutput.Text = AesOperation.EncryptString(txtPassword.Text, txtInput.Text);
+                try
+                {
+                    if (Options.EncryptionAlgorithm == "AES-256")
+                        txtOutput.Text = AesOperation.EncryptString(txtPassword.Text, txtInput.Text);
+                    else if (Options.EncryptionAlgorithm == "Twofish")
+                        txtOutput.Text = Twofish.EncryptString(txtInput.Text, AesOperation.Hasher(txtPassword.Text));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred while encrypting the string. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtInput.Enabled = true;
+                    txtPassword.Enabled = true;
+                    return;
+                }
             }
             else
             {
-                txtOutput.Text = AesOperation.DecryptString(txtPassword.Text, txtInput.Text);
+                try
+                {
+                    if (Options.EncryptionAlgorithm == "AES-256")
+                        txtOutput.Text = AesOperation.DecryptString(txtPassword.Text, txtInput.Text);
+                    else if (Options.EncryptionAlgorithm == "Twofish")
+                        txtOutput.Text = Twofish.DecryptString(txtInput.Text, AesOperation.Hasher(txtPassword.Text));
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("An error occurred while decrypting the string. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtInput.Enabled = true;
+                    txtPassword.Enabled = true;
+                    return;
+                }
             }
 
             txtOutput.Visible = true;
             lbInfoOutput.Visible = true;
             btnCopy.Visible = true;
             btnReset.Visible = true;
+            btnSwitch.Visible = true;
         }
 
         private void btnCopy_Click(object sender, EventArgs e)
@@ -120,6 +147,7 @@ namespace sep
         {
             btnCopy.Visible = false;
             btnReset.Visible = false;
+            btnSwitch.Visible = false;
             txtOutput.Visible = false;
             lbInfoOutput.Visible = false;
             txtInput.Enabled = true;
@@ -133,6 +161,20 @@ namespace sep
         {
             Hide();
             new frmHome().Show();
+        }
+
+        private void btnSwitch_Click(object sender, EventArgs e)
+        {
+            if(encryptMode)
+            {
+                Hide();
+                new frmFunctionString(false).Show();
+            }
+            else
+            {
+                Hide();
+                new frmFunctionString(true).Show();
+            }
         }
     }
 }

@@ -86,5 +86,59 @@ namespace sep
             random.NextBytes(iv);
             return iv;
         }
+
+        public static string EncryptString(string plaintext, byte[] key)
+        {
+            if (key.Length * 8 != KeySize)
+                throw new ArgumentException($"Key size must be {KeySize} bits", nameof(key));
+
+            byte[] iv = GenerateRandomIV(BlockSize);
+
+            IBufferedCipher cipher = new PaddedBufferedBlockCipher(new CbcBlockCipher(new TwofishEngine()));
+            cipher.Init(true, new ParametersWithIV(new KeyParameter(key), iv));
+
+            byte[] inputBytes = Encoding.UTF8.GetBytes(plaintext);
+            byte[] outputBytes = new byte[cipher.GetOutputSize(inputBytes.Length)];
+
+            int length = cipher.ProcessBytes(inputBytes, 0, inputBytes.Length, outputBytes, 0);
+            length += cipher.DoFinal(outputBytes, length);
+
+            // Combine IV and ciphertext
+            byte[] combinedBytes = new byte[iv.Length + length];
+            Array.Copy(iv, 0, combinedBytes, 0, iv.Length);
+            Array.Copy(outputBytes, 0, combinedBytes, iv.Length, length);
+
+            return Convert.ToBase64String(combinedBytes);
+        }
+
+        public static string DecryptString(string ciphertext, byte[] key)
+        {
+            if (key.Length * 8 != KeySize)
+                throw new ArgumentException($"Key size must be {KeySize} bits", nameof(key));
+
+            byte[] combinedBytes = Convert.FromBase64String(ciphertext);
+
+            if (combinedBytes.Length < BlockSize)
+                throw new ArgumentException("The input ciphertext is too short.");
+
+            // Extract the IV from the start of the combined bytes
+            byte[] iv = new byte[BlockSize];
+            Array.Copy(combinedBytes, 0, iv, 0, iv.Length);
+
+            // Extract the ciphertext from the combined bytes
+            byte[] cipherBytes = new byte[combinedBytes.Length - iv.Length];
+            Array.Copy(combinedBytes, iv.Length, cipherBytes, 0, cipherBytes.Length);
+
+            IBufferedCipher cipher = new PaddedBufferedBlockCipher(new CbcBlockCipher(new TwofishEngine()));
+            cipher.Init(false, new ParametersWithIV(new KeyParameter(key), iv));
+
+            byte[] outputBytes = new byte[cipher.GetOutputSize(cipherBytes.Length)];
+
+            int length = cipher.ProcessBytes(cipherBytes, 0, cipherBytes.Length, outputBytes, 0);
+            length += cipher.DoFinal(outputBytes, length);
+
+            return Encoding.UTF8.GetString(outputBytes, 0, length);
+        }
+
     }
 }

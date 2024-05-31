@@ -32,6 +32,7 @@
             txtInput = new System.Windows.Forms.TextBox();
             lbInfoInput = new System.Windows.Forms.Label();
             pnlPassword = new System.Windows.Forms.Panel();
+            btnSwitch = new System.Windows.Forms.Button();
             btnReset = new System.Windows.Forms.Button();
             btnCopy = new System.Windows.Forms.Button();
             lbInfoOutput = new System.Windows.Forms.Label();
@@ -81,6 +82,7 @@
             // 
             pnlPassword.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             pnlPassword.BackColor = System.Drawing.Color.Transparent;
+            pnlPassword.Controls.Add(btnSwitch);
             pnlPassword.Controls.Add(btnReset);
             pnlPassword.Controls.Add(btnCopy);
             pnlPassword.Controls.Add(lbInfoOutput);
@@ -92,6 +94,20 @@
             pnlPassword.Name = "pnlPassword";
             pnlPassword.Size = new System.Drawing.Size(776, 262);
             pnlPassword.TabIndex = 3;
+            // 
+            // btnSwitch
+            // 
+            btnSwitch.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            btnSwitch.BackgroundImage = Properties.Resources.update_icon_small;
+            btnSwitch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            btnSwitch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnSwitch.Location = new System.Drawing.Point(647, 96);
+            btnSwitch.Name = "btnSwitch";
+            btnSwitch.Size = new System.Drawing.Size(36, 36);
+            btnSwitch.TabIndex = 8;
+            btnSwitch.UseVisualStyleBackColor = true;
+            btnSwitch.Visible = false;
+            btnSwitch.Click += btnSwitch_Click;
             // 
             // btnReset
             // 
@@ -226,5 +242,6 @@
         private System.Windows.Forms.Button btnCopy;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnGoMainMenu;
+        private System.Windows.Forms.Button btnSwitch;
     }
 }
