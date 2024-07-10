@@ -16,6 +16,7 @@ namespace sep
 {
     public partial class frmOptions : Form
     {
+        bool updateReady = false;
         public frmOptions()
         {
             InitializeComponent();
@@ -28,6 +29,7 @@ namespace sep
             cbEncryptFileNames.Checked = Options.EncryptFileNames == true ? true : false;
             cbRemoveDirectoryStructure.Checked = Options.RemoveDirectoryStructure == true ? true : false;
             cmbEncryptionAlgorithm.SelectedItem = Options.EncryptionAlgorithm;
+            updateReady = true;
         }
 
         private void btnSaveAndReturn_Click(object sender, EventArgs e)
@@ -53,9 +55,9 @@ namespace sep
         private void cbEncryptFileNames_CheckedChanged(object sender, EventArgs e)
         {
             //Tell the user that this feature is in beta, and ask if they want to continue
-            if (cbEncryptFileNames.Checked)
+            if (cbEncryptFileNames.Checked && updateReady)
             {
-                DialogResult dialogResult = MessageBox.Show("This feature is in beta, and may not work as expected. Are you sure you want to continue?", "Warning", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("This feature is in beta, and may not work as expected.\r\n\r\nPlease note that Lockers are not currently supported and their file names will be unencrypted. \r\n\r\nAre you sure you want to continue?", "Warning", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.No)
                 {
                     cbEncryptFileNames.Checked = false;
@@ -116,6 +118,22 @@ namespace sep
                 UseShellExecute = true
             };
             Process.Start(psInfo);
+        }
+
+        private void cmbEncryptionAlgorithm_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cmbEncryptionAlgorithm.SelectedIndex == 1)
+            {
+                cbEncryptFileNames.Checked = false;
+                cbEncryptFileNames.Enabled = false;
+                cbRemoveDirectoryStructure.Checked = false;
+                cbRemoveDirectoryStructure.Enabled = false;
+            }
+            else
+            {
+                cbEncryptFileNames.Enabled = true;
+                cbRemoveDirectoryStructure.Enabled = true;
+            }
         }
     }
 }

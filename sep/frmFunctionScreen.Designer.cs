@@ -205,6 +205,7 @@
             // 
             // btnConfirm
             // 
+            btnConfirm.Enabled = false;
             btnConfirm.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             btnConfirm.Location = new System.Drawing.Point(15, 237);
             btnConfirm.Name = "btnConfirm";
@@ -578,9 +579,9 @@
             pnlLibraryPassword.Controls.Add(txtPWLib);
             pnlLibraryPassword.Controls.Add(label5);
             pnlLibraryPassword.Controls.Add(lbPWLib);
-            pnlLibraryPassword.Location = new System.Drawing.Point(384, 94);
+            pnlLibraryPassword.Location = new System.Drawing.Point(385, 92);
             pnlLibraryPassword.Name = "pnlLibraryPassword";
-            pnlLibraryPassword.Size = new System.Drawing.Size(370, 409);
+            pnlLibraryPassword.Size = new System.Drawing.Size(370, 474);
             pnlLibraryPassword.TabIndex = 10;
             pnlLibraryPassword.Visible = false;
             // 
@@ -617,10 +618,10 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label5.Location = new System.Drawing.Point(0, 67);
+            label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label5.Location = new System.Drawing.Point(36, 85);
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(371, 125);
+            label5.Size = new System.Drawing.Size(304, 105);
             label5.TabIndex = 2;
             label5.Text = "Please enter a master password for your \r\npassword library.\r\n\r\nYou will need to remember it as contents\r\nof the library will be unavailable without it.";
             label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -640,7 +641,6 @@
             AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1134, 578);
-            Controls.Add(pnlLibraryPassword);
             Controls.Add(pnlFinalSteps);
             Controls.Add(pnlPasswordInput);
             Controls.Add(pnlFileSelect);
@@ -649,6 +649,7 @@
             Controls.Add(pnlGuesser);
             Controls.Add(pnlAuthApp);
             Controls.Add(pnlAuthDecrypt);
+            Controls.Add(pnlLibraryPassword);
             Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             Name = "frmFunctionScreen";

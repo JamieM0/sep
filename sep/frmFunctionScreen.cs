@@ -515,10 +515,12 @@ namespace sep
             if (txtPassword.Text.Length > 0)
             {
                 btnPWLibFunc.Enabled = true;
+                btnConfirm.Enabled = true;
             }
             else
             {
                 btnPWLibFunc.Enabled = false;
+                btnConfirm.Enabled = false;
             }
         }
 

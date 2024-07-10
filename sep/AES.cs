@@ -212,8 +212,44 @@ namespace sep
             }
             finally
             {
-                cs.Close();
-                fsCrypt.Close();
+                if (Options.EncryptFileNames)
+                {
+                    //Get the file name (without extension or path)
+                    string fileName = Path.GetFileNameWithoutExtension(inputFile);
+
+                    //Encrypt the file name (excluding path and extension)
+                    string encFileName = AesOperation.EncryptString(password, fileName);
+
+                    //Get the file extension
+                    string extension = Path.GetExtension(inputFile) + ".aes";
+
+                    //Get the directory
+                    string directory = Path.GetDirectoryName(inputFile);
+
+                    //Create the new file name
+                    string newFileName = Path.Combine(directory, encFileName + extension);
+
+                    //Close the CryptoStream before renaming the file
+                    cs.Close();
+                    fsCrypt.Close();
+
+                    //Rename the file
+                    try
+                    {
+                        File.Move(inputFile + ".aes", newFileName);
+                    }
+                    catch (Exception ex)
+                    {
+                        newFileName = Path.Combine(directory + ".encloc", fileName + extension);
+                        File.Move(inputFile + ".aes", newFileName);
+                    }
+                }
+                else
+                {
+                    // Close the CryptoStream and FileStream
+                    cs.Close();
+                    fsCrypt.Close();
+                }
             }
         }
 

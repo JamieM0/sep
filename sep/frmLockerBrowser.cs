@@ -113,6 +113,8 @@ namespace sep
         private void btnLockAction_Click(object sender, EventArgs e)
         {
             bool removeDirectoryStructure = Options.RemoveDirectoryStructure;
+            bool trueEncryptFileNameMode = Options.EncryptFileNames;
+            Options.EncryptFileNames = false;
 
             if (!selectedLocker.lockState)
             {
@@ -288,6 +290,7 @@ namespace sep
                 Directory.Move(sourceDirLocked, OtherOperations.storeLoc + "\\backupLockers\\" + selectedLocker.name + ".encloc");
                 btnLockAction.Text = "Lock Locker";
                 PopulateLockerBrowser();
+                Options.EncryptFileNames = trueEncryptFileNameMode;
             }
         }
 

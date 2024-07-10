@@ -47,7 +47,7 @@
             btnSaveAndReturn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             btnSaveAndReturn.Image = Properties.Resources.save_icon_small__Custom_;
             btnSaveAndReturn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnSaveAndReturn.Location = new System.Drawing.Point(86, 352);
+            btnSaveAndReturn.Location = new System.Drawing.Point(86, 302);
             btnSaveAndReturn.Name = "btnSaveAndReturn";
             btnSaveAndReturn.Size = new System.Drawing.Size(216, 47);
             btnSaveAndReturn.TabIndex = 0;
@@ -145,6 +145,7 @@
             btnUpdateContextMenu.TabIndex = 8;
             btnUpdateContextMenu.Text = "Update Context Menu";
             btnUpdateContextMenu.UseVisualStyleBackColor = true;
+            btnUpdateContextMenu.Visible = false;
             btnUpdateContextMenu.Click += btnUpdateContextMenu_Click;
             // 
             // lbEncryptionAlgorithm
@@ -168,6 +169,7 @@
             cmbEncryptionAlgorithm.Name = "cmbEncryptionAlgorithm";
             cmbEncryptionAlgorithm.Size = new System.Drawing.Size(185, 29);
             cmbEncryptionAlgorithm.TabIndex = 10;
+            cmbEncryptionAlgorithm.SelectedIndexChanged += cmbEncryptionAlgorithm_SelectedIndexChanged;
             // 
             // lbEncryptionAlgorithmInfo
             // 
@@ -186,7 +188,8 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.Background_Options;
             BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            ClientSize = new System.Drawing.Size(403, 411);
+            ClientSize = new System.Drawing.Size(403, 365);
+            Controls.Add(btnSaveAndReturn);
             Controls.Add(lbEncryptionAlgorithmInfo);
             Controls.Add(cmbEncryptionAlgorithm);
             Controls.Add(lbEncryptionAlgorithm);
@@ -198,7 +201,6 @@
             Controls.Add(cbEncryptFileNames);
             Controls.Add(cbDebugMode);
             Controls.Add(lbTitle);
-            Controls.Add(btnSaveAndReturn);
             Name = "frmOptions";
             Text = "SEP - Options";
             Load += frmOptions_Load;
